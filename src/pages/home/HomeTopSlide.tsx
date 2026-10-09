@@ -4,14 +4,14 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 
 const HomeTopSlide = () => {
   return (
     <section className="container pt-[10px]">
         <Swiper
             spaceBetween={30}
-            effect={'fade'}
+            // effect={'fade'}
             loop={true}
             autoplay={{
                 delay: 3000,
@@ -20,7 +20,7 @@ const HomeTopSlide = () => {
             pagination={{
                 clickable: true,
             }}
-            modules={[ Autoplay, EffectFade, Pagination]}
+            modules={[ Autoplay, Pagination]}
             className="mySwiper"
         >
             <SwiperSlide className="heroTopSlider1">

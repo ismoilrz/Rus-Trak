@@ -1,8 +1,16 @@
+import About from "../pages/about/about";
 import Contacts from "../pages/contacts/contacts";
+import Credit from "../pages/credit/credit";
 import Home from "../pages/home/home";
 import News from "../pages/news/news";
+import OurPartners from "../pages/ourpartners/ourPartners";
+import Production from "../pages/production/production";
 import Repair from "../pages/repair/repair";
+import Reviews from "../pages/reviews/reviews";
+import Sertificate from "../pages/sertificate/sertificate";
 import Service from "../pages/service/service";
+import Supliers from "../pages/supliers/supliers";
+import Vacancies from "../pages/vacancies/vacancies";
 import type { RoutesType } from "../types/routesType";
 
 export const router:RoutesType[] = [
@@ -30,5 +38,45 @@ export const router:RoutesType[] = [
         id: 5,
         path: "/contacts",
         element: <Contacts />
+    },
+    {
+        id: 6,
+        path: "/about",
+        element: <About />
+    },
+    {
+        id: 7,
+        path: "/ourpartners",
+        element: <OurPartners />
+    },
+    {
+        id: 8,
+        path: "/production",
+        element: <Production />
+    },
+    {
+        id: 9,
+        path: "/supliers",
+        element: <Supliers />
+    }, 
+    {
+        id: 10,
+        path: "/reviews",
+        element: <Reviews />
+    },
+    {
+        id: 11,
+        path: "/sertificate",
+        element: <Sertificate />
+    }, 
+    { 
+        id: 12,
+        path: "/vacancies",
+        element: <Vacancies />
+    },
+    {
+        id: 13,
+        path: "/credit",
+        element: <Credit />
     }
 ]

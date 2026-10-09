@@ -1,12 +1,15 @@
+import { X } from "lucide-react"
+
 type CallProps = {
     callModal: boolean,
     closeCallModal: () => void,
 }
 
-const CallModal = ({ callModal, closeCallModal }: CallProps) => {
+const CallModal = ({ callModal, closeCallModal }: CallProps ) => {
   return (
-    <div onClick={closeCallModal} className={`absolute top-0 left-0 inset-0 items-center justify-center bg-[#0009] duration-200 z-40 ${callModal ? "flex" : "hidden"}`}>
-        <div onClick={(e) => e.stopPropagation()} className="bg-white w-[472px] py-15 flex flex-col items-center">
+    <div onClick={closeCallModal} className={`absolute top-0 left-0 inset-0 items-center justify-center bg-[#0009] duration-200 z-50 ${callModal ? "flex" : "hidden"}`}>
+        <div onClick={(e) => e.stopPropagation()} className="bg-white w-[472px] py-15 flex flex-col items-center rounded-lg relative">
+            <button onClick={closeCallModal}><X width={'30px'} height={'30px'} className="absolute top-3 right-3" /></button>
             <h3 className="text-[32px] font-[500] text-black">Заказать звонок</h3>
             <p className="max-w-[90%]">Наш менеджер свяжется с Вами в ближайшее время</p>
             <form className="w-[70%] py-12 flex flex-col gap-3">
@@ -32,9 +35,9 @@ const CallModal = ({ callModal, closeCallModal }: CallProps) => {
                     <p className="text-[14px] leading-[110%] text-[#a1a1a1]">Я согласен <a className="text-purple-800" href="#">на обработку персональных данных</a></p>
                 </div>
             </form>
-                    <button className="py-4 bg-[#fec80b] w-[70%]">Оставить заявку</button>
-                <p>Для регионов: <a href="tel:8 (800) 511-05-25">8 (800) 511-05-25</a></p>
-                <p>Нижний Новгород: <a href="tel:8 (800) 511-05-25">8 (800) 511-05-25</a></p>
+                    <button className="py-3 rounded-[4px] bg-[#fec80b] w-[70%] duration-200 hover:opacity-[0.7]">Оставить заявку</button>
+                <p className="text-[13px] mt-4">Для регионов: <a href="tel:8 (800) 511-05-25">8 (800) 511-05-25</a></p>
+                <p className="text-[13px]">Нижний Новгород: <a href="tel:8 (800) 511-05-25">8 (800) 511-05-25</a></p>
 
         </div>
     </div>

@@ -7,7 +7,7 @@ type CallProps = {
 
 const CallModal = ({ callModal, closeCallModal }: CallProps ) => {
   return (
-    <div onClick={closeCallModal} className={`absolute top-0 left-0 inset-0 items-center justify-center bg-[#0009] duration-200 z-50 ${callModal ? "flex" : "hidden"}`}>
+    <div onClick={closeCallModal} className={`fixed top-0 left-0 inset-0 items-center justify-center bg-[#0009] duration-200 z-50 ${callModal ? "flex" : "hidden"}`}>
         <div onClick={(e) => e.stopPropagation()} className="bg-white w-[472px] py-15 flex flex-col items-center rounded-lg relative">
             <button onClick={closeCallModal}><X width={'30px'} height={'30px'} className="absolute top-3 right-3" /></button>
             <h3 className="text-[32px] font-[500] text-black">Заказать звонок</h3>

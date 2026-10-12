@@ -5,8 +5,8 @@ import pre from "../../assets/about-truck32.png"
 
 const AboutCompany = () => {
   return (
-    <section className="container flex items-center justify-between py-25">
-        <div className="w-1/2">
+    <section className="container flex items-center justify-between py-25 max-xl:px-[3%] max-lg:flex-col max-lg:gap-8">
+        <div className="w-1/2 max-lg:w-full">
             <h2 className="text-[42px] font-[500]">О компании <span className="text-[#fec80b]">Рустрак</span></h2>
             <p className="text-[18px] mt-4">
                 Наша компания занимает лидирующие позиции на рынке спецтехники: 

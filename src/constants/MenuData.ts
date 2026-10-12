@@ -70,3 +70,26 @@ export const AboutMenuData:MenuDataTypes[] = [
         path: "/credit"
     }
 ]
+
+export const MediaMenuData:MenuDataTypes[] = [
+    {
+        id: 1,
+        label: "Фотогалерея",
+        path: '/galeriya'
+    },
+    {
+        id: 2,
+        label: "Видео",
+        path: "/video",
+    },
+    {
+        id: 3,
+        label: "Рекламные материалы",
+        path: "/reklama",
+    },
+    {
+        id: 4,
+        label: "Информационные материалы",
+        path: "/information"
+    }
+]

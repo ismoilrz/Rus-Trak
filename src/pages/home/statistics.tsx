@@ -52,7 +52,7 @@ const Counter = ({ end, duration = 2000 }: { end: number; duration?: number }) =
 const Statistics = () => {
   return (
     <section className="bg-[#fec80b] pt-[54px] pb-[65px]">
-      <div className="container flex justify-between gap-[136px]">
+      <div className="container flex justify-between gap-[136px] max-xl:px-[3%] max-lg:gap-[80px] max-md:flex-col">
         <div className="flex flex-col items-start">
           <strong className="text-[100px] font-[500]"><Counter end={17} /></strong>
           <h4 className="text-[32px] mt-[-25px] font-[500]">лет</h4>

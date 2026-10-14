@@ -8,11 +8,11 @@ type CallProps = {
 const CallModal = ({ callModal, closeCallModal }: CallProps ) => {
   return (
     <div onClick={closeCallModal} className={`fixed top-0 left-0 inset-0 items-center justify-center bg-[#0009] duration-200 z-50 ${callModal ? "flex" : "hidden"}`}>
-        <div onClick={(e) => e.stopPropagation()} className="bg-white w-[472px] py-15 flex flex-col items-center rounded-lg relative">
+        <div onClick={(e) => e.stopPropagation()} className="bg-white w-[472px] max-sm:w-[90%] py-15 flex flex-col items-center rounded-lg relative">
             <button onClick={closeCallModal}><X width={'30px'} height={'30px'} className="absolute top-3 right-3" /></button>
-            <h3 className="text-[32px] font-[500] text-black">Заказать звонок</h3>
-            <p className="max-w-[90%]">Наш менеджер свяжется с Вами в ближайшее время</p>
-            <form className="w-[70%] py-12 flex flex-col gap-3">
+            <h3 className="text-[32px] max-sm:text-[26px] font-[500] text-black">Заказать звонок</h3>
+            <p className="max-w-[90%] max-sm:text-center">Наш менеджер свяжется с Вами в ближайшее время</p>
+            <form className="w-[70%] py-12 max-sm:py-8 flex flex-col gap-3 max-sm:w-[80%]">
                 <div className="flex flex-col gap-1">
                     <label className="text-[14px]">Ваше имя *</label>
                     <input className="rounded-[4px] border border-black w-full h-11 pl-4 outline-hidden duration-200 focus-within:shadow-[2px_1px_8px_#fec90b7d] focus-within:border-[#fec80b]" type="text" placeholder="Имя" />

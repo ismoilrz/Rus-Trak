@@ -68,12 +68,12 @@ const HomeTopSlide = () => {
                 </div>
             </SwiperSlide>
             <SwiperSlide className="heroTopSlider7">
-                <div className="h-full w-[60%] max-lg:w-[90%] heroMainGradient pl-[30px] pt-[100px] max-md:pt-[100px] max-sm:pt-[50px]">
+                <div className="h-full w-[60%] max-lg:w-[90%] max-sm:w-full heroMainGradient pl-[30px] pt-[100px] max-md:pt-[100px] max-sm:pt-[50px]">
                     <h3 className="text-[30px] max-md:text-[22px] font-[800] text-white leading-[120%] max-w-[60%] max-md:w-[100%]!">Автотопливозаправщики на базе MCV/HCV грузовиков</h3>
                     <p className="text-lg max-sm:text-[14px] mt-4 text-white max-w-[60%] max-md:max-w-[90%]">Производство и поставка автотопливозаправщиков объёмом 8 и 6 м.куб. Алюминиевые коммуникации, композитные напорно-всасывающие рукава, производительный узел выдачи топлива. </p>
                     <div className="flex gap-5 max-sm:flex-col max-sm:gap-0">
-                        <button className="px-[30px] py-[10px] max-sm:w-[240px] max-sm:py-[7px] mt-8 max-sm:mt-3 rounded-[4px] border-2 text-black border-[#fec80b] bg-[#fec80b] hover:opacity-[0.8]">Подробнее</button>
-                        <button className="px-[30px] py-[10px] max-sm:w-[240px] max-sm:py-[7px] mt-8 max-sm:mt-2 max-sm:mt-4 rounded-[4px] border-2 text-white border-[#fec80b] duration-200 hover:bg-[#fec80b] hover:text-black">Заказать звонок</button>
+                        <button className="px-[30px] py-[10px] max-sm:text-[12px] max-sm:w-[240px] max-sm:py-[7px] mt-8 max-sm:mt-3 rounded-[4px] border-2 text-black border-[#fec80b] bg-[#fec80b] hover:opacity-[0.8]">Подробнее</button>
+                        <button className="px-[30px] py-[10px] max-sm:text-[12px] max-sm:w-[240px] max-sm:py-[7px] mt-8 max-sm:mt-2 max-sm:mt-4 rounded-[4px] border-2 text-white border-[#fec80b] duration-200 hover:bg-[#fec80b] hover:text-black">Заказать звонок</button>
                     </div>
                 </div>
             </SwiperSlide>

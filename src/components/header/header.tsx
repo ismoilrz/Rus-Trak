@@ -11,11 +11,11 @@ import Logo from "../../assets/logo.svg";
 import Call from "../../assets/call.svg";
 
 import { MenuData } from "../../constants/MenuData";
-import CallModal from "../callModal/callModal";
 import CatalogModal from "../catalogModal/catalogModal";
 
 type HeaderProps = {
-  isScrolled: boolean
+  isScrolled: boolean,
+  openCallModal: () => void,
 }
 
 const languages = {
@@ -24,9 +24,8 @@ const languages = {
   en: { flag: usa, label: 'English' }
 };
 
-const Header = ({ isScrolled }: HeaderProps) => {
+const Header = ({ isScrolled, openCallModal }: HeaderProps) => {
   const { t, i18n } = useTranslation();
-  const [callModal, setCallModal] = useState<boolean>(false);
   const [hoursDrop, setHoursDrop] = useState<boolean>(false);
   const hoursDropRef = useRef<HTMLDivElement | null>(null);
   
@@ -39,8 +38,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
 
   const closeCatalog = () => setCatalog(false)
 
-  const openCallModal = () => setCallModal(true);
-  const closeCallModal = () => setCallModal(false);
+  
 
   useEffect(() => {
     if (!langDrop) return;
@@ -61,7 +59,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
   }, [langDrop]);
 
   useEffect(() => {
-    const scrollClosed = callModal || catalog;
+    const scrollClosed = catalog;
 
     if (scrollClosed) {
       document.body.style.overflow = "hidden";
@@ -72,7 +70,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [callModal, catalog]);
+  }, [catalog]);
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
@@ -86,11 +84,11 @@ const Header = ({ isScrolled }: HeaderProps) => {
       }`}>
         
         <div 
-          className={`border-b border-[#fec80b] transition-all duration-700 max-xl:h-[7vh] ${
+          className={`border-b border-[#fec80b] flex items-center transition-all duration-700 max-md:h-[7vh]! ${
             isScrolled ? "absolute top-[-9vh]" : "h-[9vh]"
           }`}
         >
-          <div className="container max-xl:px-[3%] flex justify-between items-center h-[9vh] max-xl:h-[7vh]">
+          <div className="container max-xl:px-[3%] flex justify-between items-center h-[9vh] max-md:h-[7vh]!">
             <div className="flex items-center gap-[10px]">
               <Link to={'/'}>
                 <img src={Logo} alt="Logo" />
@@ -108,7 +106,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
                 <p className="text-[15px] max-lg:text-[14px] max-md:hidden max-lg:max-w-[200px] max-lg:text-end text-[#a1a1a1]">г. Нижний Новгород ул. Торфяная, 35</p>
 
                 {hoursDrop && (
-                  <div className={`${isScrolled ? "hidden" : ''} absolute top-7 right-0 bg-[#fec80b] shadow-xl rounded-md z-50! px-4 py-2`}>
+                  <div className={`${isScrolled ? "hidden" : ''} max-lg:hidden absolute top-7 right-0 bg-[#fec80b] shadow-xl rounded-md z-50! px-4 py-2`}>
                     <p className="text-black text-sm">Пн-пт: с 8:00 до 18:00</p>
                     <p className="text-black text-sm">Сб-вс: Выходной</p>
                   </div>
@@ -128,10 +126,10 @@ const Header = ({ isScrolled }: HeaderProps) => {
           </div>
         </div>
 
-        <div className="container max-xl:px-[3%] bg-white flex justify-between items-center h-[10vh] max-xl:h-[7vh] duration-300 z-40">
+        <div className="container max-xl:px-[3%] bg-white flex justify-between items-center h-[10vh] max-xl:h-[8vh] duration-300 z-40">
           <div className="flex items-center gap-7 max-xl:gap-4">
 
-            <button onClick={() => setCatalog((c) => !c)} className={`${isScrolled ? "w-[50px]" : ""} px-4 h-10 bg-[#fec80b] rounded-[4px] text-black text-lg flex items-center gap-3 cursor-pointer`}>
+            <button onClick={() => setCatalog((c) => !c)} className={`px-4 h-10 bg-[#fec80b] rounded-[4px] text-black text-lg flex items-center gap-3 cursor-pointer`}>
               <div className="flex flex-col justify-center gap-1 h-full">
                 <div className={`${catalog ? "rotate-[45deg] translate-y-[3px]" : "rotate-0"} duration-200 w-[18px] h-[2.3px] bg-black`}></div>
                 <div className={`${catalog ? "hidden" : "flex"} duration-200 w-[18px] h-[2.3px] bg-black`}></div>
@@ -140,7 +138,7 @@ const Header = ({ isScrolled }: HeaderProps) => {
               <span className={` ${isScrolled ? "hidden" : ""} duration-300 max-sm:hidden`}>Каталог</span>
             </button>
             {isScrolled && (
-                <Link className="scLog overflow-hidden" to={'/'}>
+                <Link className="scLog overflow-hidden max-sm:hidden" to={'/'}>
                   <img src={Logo} alt="Logo" className="w-[180px]" />
                 </Link>
             )}
@@ -221,11 +219,10 @@ const Header = ({ isScrolled }: HeaderProps) => {
             </div>
           </div>
         </div>
-      <CatalogModal catalog={catalog} catalog2={catalog2} catalog3={catalog3} closeCatalog={closeCatalog} />
+      <CatalogModal catalog={catalog} catalog2={catalog2} catalog3={catalog3} closeCatalog={closeCatalog} isScrolled={isScrolled} />
 
       </header>
 
-      <CallModal callModal={callModal} closeCallModal={closeCallModal} />
     </>
   );
 };

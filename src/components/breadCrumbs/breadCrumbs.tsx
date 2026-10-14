@@ -7,7 +7,7 @@ const Breadcrumbs = () => {
   if (pathnames.length === 0) return null;
 
   return (
-    <nav className="py-4 text-sm text-gray-600">
+    <nav className="text-sm text-gray-600">
       <div className="container flex items-center gap-2">
         <Link to="/" className="hover:text-[#fec80b] transition-colors">
           Главная

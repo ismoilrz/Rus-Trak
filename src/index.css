@@ -19,7 +19,15 @@ button {
 
 ::-webkit-scrollbar-thumb {
   background-color: #fec80b;
-  border-radius: 4px;
+  border-radius: 10px !important;
+}
+
+.catalog::-webkit-scrollbar {
+  width: 1px;
+}
+
+.catalog::-webkit-scrollbar-thumb {
+  background: none;
 }
 
 li {
@@ -33,9 +41,13 @@ li {
 }
 
 .cat {
-  animation: cat 0.2s ease-out;
+  animation: cat 0.2s ease-out forwards;
 }
 
+@keyframes cat {
+  0% {height: 50vh;}
+  100% {height: 90vh;}
+}
 .scLog {
   animation: scLog 0.3s ease-out;
 }
@@ -45,9 +57,87 @@ li {
   100%{width: 200px;}
 }
 
-@keyframes cat {
-  0% {height: 50vh;}
-  100% {height: 100vh;}
+
+@keyframes footMenuAni {
+  0% {
+    height: 30px;
+    opacity: 0;
+  }
+  100% {
+    height: 400px;
+    opacity: 1;
+  }
+}
+
+.footMenuAni {
+  animation: footMenuAni 0.25s ease-out forwards;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.catMenAni1 {
+  animation: catMenAni1 0.2s ease-out forwards;
+}
+.catMenAni2 {
+  animation: catMenAni2 0.2s ease-out forwards;
+}
+
+.catMenAni3 {
+  animation: catMenAni3 0.2s ease-out forwards;
+}
+
+@keyframes catMenAni2{
+  0% {
+    height: 0px;
+    opacity: 0;
+  }
+
+  100% {
+    height: 325px;
+    opacity: 1;
+  }
+}
+
+@keyframes catMenAni3 {
+  0% {
+    height: 0px;
+    opacity: 0;
+  }
+  100% {
+    height: 100px;
+    opacity: 1;
+  }
+}
+
+@keyframes catMenAni1{
+  0% {
+    height: 0px;
+    opacity: 0;
+  }
+
+  100% {
+    height: 420px;
+    opacity: 1;
+  }
+}
+
+@keyframes footMenuAni2 {
+  0% {
+    height: 30px;
+    opacity: 0;
+  }
+  100% {
+    height: 80px;
+    opacity: 1;
+  }
+}
+
+.footMenuAni2 {
+  animation: footMenuAni2 0.25s ease-out forwards;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .swiper {

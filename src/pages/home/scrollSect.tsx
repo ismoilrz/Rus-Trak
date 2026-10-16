@@ -1,12 +1,12 @@
 import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 
-import mainPick from "../../../assets/scrollSectMain.png"
-import steps1 from "../../../assets/steps1.svg"
-import steps2 from "../../../assets/steps2.svg"
-import steps3 from "../../../assets/steps3.svg"
-import steps4 from "../../../assets/steps4.svg"
-import steps5 from "../../../assets/steps5.svg"
+import mainPick from "../../assets/scrollSectMain.png"
+import steps1 from "../../assets/steps1.svg"
+import steps2 from "../../assets/steps2.svg"
+import steps3 from "../../assets/steps3.svg"
+import steps4 from "../../assets/steps4.svg"
+import steps5 from "../../assets/steps5.svg"
 
 interface Steps {
   title: string,

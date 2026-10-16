@@ -17,6 +17,7 @@
     "i18next-http-backend": "^4.0.2",
     "lucide-react": "^1.52.0",
     "react": "^19.2.8",
+    "react-compare-slider": "^4.0.0",
     "react-dom": "^19.2.8",
     "react-i18next": "^17.0.16",
     "react-intersection-observer": "^11.0.1",

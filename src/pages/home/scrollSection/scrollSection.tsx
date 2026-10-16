@@ -1,25 +1,44 @@
+import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 
-const steps = [
+import mainPick from "../../../assets/scrollSectMain.png"
+import steps1 from "../../../assets/steps1.svg"
+import steps2 from "../../../assets/steps2.svg"
+import steps3 from "../../../assets/steps3.svg"
+import steps4 from "../../../assets/steps4.svg"
+import steps5 from "../../../assets/steps5.svg"
+
+interface Steps {
+  title: string,
+  logo: string,
+  desc: string,
+}
+
+const steps:Steps[] = [
   {
     title: "Конструкторское бюро",
-    desc: "Собственное конструкторское бюро позволяет реализовать индивидуальные проекты клиентов.",
+    logo: steps1,
+    desc: "Собственное конструкторское бюро позволяет реализовать индивидуальные проекты клиента.",
   },
   {
     title: "Разработка",
-    desc: "Полный цикл проектирования и подготовки технической документации.",
+    logo: steps2,
+    desc: "Все проекты разработаны согласно мануал кузовостроителей.",
   },
   {
     title: "Производственная база",
-    desc: "Современное оборудование и строгий контроль качества на каждом этапе сборки.",
+    logo: steps3,
+    desc: "Собственная производственная база позволяет максимально снизить себестоимость продукции, повышая её конкурентоспособность.",
   },
   {
     title: "Гарантия",
-    desc: "Предоставляем официальную гарантию на всю выпускаемую технику.",
+    logo: steps4,
+    desc: "Гарантия на надстройки и работы соответствует гарантии шасси.",
   },
   {
     title: "Сервис",
-    desc: "Круглосуточная техническая поддержка и поставка запасных частей.",
+    logo: steps5,
+    desc: "Сервисное обслуживание: партнёрская сервисная сеть на всей территории РФ.",
   },
 ];
 
@@ -53,94 +72,113 @@ const CircularScrollSection = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    let ticking = false;
+    const scrollListener = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", scrollListener);
+    return () => window.removeEventListener("scroll", scrollListener);
   }, [totalSteps]);
 
   return (
-    <div id="circular-sticky-container" className="container relative h-[400vh] bg-white">
-      <div className="sticky top-0 h-screen flex flex-col justify-center container mx-auto">
+    <div id="circular-sticky-container" className="relative h-[400vh] bg-white">
+      <div className="sticky top-0 h-screen flex flex-col justify-center container max-xl:items-start max-xl:px-[3%]">
         
-        <div className="flex items-center justify-between max-lg:flex-col">
+        <div className="max-xl:w-full flex items-center justify-between max-xl:flex-col max-xl:justify-start max-xl:items-start">
           
-          {/* Чап томон: Катта айлана ва Мошина */}
           <div className="relative w-[450px] h-[450px] rounded-full border-3 border-[#fec80b] flex items-center justify-center max-sm:w-[320px] max-sm:h-[320px]">
-            <div className="text-center font-bold text-xl">
-              <span className="text-gray-700">Мошина расми</span>
+            <div className="rounded-full w-[92%] h-[92%] bg-[#a1a1a136] flex items-center justify-center">
+              <img className="w-[90%] h-[90%]" src={mainPick} alt="" />
             </div>
 
-            {/* ҲАР БИР КИЧИК АЙЛАНАНИ ЎЗИНГИЗ АЛОҲИДА ЁЗИБ ЧИҚДИНГИЗ (top, left, right лар орқали хоҳлаган жойга қўяверинг) */}
-            
-            {/* 1-Элемент: Конструкторское бюро */}
-            <div
-              className={`absolute flex items-center gap-2 transition-all duration-300`}
-              style={{ top: "0%", right: "-30px" }}
-            >
-              <div className={`w-4 h-4 rounded-full ${activeStep === 0 ? "bg-[#fec80b] ring-4 ring-yellow-100" : "bg-white border-2 border-[#fec80b]"}`} />
-              <span className="text-sm px-2 py-0.5 rounded hidden md:inline">{steps[0].title}</span>
+            {/* #1 */}
+            <div className="absolute max-md:hidden flex items-center gap-2" style={{ top: "0%", right: "-30px" }}>
+              <div className={`w-4 h-4 rounded-full transition-colors duration-200 ${activeStep === 0 ? "bg-[#fec80b] border-2 border-transparent ring-4 ring-yellow-100" : "bg-white border-2 border-[#fec80b]"}`} />
+              <span className={`text-sm px-2 py-0.5 rounded hidden md:inline transition-colors duration-200 ${activeStep === 0 ? "font-bold text-black" : "text-gray-500"}`}>{steps[0].title}</span>
             </div>
 
-            {/* 2-Элемент: Разработка */}
-            <div
-              className={`absolute flex items-center gap-2 transition-all duration-300`}
-              style={{ top: "25%", right: "-85px" }}
-            >
-              <div className={`w-4 h-4 rounded-full ${activeStep === 1 ? "bg-[#fec80b] ring-4 ring-yellow-100" : "bg-white border-2 border-[#fec80b]"}`} />
-              <span className="text-sm px-2 py-0.5 rounded hidden md:inline">{steps[1].title}</span>
+            {/* #2 */}
+            <div className="absolute max-md:hidden flex items-center gap-2" style={{ top: "25%", right: "-85px" }}>
+              <div className={`w-4 h-4 rounded-full transition-colors duration-200 ${activeStep === 1 ? "bg-[#fec80b] border-2 border-transparent ring-4 ring-yellow-100" : "bg-white border-2 border-[#fec80b]"}`} />
+              <span className={`text-sm px-2 py-0.5 rounded hidden md:inline transition-colors duration-200 ${activeStep === 1 ? "font-bold text-black" : "text-gray-500"}`}>{steps[1].title}</span>
             </div>
 
-            {/* 3-Элемент: Производственная база */}
-            <div
-              className={`absolute flex items-center gap-2 transition-all duration-300`}
-              style={{ top: "52%", right: "-190px" }}
-            >
-              <div className={`w-4 h-4 rounded-full ${activeStep === 2 ? "bg-[#fec80b] ring-4 ring-yellow-100" : "bg-white border-2 border-[#fec80b]"}`} />
-              <span className="text-sm px-2 py-0.5 rounded hidden md:inline">{steps[2].title}</span>
+            {/* #3 */}
+            <div className="absolute max-md:hidden flex items-center gap-2" style={{ top: "52%", right: "-190px" }}>
+              <div className={`w-4 h-4 rounded-full transition-colors duration-200 ${activeStep === 2 ? "bg-[#fec80b] border-2 border-transparent ring-4 ring-yellow-100" : "bg-white border-2 border-[#fec80b]"}`} />
+              <span className={`text-sm px-2 py-0.5 rounded hidden md:inline transition-colors duration-200 ${activeStep === 2 ? "font-bold text-black" : "text-gray-500"}`}>{steps[2].title}</span>
             </div>
 
-            {/* 4-Элемент: Гарантия */}
-            <div
-              className={`absolute flex items-center gap-2 transition-all duration-300`}
-              style={{ bottom: "22%", right: "-62px" }}
-            >
-              <div className={`w-4 h-4 rounded-full ${activeStep === 3 ? "bg-[#fec80b] ring-4 ring-yellow-100" : "bg-white border-2 border-[#fec80b]"}`} />
-              <span className="text-sm px-2 py-0.5 rounded hidden md:inline">{steps[3].title}</span>
+            {/* #4 */}
+            <div className="absolute max-md:hidden flex items-center gap-2" style={{ bottom: "22%", right: "-62px" }}>
+              <div className={`w-4 h-4 rounded-full transition-colors duration-200 ${activeStep === 3 ? "bg-[#fec80b] border-2 border-transparent ring-4 ring-yellow-100" : "bg-white border-2 border-[#fec80b]"}`} />
+              <span className={`text-sm px-2 py-0.5 rounded hidden md:inline transition-colors duration-200 ${activeStep === 3 ? "font-bold text-black" : "text-gray-500"}`}>{steps[3].title}</span>
             </div>
 
-            {/* 5-Элемент: Сервис */}
-            <div
-              className={`absolute flex items-center gap-2 transition-all duration-300`}
-              style={{ bottom: "7%", right: "10px" }}
-            >
-              <div className={`w-4 h-4 rounded-full ${activeStep === 4 ? "bg-[#fec80b] ring-4 ring-yellow-100" : "bg-white border-2 border-[#fec80b]"}`} />
-              <span className="text-sm px-2 py-0.5 rounded hidden md:inline">{steps[4].title}</span>
+            {/* #5 */}
+            <div className="absolute max-md:hidden flex items-center gap-2" style={{ bottom: "7%", right: "10px" }}>
+              <div className={`w-4 h-4 rounded-full transition-colors duration-200 ${activeStep === 4 ? "bg-[#fec80b] border-2 border-transparent ring-4 ring-yellow-100" : "bg-white border-2 border-[#fec80b]"}`} />
+              <span className={`text-sm px-2 py-0.5 rounded hidden md:inline transition-colors duration-200 ${activeStep === 4 ? "font-bold text-black" : "text-gray-500"}`}>{steps[4].title}</span>
             </div>
 
           </div>
 
-          {/* Ўнг томон: Чизиқ ва Матн */}
-          <div className="flex items-start">
-            {/* Вертикал линия */}
-            <div className="flex justify-end">
-              <div className="relative w-[2px] h-[250px] rounded-full overflow-hidden">
-                <div 
-                  className="absolute top-0 left-0 w-full bg-[#fec80b] transition-all duration-75"
-                  style={{ height: `${lineHeight}%` }}
-                />
-              </div>
+          <div className="hidden max-md:flex flex-col gap-3 py-5">
+            <div className=" flex items-center gap-2">
+              <div className={`w-4 h-4 rounded-full transition-colors duration-200 ${activeStep === 0 ? "bg-[#fec80b] border-2 border-transparent ring-4 ring-yellow-100" : "bg-white border-2 border-[#fec80b]"}`} />
+              <span className={`text-sm px-2 py-0.5 rounded md:inline transition-colors duration-200 ${activeStep === 0 ? "font-bold text-black" : "text-gray-500"}`}>{steps[0].title}</span>
             </div>
 
-            {/* Матн қисми */}
-            <div className="w-[450px] p-8 bg-transparent rounded-2xl max-lg:w-full max-lg:mt-6">
-              <h3 className="text-2xl font-extrabold text-gray-900 mb-4 transition-all duration-300">
-                {steps[activeStep].title}
-              </h3>
-              <p className="text-gray-600 text-base leading-relaxed transition-all duration-300">
-                {steps[activeStep].desc}
-              </p>
+            {/* #2 */}
+            <div className="flex items-center gap-2">
+              <div className={`w-4 h-4 rounded-full transition-colors duration-200 ${activeStep === 1 ? "bg-[#fec80b] border-2 border-transparent ring-4 ring-yellow-100" : "bg-white border-2 border-[#fec80b]"}`} />
+              <span className={`text-sm px-2 py-0.5 rounded md:inline transition-colors duration-200 ${activeStep === 1 ? "font-bold text-black" : "text-gray-500"}`}>{steps[1].title}</span>
+            </div>
+
+            {/* #3 */}
+            <div className="flex items-center gap-2">
+              <div className={`w-4 h-4 rounded-full transition-colors duration-200 ${activeStep === 2 ? "bg-[#fec80b] border-2 border-transparent ring-4 ring-yellow-100" : "bg-white border-2 border-[#fec80b]"}`} />
+              <span className={`text-sm px-2 py-0.5 rounded md:inline transition-colors duration-200 ${activeStep === 2 ? "font-bold text-black" : "text-gray-500"}`}>{steps[2].title}</span>
+            </div>
+
+            {/* #4 */}
+            <div className="flex items-center gap-2">
+              <div className={`w-4 h-4 rounded-full transition-colors duration-200 ${activeStep === 3 ? "bg-[#fec80b] border-2 border-transparent ring-4 ring-yellow-100" : "bg-white border-2 border-[#fec80b]"}`} />
+              <span className={`text-sm px-2 py-0.5 rounded md:inline transition-colors duration-200 ${activeStep === 3 ? "font-bold text-black" : "text-gray-500"}`}>{steps[3].title}</span>
+            </div>
+
+            {/* #5 */}
+            <div className="flex items-center gap-2">
+              <div className={`w-4 h-4 rounded-full transition-colors duration-200 ${activeStep === 4 ? "bg-[#fec80b] border-2 border-transparent ring-4 ring-yellow-100" : "bg-white border-2 border-[#fec80b]"}`} />
+              <span className={`text-sm px-2 py-0.5 rounded md:inline transition-colors duration-200 ${activeStep === 4 ? "font-bold text-black" : "text-gray-500"}`}>{steps[4].title}</span>
             </div>
           </div>
 
+          <div className="flex items-start max-xl:flex-col">
+          <div className="flex justify-end mr-4 max-xl:mr-0 max-xl:mt-14 max-md:mt-6">
+            <div className="relative w-[2px]! h-[300px] max-xl:w-[950px]! max-lg:w-[700px]! max-md:w-[600px]! max-sm:w-[300px]! max-xl:h-[4px] bg-white rounded-full">
+              
+              <div className="absolute top-0 left-0 rounded-full bg-[#fec80b] max-xl:h-[3px]! max-xl:w-0" style={{ height: `${lineHeight}%`, width: `${lineHeight}%`,}} />
+              {lineHeight > 0 && (
+                <ChevronDown className="absolute text-[#fec80b] left-[-4px]! max-xl:hidden" style={{ top: `${lineHeight}%`, left: `${lineHeight}%`, transform: 'translate(-30%, -30%)' }} />
+              )}
+            </div>
+          </div>
+
+          <div className="w-[450px] max-xl:w-full max-xl:flex-row max-xl:justify-start max-xl:items-start max-xl:p-0 max-xl:pt-3 flex flex-col justify-center gap-8 p-8 bg-transparent rounded-2xl">
+            <img className="w-16 h-16" src={steps[activeStep].logo} alt={steps[activeStep].title} />
+            <p className="text-black max-xl:text-[20px] max-sm:text-sm text-base leading-relaxed transition-all duration-300">
+              {steps[activeStep].desc}
+            </p>
+          </div>
+        </div>
         </div>
 
       </div>

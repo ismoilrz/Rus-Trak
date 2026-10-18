@@ -1,5 +1,6 @@
 import About from "../pages/about/about";
 import Articles from "../pages/articles/articles";
+import Catalog from "../pages/catalog/catalog";
 import Contacts from "../pages/contacts/contacts";
 import Credit from "../pages/credit/credit";
 import Galeriya from "../pages/galeriya/galeriya";
@@ -11,6 +12,7 @@ import Production from "../pages/production/production";
 import Reklama from "../pages/reklama/reklama";
 import Repair from "../pages/repair/repair";
 import Reviews from "../pages/reviews/reviews";
+import SelectedCatalog from "../pages/selectedCatalog/selectedCatalog";
 import Sertificate from "../pages/sertificate/sertificate";
 import Service from "../pages/service/service";
 import Supliers from "../pages/supliers/supliers";
@@ -101,12 +103,22 @@ export const router:RoutesType[] = [
     },
     {
         id: 17,
-        path: "information",
+        path: "/information",
         element: <Information />,
     },
     {
         id: 18,
         path: "/articles",
         element: <Articles />
+    },
+    {
+        id: 19,
+        path: "/catalog",
+        element: <Catalog />
+    },
+    {
+        id: 20,
+        path: "/catalog/:selectedcatalog",
+        element: <SelectedCatalog />
     }
 ]

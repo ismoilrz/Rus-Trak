@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useLocation } from "react-router-dom"
 import "./shared/i18n/i18n"
 
 import AnyQuestion from "./components/anyQuestion/anyQuestion"
@@ -47,10 +47,13 @@ function App() {
     };
   }, [callModal]);
 
+  const location = useLocation();
+  const isSelectedCatalogPage = location.pathname.startsWith("/catalog/");
+
   return (
     <div>
       <Header openCallModal={openCallModal} isScrolled={isScrolled} />
-      <main className={`${isScrolled ? "pt-[20vh]" : ""}`}>
+      <main className={`${isScrolled ? "pt-[20vh]" : ""} ${isSelectedCatalogPage ? "bg-[#f5f5f5]" : "bg-white"}`}>
         <div className="container max-xl:px-[3%]"><Breadcrumbs /></div>
         <Routes>
           {router.map((rout, r) => (
@@ -59,7 +62,7 @@ function App() {
         </Routes>
       </main>
 
-      <AnyQuestion />
+      <AnyQuestion isSelectedCatalogPage={isSelectedCatalogPage} />
       <Footer openCallModal={openCallModal} />
 
       <CallModal callModal={callModal} closeCallModal={closeCallModal} />

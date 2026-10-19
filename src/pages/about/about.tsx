@@ -1,6 +1,12 @@
+import AboutBanner from "./aboutBanner"
+import AboutSwiper from "./aboutSwiper"
+
 const About = () => {
   return (
-    <div>About</div>
+    <div>
+      <AboutBanner />
+      <AboutSwiper />
+    </div>
   )
 }
 

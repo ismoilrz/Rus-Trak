@@ -6,3 +6,10 @@ export interface EmployeesType {
     phone: string,
     job: string
 }
+
+export interface AboutSliderType {
+    id: number,
+    img: string,
+    title: string,
+    desc: string,
+}

@@ -1,4 +1,4 @@
-import { Pagination } from "swiper/modules"
+import { Pagination, Navigation} from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 
 import 'swiper/css';
@@ -11,18 +11,23 @@ const AboutSwiper = () => {
         <div className='container pt-40 pb-15 flex justify-between items-end'>
             <h4 className='text-[24px] font-[500] max-w-[50%]'>Автомобильный завод «РусТрак» является предприятием полного цикла: от конструкторско-технологических разработок до готового изделия.</h4>
             <div className='flex gap-3'>
-                <button className='w-10 h-10 border border-black rounded-md text-[26px] text-[#a1a1a1] duration-200 hover:bg-[#fec80b] hover:text-black active:bg-[#fec80b]'>{"<"}</button>
-                <button className='w-10 h-10 border border-black rounded-md text-[26px] text-[#a1a1a1] duration-200 hover:bg-[#fec80b] hover:text-black active:bg-[#fec80b]'>{">"}</button>
+                <button id="about-slide-left" className='w-10 h-10 border border-black rounded-md text-[26px] text-[#a1a1a1] duration-200 hover:bg-[#fec80b] hover:text-black active:bg-[#fec80b]'>{"<"}</button>
+                <button id="about-slide-next" className='w-10 h-10 border border-black rounded-md text-[26px] text-[#a1a1a1] duration-200 hover:bg-[#fec80b] hover:text-black active:bg-[#fec80b]'>{">"}</button>
             </div>
         </div>
         <div className="Sl container">
         <Swiper
         slidesPerView={4}
         spaceBetween={30}
+        loop={true}
+        navigation={{
+          prevEl: "#about-slide-left",
+          nextEl: "#about-slide-next",
+        }}
         pagination={{
           clickable: true,
         }}
-        modules={[Pagination]}
+        modules={[Pagination,Navigation]}
         className="mySwiper"
       >
         {AboutSliders.map((sl, idx) => (

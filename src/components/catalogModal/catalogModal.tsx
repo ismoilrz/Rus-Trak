@@ -43,7 +43,7 @@ const CatalogModal = ({ catalog, catalog2, catalog3, closeCatalog, isScrolled }:
               </button>
 
               {catalogMenu1 && (
-                <div className="flex flex-col gap-3 max-sm:hidden">
+                <div className="flex flex-col gap-3 catMenAni1 overflow-hidden">
                     <Link to={'/catalog/Curtain-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Шторные автомобили</li></Link>
                     <Link to={'/catalog/Crane-manipulators'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Краны-манипуляторы</li></Link>
                     <Link to={'/catalog/Fuel-bowsers'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Автотопливозаправщики</li></Link>

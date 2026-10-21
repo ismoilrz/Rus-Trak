@@ -59,7 +59,7 @@ const Header = ({ isScrolled, openCallModal }: HeaderProps) => {
   }, [langDrop]);
 
   useEffect(() => {
-    const scrollClosed = catalog;
+    const scrollClosed = catalog || catalog2 || catalog3;
 
     if (scrollClosed) {
       document.body.style.overflow = "hidden";
@@ -70,7 +70,7 @@ const Header = ({ isScrolled, openCallModal }: HeaderProps) => {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [catalog]);
+  }, [catalog, catalog2, catalog3]);
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
@@ -84,7 +84,7 @@ const Header = ({ isScrolled, openCallModal }: HeaderProps) => {
       }`}>
         
         <div 
-          className={`border-b border-[#fec80b] flex items-center transition-all duration-700 max-md:h-[7vh]! ${
+          className={`border-b border-[#fec80b] flex items-center transition-all duration-700 ${
             isScrolled ? "absolute top-[-9vh]" : "h-[9vh]"
           }`}
         >

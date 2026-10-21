@@ -374,3 +374,90 @@ li {
 .Sl .swiper-pagination-bullet {
     display: none;
 }
+
+/* production slide */
+
+ .Pr .swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.Pr .swiper-wrapper {
+  /* padding-block: 15px !important; */
+  border-radius: 20px !important;
+}
+
+.Pr .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Pr .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Pr .swiper-pagination-bullet {
+    display: none;
+}
+
+/* ------------------------------------ ourPartners -------------------------------- */
+
+@media (max-width: 768px) {
+  .ourPartners p{
+    font-size: 16px;
+    max-width: 100%;
+  }
+}
+
+.reviews:hover .reviewOverlay {
+  background: #0004;
+  color: #fff;
+}
+
+.ant-collapse-item {
+  background-color: transparent !important;
+  border: 2px solid #d9d9d9 !important; 
+  border-radius: 8px !important;
+}
+
+.ant-collapse-header {
+  display: flex !important;
+  align-items: center !important;
+  background: #fff !important;
+  border-radius: 8px !important;
+  transition: background-color 0.3s ease;
+}
+
+.ant-collapse-item:hover {
+  border: 2px solid #fec80b !important;
+}
+
+.ant-collapse-item-active .ant-collapse-header {
+  background: #fec80b !important;
+  overflow: hidden !important;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+
+/* 4. Body qismi ochiq turganda */
+.ant-collapse-body {
+  overflow: hidden !important;
+  background-color: #fff !important;
+}
+
+.ant-collapse-title {
+  font-size: 22px !important;
+  font-weight: 600;
+}
+

@@ -17,14 +17,14 @@ const AbotTh:AboutThType[] = [
 
 const AboutTh = () => {
   return (
-    <section className="container pt-35 flex justify-between items-center">
-        <div>
+    <section className="container pt-35 max-sm:pt-15 flex max-lg:flex-col max-xl:px-[3%] justify-between max-lg:gap-8 items-center">
+        <div className="w-1/2 max-lg:w-full">
             <h4 className="text-[28px] font-semibold">Сегодня ООО «Рустрак» - это:</h4>
             <ol className="flex flex-col gap-4 mt-8">
                 {AbotTh.map((item, idx) => (
-                    <div key={idx} className="flex gap-3">
+                    <div key={idx} className="flex gap-3 w-full">
                         <CircleCheck fill="#fec80b" stroke="#fff" width={'30px'} height={'30px'} />
-                        <li className="text-lg">{item.desc}</li>
+                        <li className="text-lg max-w-[90%]">{item.desc}</li>
                     </div>
                 ))}
             </ol>

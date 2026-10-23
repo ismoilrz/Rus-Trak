@@ -1,6 +1,6 @@
 interface ReklamaUrlType {
   url: string;
-  path: string
+  path: string;
 }
 
 interface ReklamaType {
@@ -9,7 +9,7 @@ interface ReklamaType {
   to: ReklamaUrlType[];
 }
 
-const ReklamaData:ReklamaType[] = [
+const ReklamaData: ReklamaType[] = [
   {
     id: 1,
     title: "OOO РУСТРАК",
@@ -52,7 +52,7 @@ const ReklamaData:ReklamaType[] = [
       }
     ]
   }
-]
+];
 
 const Reklama = () => {
   return (
@@ -63,15 +63,17 @@ const Reklama = () => {
           <div key={rek.id} className="flex flex-col gap-2">
             <h3 className="text-[24px] font-[500]">{rek.title}</h3>
             <div className="flex flex-col">
-              {rek.to.map((to) => (
-                <a href={to.path} className="text-lg underline">{to.url}</a>
+              {rek.to.map((to, idx) => (
+                <a key={idx} href={to.path} className="text-lg underline">
+                  {to.url}
+                </a>
               ))}
             </div>
           </div>
         ))}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Reklama
+export default Reklama;

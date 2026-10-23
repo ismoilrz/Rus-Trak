@@ -4,7 +4,7 @@ interface CreditType {
   desc: string;
 }
 
-const CreditData:CreditType[] = [
+const CreditData: CreditType[] = [
   {
     id: 1,
     title: "Кредит и лизинг на автоспецтехнику компании РусТрак",
@@ -20,26 +20,25 @@ const CreditData:CreditType[] = [
     title: "Преимущества лизинговых схем:",
     desc: "Максимальная отсрочка платежа. Ускоренная амортизация: участники лизинговой сделки имеют право применять механизм ускоренной амортизации предмета лизинга с коэффициентом ускорения до 3, что позволяет быстрее окупить технику, варьировать длительность лизингового договора. Налоговая оптимизация: все платежи, производимые по договору лизинга, относятся на себестоимость продукции, тем самым, уменьшая налогооблагаемую базу по налогу на прибыль. Экономия средств лизингополучателя в результате отсутствия необходимости уплаты налога на имущество, т.к. предмет лизинга в большинстве случаев находится на балансе лизинговой компании. Возможность приобрести и использовать имущество, не отвлекая при этом собственные средства предприятия единовременно и в полном объёме. Возможность приобретения в собственность предмета лизинга, полностью освобожденного от налоговой нагрузки, по истечению срока договора лизинга. Самостоятельный выбор предмета лизинга и его продавца лизингополучателем."
   }
-]
+];
 
 const Credit = () => {
   return (
     <section className="container max-xl:px-[3%] pt-6">
       <div className="flex flex-col gap-18">
-        {CreditData.map((item, idx) => (
-          <div key={idx} className="flex flex-col gap-7">
+        {CreditData.map((item) => (
+          <div key={item.id} className="flex flex-col gap-7">
             <h3 className="text-[28px] max-md:text-[24px] font-[500]">{item.title}</h3>
             <p className="text-lg max-md:text-[16px] max-w-[75%] max-lg:max-w-full">{item.desc}</p>
           </div>
         ))}
       </div>
-
       <h3 className="text-[28px] max-md:text-[24px] font-[500] mt-18">Три основных вида лизинга:</h3>
       <div className="w-full p-7 max-md:pl-0 flex flex-col gap-7">
         <div className="flex gap-5 w-full">
           <div className="w-10 h-10 max-md:w-9 max-md:h-9 max-sm:h-8 max-md:text-[22px] bg-[#fec80b] rounded-full text-[24px] font-semibold flex items-center justify-center">1</div>
           <div className="w-full">
-            <h5 className="text-[20px] max-md:text-lg font-[500]" >Финансовый лизинг</h5>
+            <h5 className="text-[20px] max-md:text-lg font-[500]">Финансовый лизинг</h5>
             <p className="max-w-[65%] text-lg text-[16px] max-lg:max-w-[80%] max-sm:max-w-[95%]">
               Лизингодатель (лизинговая компания) приобретает в собственность
               указанное лизингополучателем имущество у определённого продавца и
@@ -51,11 +50,10 @@ const Credit = () => {
             </p>
           </div>
         </div>
-
         <div className="flex gap-5 w-full">
           <div className="w-10 h-10 max-md:w-9 max-md:h-9 max-sm:h-8 max-md:text-[22px] bg-[#fec80b] rounded-full text-[24px] font-semibold flex items-center justify-center">2</div>
           <div className="w-full">
-            <h5 className="text-[20px] max-md:text-lg font-[500]" >Оперативный лизинг</h5>
+            <h5 className="text-[20px] max-md:text-lg font-[500]">Оперативный лизинг</h5>
             <p className="max-w-[65%] text-lg text-[16px] max-lg:max-w-[80%] max-sm:max-w-[95%]">
               Имущество не выкупается лизингополучателем, а остаётся в
               собственности лизинговой компании и после окончания срока действия
@@ -63,11 +61,10 @@ const Credit = () => {
             </p>
           </div>
         </div>
-
         <div className="flex gap-5 w-full">
           <div className="w-10 h-10 max-md:w-9 max-md:h-9 max-sm:h-8 max-md:text-[22px] bg-[#fec80b] rounded-full text-[24px] font-semibold flex items-center justify-center">3</div>
           <div className="w-full">
-            <h5 className="text-[20px] max-md:text-lg font-[500]" >Возвратный лизинг</h5>
+            <h5 className="text-[20px] max-md:text-lg font-[500]">Возвратный лизинг</h5>
             <p className="max-w-[65%] text-lg text-[16px] max-lg:max-w-[80%] max-sm:max-w-[95%]">
               Предприятие покупает имущество на собственные средства, а затем
               обращается в лизинговую компанию. Это один из способов достаточно
@@ -79,22 +76,21 @@ const Credit = () => {
           </div>
         </div>
       </div>
-
-        <div className="mt-11">
-          <h3 className="text-[28px] max-lg:text-[24px] font-[500]">Информация о партнёре - компания "CARCADE"</h3>
-          <p className="text-lg mt-6 max-w-[75%] max-lg:max-w-full">
-            Компания CARCADE – это универсальный лизинговый партнёр. CARCADE
-            финансирует покупку как легковых автомобилей, так и коммерческого
-            транспорта. Оформить коммерческие автомобили или спецтехнику в
-            лизинг можно без предоставления финансовой отчётности по 2
-            документам. Условия оформления сделки: аванс от 4% до 50%, срок
-            лизинга от 12 до 60 месяцев, последний платёж от 1% до 15%.
-            Дополнительная выгода клиентов CARCADE: каско в рассрочку,
-            бесплатная цессия, электронный документооборот. За получением более
-            подробной информации по спецтехники и приобретению в лизинг
-            обращайтесь по телефону: 8 (831) 225-00-55
-          </p>
-        </div>
+      <div className="mt-11">
+        <h3 className="text-[28px] max-lg:text-[24px] font-[500]">Информация о партнёре - компания "CARCADE"</h3>
+        <p className="text-lg mt-6 max-w-[75%] max-lg:max-w-full">
+          Компания CARCADE – это универсальный лизинговый партнёр. CARCADE
+          финансирует покупку как легковых автомобилей, так и коммерческого
+          транспорта. Оформить коммерческие автомобили или спецтехнику в
+          лизинг можно без предоставления финансовой отчётности по 2
+          документам. Условия оформления сделки: аванс от 4% до 50%, срок
+          лизинга от 12 до 60 месяцев, последний платёж от 1% до 15%.
+          Дополнительная выгода клиентов CARCADE: каско в рассрочку,
+          бесплатная цессия, электронный документооборот. За получением более
+          подробной информации по спецтехники и приобретению в лизинг
+          обращайтесь по телефону: 8 (831) 225-00-55
+        </p>
+      </div>
     </section>
   );
 };

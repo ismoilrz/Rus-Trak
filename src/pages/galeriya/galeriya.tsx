@@ -18,7 +18,7 @@ const Filter_Buttons: FilterBtns[] = [
 ];
 
 const Galeriya = () => {
-  const [fancyboxRef] = useFancybox({});
+  const fancyboxRef = useFancybox({});
   const [category, setCategory] = useState<Categoryes>('cars');
 
   const filteredItems = useMemo(() => {

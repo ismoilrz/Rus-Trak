@@ -38,8 +38,6 @@ const Header = ({ isScrolled, openCallModal }: HeaderProps) => {
 
   const closeCatalog = () => setCatalog(false)
 
-  
-
   useEffect(() => {
     if (!langDrop) return;
 

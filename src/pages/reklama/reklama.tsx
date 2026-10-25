@@ -56,15 +56,15 @@ const ReklamaData: ReklamaType[] = [
 
 const Reklama = () => {
   return (
-    <section className="container">
-      <h1 className="text-[32px] font-[500]">Рекламные материалы</h1>
+    <section className="container max-xl:px-[3%]">
+      <h1 className="text-[32px] font-[500] max-md:text-[26px] mt-5">Рекламные материалы</h1>
       <div className="mt-6 flex flex-col gap-8">
         {ReklamaData.map((rek) => (
           <div key={rek.id} className="flex flex-col gap-2">
-            <h3 className="text-[24px] font-[500]">{rek.title}</h3>
+            <h3 className="text-[24px] max-md:text-[22px] font-[500]">{rek.title}</h3>
             <div className="flex flex-col">
               {rek.to.map((to, idx) => (
-                <a key={idx} href={to.path} className="text-lg underline">
+                <a key={idx} href={to.path} className="text-lg max-md:text-[16px] underline">
                   {to.url}
                 </a>
               ))}

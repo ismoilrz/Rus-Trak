@@ -50,14 +50,11 @@ const Galeriya = () => {
         {Filter_Buttons.map((btn) => {
           const isActive = category === btn.value;
           return (
-            <button
-              key={btn.value}
+            <button key={btn.value}
               className={`px-5 py-2 max-md:px-3 rounded-[4px] border border-[#a1a1a1] duration-200 hover:bg-[#fec80b] hover:border-[#fec80b] ${
-                isActive ? "bg-[#fec80b] border-[#fec80b]" : ""
-              }`}
-              onClick={() => setCategory(btn.value)}
-            >
-              {btn.label}
+                isActive ? "bg-[#fec80b] border-[#fec80b]" : "" }`}
+                onClick={() => setCategory(btn.value)}>
+                  {btn.label}
             </button>
           );
         })}
@@ -67,21 +64,13 @@ const Galeriya = () => {
         {filteredItems.length > 0 ? (
           <div className="grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 gap-4 auto-rows-[240px] max-xl:auto-rows-[200px] max-sm:auto-rows-[120px]">
             {filteredItems.map((item, index) => (
-              <div
-                key={item.id}
-                className={`overflow-hidden border border-gray-300 shadow-sm ${getItemClass(index)}`}
-              >
-                <img
-                  data-fancybox="gallery"
-                  src={item.img}
-                  alt={`Galeriya ${item.id}`}
-                  className="w-full h-full object-cover"
-                />
+              <div key={item.id} className={`overflow-hidden border cursor-pointer border-gray-300 shadow-sm ${getItemClass(index)}`}>
+                <img data-fancybox="gallery" src={item.img} alt={`Galeriya ${item.id}`} className="w-full h-full object-cover" />
               </div>
             ))}
           </div>
         ) : (
-          <p className="text-center py-10 text-gray-500">Ma'lumot topilmadi</p>
+          <p className="text-center py-10 text-gray-500">Rasmlar topilmadi</p>
         )}
       </div>
     </section>

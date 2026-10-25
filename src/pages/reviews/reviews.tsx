@@ -28,12 +28,7 @@ const Reviews = () => {
       <h1 className="text-[32px] font-[500] py-6">Отзывы</h1>
       <div className="flex flex-wrap justify-start max-sm:justify-center gap-6 w-full">
         {ReviewData.map((rev) => (
-          <a 
-            className="reviews relative"
-            key={rev.id} 
-            data-fancybox="gallery" 
-            href={rev.pick}
-          >
+          <a className="reviews relative" key={rev.id} data-fancybox="gallery" href={rev.pick}>
             <img className="w-[315px] max-md:w-[280px] max-sm:w-[300px] h-[420px] border border-[#a1a1a150] rounded-[8px]" src={rev.pick} alt="Sample Image" />
             <div className="reviewOverlay w-full flex items-center justify-center duration-200 rounded-[8px] text-transparent h-full bg-transparent absolute top-0 left-0 transition-all">
               <SearchX width={'40px'} height={'40px'} />

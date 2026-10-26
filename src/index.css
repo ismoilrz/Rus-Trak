@@ -450,7 +450,6 @@ li {
   border-bottom-right-radius: 0px !important;
 }
 
-/* 4. Body qismi ochiq turganda */
 .ant-collapse-body {
   overflow: hidden !important;
   background-color: #fff !important;
@@ -459,5 +458,11 @@ li {
 .ant-collapse-title {
   font-size: 22px !important;
   font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .ant-collapse-title {
+    font-size: 18px !important;
+  }
 }
 

@@ -23,7 +23,7 @@ const Vacancies = () => {
     }, [vacancies]);
 
   return (
-    <section className="container pt-7">
+    <section className="container pt-7 max-xl:px-[3%]">
       <Collapse
       size="large"
       items={[
@@ -32,22 +32,22 @@ const Vacancies = () => {
           label: 'Автоэлектрик', 
           children: (
             <>
-              <span className='text-lg font-[500]'>Обязанности:</span>
+              <span className='text-lg max-sm:text-[16px] font-[500]'>Обязанности:</span>
               <ol className='mb-7 mt-2'>
-                <li className='list-disc! ml-10 text-[17px]'>электромонтаж осветительного оборудования</li>
-                <li className='list-disc! ml-10 text-[17px]'>монтаж электрооборудования и надстроек на спецавтомобили</li>
+                <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>электромонтаж осветительного оборудования</li>
+                <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>монтаж электрооборудования и надстроек на спецавтомобили</li>
               </ol>
-              <span className='text-lg font-[500]'>Требования:</span>
+              <span className='text-lg max-sm:text-[16px] font-[500]'>Требования:</span>
               <ol className='mt-2 mb-7'>
-                <li className='list-disc! ml-10 text-[17px] list-disc! ml-10 text-[17px]'>опыт работы приветствуется</li>
-                <li className='list-disc! ml-10 text-[17px] list-disc! ml-10 text-[17px]'>желание обучаться новому</li>
+                <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>опыт работы приветствуется</li>
+                <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>желание обучаться новому</li>
               </ol>
-              <span className='text-lg font-[500]'>Условия:</span>
+              <span className='text-lg max-sm:text-[16px] font-[500]'>Условия:</span>
               <ol className='mt-2'>
-                <li className='list-disc! ml-10 text-[17px] list-disc! ml-10 text-[17px]'>желание обучаться новому</li>
-                <li className='list-disc! ml-10 text-[17px] list-disc! ml-10 text-[17px]'>полный соцпакет</li>
-                <li className='list-disc! ml-10 text-[17px] list-disc! ml-10 text-[17px]'>отапливаемый цех, хорошие бытовые условия</li>
-                <li className='list-disc! ml-10 text-[17px] list-disc! ml-10 text-[17px]'>предоставляем обучение по данному направлению</li>
+                <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>желание обучаться новому</li>
+                <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>полный соцпакет</li>
+                <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>отапливаемый цех, хорошие бытовые условия</li>
+                <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>предоставляем обучение по данному направлению</li>
               </ol>
               <button onClick={openVacancies} className='px-7 py-2.5 mt-6 ml-10 duration-200 hover:opacity-[0.8] bg-[#fec80b] rounded-[4px]'>Откликнуться</button>
             </>

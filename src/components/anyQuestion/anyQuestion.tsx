@@ -1,12 +1,12 @@
 import tr from '../../assets/truckImage-3gWCICr4.webp'
 
 type AnyQuestionProps = {
-  isSelectedCatalogPage: boolean
+  isGrayBack: boolean
 }
 
-const AnyQuestion = ({ isSelectedCatalogPage }:AnyQuestionProps) => {
+const AnyQuestion = ({ isGrayBack }:AnyQuestionProps) => {
   return (
-    <section className={`bg-[#F2F2F2] py-[60px] relative overflow-hidden ${isSelectedCatalogPage ? "mt-0" : "mt-10"}`}>
+    <section className={`bg-[#F2F2F2] py-[60px] relative overflow-hidden ${isGrayBack ? "mt-0" : "mt-10"}`}>
       <div className="container max-xl:px-[3%] max-lg:flex max-lg:flex-col max-lg:items-center">
         <div className='max-lg:flex max-lg:flex-col max-lg:items-center'>
           <h3 className="text-[42px] font-[500] max-lg:text-center max-lg:text-[34px]">ОСТАЛИСЬ ВОПРОСЫ?</h3>

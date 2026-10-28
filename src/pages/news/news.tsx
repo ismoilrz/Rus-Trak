@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import { NewsData } from "../../constants/news/newsData";
 
-import { SwiperSlide, Swiper } from "swiper/react"
+import { SwiperSlide, Swiper } from "swiper/react";
 
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Autoplay } from 'swiper/modules';
-
+import { MoveRight } from "lucide-react";
 
 const Pagination = (ReactPaginate as any).default || ReactPaginate;
 
@@ -54,90 +54,87 @@ const News = () => {
 
   return (
     <>
-    <div className="container">
-      <h1 className="text-[32px] py-6 font-[500]">Новости РусТрак</h1>
-      
-      {currentPage === 0 && featuredNews && (
-        <div className="w-full h-[400px] newsSl flex justify-between gap-4">
+      <div className="container max-xl:px-[3%]">
+        <h1 className="text-[32px] py-6 font-[500]">Новости РусТрак</h1>
+        
+        {currentPage === 0 && featuredNews && (
+          <div className="w-full h-[400px] max-lg:h-[300px] max-md:hidden newsSl flex justify-between gap-4 mb-36">
             <Swiper spaceBetween={0} loop={true} navigation={true}
-              autoplay={{ delay: 3000, disableOnInteraction: false, }}
-              pagination={{ clickable: true, }}
-              modules={[ Autoplay]}
+              autoplay={{ delay: 3000, disableOnInteraction: false }}
+              pagination={{ clickable: true }} modules={[Autoplay]}
               className="mySwiper"
-          >
-            {featuredNews.pick.map((sl) => (
-              <SwiperSlide>
-                <img src={sl} alt="" />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+            >
+              {featuredNews.pick.map((sl, index) => (
+                <SwiperSlide key={index}>
+                  <img src={sl} alt="Image" />
+                </SwiperSlide>
+              ))}
+            </Swiper>
 
-          <div className="w-1/2">
-            <span className="text-lg">{featuredNews.date}</span>
-            <h1 className="text-[24px] font-[500] mt-2 mb-4">{featuredNews.title}</h1>
-
+            <div className="w-1/2">
+              <span className="text-lg">{featuredNews.date}</span>
+              <h1 className="text-[24px] font-[500] max-w-[70%] max-xl:max-w-[90%] max-xl:line-clamp-2 mt-2 mb-4">{featuredNews.title}</h1>
+              <Link to={`/news/${featuredNews.slug}`} className="flex items-center gap-4 text-lg text-[#a1a1a1] hover:text-[#fec80b] transition mt-30">
+                Подробнее <MoveRight />
+              </Link>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      <h2 className="text-2xl font-semibold mb-6">Все новости</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {currentItems.map((item) => (
-          <div key={item.id} className=" rounded-lg overflow-hidden  flex flex-col justify-between bg-white">
-            <div>
-              {item.pick && item.pick[0] && (
-                <img src={item.pick[0]} alt={item.title} className="w-full h-48 object-cover" />
-              )}
-              <div className="p-4">
-                <span className="text-xs text-gray-500">{item.date}</span>
-                <h3 className="text-lg font-medium mt-1 line-clamp-2">{item.title}</h3>
-                <p className="text-sm text-gray-600 mt-2 line-clamp-3">{item.desc[0]}</p>
+        <div className="grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 gap-6">
+          {currentItems.map((item) => (
+            <Link to={`/news/${item.slug}`}>
+              <div key={item.id} className="group rounded-sm overflow-hidden flex flex-col justify-between bg-white">
+                <div>
+                  {item.pick && item.pick[0] && (
+                    <img src={item.pick[0]} alt={item.title} className="w-full h-48 max-sm:h-36 object-cover" />
+                  )}
+                  <div className="px-2 py-4">
+                    <span>{item.date}</span>
+                    <h3 className="text-lg max-md:text-[16px] font-medium line-clamp-2">{item.title}</h3>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <button className="flex items-center gap-4 max-md:gap-2 max-md:text-[16px] text-lg text-[#a1a1a1] transition group-hover:text-[#fec80b]">
+                    Подробнее <MoveRight />
+                  </button>
+                </div>
               </div>
-            </div>
-            <div className="p-4 pt-0">
-              <button className="w-full py-2 font-medium text-black rounde transition">
-                Подробнее
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {hasMoreData && (
-        <div className="text-center mt-10">
-          <button 
-            onClick={handleShowMore}
-            className="px-8 py-3 bg-[#fec80b] hover:opacity-[0.7] font-medium rounded-[6px] transition"
-          >
-            Show More
-          </button>
+            </Link>
+          ))}
         </div>
-      )}
 
-      <div className="mt-12 flex justify-center">
-        <Pagination
-          breakLabel="..."                      // Sahifalar orasidagi uch nuqta (...)
-          nextLabel="Дальше >"                  // Keyingi tugmasi matni
-          onPageChange={handlePageClick}        // Sahifa bosilganda ishlaydigan funksiya
-          pageRangeDisplayed={2}                // Aktiv sahifa atrofida nechta raqam ko'rinishi
-          marginPagesDisplayed={1}              // Boshida va oxirida nechta raqam ko'rinishi
-          pageCount={totalPages}                // Jami sahifalar soni
-          forcePage={currentPage}               // URL'dagi sahifaga qarab turgan o'rnini sinxronlash
-          previousLabel="< Назад"               // Orqaga tugmasi matni
-          containerClassName="flex items-center gap-3 text-gray-700 font-medium select-none"
-          pageClassName="w-10 h-10 flex items-center justify-center rounded-full transition hover:bg-gray-100 cursor-pointer"
-          pageLinkClassName="w-full h-full flex items-center justify-center"
-          activeClassName="!bg-[#fec80b] !text-black font-bold shadow-sm" // Aktiv sahifa (dumaloq sariq)
-          activeLinkClassName="text-black"
-          previousClassName="flex items-center gap-1 cursor-pointer hover:text-black px-2"
-          nextClassName="flex items-center gap-1 cursor-pointer hover:text-black px-2"
-          disabledClassName="opacity-30 cursor-not-allowed hover:text-gray-700"
-          breakClassName="flex items-center justify-center w-8 h-8 text-gray-400"
-          renderOnZeroPageCount={null}
-        />
+        {hasMoreData && (
+          <div className="text-center mt-10">
+            <button onClick={handleShowMore} className="px-8 py-3 bg-[#fec80b] hover:opacity-[0.7] font-medium rounded-[6px] transition">
+              Показать ещё
+            </button>
+          </div>
+        )}
+
+        <div className="mt-12 flex justify-center">
+          <Pagination
+            breakLabel="..."                      
+            nextLabel="Дальше >"                 
+            onPageChange={handlePageClick}        
+            pageRangeDisplayed={2}                
+            marginPagesDisplayed={1}              
+            pageCount={totalPages}                
+            forcePage={currentPage}              
+            previousLabel="< Назад"              
+            containerClassName="flex items-center gap-3 text-gray-700 font-medium select-none"
+            pageClassName="w-10 h-10 flex items-center justify-center rounded-full transition hover:bg-gray-100 cursor-pointer"
+            pageLinkClassName="w-full h-full flex items-center justify-center"
+            activeClassName="!bg-[#fec80b] !text-black font-bold shadow-sm" 
+            activeLinkClassName="text-black"
+            previousClassName="flex items-center gap-1 cursor-pointer hover:text-black px-2"
+            nextClassName="flex items-center gap-1 cursor-pointer hover:text-black px-2 max-sm:hidden"
+            disabledClassName="opacity-30 cursor-not-allowed hover:text-gray-700"
+            breakClassName="flex items-center justify-center w-6 h-6 text-gray-400"
+            renderOnZeroPageCount={null}
+          />
+        </div>
       </div>
-
-    </div>
     </>
   );
 };

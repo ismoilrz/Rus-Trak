@@ -7,6 +7,7 @@ import Galeriya from "../pages/galeriya/galeriya";
 import Home from "../pages/home/home";
 import Information from "../pages/information/information";
 import News from "../pages/news/news";
+import NewsDetail from "../pages/newsDetail/newsDetail";
 import OurPartners from "../pages/ourpartners/ourPartners";
 import Production from "../pages/production/production";
 import Reklama from "../pages/reklama/reklama";
@@ -120,5 +121,10 @@ export const router:RoutesType[] = [
         id: 20,
         path: "/catalog/:selectedcatalog",
         element: <SelectedCatalog />
+    },
+    {
+        id: 21,
+        path: "/news/:slug",
+        element: <NewsDetail />
     }
 ]

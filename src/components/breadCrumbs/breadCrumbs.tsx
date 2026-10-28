@@ -6,6 +6,9 @@ const Breadcrumbs = () => {
 
   if (pathnames.length === 0) return null;
 
+  const isNewsDetail = pathnames[0] === "news" && pathnames.length > 1;
+  if (isNewsDetail) return null;
+
   return (
     <nav className="text-sm text-gray-600">
       <div className="container flex items-center gap-2">

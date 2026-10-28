@@ -29,6 +29,7 @@ import news25 from "../../assets/news25.webp"
 export const NewsData:NewsDataType[] = [
     {
         id: 1,
+        slug: "first-kamaz-65658-container-truck",
         title: "Первый в России контейнеровоз на шасси КАМАЗ‑65658 выпустил «Рустрак»",
         date: "07.07.2026",
         desc: [
@@ -38,6 +39,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 2,
+        slug: "rustrak-comvex-2026-results",
         title: "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition.",
         date: "08.06.2026",
         desc: [
@@ -49,6 +51,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 3,
+        slug: "sadko-9-crane-manipulator-drilling-rig",
         title: "Sadko 9 Farmer acquired a crane manipulator with a drilling rig",
         date: "26.03.2026",
         desc: [
@@ -77,6 +80,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 4,
+        slug: "rustrak-womens-day-congratulations",
         title: "Rustrak congratulates you on International Women's Day!",
         date: "06.03.2026",
         desc: [
@@ -89,6 +93,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 5,
+        slug: "rustrak-official-dealer-inman-velmash",
         title: "RUSTRAK has extended its status as an official dealer of INMAN and VELMASH-S!",
         date: "26.02.2026",
         desc: [
@@ -100,6 +105,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 6,
+        slug: "rustrak-defender-of-the-fatherland-day",
         title: "Rustrak congratulates you on Defender of the Fatherland Day.",
         date: "20.02.2026",
         desc: [
@@ -113,6 +119,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 7,
+        slug: "rustrak-fuel-trucks-ministry-register",
         title: "Rustrak fuel trucks are included in the Ministry of Industry and Trade's register.",
         date: "11.02.2026",
         desc: [
@@ -132,6 +139,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 8,
+        slug: "rustrak-new-year-christmas-congratulations",
         title: "Rustrak congratulates its partners on the New Year and Christmas!",
         date: "30.12.2025",
         desc: [
@@ -142,6 +150,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 9,
+        slug: "rustrak-comvex-2026-results-2",
         title: "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition.",
         date: "08.06.2026",
         desc: [
@@ -153,6 +162,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 10,
+        slug: "sadko-9-crane-manipulator-drilling-rig-2",
         title: "Sadko 9 Farmer acquired a crane manipulator with a drilling rig",
         date: "26.03.2026",
         desc: [
@@ -181,6 +191,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 11,
+        slug: "rustrak-womens-day-congratulations-2",
         title: "Rustrak congratulates you on International Women's Day!",
         date: "06.03.2026",
         desc: [
@@ -193,6 +204,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 12,
+        slug: "rustrak-official-dealer-inman-velmash-2",
         title: "RUSTRAK has extended its status as an official dealer of INMAN and VELMASH-S!",
         date: "26.02.2026",
         desc: [
@@ -204,6 +216,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 13,
+        slug: "rustrak-defender-of-the-fatherland-day-2",
         title: "Rustrak congratulates you on Defender of the Fatherland Day.",
         date: "20.02.2026",
         desc: [
@@ -217,6 +230,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 14,
+        slug: "rustrak-fuel-trucks-ministry-register-2",
         title: "Rustrak fuel trucks are included in the Ministry of Industry and Trade's register.",
         date: "11.02.2026",
         desc: [
@@ -236,6 +250,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 15,
+        slug: "rustrak-new-year-christmas-congratulations-2",
         title: "Rustrak congratulates its partners on the New Year and Christmas!",
         date: "30.12.2025",
         desc: [
@@ -246,6 +261,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 16,
+        slug: "rustrak-comvex-2026-results-3",
         title: "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition.",
         date: "08.06.2026",
         desc: [
@@ -257,6 +273,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 17,
+        slug: "sadko-9-crane-manipulator-drilling-rig-3",
         title: "Sadko 9 Farmer acquired a crane manipulator with a drilling rig",
         date: "26.03.2026",
         desc: [
@@ -285,6 +302,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 18,
+        slug: "rustrak-womens-day-congratulations-3",
         title: "Rustrak congratulates you on International Women's Day!",
         date: "06.03.2026",
         desc: [
@@ -297,6 +315,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 19,
+        slug: "rustrak-official-dealer-inman-velmash-3",
         title: "RUSTRAK has extended its status as an official dealer of INMAN and VELMASH-S!",
         date: "26.02.2026",
         desc: [
@@ -308,6 +327,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 20,
+        slug: "rustrak-defender-of-the-fatherland-day-3",
         title: "Rustrak congratulates you on Defender of the Fatherland Day.",
         date: "20.02.2026",
         desc: [
@@ -321,6 +341,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 21,
+        slug: "rustrak-fuel-trucks-ministry-register-3",
         title: "Rustrak fuel trucks are included in the Ministry of Industry and Trade's register.",
         date: "11.02.2026",
         desc: [
@@ -340,6 +361,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 22,
+        slug: "rustrak-new-year-christmas-congratulations-3",
         title: "Rustrak congratulates its partners on the New Year and Christmas!",
         date: "30.12.2025",
         desc: [
@@ -350,6 +372,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 23,
+        slug: "rustrak-comvex-2026-results-4",
         title: "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition.",
         date: "08.06.2026",
         desc: [
@@ -361,6 +384,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 24,
+        slug: "sadko-9-crane-manipulator-drilling-rig-4",
         title: "Sadko 9 Farmer acquired a crane manipulator with a drilling rig",
         date: "26.03.2026",
         desc: [
@@ -389,6 +413,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 25,
+        slug: "rustrak-womens-day-congratulations-4",
         title: "Rustrak congratulates you on International Women's Day!",
         date: "06.03.2026",
         desc: [
@@ -401,6 +426,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 26,
+        slug: "rustrak-official-dealer-inman-velmash-4",
         title: "RUSTRAK has extended its status as an official dealer of INMAN and VELMASH-S!",
         date: "26.02.2026",
         desc: [
@@ -412,6 +438,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 27,
+        slug: "rustrak-defender-of-the-fatherland-day-4",
         title: "Rustrak congratulates you on Defender of the Fatherland Day.",
         date: "20.02.2026",
         desc: [
@@ -425,6 +452,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 28,
+        slug: "rustrak-fuel-trucks-ministry-register-4",
         title: "Rustrak fuel trucks are included in the Ministry of Industry and Trade's register.",
         date: "11.02.2026",
         desc: [
@@ -444,6 +472,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 29,
+        slug: "rustrak-new-year-christmas-congratulations-4",
         title: "Rustrak congratulates its partners on the New Year and Christmas!",
         date: "30.12.2025",
         desc: [
@@ -454,6 +483,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 30,
+        slug: "rustrak-comvex-2026-results-5",
         title: "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition.",
         date: "08.06.2026",
         desc: [
@@ -465,6 +495,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 31,
+        slug: "rustrak-womens-day-congratulations-5",
         title: "Rustrak congratulates you on International Women's Day!",
         date: "06.03.2026",
         desc: [
@@ -477,6 +508,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 32,
+        slug: "rustrak-official-dealer-inman-velmash-5",
         title: "RUSTRAK has extended its status as an official dealer of INMAN and VELMASH-S!",
         date: "26.02.2026",
         desc: [
@@ -488,6 +520,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 33,
+        slug: "rustrak-defender-of-the-fatherland-day-5",
         title: "Rustrak congratulates you on Defender of the Fatherland Day.",
         date: "20.02.2026",
         desc: [
@@ -501,6 +534,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 34,
+        slug: "rustrak-fuel-trucks-ministry-register-5",
         title: "Rustrak fuel trucks are included in the Ministry of Industry and Trade's register.",
         date: "11.02.2026",
         desc: [
@@ -520,6 +554,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 35,
+        slug: "rustrak-new-year-christmas-congratulations-5",
         title: "Rustrak congratulates its partners on the New Year and Christmas!",
         date: "30.12.2025",
         desc: [
@@ -530,6 +565,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 36,
+        slug: "rustrak-comvex-2026-results-6",
         title: "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition.",
         date: "08.06.2026",
         desc: [
@@ -541,6 +577,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 37,
+        slug: "sadko-9-crane-manipulator-drilling-rig-5",
         title: "Sadko 9 Farmer acquired a crane manipulator with a drilling rig",
         date: "26.03.2026",
         desc: [
@@ -569,6 +606,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 38,
+        slug: "rustrak-womens-day-congratulations-5",
         title: "Rustrak congratulates you on International Women's Day!",
         date: "06.03.2026",
         desc: [
@@ -581,6 +619,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 39,
+        slug: "rustrak-official-dealer-inman-velmash-6",
         title: "RUSTRAK has extended its status as an official dealer of INMAN and VELMASH-S!",
         date: "26.02.2026",
         desc: [
@@ -592,6 +631,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 40,
+        slug: "rustrak-defender-of-the-fatherland-day-6",
         title: "Rustrak congratulates you on Defender of the Fatherland Day.",
         date: "20.02.2026",
         desc: [
@@ -605,6 +645,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 41,
+        slug: "rustrak-fuel-trucks-ministry-register-6",
         title: "Rustrak fuel trucks are included in the Ministry of Industry and Trade's register.",
         date: "11.02.2026",
         desc: [
@@ -624,6 +665,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 42,
+        slug: "rustrak-new-year-christmas-congratulations-6",
         title: "Rustrak congratulates its partners on the New Year and Christmas!",
         date: "30.12.2025",
         desc: [
@@ -634,6 +676,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 43,
+        slug: "rustrak-comvex-2026-results-7",
         title: "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition.",
         date: "08.06.2026",
         desc: [
@@ -645,6 +688,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 44,
+        slug: "sadko-9-crane-manipulator-drilling-rig-6",
         title: "Sadko 9 Farmer acquired a crane manipulator with a drilling rig",
         date: "26.03.2026",
         desc: [
@@ -673,6 +717,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 45,
+        slug: "rustrak-womens-day-congratulations-6",
         title: "Rustrak congratulates you on International Women's Day!",
         date: "06.03.2026",
         desc: [
@@ -685,6 +730,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 46,
+        slug: "rustrak-official-dealer-inman-velmash-7",
         title: "RUSTRAK has extended its status as an official dealer of INMAN and VELMASH-S!",
         date: "26.02.2026",
         desc: [
@@ -696,6 +742,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 47,
+        slug: "rustrak-defender-of-the-fatherland-day-7",
         title: "Rustrak congratulates you on Defender of the Fatherland Day.",
         date: "20.02.2026",
         desc: [
@@ -709,6 +756,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 48,
+        slug: "rustrak-fuel-trucks-ministry-register-7",
         title: "Rustrak fuel trucks are included in the Ministry of Industry and Trade's register.",
         date: "11.02.2026",
         desc: [
@@ -728,6 +776,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 49,
+        slug: "rustrak-new-year-christmas-congratulations-7",
         title: "Rustrak congratulates its partners on the New Year and Christmas!",
         date: "30.12.2025",
         desc: [
@@ -738,6 +787,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 50,
+        slug: "rustrak-comvex-2026-results-8",
         title: "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition.",
         date: "08.06.2026",
         desc: [
@@ -749,6 +799,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 51,
+        slug: "sadko-9-crane-manipulator-drilling-rig-7",
         title: "Sadko 9 Farmer acquired a crane manipulator with a drilling rig",
         date: "26.03.2026",
         desc: [
@@ -777,6 +828,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 52,
+        slug: "rustrak-womens-day-congratulations-7",
         title: "Rustrak congratulates you on International Women's Day!",
         date: "06.03.2026",
         desc: [
@@ -789,6 +841,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 53,
+        slug: "rustrak-official-dealer-inman-velmash-8",
         title: "RUSTRAK has extended its status as an official dealer of INMAN and VELMASH-S!",
         date: "26.02.2026",
         desc: [
@@ -800,6 +853,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 54,
+        slug: "rustrak-defender-of-the-fatherland-day-8",
         title: "Rustrak congratulates you on Defender of the Fatherland Day.",
         date: "20.02.2026",
         desc: [
@@ -813,6 +867,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 55,
+        slug: "rustrak-fuel-trucks-ministry-register-8",
         title: "Rustrak fuel trucks are included in the Ministry of Industry and Trade's register.",
         date: "11.02.2026",
         desc: [
@@ -832,6 +887,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 56,
+        slug: "rustrak-new-year-christmas-congratulations-8",
         title: "Rustrak congratulates its partners on the New Year and Christmas!",
         date: "30.12.2025",
         desc: [
@@ -842,6 +898,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 57,
+        slug: "rustrak-comvex-2026-results-9",
         title: "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition.",
         date: "08.06.2026",
         desc: [
@@ -853,6 +910,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 58,
+        slug: "sadko-9-crane-manipulator-drilling-rig-8",
         title: "Sadko 9 Farmer acquired a crane manipulator with a drilling rig",
         date: "26.03.2026",
         desc: [
@@ -881,6 +939,7 @@ export const NewsData:NewsDataType[] = [
     },
     {
         id: 59,
+        slug: "rustrak-womens-day-congratulations-8",
         title: "Rustrak congratulates you on International Women's Day!",
         date: "06.03.2026",
         desc: [
@@ -890,6 +949,6 @@ export const NewsData:NewsDataType[] = [
             "With respect and warmest wishes, Your Rustrak."
         ],
         pick: [news6]
-    },
+    }
 
 ]

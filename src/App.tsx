@@ -48,12 +48,15 @@ function App() {
   }, [callModal]);
 
   const location = useLocation();
-  const isSelectedCatalogPage = location.pathname.startsWith("/catalog/");
+  const isCatalog = location.pathname.startsWith("/catalog/");
+  const isNewsDetail = location.pathname.startsWith("/news/") && location.pathname.split("/").filter(Boolean).length > 1;
+
+  const isGrayBackground = isCatalog || isNewsDetail;
 
   return (
     <div>
       <Header openCallModal={openCallModal} isScrolled={isScrolled} />
-      <main className={`${isScrolled ? "pt-[20vh]" : ""} ${isSelectedCatalogPage ? "bg-[#f5f5f5]" : "bg-white"}`}>
+      <main className={`${isScrolled ? "pt-[20vh]" : ""} ${isGrayBackground ? "bg-[#f5f5f5]" : "bg-white"}`}>
         <div className="container max-xl:px-[3%]"><Breadcrumbs /></div>
         <Routes>
           {router.map((rout, r) => (
@@ -62,7 +65,7 @@ function App() {
         </Routes>
       </main>
 
-      <AnyQuestion isSelectedCatalogPage={isSelectedCatalogPage} />
+      <AnyQuestion isGrayBack={isGrayBackground} />
       <Footer openCallModal={openCallModal} />
 
       <CallModal callModal={callModal} closeCallModal={closeCallModal} />

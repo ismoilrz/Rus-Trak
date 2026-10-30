@@ -48,7 +48,7 @@ function App() {
   }, [callModal]);
 
   const location = useLocation();
-  const isCatalog = location.pathname.startsWith("/catalog/");
+  const isCatalog = location.pathname.startsWith("/catalog");
   const isNewsDetail = location.pathname.startsWith("/news/") && location.pathname.split("/").filter(Boolean).length > 1;
 
   const isGrayBackground = isCatalog || isNewsDetail;

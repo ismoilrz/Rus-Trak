@@ -30,6 +30,17 @@ button {
   background: none;
 }
 
+.catAs::-webkit-scrollbar {
+  width: 3px;
+}
+.catAs::-webkit-scrollbar-track {
+  background: none;
+  width: 2px;
+}
+.catalog::-webkit-scrollbar-track{
+  
+}
+
 li {
   list-style: none;
 }
@@ -263,8 +274,8 @@ li {
     border: var(--border-width) solid var(--c-primary);
     position: relative;
     border-radius: 0.1em;
-    width: 1.5em;
-    height: 1.5em;
+    width: 1.8em;
+    height: 1.8em;
     transition: box-shadow var(--t-base) var(--e-out), background-color var(--t-base);
     box-shadow: 0 0 0 0 var(--c-primary-10-percent-opacity);
   }

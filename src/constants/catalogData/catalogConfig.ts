@@ -57,6 +57,8 @@ interface trakItems {
   title: string;
   img: string;
   price: string;
+  priceValue?: number;
+  length?: string;
   mass?: string;
   formula?: string;
   descKey: string[];
@@ -610,6 +612,8 @@ export const catalogConfig: Record<string, {
         title: "КРАН-МАНИПУЛЯТОР МАЗ 6312C5-8535-012 С КМУ ИНМАН ИТ 150 (МОДЕЛЬ 4389N8)",
         img: trak7,
         price: "Цена по запросу",
+        priceValue: 6500000,
+        length: "6800",
         mass: "до 20",
         formula: "4x2",
         descKey: [
@@ -665,6 +669,8 @@ export const catalogConfig: Record<string, {
           title: "КРАН-МАНИПУЛЯТОР МАЗ 631228 С КМУ PALFINGER SPK 23500",
           img: trak8,
           price: "Цена по запросу",
+          priceValue: 7000000,
+          length: "7000",
           mass: "до 20",
           formula: "4x2",
           descKey: [
@@ -711,6 +717,8 @@ export const catalogConfig: Record<string, {
           title: "КРАН-МАНИПУЛЯТОР МАЗ 631228 С КМУ ИНМАН ИТ 150",
           img: trak9,
           price: "Цена по запросу",
+          priceValue: 5200000,
+          length: "6400",
           mass: "до 12",
           formula: "4x2",
           descKey: [
@@ -765,6 +773,8 @@ export const catalogConfig: Record<string, {
           title: "КРАН-МАНИПУЛЯТОР КАМАЗ 43118 С КМУ ИНМАН ИМ150N (МОДЕЛЬ 4388С2-10)",
           img: trak10,
           price: "Цена по запросу",
+          priceValue: 9000000,
+          length: "7200",
           mass: "свыше 20",
           formula: "4x2",
           descKey: [
@@ -938,6 +948,7 @@ export const catalogConfig: Record<string, {
         title: "ТОПЛИВОЗАПРАВЩИК САДКО 9 (С41А13) С АТЗ 4,5 М3 ДВУХСЕКЦИОННАЯ",
         img: trak11,
         price: "от 8 800 000Р",
+        priceValue: 9000000,
         mass: "до 12",
         descKey: [
             "Базовое шасси",
@@ -991,6 +1002,7 @@ export const catalogConfig: Record<string, {
         title: "АВТОТОПЛИВОЗАПРАВЩИК НА ШАССИ ГАЗ C41R13 (МОДЕЛЬ 4389JY)",
         img: trak12,
         price: "от 6 200 000Р",
+        priceValue: 6000000,
         mass: "до 12",
         descKey: [
             "Базовое шасси",
@@ -1247,6 +1259,7 @@ export const catalogConfig: Record<string, {
         title: "ПИЩЕВАЯ ЦИСТЕРНА КАМАЗ 43089",
         img: trak14,
         price: "Цена по запросу",
+        priceValue: 7000000,
         descKey: [
             "Базовое шасси",
             "Двигатель",
@@ -1293,6 +1306,7 @@ export const catalogConfig: Record<string, {
         title: "ГАЗОН NEXT С ПИЩЕВОЙ ЦИСТЕРНОЙ 4,2 КУБА",
         img: trak15,
         price: "Цена по запросу",
+        priceValue: 9000000,
         descKey: [
             "Базовое шасси",
             "Двигатель",
@@ -2062,6 +2076,7 @@ export const catalogConfig: Record<string, {
         id: 1,
         title: "САМОСВАЛ НА ШАССИ КОМПАС 9",
         img: trak24,
+        length: "5000",
         price: "Цена по запросу",
         descKey: [
             "Базовое шасси",
@@ -2117,6 +2132,7 @@ export const catalogConfig: Record<string, {
         title: "САМОСВАЛ-ЗЕРНОВОЗ НА ШАССИ КАМАЗ 6520-3072-53 (МОДЕЛЬ 4388G6)",
         img: trak25,
         price: "Цена по запросу",
+        length: "6500",
         formula: "4x2",
         descKey: [
             "Базовое шасси",
@@ -2194,6 +2210,7 @@ export const catalogConfig: Record<string, {
         img: trak26,
         price: "Цена по запросу",
         formula: "4x2",
+        length: "5000",
         descKey: [
             "Базовое шасси",
             "Двигатель",
@@ -2244,6 +2261,7 @@ export const catalogConfig: Record<string, {
         title: "БОРТОВОЙ АВТОМОБИЛЬ КАМАЗ 4308-3083-69, ДОПОГ КАТЕГОРИЯ EX II (МОДЕЛЬ 4388H2-10)",
         img: trak27,
         price: "Цена по запросу",
+        length: "6500",
         descKey: [
             "Базовое шасси",
             "Двигатель",

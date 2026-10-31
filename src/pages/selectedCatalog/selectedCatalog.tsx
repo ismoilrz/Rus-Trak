@@ -4,6 +4,7 @@ import { catalogConfig } from "../../constants/catalogData/catalogConfig";
 import { ArrowDownToLine, Heart, LayoutGrid, List, Search, ShoppingCart } from "lucide-react";
 
 import notTruk from "../../assets/notTruk.webp"
+import { Slider } from "antd";
 
 const SelectedCatalog = () => {
   const { selectedcatalog } = useParams<{ selectedcatalog: string }>();
@@ -15,6 +16,9 @@ const SelectedCatalog = () => {
 
   const [tempSelectedFilters, setTempSelectedFilters] = useState<Record<string, string[]>>({});
   const [appliedFilters, setAppliedFilters] = useState<Record<string, string[]>>({});
+
+  const [tempRanges, setTempRanges] = useState<Record<string, [number, number]>>({});
+  const [appliedRanges, setAppliedRanges] = useState<Record<string, [number, number]>>({});
 
   if (!currentCategory) {
     return (
@@ -46,9 +50,17 @@ const SelectedCatalog = () => {
     });
   };
 
+  const handleRangeChange = (filterLabel: string, range: [number, number]) => {
+    setTempRanges({
+      ...tempRanges,
+      [filterLabel]: range,
+    });
+  };
+
   const handleApplyFilter = () => {
     setAppliedBrands(tempSelectedBrands);
     setAppliedFilters(tempSelectedFilters);
+    setAppliedRanges(tempRanges);
   };
 
   const countMatchingProducts = () => {
@@ -65,9 +77,25 @@ const SelectedCatalog = () => {
           let itemValue = "";
           if (label.includes("масса")) itemValue = item.mass || "";
           if (label.includes("формула")) itemValue = item.formula || "";
+          if (label.toLowerCase().includes("длина")) itemValue = item.length || "";
 
-          const matchesOption = options.some((opt) => itemValue.toLowerCase() === opt.toLowerCase());
+          const matchesOption = options.some((opt) => itemValue.toLowerCase().includes(opt.toLowerCase()));
           if (!matchesOption) return false;
+        }
+      }
+
+      for (const [label, rangeValues] of Object.entries(tempRanges)) {
+        if (rangeValues && rangeValues.length === 2) {
+          let itemNumber = 0;
+          if (label.toLowerCase().includes("цена") || label.toLowerCase().includes("стоимость")) {
+            itemNumber = item.priceValue || 0;
+          } else if (label.toLowerCase().includes("масса")) {
+            itemNumber = item.massValue || 0;
+          }
+
+          if (itemNumber < rangeValues[0] || itemNumber > rangeValues[1]) {
+            return false;
+          }
         }
       }
 
@@ -88,9 +116,25 @@ const SelectedCatalog = () => {
         let itemValue = "";
         if (label.includes("масса")) itemValue = item.mass || "";
         if (label.includes("формула")) itemValue = item.formula || "";
+        if (label.toLowerCase().includes("длина")) itemValue = item.length || "";
 
-        const matchesOption = options.some((opt) => itemValue.toLowerCase() === opt.toLowerCase());
+        const matchesOption = options.some((opt) => itemValue.toLowerCase().includes(opt.toLowerCase()));
         if (!matchesOption) return false;
+      }
+    }
+
+    for (const [label, rangeValues] of Object.entries(appliedRanges)) {
+      if (rangeValues && rangeValues.length === 2) {
+        let itemNumber = 0;
+        if (label.toLowerCase().includes("цена") || label.toLowerCase().includes("стоимость")) {
+          itemNumber = item.priceValue || 0;
+        } else if (label.toLowerCase().includes("масса")) {
+          itemNumber = item.massValue || 0;
+        }
+
+        if (itemNumber < rangeValues[0] || itemNumber > rangeValues[1]) {
+          return false;
+        }
       }
     }
 
@@ -146,10 +190,7 @@ const SelectedCatalog = () => {
                         <label key={optIdx} className="flex items-center gap-2.5 text-sm text-gray-700 cursor-pointer">
                           <div className="checkbox-wrapper-33">
                             <span className="checkbox">
-                              <input 
-                                className="checkbox__trigger visuallyhidden" 
-                                type="checkbox" 
-                                checked={tempSelectedBrands.includes(opt)}
+                              <input className="checkbox__trigger visuallyhidden" type="checkbox" checked={tempSelectedBrands.includes(opt)}
                                 onChange={() => handleTempBrandChange(opt)}
                               />
                               <span className="checkbox__symbol">
@@ -172,19 +213,15 @@ const SelectedCatalog = () => {
               return (
                 <div key={index} className="flex flex-col gap-3">
                   <label className="font-semibold text-gray-800 text-sm">{filter.label}</label>
-                  <div className="flex flex-col gap-2 pr-1">
+                  <div className="flex flex-col gap-2 pr-1 overflow-y-auto">
+
                     {filter.options.map((opt: string, optIdx: number) => {
                       const isChecked = tempSelectedFilters[filter.label]?.includes(opt) || false;
                       return (
                         <label key={optIdx} className="flex items-center gap-2.5 text-sm text-gray-700 cursor-pointer">
                           <div className="checkbox-wrapper-33">
                             <span className="checkbox">
-                              <input 
-                                className="checkbox__trigger visuallyhidden" 
-                                type="checkbox" 
-                                checked={isChecked}
-                                onChange={() => handleTempCheckboxChange(filter.label, opt)}
-                              />
+                              <input className="checkbox__trigger visuallyhidden" type="checkbox" checked={isChecked} onChange={() => handleTempCheckboxChange(filter.label, opt)}/>
                               <span className="checkbox__symbol">
                                 <svg aria-hidden="true" className="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28" version="1" xmlns="http://www.w3.org/2000/svg">
                                   <path d="M4 14l8 7L24 7"></path>
@@ -202,25 +239,44 @@ const SelectedCatalog = () => {
             }
 
             if (filter.type === "range") {
+              const currentRange = tempRanges[filter.label] || [0, 10000000];
+
               return (
                 <div key={index} className="flex flex-col gap-3">
                   <label className="font-semibold text-gray-800 text-sm">{filter.label}</label>
+                   <div className="px-2">
+                    <Slider range min={0} max={10000000} step={100000} value={currentRange}
+                      onChange={(values) => {
+                        handleRangeChange(filter.label, values as [number, number]);
+                      }}
+                    />
+                  </div>
+                  
                   <div className="flex items-center gap-2">
-                    <input
-                      type="number"
-                      placeholder="от 0"
-                      className="w-1/2 px-3 py-2 border border-gray-300 rounded-lg text-sm outline-none focus:border-yellow-400"
-                    />
-                    <input
-                      type="number"
-                      placeholder="до 10000000"
-                      className="w-1/2 px-3 py-2 border border-gray-300 rounded-lg text-sm outline-none focus:border-yellow-400"
-                    />
+                    <div className="w-1/2 flex items-center border border-gray-300 rounded-lg px-2 py-1.5 focus-within:border-[#fec80b]">
+                      <span className="text-xs text-gray-400 mr-1">от</span>
+                      <input type="number" value={currentRange[0]}
+                        onChange={(e) => {
+                          const val = Number(e.target.value);
+                          handleRangeChange(filter.label, [val, currentRange[1]]);
+                        }}
+                        className="w-full text-sm outline-none bg-transparent"
+                      />
+                    </div>
+                    <div className="w-1/2 flex items-center border border-gray-300 rounded-lg px-2 py-1.5 focus-within:border-[#fec80b]">
+                      <span className="text-xs text-gray-400 mr-1">до</span>
+                      <input type="number" value={currentRange[1]}
+                        onChange={(e) => {
+                          const val = Number(e.target.value);
+                          handleRangeChange(filter.label, [currentRange[0], val]);
+                        }}
+                        className="w-full text-sm outline-none bg-transparent"
+                      />
+                    </div>
                   </div>
                 </div>
               );
             }
-
             return null;
           })}
 

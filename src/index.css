@@ -555,3 +555,22 @@ li {
   }
 }
 
+
+
+.ant-slider-track {
+  background-color: #fec80b !important;
+}
+
+.ant-slider-handle::after {
+  background-color: #fec80b !important;
+  border-color: #fec80b !important;
+  box-shadow: 0 0 0 2px rgba(254, 200, 11, 0.3) !important;
+}
+
+.ant-slider:hover .ant-slider-track {
+  background-color: #fec80b !important;
+}
+
+.ant-slider:hover .ant-slider-handle::after {
+  border-color: #fec80b !important;
+}

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { catalogConfig } from "../../constants/catalogData/catalogConfig";
 import { ArrowDownToLine, Heart, LayoutGrid, List, Search, Settings2, ShoppingCart, X } from "lucide-react";
 
@@ -284,7 +284,7 @@ const SelectedCatalog = () => {
                   </div>
 
                   {filteredOptions && (
-                    <div className="flex flex-col gap-2 overflow-y-auto pr-1">
+                    <div className="flex flex-col gap-2 pr-1">
                       {filteredOptions.map((opt: string, optIdx: number) => (
                         <label key={optIdx} className="flex items-center gap-2.5 text-sm text-gray-700 cursor-pointer">
                           <div className="checkbox-wrapper-33">
@@ -312,7 +312,7 @@ const SelectedCatalog = () => {
               return (
                 <div key={index} className="flex flex-col gap-3">
                   <label className="font-semibold text-gray-800 text-sm">{filter.label}</label>
-                  <div className="flex flex-col gap-2 pr-1 overflow-y-auto max-h-[200px]">
+                  <div className="flex flex-col gap-2 pr-1">
                     {filter.options.map((opt: string, optIdx: number) => {
                       const isChecked = tempSelectedFilters[filter.label]?.includes(opt) || false;
                       return (
@@ -391,23 +391,25 @@ const SelectedCatalog = () => {
           <div className="w-full grid grid-cols-3 max-xl:grid-cols-2 max-lg:grid-cols-3 max-sm:grid-cols-2 gap-5 max-sm:gap-3">
             {filteredTracks.length > 0 ? (
               filteredTracks.map((item) => (
-                <div key={item.id} className="h-[440px] max-lg:flex max-lg:flex-col max-lg:justify-between max-lg:h-[360px] max-sm:h-[300px ] bg-[#fff] relative rounded-lg overflow-hidden">
-                  <img className="h-[65%] max-lg:h-[45%] w-full object-cover" src={item.img} alt="Image" />
-                  <span className="text-[18px] max-sm:mt-[-10px] max-md:text-[16px] line-clamp-1 max-lg:line-clamp-2 mt-3 ml-3">{item.title}</span>
-                  <div className="h-[35%] p-3 flex flex-col justify-between">
-                    <div className="max-md:mt-[-10px] max-sm:mt-[-25px]">
-                      <h5 className="text-[22px] max-md:text-lg max-sm:text-[16px] pb-2 font-[500]">{item.price}</h5>
-                      <div className="flex items-center justify-between max-lg:flex-col max-lg:gap-3">
-                        <div className="w-full flex items-center gap-3 max-sm:justify-between">
-                          <button className="px-5 max-lg:px-10 max-md:px-6 max-sm:w-[80%] py-2 text-[12px] rounded-[4px] bg-[#fec80b] font-medium">Подробнее</button>
-                          <button><ShoppingCart size={26} className="max-sm:w-5 max-sm:h-5" /></button>
+                <Link to={`/catalog/${selectedcatalog}/${item.slug}`}>
+                  <div key={item.id} className="h-[440px] max-lg:flex max-lg:flex-col max-lg:justify-between max-lg:h-[360px] max-sm:h-[300px ] bg-[#fff] relative rounded-lg overflow-hidden">
+                    <img className="h-[65%] max-lg:h-[45%] w-full object-cover" src={item.img} alt="Image" />
+                    <span className="text-[18px] max-sm:mt-[-10px] max-md:text-[16px] line-clamp-1 max-lg:line-clamp-2 mt-3 ml-3">{item.title}</span>
+                    <div className="h-[35%] p-3 flex flex-col justify-between">
+                      <div className="max-md:mt-[-10px] max-sm:mt-[-25px]">
+                        <h5 className="text-[22px] max-md:text-lg max-sm:text-[16px] pb-2 font-[500]">{item.price}</h5>
+                        <div className="flex items-center justify-between max-lg:flex-col max-lg:gap-3">
+                          <div className="w-full flex items-center gap-3 max-sm:justify-between">
+                            <button className="px-5 max-lg:px-10 max-md:px-6 max-sm:w-[80%] py-2 text-[12px] rounded-[4px] bg-[#fec80b] font-medium">Подробнее</button>
+                            <button><ShoppingCart size={26} className="max-sm:w-5 max-sm:h-5" /></button>
+                          </div>
+                          <button onClick={openCatForm} className="flex items-center gap-2 text-[12px] whitespace-nowrap">Получить КП <ArrowDownToLine width={'15px'} height={'15px'} /></button>
+                          <button className="absolute top-2 right-2 p-1"><Heart width={'30px'} height={'30px'} className="duration-200 stroke-1 hover:fill-[#fec80b]" /></button>
                         </div>
-                        <button onClick={openCatForm} className="flex items-center gap-2 text-[12px] whitespace-nowrap">Получить КП <ArrowDownToLine width={'15px'} height={'15px'} /></button>
-                        <button className="absolute top-2 right-2 p-1"><Heart width={'30px'} height={'30px'} className="duration-200 stroke-1 hover:fill-[#fec80b]" /></button>
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))
             ) : (
               <div className="col-span-3 flex flex-col items-center justify-center pt-15">
@@ -659,7 +661,7 @@ const SelectedCatalog = () => {
       >
         <aside 
           onClick={(e) => e.stopPropagation()}
-          className={`w-[300px] h-[100vh] overflow-y-auto p-6 bg-white border border-gray-100 flex flex-col gap-6 fixed top-0 left-0 z-50 shadow-2xl transition-transform duration-300 ease-in-out 
+          className={`w-[300px] h-[100vh] max-sm:w-full overflow-y-auto p-6 bg-white border border-gray-100 flex flex-col gap-6 fixed top-0 left-0 z-50 shadow-2xl transition-transform duration-300 ease-in-out 
             ${mobileAside ? "translate-x-0" : "-translate-x-full"}`}
         >
           <button onClick={closeMobileAside} className="absolute top-3 right-3"><X size={28}/></button>
@@ -686,7 +688,7 @@ const SelectedCatalog = () => {
                   </div>
 
                   {filteredOptions && (
-                    <div className="flex flex-col gap-2 overflow-y-auto pr-1">
+                    <div className="flex flex-col gap-2 pr-1">
                       {filteredOptions.map((opt: string, optIdx: number) => (
                         <label key={optIdx} className="flex items-center gap-2.5 text-sm text-gray-700 cursor-pointer">
                           <div className="checkbox-wrapper-33">
@@ -717,7 +719,7 @@ const SelectedCatalog = () => {
               return (
                 <div key={index} className="flex flex-col gap-3">
                   <label className="font-semibold text-gray-800 text-sm">{filter.label}</label>
-                  <div className="flex flex-col gap-2 pr-1 overflow-y-auto max-h-[200px]">
+                  <div className="flex flex-col gap-2 pr-1">
                     {filter.options.map((opt: string, optIdx: number) => {
                       const isChecked = tempSelectedFilters[filter.label]?.includes(opt) || false;
                       return (

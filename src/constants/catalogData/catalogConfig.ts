@@ -55,6 +55,7 @@ interface featuresItems {
 interface trakItems {
   id: number;
   title: string;
+  slug: string;
   img: string;
   rating?: number;
   isNew?: boolean;
@@ -198,6 +199,7 @@ export const catalogConfig: Record<string, {
       {
         id: 1,
         title: "Шторный грузовик МАЗ 438121 (модель 5389D5)",
+        slug: "shtorny-gruzovik-maz-438121-model-5389d5",
         img: trak1,
         priceValue: 6500000,    
         rating: 4.8,             
@@ -254,6 +256,7 @@ export const catalogConfig: Record<string, {
     {
         id: 2,
         title: "Шторный грузовик МАЗ 631228-524-010 (модель 4389М2)",
+        slug: "shtorny-gruzovik-maz-631228-524-010-model-4389m2",
         img: trak2,
         priceValue: 8000000,    
         rating: 6,             
@@ -312,6 +315,7 @@ export const catalogConfig: Record<string, {
     {
         id: 3,
         title: "Шторный грузовик КАМАЗ 4308",
+        slug: "shtorny-gruzovik-kamaz-4308",
         img: trak3,
         priceValue: 6500000,    
         rating: 8,             
@@ -367,6 +371,7 @@ export const catalogConfig: Record<string, {
     {
         id: 4,
         title: "Шторный грузовик КАМАЗ 65657",
+        slug: "shtorny-gruzovik-kamaz-65657",
         img: trak4,
         priceValue: 6500000,    
         rating: 3.8,             
@@ -422,6 +427,7 @@ export const catalogConfig: Record<string, {
     {
         id: 5,
         title: "Шторный грузовик КОМПАС 5",
+        slug: "shtorny-gruzovik-kompas-5",
         img: trak5,
         priceValue: 6500000,    
         rating: 6,             
@@ -477,6 +483,7 @@ export const catalogConfig: Record<string, {
     {
         id: 6,
         title: "Шторный грузовик КАМАЗ 65117 (модель 4388F3)",
+        slug: "shtorny-gruzovik-kamaz-65117-model-4388f3",
         img: trak6,
         priceValue: 6500000,    
         rating: 9,             
@@ -637,6 +644,7 @@ export const catalogConfig: Record<string, {
       {
         id: 1,
         title: "КРАН-МАНИПУЛЯТОР МАЗ 6312C5-8535-012 С КМУ ИНМАН ИТ 150 (МОДЕЛЬ 4389N8)",
+        slug: "КРАН-МАНИПУЛЯТОР МАЗ 6312C5-8535-012 С КМУ ИНМАН ИТ 150 (МОДЕЛЬ 4389N8)",
         img: trak7,
         price: "Цена по запросу",
         priceValue: 8000000,
@@ -697,6 +705,7 @@ export const catalogConfig: Record<string, {
       {
           id: 2,
           title: "КРАН-МАНИПУЛЯТОР МАЗ 631228 С КМУ PALFINGER SPK 23500",
+          slug: "КРАН-МАНИПУЛЯТОР МАЗ 631228 С КМУ PALFINGER SPK 23500",
           img: trak8,
           price: "Цена по запросу",
           priceValue: 7000000,
@@ -748,6 +757,7 @@ export const catalogConfig: Record<string, {
       {
           id: 3,
           title: "КРАН-МАНИПУЛЯТОР МАЗ 631228 С КМУ ИНМАН ИТ 150",
+          slug: "КРАН-МАНИПУЛЯТОР МАЗ 631228 С КМУ ИНМАН ИТ 150",
           img: trak9,
           price: "Цена по запросу",
           priceValue: 5200000,
@@ -807,6 +817,7 @@ export const catalogConfig: Record<string, {
       {
           id: 4,
           title: "КРАН-МАНИПУЛЯТОР КАМАЗ 43118 С КМУ ИНМАН ИМ150N (МОДЕЛЬ 4388С2-10)",
+          slug: "КРАН-МАНИПУЛЯТОР КАМАЗ 43118 С КМУ ИНМАН ИМ150N (МОДЕЛЬ 4388С2-10)",
           img: trak10,
           price: "Цена по запросу",
           priceValue: 9000000,
@@ -985,6 +996,7 @@ export const catalogConfig: Record<string, {
       {
         id: 1,
         title: "ТОПЛИВОЗАПРАВЩИК САДКО 9 (С41А13) С АТЗ 4,5 М3 ДВУХСЕКЦИОННАЯ",
+        slug: "ТОПЛИВОЗАПРАВЩИК САДКО 9 (С41А13) С АТЗ 4,5 М3 ДВУХСЕКЦИОННАЯ",
         img: trak11,
         price: "от 8 800 000Р",
         priceValue: 9000000,
@@ -1042,6 +1054,7 @@ export const catalogConfig: Record<string, {
     {
         id: 2,
         title: "АВТОТОПЛИВОЗАПРАВЩИК НА ШАССИ ГАЗ C41R13 (МОДЕЛЬ 4389JY)",
+        slug: "АВТОТОПЛИВОЗАПРАВЩИК НА ШАССИ ГАЗ C41R13 (МОДЕЛЬ 4389JY)",
         img: trak12,
         price: "от 6 200 000Р",
         priceValue: 6000000,
@@ -1178,6 +1191,7 @@ export const catalogConfig: Record<string, {
       {
         id: 1,
         title: "АВТОГИДРОПОДЪЕМНИК PALFINGER P 180T НА ШАССИ ГАЗ C41R33",
+        slug: "АВТОГИДРОПОДЪЕМНИК PALFINGER P 180T НА ШАССИ ГАЗ C41R33",
         img: trak13,
         price: "Цена по запросу",
         priceValue: 8000000,
@@ -1306,6 +1320,7 @@ export const catalogConfig: Record<string, {
       {
         id: 1,
         title: "ПИЩЕВАЯ ЦИСТЕРНА КАМАЗ 43089",
+        slug: "ПИЩЕВАЯ ЦИСТЕРНА КАМАЗ 43089",
         img: trak14,
         price: "Цена по запросу",
         priceValue: 7000000,
@@ -1356,6 +1371,7 @@ export const catalogConfig: Record<string, {
     {
         id: 2,
         title: "ГАЗОН NEXT С ПИЩЕВОЙ ЦИСТЕРНОЙ 4,2 КУБА",
+        slug: "ГАЗОН NEXT С ПИЩЕВОЙ ЦИСТЕРНОЙ 4,2 КУБА",
         img: trak15,
         price: "Цена по запросу",
         priceValue: 9000000,
@@ -1491,6 +1507,7 @@ export const catalogConfig: Record<string, {
       {
         id: 1,
         title: "ЭВАКУАТОР НА ШАССИ КАМАЗ-4308 С КМУ PALFINGER PK 13500T",
+        slug: "ЭВАКУАТОР НА ШАССИ КАМАЗ-4308 С КМУ PALFINGER PK 13500T",
         img: trak16,
         price: "Цена по запросу",
         priceValue: 8000000,
@@ -1617,6 +1634,7 @@ export const catalogConfig: Record<string, {
       {
         id: 1,
         title: "БОРТОВОЙ АВТОМОБИЛЬ МАЗ 631228",
+        slug: "БОРТОВОЙ АВТОМОБИЛЬ МАЗ 631228",
         img: trak17,
         price: "Цена по запросу",
         priceValue: 8000000,
@@ -1669,6 +1687,7 @@ export const catalogConfig: Record<string, {
       {
           id: 2,
           title: "БОРТОВОЙ АВТОМОБИЛЬ JAC N90L",
+          slug: "БОРТОВОЙ АВТОМОБИЛЬ JAC N90L",
           img: trak18,
           price: "Цена по запросу",
           priceValue: 8000000,
@@ -1721,6 +1740,7 @@ export const catalogConfig: Record<string, {
       {
           id: 3,
           title: "БОРТОВОЙ АВТОМОБИЛЬ КАМАЗ 43082",
+          slug: "БОРТОВОЙ АВТОМОБИЛЬ КАМАЗ 43082",
           img: trak19,
           price: "Цена по запросу",
           priceValue: 8000000,
@@ -1845,6 +1865,7 @@ export const catalogConfig: Record<string, {
       {
         id: 1,
         title: "ИЗОТЕРМИЧЕСКИЙ ФУРГОН КАМАЗ 43082",
+        slug: "ИЗОТЕРМИЧЕСКИЙ ФУРГОН КАМАЗ 43082",
         img: trak20,
         price: "Цена по запросу",
         priceValue: 8000000,
@@ -1900,6 +1921,7 @@ export const catalogConfig: Record<string, {
     {
         id: 2,
         title: "ИЗОТЕРМИЧЕСКИЙ ФУРГОН JAC 35",
+        slug: "ИЗОТЕРМИЧЕСКИЙ ФУРГОН JAC 35",
         img: trak21,
         price: "Цена по запросу",
         priceValue: 8000000,
@@ -2028,6 +2050,7 @@ export const catalogConfig: Record<string, {
       {
         id: 1,
         title: "КОНТЕЙНЕРОВОЗ НА ШАССИ КАМАЗ 65115",
+        slug: "КОНТЕЙНЕРОВОЗ НА ШАССИ КАМАЗ 65115",
         img: trak22,
         price: "Цена по запросу",
         priceValue: 8000000,
@@ -2158,6 +2181,7 @@ export const catalogConfig: Record<string, {
       {
         id: 1,
         title: "САМОСВАЛ НА ШАССИ КОМПАС 9",
+        slug: "САМОСВАЛ НА ШАССИ КОМПАС 9",
         img: trak24,
         length: "5000",
         price: "Цена по запросу",
@@ -2213,6 +2237,7 @@ export const catalogConfig: Record<string, {
     {
         id: 2,
         title: "САМОСВАЛ-ЗЕРНОВОЗ НА ШАССИ КАМАЗ 6520-3072-53 (МОДЕЛЬ 4388G6)",
+        slug: "САМОСВАЛ-ЗЕРНОВОЗ НА ШАССИ КАМАЗ 6520-3072-53 (МОДЕЛЬ 4388G6)",
         img: trak25,
         price: "Цена по запросу",
         priceValue: 8000000,

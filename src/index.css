@@ -555,8 +555,6 @@ li {
   }
 }
 
-
-
 .ant-slider-track {
   background-color: #fec80b !important;
 }
@@ -573,4 +571,14 @@ li {
 
 .ant-slider:hover .ant-slider-handle::after {
   border-color: #fec80b !important;
+}
+
+.filD{
+  overflow: hidden;
+  animation: filD 0.2s ease-out;
+}
+
+@keyframes filD {
+  0% {height: 50px;}
+  100% {height: 200px;}
 }

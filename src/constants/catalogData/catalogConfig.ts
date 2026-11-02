@@ -56,6 +56,9 @@ interface trakItems {
   id: number;
   title: string;
   img: string;
+  rating?: number;
+  isNew?: boolean;
+  inStock?: boolean;
   price: string;
   priceValue?: number;
   length?: string;
@@ -196,6 +199,10 @@ export const catalogConfig: Record<string, {
         id: 1,
         title: "Шторный грузовик МАЗ 438121 (модель 5389D5)",
         img: trak1,
+        priceValue: 6500000,    
+        rating: 4.8,             
+        isNew: true,            
+        inStock: true,
         price: "Цена по запросу",
         mass: "до 12",
         descKey: [
@@ -248,6 +255,10 @@ export const catalogConfig: Record<string, {
         id: 2,
         title: "Шторный грузовик МАЗ 631228-524-010 (модель 4389М2)",
         img: trak2,
+        priceValue: 8000000,    
+        rating: 6,             
+        isNew: false,            
+        inStock: true,
         price: "Цена по запросу",
         mass: "до 20",
         descKey: [
@@ -302,6 +313,10 @@ export const catalogConfig: Record<string, {
         id: 3,
         title: "Шторный грузовик КАМАЗ 4308",
         img: trak3,
+        priceValue: 6500000,    
+        rating: 8,             
+        isNew: true,            
+        inStock: false,
         price: "Цена по запросу",
         mass: "свыше 20",
         descKey: [
@@ -353,6 +368,10 @@ export const catalogConfig: Record<string, {
         id: 4,
         title: "Шторный грузовик КАМАЗ 65657",
         img: trak4,
+        priceValue: 6500000,    
+        rating: 3.8,             
+        isNew: false,            
+        inStock: true,
         price: "Цена по запросу",
         mass: "до 20",
         descKey: [
@@ -404,6 +423,10 @@ export const catalogConfig: Record<string, {
         id: 5,
         title: "Шторный грузовик КОМПАС 5",
         img: trak5,
+        priceValue: 6500000,    
+        rating: 6,             
+        isNew: false,            
+        inStock: false,
         price: "Цена по запросу",
         mass: "до 5.5",
         descKey: [
@@ -455,6 +478,10 @@ export const catalogConfig: Record<string, {
         id: 6,
         title: "Шторный грузовик КАМАЗ 65117 (модель 4388F3)",
         img: trak6,
+        priceValue: 6500000,    
+        rating: 9,             
+        isNew: true,            
+        inStock: true,
         price: "Цена по запросу",
         mass: "свыше 20",
         descKey: [
@@ -612,7 +639,10 @@ export const catalogConfig: Record<string, {
         title: "КРАН-МАНИПУЛЯТОР МАЗ 6312C5-8535-012 С КМУ ИНМАН ИТ 150 (МОДЕЛЬ 4389N8)",
         img: trak7,
         price: "Цена по запросу",
-        priceValue: 6500000,
+        priceValue: 8000000,
+        rating: 4.8,             
+        isNew: false,            
+        inStock: true,
         length: "6800",
         mass: "до 20",
         formula: "4x2",
@@ -670,6 +700,9 @@ export const catalogConfig: Record<string, {
           img: trak8,
           price: "Цена по запросу",
           priceValue: 7000000,
+          rating: 7,             
+          isNew: false,            
+          inStock: false,
           length: "7000",
           mass: "до 20",
           formula: "4x2",
@@ -718,6 +751,9 @@ export const catalogConfig: Record<string, {
           img: trak9,
           price: "Цена по запросу",
           priceValue: 5200000,
+          rating: 6,             
+          isNew: true,            
+          inStock: false,
           length: "6400",
           mass: "до 12",
           formula: "4x2",
@@ -774,6 +810,9 @@ export const catalogConfig: Record<string, {
           img: trak10,
           price: "Цена по запросу",
           priceValue: 9000000,
+          rating: 9,             
+          isNew: true,            
+          inStock: false,
           length: "7200",
           mass: "свыше 20",
           formula: "4x2",
@@ -949,6 +988,9 @@ export const catalogConfig: Record<string, {
         img: trak11,
         price: "от 8 800 000Р",
         priceValue: 9000000,
+        rating: 7,             
+        isNew: true,            
+        inStock: true,
         mass: "до 12",
         descKey: [
             "Базовое шасси",
@@ -1003,6 +1045,9 @@ export const catalogConfig: Record<string, {
         img: trak12,
         price: "от 6 200 000Р",
         priceValue: 6000000,
+        rating: 6,             
+        isNew: false,            
+        inStock: false,
         mass: "до 12",
         descKey: [
             "Базовое шасси",
@@ -1135,6 +1180,10 @@ export const catalogConfig: Record<string, {
         title: "АВТОГИДРОПОДЪЕМНИК PALFINGER P 180T НА ШАССИ ГАЗ C41R33",
         img: trak13,
         price: "Цена по запросу",
+        priceValue: 8000000,
+        rating: 4.8,             
+        isNew: false,            
+        inStock: true,
         descKey: [
             "Базовое шасси",
             "Двигатель",
@@ -1260,6 +1309,9 @@ export const catalogConfig: Record<string, {
         img: trak14,
         price: "Цена по запросу",
         priceValue: 7000000,
+        rating: 6,             
+        isNew: true,            
+        inStock: true,
         descKey: [
             "Базовое шасси",
             "Двигатель",
@@ -1307,6 +1359,9 @@ export const catalogConfig: Record<string, {
         img: trak15,
         price: "Цена по запросу",
         priceValue: 9000000,
+        rating: 3,             
+        isNew: true,            
+        inStock: false,
         descKey: [
             "Базовое шасси",
             "Двигатель",
@@ -1438,6 +1493,10 @@ export const catalogConfig: Record<string, {
         title: "ЭВАКУАТОР НА ШАССИ КАМАЗ-4308 С КМУ PALFINGER PK 13500T",
         img: trak16,
         price: "Цена по запросу",
+        priceValue: 8000000,
+        rating: 4.8,             
+        isNew: false,            
+        inStock: false,
         formula: "4x2",
         descKey: [
             "Базовое шасси",
@@ -1560,6 +1619,10 @@ export const catalogConfig: Record<string, {
         title: "БОРТОВОЙ АВТОМОБИЛЬ МАЗ 631228",
         img: trak17,
         price: "Цена по запросу",
+        priceValue: 8000000,
+        rating: 6,             
+        isNew: true,            
+        inStock: true,
         descKey: [
             "Базовое шасси",
             "Двигатель",
@@ -1608,6 +1671,10 @@ export const catalogConfig: Record<string, {
           title: "БОРТОВОЙ АВТОМОБИЛЬ JAC N90L",
           img: trak18,
           price: "Цена по запросу",
+          priceValue: 8000000,
+          rating: 4.8,             
+          isNew: false,            
+          inStock: false,
           descKey: [
               "Базовое шасси",
               "Двигатель",
@@ -1656,6 +1723,10 @@ export const catalogConfig: Record<string, {
           title: "БОРТОВОЙ АВТОМОБИЛЬ КАМАЗ 43082",
           img: trak19,
           price: "Цена по запросу",
+          priceValue: 8000000,
+          rating: 7,             
+          isNew: true,            
+          inStock: true,
           descKey: [
               "Базовое шасси",
               "Двигатель",
@@ -1776,6 +1847,10 @@ export const catalogConfig: Record<string, {
         title: "ИЗОТЕРМИЧЕСКИЙ ФУРГОН КАМАЗ 43082",
         img: trak20,
         price: "Цена по запросу",
+        priceValue: 8000000,
+        rating: 6,             
+        isNew: true,            
+        inStock: false,
         formula: "4x2",
         descKey: [
             "Базовое шасси",
@@ -1827,6 +1902,10 @@ export const catalogConfig: Record<string, {
         title: "ИЗОТЕРМИЧЕСКИЙ ФУРГОН JAC 35",
         img: trak21,
         price: "Цена по запросу",
+        priceValue: 8000000,
+        rating: 4.8,             
+        isNew: true,            
+        inStock: true,
         formula: "4x2",
         descKey: [
             "Базовое шасси",
@@ -1951,6 +2030,10 @@ export const catalogConfig: Record<string, {
         title: "КОНТЕЙНЕРОВОЗ НА ШАССИ КАМАЗ 65115",
         img: trak22,
         price: "Цена по запросу",
+        priceValue: 8000000,
+        rating: 4.8,             
+        isNew: false,            
+        inStock: true,
         formula: "4x2",
         descKey: [
             "Базовое шасси",
@@ -2132,6 +2215,10 @@ export const catalogConfig: Record<string, {
         title: "САМОСВАЛ-ЗЕРНОВОЗ НА ШАССИ КАМАЗ 6520-3072-53 (МОДЕЛЬ 4388G6)",
         img: trak25,
         price: "Цена по запросу",
+        priceValue: 8000000,
+        rating: 6,             
+        isNew: true,            
+        inStock: false,
         length: "6500",
         formula: "4x2",
         descKey: [
@@ -2209,6 +2296,10 @@ export const catalogConfig: Record<string, {
         title: "ШТОРНЫЙ ГРУЗОВИК КАМАЗ 4308 ДОПОГ EXII (МОДЕЛЬ 4388H2-10)",
         img: trak26,
         price: "Цена по запросу",
+        priceValue: 8000000,
+        rating: 3,             
+        isNew: true,            
+        inStock: true,
         formula: "4x2",
         length: "5000",
         descKey: [
@@ -2261,6 +2352,10 @@ export const catalogConfig: Record<string, {
         title: "БОРТОВОЙ АВТОМОБИЛЬ КАМАЗ 4308-3083-69, ДОПОГ КАТЕГОРИЯ EX II (МОДЕЛЬ 4388H2-10)",
         img: trak27,
         price: "Цена по запросу",
+        priceValue: 8000000,
+        rating: 6,           
+        isNew: true,            
+        inStock: false,
         length: "6500",
         descKey: [
             "Базовое шасси",

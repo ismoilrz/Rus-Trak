@@ -129,19 +129,19 @@ const SelectedCatalog = () => {
       }
 
       for (const [label, rangeValues] of Object.entries(tempRanges)) {
-        if (rangeValues && rangeValues.length === 2) {
-          let itemNumber = 0;
-          if (label.toLowerCase().includes("цена") || label.toLowerCase().includes("стоимость")) {
-            itemNumber = item.priceValue || 0;
-          } else if (label.toLowerCase().includes("масса")) {
-            itemNumber = item.massValue || 0;
-          }
-
-          if (itemNumber < rangeValues[0] || itemNumber > rangeValues[1]) {
-            return false;
-          }
-        }
+    if (rangeValues && rangeValues.length === 2) {
+      let itemNumber = 0;
+      if (label.toLowerCase().includes("цена") || label.toLowerCase().includes("стоимость")) {
+        itemNumber = item.priceValue || 0;
+      } else if (label.toLowerCase().includes("масса")) {
+        itemNumber = item.mass ? Number(item.mass.replace(/\D/g, "")) : 0;
       }
+
+      if (itemNumber < rangeValues[0] || itemNumber > rangeValues[1]) {
+        return false;
+      }
+    }
+  }
 
       return true;
     }).length;
@@ -173,7 +173,7 @@ const SelectedCatalog = () => {
         if (label.toLowerCase().includes("цена") || label.toLowerCase().includes("стоимость")) {
           itemNumber = item.priceValue || 0;
         } else if (label.toLowerCase().includes("масса")) {
-          itemNumber = item.massValue || 0;
+          itemNumber = item.mass ? Number(String(item.mass).replace(/\D/g, "")) : 0;
         }
 
         if (itemNumber < rangeValues[0] || itemNumber > rangeValues[1]) {

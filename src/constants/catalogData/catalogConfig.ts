@@ -2376,6 +2376,7 @@ export const catalogConfig: Record<string, {
     {
         id: 2,
         title: "БОРТОВОЙ АВТОМОБИЛЬ КАМАЗ 4308-3083-69, ДОПОГ КАТЕГОРИЯ EX II (МОДЕЛЬ 4388H2-10)",
+        slug: "bortovoy-avtomabil-kamaz-4308-3083-69-dopog-categori-ex-ii-model4388H2-10",
         img: trak27,
         price: "Цена по запросу",
         priceValue: 8000000,

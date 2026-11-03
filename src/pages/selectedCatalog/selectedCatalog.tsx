@@ -804,7 +804,7 @@ const SelectedCatalog = () => {
               handleApplyFilter();
               closeMobileAside();
             }}
-            className="w-full py-3 bg-[#fec80b] hover:bg-yellow-500 rounded-md transition-colors cursor-pointer shadow-sm font-medium text-sm flex items-center justify-center gap-2 mt-auto"
+            className="w-full py-3 bg-[#fec80b] hover:bg-yellow-500 rounded-md transition-colors cursor-pointer shadow-sm font-medium text-sm flex items-center justify-center gap-2"
           >
             Показать товары ({countMatchingProducts()})
           </button>

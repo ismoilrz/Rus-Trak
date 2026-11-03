@@ -10,9 +10,9 @@ const Breadcrumbs = () => {
   if (isNewsDetail) return null;
 
   return (
-    <nav className="text-sm text-gray-600">
-      <div className="container flex items-center gap-2">
-        <Link to="/" className="hover:text-[#fec80b] transition-colors">
+    <nav className="text-sm text-gray-600 py-3">
+      <div className="container flex items-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-none max-md:text-[13px]">
+        <Link to="/" className="hover:text-[#fec80b] transition-colors shrink-0">
           Главная
         </Link>
 
@@ -21,13 +21,15 @@ const Breadcrumbs = () => {
           const isLast = index === pathnames.length - 1;
 
           return (
-            <span key={routeTo} className="flex items-center gap-2">
-              <span>/</span>
+            <span key={routeTo} className="flex items-center gap-2 shrink-0">
+              <span className="text-gray-400">/</span>
               {isLast ? (
-                <span className="text-black font-medium">{name}</span>
+                <span className="text-black font-medium max-md:max-w-[180px] sm:max-w-[260px] max-md:truncate">
+                  {decodeURIComponent(name)}
+                </span>
               ) : (
                 <Link to={routeTo} className="hover:text-[#fec80b] transition-colors">
-                  {name}
+                  {decodeURIComponent(name)}
                 </Link>
               )}
             </span>

@@ -25,33 +25,33 @@ const CatalogDetail = () => {
   }
 
   return (
-    <div ref={fancyboxRef} className="container pb-10">
-      <h1 className="text-3xl font-medium py-6">{trak.title}</h1>
-      <div className="pt-3 flex justify-between gap-8">
-        <div className="w-[70%] h-[500px] rounded-xl overflow-hidden">
+    <div ref={fancyboxRef} className="container max-xl:px-[3%] pb-10">
+      <h1 className="text-3xl max-md:text-[26px] max-sm:text-[22px] font-medium py-6">{trak.title}</h1>
+      <div className="pt-3 flex justify-between gap-8 max-lg:flex-col">
+        <div className="w-[70%] max-lg:w-full h-[500px] max-md:h-[400px] max-sm:h-[300px] rounded-xl overflow-hidden">
           <a data-fancybox="gallery" href={trak.img}>
             <img className="w-full h-full object-cover" src={trak.img} alt="Trak-image" />
           </a>
         </div>
-        <div className="w-[30%]">
-          <h4 className="text-3xl font-medium text-center">{trak.price}</h4>
+        <div className="w-[30%] max-lg:w-full">
+          <h4 className="text-3xl font-medium text-center max-lg:text-start">{trak.price}</h4>
           <div className="w-full flex gap-4 my-3">
-            <button className="w-full py-2 border border-transparent bg-[#fec80b] duration-200 rounded-md hover:border-[#fec80b] hover:bg-transparent">Добавить в корзину</button>
-            <button onClick={openCatForm} className="w-full py-2 border border-[#fec80b] bg-transparent duration-200 rounded-md hover:bg-[#fec80b]">Получить КП</button>
+            <button className="w-full max-lg:w-[200px] max-sm:w-auto max-sm:px-2 py-2 border border-transparent bg-[#fec80b] duration-200 rounded-md hover:border-[#fec80b] hover:bg-transparent">Добавить в корзину</button>
+            <button onClick={openCatForm} className="w-full max-lg:w-[200px] max-sm:w-auto max-sm:px-2 py-2 border border-[#fec80b] bg-transparent duration-200 rounded-md hover:bg-[#fec80b]">Получить КП</button>
           </div>
-          <div className="flex justify-between w-full pt-2 py-3">
+          <div className="flex max-lg:hidden justify-between w-full pt-2 py-3">
             <div className="flex flex-col items-start gap-2">
               {trak.descKey.map((item) => (
-                <p className="whitespace-nowrap">{item}</p>
+                <p className="whitespace-nowrap max-xl:whitespace-normal">{item}</p>
               ))}
             </div>
             <div className="flex flex-col items-end gap-2">
               {trak.descValue.map((item) => (
-                <p className="whitespace-nowrap">{item}</p>
+                <p className="whitespace-nowrap max-xl:whitespace-normal text-end">{item}</p>
               ))}
             </div>
           </div>
-            <a className="underline text-[#a1a1a1]" href="#">Смотреть все характеристики</a>
+            <a className="underline max-lg:hidden text-[#a1a1a1]" href="#">Смотреть все характеристики</a>
         </div>
       </div>
 

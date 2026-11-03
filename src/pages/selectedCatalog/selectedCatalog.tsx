@@ -661,7 +661,7 @@ const SelectedCatalog = () => {
       >
         <aside 
           onClick={(e) => e.stopPropagation()}
-          className={`w-[300px] h-[100vh] max-sm:w-full overflow-y-auto p-6 bg-white border border-gray-100 flex flex-col gap-6 fixed top-0 left-0 z-50 shadow-2xl transition-transform duration-300 ease-in-out 
+          className={`w-[300px] h-[100%] max-sm:w-full overflow-y-auto p-6 bg-white border border-gray-100 flex flex-col gap-6 fixed top-0 left-0 z-50 shadow-2xl transition-transform duration-300 ease-in-out 
             ${mobileAside ? "translate-x-0" : "-translate-x-full"}`}
         >
           <button onClick={closeMobileAside} className="absolute top-3 right-3"><X size={28}/></button>

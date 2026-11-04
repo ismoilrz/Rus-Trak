@@ -21,7 +21,6 @@ const SelectedCatalog = () => {
   const openCatForm = () => setCatalogForm(true)
   const closeCatalogForm = () => setCatalogForm(false)
 
-  // const navigate = useNavigate();
 const addToCart = useCartStore((state) => state.addToCart);
 
 const handleAddToCart = (item: any) => {

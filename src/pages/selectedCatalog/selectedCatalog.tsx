@@ -28,9 +28,10 @@ const handleAddToCart = (item: any) => {
   addToCart({
     id: item.id,
     title: item.title,
+    price: item.price,
     img: item.img, 
     slug: item.slug,         
-    category: selectedcatalog
+    category: selectedcatalog || ""
   });
   
 };

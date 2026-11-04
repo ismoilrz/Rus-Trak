@@ -1,5 +1,6 @@
 import About from "../pages/about/about";
 import Articles from "../pages/articles/articles";
+import Cart from "../pages/cart/card";
 import Catalog from "../pages/catalog/catalog";
 import CatalogDetail from "../pages/catalogDetail/catalogDetail";
 import Contacts from "../pages/contacts/contacts";
@@ -132,5 +133,10 @@ export const router:RoutesType[] = [
         id: 22,
         path: "/catalog/:selectedCatalog/:slug",
         element: <CatalogDetail />
+    },
+    {
+        id: 23,
+        path: "/cart",
+        element: <Cart />
     }
 ]

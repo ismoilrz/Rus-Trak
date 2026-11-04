@@ -5,6 +5,8 @@ import { ArrowDownToLine, Heart, LayoutGrid, List, Search, Settings2, ShoppingCa
 
 import notTruk from "../../assets/notTruk.webp"
 import { Slider } from "antd";
+import { useCartStore } from "../../shared/useCartStore";
+
 
 const SelectedCatalog = () => {
   const [filterDrop, setFilterDrop] = useState<boolean>(false);
@@ -18,6 +20,20 @@ const SelectedCatalog = () => {
   const closeMobileAside = () => setMobileAside(false)
   const openCatForm = () => setCatalogForm(true)
   const closeCatalogForm = () => setCatalogForm(false)
+
+  // const navigate = useNavigate();
+const addToCart = useCartStore((state) => state.addToCart);
+
+const handleAddToCart = (item: any) => {
+  addToCart({
+    id: item.id,
+    title: item.title,
+    img: item.img, 
+    slug: item.slug,         
+    category: selectedcatalog
+  });
+  
+};
 
   const [changeTraksUI, setChangeTraksUI] = useState<"tab1" | "tab2">("tab1")
 
@@ -391,25 +407,25 @@ const SelectedCatalog = () => {
           <div className="w-full grid grid-cols-3 max-xl:grid-cols-2 max-lg:grid-cols-3 max-sm:grid-cols-2 gap-5 max-sm:gap-3">
             {filteredTracks.length > 0 ? (
               filteredTracks.map((item) => (
-                <Link to={`/catalog/${selectedcatalog}/${item.slug}`}>
-                  <div key={item.id} className="h-[440px] max-lg:flex max-lg:flex-col max-lg:justify-between max-lg:h-[360px] max-sm:h-[300px ] bg-[#fff] relative rounded-lg overflow-hidden">
-                    <img className="h-[65%] max-lg:h-[45%] w-full object-cover" src={item.img} alt="Image" />
-                    <span className="text-[18px] max-sm:mt-[-10px] max-md:text-[16px] line-clamp-1 max-lg:line-clamp-2 mt-3 ml-3">{item.title}</span>
-                    <div className="h-[35%] p-3 flex flex-col justify-between">
-                      <div className="max-md:mt-[-10px] max-sm:mt-[-25px]">
-                        <h5 className="text-[22px] max-md:text-lg max-sm:text-[16px] pb-2 font-[500]">{item.price}</h5>
-                        <div className="flex items-center justify-between max-lg:flex-col max-lg:gap-3">
-                          <div className="w-full flex items-center gap-3 max-sm:justify-between">
-                            <button className="px-5 max-lg:px-10 max-md:px-6 max-sm:w-[80%] py-2 text-[12px] rounded-[4px] bg-[#fec80b] font-medium">Подробнее</button>
-                            <button><ShoppingCart size={26} className="max-sm:w-5 max-sm:h-5" /></button>
+                  <Link to={`/catalog/${selectedcatalog}/${item.slug}`}>
+                    <div key={item.id} className="h-[440px] max-lg:flex max-lg:flex-col max-lg:justify-between max-lg:h-[360px] max-sm:h-[300px ] bg-[#fff] relative rounded-lg overflow-hidden">
+                        <img className="h-[65%] max-lg:h-[45%] w-full object-cover" src={item.img} alt="Image" />
+                        <span className="text-[18px] max-sm:mt-[-10px] max-md:text-[16px] line-clamp-1 max-lg:line-clamp-2 mt-3 ml-3">{item.title}</span>
+                      <div className="h-[35%] p-3 flex flex-col justify-between">
+                        <div className="max-md:mt-[-10px] max-sm:mt-[-25px]">
+                            <h5 className="text-[22px] max-md:text-lg max-sm:text-[16px] pb-2 font-[500]">{item.price}</h5>
+                          <div className="flex items-center justify-between max-lg:flex-col max-lg:gap-3">
+                            <div className="w-full flex items-center gap-3 max-sm:justify-between">
+                              <button className="px-5 max-lg:px-10 max-md:px-6 max-sm:w-[80%] py-2 text-[12px] rounded-[4px] bg-[#fec80b] font-medium">Подробнее</button>
+                              <button onClick={(e) => {handleAddToCart(item); e.preventDefault(); e.stopPropagation()} }><ShoppingCart size={26} className="max-sm:w-5 max-sm:h-5" /></button>
+                            </div>
+                            <button onClick={openCatForm} className="flex items-center gap-2 text-[12px] whitespace-nowrap">Получить КП <ArrowDownToLine width={'15px'} height={'15px'} /></button>
+                            <button className="absolute top-2 right-2 p-1"><Heart width={'30px'} height={'30px'} className="duration-200 stroke-1 hover:fill-[#fec80b]" /></button>
                           </div>
-                          <button onClick={openCatForm} className="flex items-center gap-2 text-[12px] whitespace-nowrap">Получить КП <ArrowDownToLine width={'15px'} height={'15px'} /></button>
-                          <button className="absolute top-2 right-2 p-1"><Heart width={'30px'} height={'30px'} className="duration-200 stroke-1 hover:fill-[#fec80b]" /></button>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
               ))
             ) : (
               <div className="col-span-3 flex flex-col items-center justify-center pt-15">
@@ -486,7 +502,7 @@ const SelectedCatalog = () => {
               {filteredTracks.length > 0 ? (
                 filteredTracks.map((item) => (
                   <>
-                    <div key={item.id} className="h-[230px] max-lg:hidden w-full bg-[#fff] relative flex justify-between gap-4 rounded-lg overflow-hidden">
+                    <Link to={`/catalog/${selectedcatalog}/${item.slug}`} key={item.id} className="h-[230px] max-lg:hidden w-full bg-[#fff] relative flex justify-between gap-4 rounded-lg overflow-hidden">
                     <div className="flex w-[75%] gap-4">
                       <img className="h-full w-[30%] object-cover rounded-md" src={item.img} alt="Image" />
                       <div className="w-full flex flex-col justify-center">
@@ -523,25 +539,27 @@ const SelectedCatalog = () => {
                       </div>
                       <button className="absolute top-2 left-2 p-1"><Heart width={'30px'} height={'30px'} className="duration-200 stroke-1 hover:fill-[#fec80b]" /></button>
                     </div>
-                    </div>
+                    </Link>
 
-                    <div key={item.id} className="h-[360px] max-md:h-[330px] max-sm:h-[300px] hidden max-lg:flex max-lg:flex-col max-lg:justify-between max-lg:h-[360px] max-sm:h-[300px ] bg-[#fff] relative rounded-lg overflow-hidden">
-                  <img className="h-[65%] max-lg:h-[45%] w-full object-cover" src={item.img} alt="Image" />
-                  <span className="text-[18px] max-sm:mt-[-10px] max-md:text-[16px] line-clamp-1 max-lg:line-clamp-2 mt-3 ml-3">{item.title}</span>
-                  <div className="h-[35%] p-3 flex flex-col justify-between">
-                    <div className="max-md:mt-[-10px] max-sm:mt-[-25px]">
-                      <h5 className="text-[22px] max-md:text-lg max-sm:text-[16px] pb-2 font-[500]">{item.price}</h5>
-                      <div className="flex items-center justify-between max-lg:flex-col max-lg:gap-3">
-                        <div className="w-full flex items-center gap-3 max-sm:justify-between">
-                          <button className="px-5 max-lg:px-10 max-md:px-6 max-sm:w-[80%] py-2 text-[12px] rounded-[4px] bg-[#fec80b] font-medium">Подробнее</button>
-                          <button><ShoppingCart size={26} className="max-sm:w-5 max-sm:h-5" /></button>
+                    <Link to={`/catalog/${selectedcatalog}/${item.slug}`}>
+                      <div key={item.id} className="h-[360px] max-md:h-[330px] max-sm:h-[300px] hidden max-lg:flex max-lg:flex-col max-lg:justify-between max-lg:h-[360px] max-sm:h-[300px ] bg-[#fff] relative rounded-lg overflow-hidden">
+                        <img className="h-[65%] max-lg:h-[45%] w-full object-cover" src={item.img} alt="Image" />
+                        <span className="text-[18px] max-sm:mt-[-10px] max-md:text-[16px] line-clamp-1 max-lg:line-clamp-2 mt-3 ml-3">{item.title}</span>
+                        <div className="h-[35%] p-3 flex flex-col justify-between">
+                          <div className="max-md:mt-[-10px] max-sm:mt-[-25px]">
+                            <h5 className="text-[22px] max-md:text-lg max-sm:text-[16px] pb-2 font-[500]">{item.price}</h5>
+                            <div className="flex items-center justify-between max-lg:flex-col max-lg:gap-3">
+                              <div className="w-full flex items-center gap-3 max-sm:justify-between">
+                                <button className="px-5 max-lg:px-10 max-md:px-6 max-sm:w-[80%] py-2 text-[12px] rounded-[4px] bg-[#fec80b] font-medium">Подробнее</button>
+                                <button onClick={(e) => {handleAddToCart(item); e.preventDefault(); e.stopPropagation()}}><ShoppingCart size={26} className="max-sm:w-5 max-sm:h-5" /></button>
+                              </div>
+                              <button onClick={openCatForm} className="flex items-center gap-2 text-[12px]">Получить КП <ArrowDownToLine width={'15px'} height={'15px'} /></button>
+                              <button className="absolute top-2 right-2 p-1"><Heart width={'30px'} height={'30px'} className="duration-200 stroke-1 hover:fill-[#fec80b]" /></button>
+                            </div>
+                          </div>
                         </div>
-                        <button onClick={openCatForm} className="flex items-center gap-2 text-[12px]">Получить КП <ArrowDownToLine width={'15px'} height={'15px'} /></button>
-                        <button className="absolute top-2 right-2 p-1"><Heart width={'30px'} height={'30px'} className="duration-200 stroke-1 hover:fill-[#fec80b]" /></button>
-                      </div>
-                    </div>
-                  </div>
-                    </div>
+                        </div>
+                    </Link>
                   </>
                 ))
               ) : (

@@ -12,6 +12,8 @@ import Call from "../../assets/call.svg";
 
 import { MenuData } from "../../constants/MenuData";
 import CatalogModal from "../catalogModal/catalogModal";
+import { Badge } from "antd";
+import { useCartStore } from "../../shared/useCartStore";
 
 type HeaderProps = {
   isScrolled: boolean,
@@ -74,6 +76,9 @@ const Header = ({ isScrolled, openCallModal }: HeaderProps) => {
     i18n.changeLanguage(lng);
     setLangDrop(false);
   };
+
+  const cart = useCartStore((state) => state.cart);
+  const totalItems = cart.length;
 
   return (
     <>
@@ -164,7 +169,11 @@ const Header = ({ isScrolled, openCallModal }: HeaderProps) => {
               <Search />
             </div>
             <Search width={'34px'} height={'34px'} className="hidden max-lg:flex" />
-            <ShoppingCart width={"30px"} height={"30px"} className="cursor-pointer" />
+            <Link to={"/cart"}>
+                <Badge count={totalItems}>
+                  <ShoppingCart width={"30px"} height={"30px"} className="cursor-pointer" />
+                </Badge>
+            </Link>
             <Heart width={"30px"} height={"30px"} className="cursor-pointer" />
             
             {isScrolled && (

@@ -41,7 +41,6 @@ const handleToggleFavorite = (item: any) => {
     return updated;
   });
 };  
-// test
 
   const openMobileAside = () => setMobileAside(true)
   const closeMobileAside = () => setMobileAside(false)

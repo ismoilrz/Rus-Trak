@@ -20,7 +20,6 @@ const SelectedCatalog = () => {
   return saved ? JSON.parse(saved) : [];
 });
 
-
 useEffect(() => {
   localStorage.setItem('favorites', JSON.stringify(favorites));
 }, [favorites]);

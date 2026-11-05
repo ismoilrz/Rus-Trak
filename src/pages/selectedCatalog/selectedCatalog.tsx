@@ -18,7 +18,7 @@ const SelectedCatalog = () => {
   const [favorites, setFavorites] = useState<any[]>(() => {
   const saved = localStorage.getItem('favorites');
   return saved ? JSON.parse(saved) : [];
-});
+});``
 
 useEffect(() => {
   localStorage.setItem('favorites', JSON.stringify(favorites));

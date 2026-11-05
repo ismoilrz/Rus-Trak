@@ -11,7 +11,6 @@ import { useCartStore } from "../../shared/useCartStore";
 const SelectedCatalog = () => {
   const [filterDrop, setFilterDrop] = useState<boolean>(false);
   const [sortType, setSortType] = useState<string>("По бренду"); 
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const [mobileAside, setMobileAside] = useState<boolean>(false)
   const [catalogForm, setCatalogForm] = useState<boolean>(false)
@@ -22,7 +21,6 @@ const SelectedCatalog = () => {
 });
 
 
-// Favorites o'zgarganda localStorage'ga yozib borish
 useEffect(() => {
   localStorage.setItem('favorites', JSON.stringify(favorites));
 }, [favorites]);
@@ -30,8 +28,9 @@ useEffect(() => {
 const handleToggleFavorite = (item: any) => {
   const itemWithCategory = { 
     ...item, 
-    categorySlug: selectedcatalog // ✅ Исправлено (берет реальный slug категории)
+    categorySlug: selectedcatalog 
   };
+  
   setFavorites(prev => {
     const exists = prev.some(fav => fav.id === item.id);
     const updated = exists 
@@ -39,13 +38,13 @@ const handleToggleFavorite = (item: any) => {
       : [...prev, itemWithCategory];
     
     localStorage.setItem('favorites', JSON.stringify(updated));
+    window.dispatchEvent(new Event("favoritesChanged"));
     return updated;
   });
-};
+};  
 
   const openMobileAside = () => setMobileAside(true)
   const closeMobileAside = () => setMobileAside(false)
-  // const openCatForm = () => setCatalogForm(true) 
   const closeCatalogForm = () => setCatalogForm(false)
 
   const addToCart = useCartStore((state) => state.addToCart);
@@ -78,21 +77,29 @@ const handleAddToCart = (item: any) => {
     };
   }, [catalogForm, mobileAside]);
 
+
+  const desktopDropdownRef = useRef<HTMLDivElement>(null);
+const mobileDropdownRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setFilterDrop(false);
-      }
-    };
+  const handleClickOutside = (e: MouseEvent) => {
+    const target = e.target as Node;
+    const isOutsideDesktop = desktopDropdownRef.current && !desktopDropdownRef.current.contains(target);
+    const isOutsideMobile = mobileDropdownRef.current && !mobileDropdownRef.current.contains(target);
 
-    if (filterDrop) {
-      document.addEventListener("click", handleClickOutside);
+    // Agar ikkala dropdown'dan ham tashqariga bosilgan bo'lsa, yopamiz
+    if (isOutsideDesktop && isOutsideMobile) {
+      setFilterDrop(false);
     }
+  };
 
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [filterDrop]);
+  if (filterDrop) {
+    document.addEventListener("click", handleClickOutside);
+  }
+
+  return () => {
+    document.removeEventListener("click", handleClickOutside);
+  };
+}, [filterDrop]);
 
   const { selectedcatalog } = useParams<{ selectedcatalog: string }>();
   const currentCategory = selectedcatalog ? catalogConfig[selectedcatalog] : null;
@@ -251,7 +258,7 @@ const handleAddToCart = (item: any) => {
         </div>
 
         <div className="flex gap-30 items-center max-lg:hidden">
-          <div ref={dropdownRef} className="h-full flex gap-2 items-center relative">
+          <div ref={desktopDropdownRef} className="h-full flex gap-2 items-center relative">
             <label className="text-[#a1a1a1] text-[14px]">Сортировка:</label>
             <button 
               onClick={() => {setFilterDrop((v) => !v);}} 
@@ -282,7 +289,7 @@ const handleAddToCart = (item: any) => {
             <button onClick={openMobileAside} className="h-10 w-10 bg-[#fec80b] rounded-md flex items-center justify-center"><Settings2 /></button>
             <span>Фильтр</span>
           </div>
-          <div ref={dropdownRef} className="flex flex-col items-center relative">
+          <div ref={mobileDropdownRef} className="flex flex-col items-center relative">
             <label className="text-[#a1a1a1] text-[14px]">Сортировка:</label>
             <button 
               onClick={() => {setFilterDrop((v) => !v);}} 
@@ -454,7 +461,7 @@ const handleAddToCart = (item: any) => {
                                 <Heart 
                                 width={'30px'} 
                                 height={'30px'} 
-                                className={`duration-200 stroke-1 ${favorites.some(fav => fav.id === item.id) ? 'fill-[#fec80b] text-[#fec80b]' : 'hover:fill-[#fec80b]'}`} />
+                                className={`duration-200 stroke-1 ${favorites.some(fav => fav.id === item.id) ? 'fill-[#fec80b] ' : 'hover:fill-[#fec80b]'}`} />
                             </button>
                           </div>
                         </div>

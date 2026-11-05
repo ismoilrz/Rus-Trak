@@ -38,6 +38,25 @@ const Header = ({ isScrolled, openCallModal }: HeaderProps) => {
   const [catalog2, setCatalog2] = useState<boolean>(false);
   const [catalog3, setCatalog3] = useState<boolean>(false);
 
+const [favoriteCount, setFavoriteCount] = useState(() => {
+    const saved = localStorage.getItem('favorites');
+    return saved ? JSON.parse(saved).length : 0;
+  });
+
+  useEffect(() => {
+    const updateCount = () => {
+      const saved = localStorage.getItem('favorites');
+      const items = saved ? JSON.parse(saved) : [];
+      setFavoriteCount(items.length);
+    };
+    window.addEventListener("favoritesChanged", updateCount);
+    window.addEventListener("storage", updateCount);
+    return () => {
+      window.removeEventListener("favoritesChanged", updateCount);
+      window.removeEventListener("storage", updateCount);
+    };
+  }, []);
+
   const closeCatalog = () => setCatalog(false)
 
   useEffect(() => {
@@ -175,7 +194,9 @@ const Header = ({ isScrolled, openCallModal }: HeaderProps) => {
                 </Badge>
             </Link>
             <Link to={"/heart"}>
-                <Heart width={"30px"} height={"30px"} className="cursor-pointer" />
+                <Badge count={favoriteCount}>
+                  <Heart width={"30px"} height={"30px"} className="cursor-pointer" />
+                </Badge>
             </Link>
             
             {isScrolled && (

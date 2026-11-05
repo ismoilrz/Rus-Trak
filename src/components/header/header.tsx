@@ -174,7 +174,9 @@ const Header = ({ isScrolled, openCallModal }: HeaderProps) => {
                   <ShoppingCart width={"30px"} height={"30px"} className="cursor-pointer" />
                 </Badge>
             </Link>
-            <Heart width={"30px"} height={"30px"} className="cursor-pointer" />
+            <Link to={"/heart"}>
+                <Heart width={"30px"} height={"30px"} className="cursor-pointer" />
+            </Link>
             
             {isScrolled && (
               <button onClick={openCallModal} className="w-[40px] h-[40px] bg-[#fec80b] rounded-full flex items-center justify-center cursor-pointer">

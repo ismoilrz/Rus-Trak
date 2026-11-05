@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { catalogConfig } from "../../constants/catalogData/catalogConfig";
 import useFancybox from "../../shared/useFancyBox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 
 const CatalogDetail = () => {
@@ -9,6 +9,20 @@ const CatalogDetail = () => {
   const openCatForm = () => setCatalogForm(true)
   const closeCatalogForm = () => setCatalogForm(false)
   const { selectedCatalog, slug } = useParams<{ selectedCatalog: string; slug: string }>();
+
+  useEffect(() => {
+      const scrollClosed = catalogForm;
+  
+      if (scrollClosed) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
+  
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }, [catalogForm]);
 
   const categoryData = selectedCatalog ? catalogConfig[selectedCatalog as keyof typeof catalogConfig] : undefined;
 

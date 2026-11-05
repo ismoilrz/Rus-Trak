@@ -6,6 +6,7 @@ import CatalogDetail from "../pages/catalogDetail/catalogDetail";
 import Contacts from "../pages/contacts/contacts";
 import Credit from "../pages/credit/credit";
 import Galeriya from "../pages/galeriya/galeriya";
+import HeartPage from "../pages/heart/heart";
 import Home from "../pages/home/home";
 import Information from "../pages/information/information";
 import News from "../pages/news/news";
@@ -138,5 +139,10 @@ export const router:RoutesType[] = [
         id: 23,
         path: "/cart",
         element: <Cart />
+    },
+    {
+        id: 24,
+        path: "/heart",
+        element: <HeartPage />
     }
 ]

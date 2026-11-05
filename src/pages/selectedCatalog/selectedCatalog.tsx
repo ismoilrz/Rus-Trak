@@ -16,12 +16,39 @@ const SelectedCatalog = () => {
   const [mobileAside, setMobileAside] = useState<boolean>(false)
   const [catalogForm, setCatalogForm] = useState<boolean>(false)
 
+  const [favorites, setFavorites] = useState<any[]>(() => {
+  const saved = localStorage.getItem('favorites');
+  return saved ? JSON.parse(saved) : [];
+});
+
+
+// Favorites o'zgarganda localStorage'ga yozib borish
+useEffect(() => {
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+}, [favorites]);
+
+const handleToggleFavorite = (item: any) => {
+  const itemWithCategory = { 
+    ...item, 
+    categorySlug: selectedcatalog // ✅ Исправлено (берет реальный slug категории)
+  };
+  setFavorites(prev => {
+    const exists = prev.some(fav => fav.id === item.id);
+    const updated = exists 
+      ? prev.filter(fav => fav.id !== item.id) 
+      : [...prev, itemWithCategory];
+    
+    localStorage.setItem('favorites', JSON.stringify(updated));
+    return updated;
+  });
+};
+
   const openMobileAside = () => setMobileAside(true)
   const closeMobileAside = () => setMobileAside(false)
-  const openCatForm = () => setCatalogForm(true)
+  // const openCatForm = () => setCatalogForm(true) 
   const closeCatalogForm = () => setCatalogForm(false)
 
-const addToCart = useCartStore((state) => state.addToCart);
+  const addToCart = useCartStore((state) => state.addToCart);
 
 const handleAddToCart = (item: any) => {
   addToCart({
@@ -419,8 +446,16 @@ const handleAddToCart = (item: any) => {
                               <button className="px-5 max-lg:px-10 max-md:px-6 max-sm:w-[80%] py-2 text-[12px] rounded-[4px] bg-[#fec80b] font-medium">Подробнее</button>
                               <button onClick={(e) => {handleAddToCart(item); e.preventDefault(); e.stopPropagation()} }><ShoppingCart size={26} className="max-sm:w-5 max-sm:h-5" /></button>
                             </div>
-                            <button onClick={openCatForm} className="flex items-center gap-2 text-[12px] whitespace-nowrap">Получить КП <ArrowDownToLine width={'15px'} height={'15px'} /></button>
-                            <button className="absolute top-2 right-2 p-1"><Heart width={'30px'} height={'30px'} className="duration-200 stroke-1 hover:fill-[#fec80b]" /></button>
+                            <button onClick={(e) => {setCatalogForm(true); e.preventDefault(); e.stopPropagation()}} className="flex items-center gap-2 text-[12px] whitespace-nowrap">Получить КП <ArrowDownToLine width={'15px'} height={'15px'} /></button>
+                            <button onClick={(e) => { handleToggleFavorite(item); e.preventDefault(); 
+                                e.stopPropagation(); 
+                              }} 
+                              className="absolute top-2 right-2 p-1 z-10">
+                                <Heart 
+                                width={'30px'} 
+                                height={'30px'} 
+                                className={`duration-200 stroke-1 ${favorites.some(fav => fav.id === item.id) ? 'fill-[#fec80b] text-[#fec80b]' : 'hover:fill-[#fec80b]'}`} />
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -535,7 +570,7 @@ const handleAddToCart = (item: any) => {
                       <h5 className="text-[22px] pb-2 font-[500]">{item.price}</h5>
                       <div className="flex flex-col gap-3">
                         <button className="w-[150px] py-2 text-[16px] rounded-[4px] bg-[#fec80b] whitespace-nowrap">Подробнее</button>
-                        <button onClick={openCatForm} className="w-[150px] flex items-center justify-center gap-2 text-[16px] whitespace-nowrap">Получить КП <ArrowDownToLine width={'15px'} height={'15px'} /></button>
+                        <button onClick={(e) => {setCatalogForm(true); e.preventDefault(); e.stopPropagation()}} className="w-[150px] flex items-center justify-center gap-2 text-[16px] whitespace-nowrap">Получить КП <ArrowDownToLine width={'15px'} height={'15px'} /></button>
                       </div>
                       <button className="absolute top-2 left-2 p-1"><Heart width={'30px'} height={'30px'} className="duration-200 stroke-1 hover:fill-[#fec80b]" /></button>
                     </div>
@@ -553,7 +588,7 @@ const handleAddToCart = (item: any) => {
                                 <button className="px-5 max-lg:px-10 max-md:px-6 max-sm:w-[80%] py-2 text-[12px] rounded-[4px] bg-[#fec80b] font-medium">Подробнее</button>
                                 <button onClick={(e) => {handleAddToCart(item); e.preventDefault(); e.stopPropagation()}}><ShoppingCart size={26} className="max-sm:w-5 max-sm:h-5" /></button>
                               </div>
-                              <button onClick={openCatForm} className="flex items-center gap-2 text-[12px]">Получить КП <ArrowDownToLine width={'15px'} height={'15px'} /></button>
+                              <button onClick={(e) => {setCatalogForm(true); e.preventDefault(); e.stopPropagation()}} className="flex items-center gap-2 text-[12px]">Получить КП <ArrowDownToLine width={'15px'} height={'15px'} /></button>
                               <button className="absolute top-2 right-2 p-1"><Heart width={'30px'} height={'30px'} className="duration-200 stroke-1 hover:fill-[#fec80b]" /></button>
                             </div>
                           </div>

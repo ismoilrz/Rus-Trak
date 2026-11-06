@@ -10,6 +10,8 @@ import Breadcrumbs from "./components/breadCrumbs/breadCrumbs"
 import CallModal from "./components/callModal/callModal"
 
 import { router } from "./router/routes"
+import Loading from "./components/spinner/spinner"
+import { ScrollToTop } from "./components/scrollTop/scrollTop"
 
 
 function App() {
@@ -58,6 +60,8 @@ function App() {
       <Header openCallModal={openCallModal} isScrolled={isScrolled} />
       <main className={`${isScrolled ? "pt-[20vh]" : ""} ${isGrayBackground ? "bg-[#f5f5f5]" : "bg-white"}`}>
         <div className="container max-xl:px-[3%]"><Breadcrumbs /></div>
+          <Loading />
+          <ScrollToTop />
         <Routes>
           {router.map((rout, r) => (
             <Route key={r} path={rout.path} element={rout.element} />

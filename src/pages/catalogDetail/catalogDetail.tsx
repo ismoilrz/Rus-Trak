@@ -10,19 +10,19 @@ const CatalogDetail = () => {
   const closeCatalogForm = () => setCatalogForm(false)
   const { selectedCatalog, slug } = useParams<{ selectedCatalog: string; slug: string }>();
 
-  useEffect(() => {
-      const scrollClosed = catalogForm;
-  
-      if (scrollClosed) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "auto";
-      }
-  
-      return () => {
-        document.body.style.overflow = "";
-      };
-    }, [catalogForm]);
+    useEffect(() => {
+        const scrollClosed = catalogForm;
+    
+        if (scrollClosed) {
+          document.body.style.overflow = "hidden";
+        } else {
+          document.body.style.overflow = "auto";
+        }
+    
+        return () => {
+          document.body.style.overflow = "";
+        };
+      }, [catalogForm]);
 
   const categoryData = selectedCatalog ? catalogConfig[selectedCatalog as keyof typeof catalogConfig] : undefined;
 
@@ -125,7 +125,7 @@ const CatalogDetail = () => {
               <div onClick={closeCatalogForm} className="fixed top-0 left-0 inset-0 z-50 bg-[#0009] flex items-center justify-center">
                 <div onClick={(e) => e.stopPropagation()} className="bg-white w-[500px] max-sm:w-[90%] py-15 flex flex-col items-center rounded-lg relative">
                   <button onClick={closeCatalogForm}><X  width={'30px'} height={'30px'} className="absolute top-3 right-3" /></button>
-                  <h3 className="text-[24px] text-center max-sm:text-[20px] font-[500] text-black">Получить коммерческое предложение</h3>
+                  <h3 className="text-[24px] text-center max-sm:text-[20px] max-w-[80%] font-[500] text-black">Получить коммерческое предложение</h3>
                   <form className="w-[70%] py-12 max-sm:py-6! max-sm:py-8 flex flex-col gap-3 max-sm:w-[80%]">
                       <div className="flex flex-col gap-1">
                           <label className="text-[14px]">Ваше имя *</label>

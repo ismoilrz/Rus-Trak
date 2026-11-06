@@ -19,7 +19,7 @@ const AboutCompany = () => {
                 отечественными корпорациями и государственными структурами: мы поставляем 
                 спецтехнику для таких корпораций, как Газпром, Росатом, Россети, РСК «МИГ» и других.
             </p>
-            <Link to={"/"}>
+            <Link to={"/about"}>
                 <button className="flex items-center gap-3 px-7 py-3 rounded-[4px] text-black bg-[#fec80b] duration-200 hover:opacity-[0.7]">
                     Подробнее 
                     <MoveRight />

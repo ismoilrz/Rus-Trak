@@ -578,7 +578,15 @@ const mobileDropdownRef = useRef<HTMLDivElement>(null);
                         <button className="w-[150px] py-2 text-[16px] rounded-[4px] bg-[#fec80b] whitespace-nowrap">Подробнее</button>
                         <button onClick={(e) => {setCatalogForm(true); e.preventDefault(); e.stopPropagation()}} className="w-[150px] flex items-center justify-center gap-2 text-[16px] whitespace-nowrap">Получить КП <ArrowDownToLine width={'15px'} height={'15px'} /></button>
                       </div>
-                      <button className="absolute top-2 left-2 p-1"><Heart width={'30px'} height={'30px'} className="duration-200 stroke-1 hover:fill-[#fec80b]" /></button>
+                      <button onClick={(e) => { handleToggleFavorite(item); e.preventDefault(); 
+                                e.stopPropagation(); 
+                              }} 
+                              className="absolute top-2 left-2 p-1 z-10">
+                                <Heart 
+                                width={'30px'} 
+                                height={'30px'} 
+                                className={`duration-200 stroke-1 ${favorites.some(fav => fav.id === item.id) ? 'fill-[#fec80b] ' : 'hover:fill-[#fec80b]'}`} />
+                            </button>
                     </div>
                     </Link>
 
@@ -595,7 +603,15 @@ const mobileDropdownRef = useRef<HTMLDivElement>(null);
                                 <button onClick={(e) => {handleAddToCart(item); e.preventDefault(); e.stopPropagation()}}><ShoppingCart size={26} className="max-sm:w-5 max-sm:h-5" /></button>
                               </div>
                               <button onClick={(e) => {setCatalogForm(true); e.preventDefault(); e.stopPropagation()}} className="flex items-center gap-2 text-[12px]">Получить КП <ArrowDownToLine width={'15px'} height={'15px'} /></button>
-                              <button className="absolute top-2 right-2 p-1"><Heart width={'30px'} height={'30px'} className="duration-200 stroke-1 hover:fill-[#fec80b]" /></button>
+                              <button onClick={(e) => { handleToggleFavorite(item); e.preventDefault(); 
+                                e.stopPropagation(); 
+                              }} 
+                              className="absolute top-2 right-2 p-1 z-10">
+                                <Heart 
+                                width={'30px'} 
+                                height={'30px'} 
+                                className={`duration-200 stroke-1 ${favorites.some(fav => fav.id === item.id) ? 'fill-[#fec80b] ' : 'hover:fill-[#fec80b]'}`} />
+                            </button>
                             </div>
                           </div>
                         </div>

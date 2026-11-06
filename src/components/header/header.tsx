@@ -34,11 +34,9 @@ const Header = ({ isScrolled, openCallModal }: HeaderProps) => {
   const [langDrop, setLangDrop] = useState<boolean>(false);
   const langDropRef = useRef<HTMLDivElement | null>(null);
 
-  const [catalog, setCatalog] = useState<boolean>(false);
-  const [catalog2, setCatalog2] = useState<boolean>(false);
-  const [catalog3, setCatalog3] = useState<boolean>(false);
+  const [activeModal, setActiveModal] = useState<string | null>(null);
 
-const [favoriteCount, setFavoriteCount] = useState(() => {
+  const [favoriteCount, setFavoriteCount] = useState(() => {
     const saved = localStorage.getItem('favorites');
     return saved ? JSON.parse(saved).length : 0;
   });
@@ -57,7 +55,7 @@ const [favoriteCount, setFavoriteCount] = useState(() => {
     };
   }, []);
 
-  const closeCatalog = () => setCatalog(false)
+  const closeCatalog = () => setActiveModal(null);
 
   useEffect(() => {
     if (!langDrop) return;
@@ -78,9 +76,7 @@ const [favoriteCount, setFavoriteCount] = useState(() => {
   }, [langDrop]);
 
   useEffect(() => {
-    const scrollClosed = catalog || catalog2 || catalog3;
-
-    if (scrollClosed) {
+    if (activeModal) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
@@ -89,7 +85,7 @@ const [favoriteCount, setFavoriteCount] = useState(() => {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [catalog, catalog2, catalog3]);
+  }, [activeModal]);
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
@@ -148,29 +144,45 @@ const [favoriteCount, setFavoriteCount] = useState(() => {
           </div>
         </div>
 
-        <div className="container max-xl:px-[3%] bg-white flex justify-between items-center h-[10vh] max-xl:h-[8vh] duration-300 z-40">
+        <div className="container max-xl:px-[3%] bg-white flex justify-between items-center! h-[10vh] max-xl:h-[8vh] duration-300 z-40">
           <div className="flex items-center gap-7 max-xl:gap-4">
 
-            <button onClick={() => setCatalog((c) => !c)} className={`px-4 h-10 bg-[#fec80b] rounded-[4px] text-black text-lg flex items-center gap-3 cursor-pointer`}>
+            {/* Catalog tugmasi */}
+            <button 
+              onClick={() => setActiveModal(activeModal === 'catalog' ? null : 'catalog')} 
+              className="px-4 h-10 bg-[#fec80b] rounded-[4px] text-black text-lg flex items-center gap-3 cursor-pointer"
+            >
               <div className="flex flex-col justify-center gap-1 h-full">
-                <div className={`${catalog ? "rotate-[45deg] translate-y-[3px]" : "rotate-0"} duration-200 w-[18px] h-[2.3px] bg-black`}></div>
-                <div className={`${catalog ? "hidden" : "flex"} duration-200 w-[18px] h-[2.3px] bg-black`}></div>
-                <div className={`${catalog ? "rotate-[-45deg] translate-y-[-3px]" : "rotate-0"} duration-200 w-[18px] h-[2.3px] bg-black`}></div>
+                <div className={`${activeModal === 'catalog' ? "rotate-[45deg] translate-y-[3px]" : "rotate-0"} duration-200 w-[18px] h-[2.3px] bg-black`}></div>
+                <div className={`${activeModal === 'catalog' ? "hidden" : "flex"} duration-200 w-[18px] h-[2.3px] bg-black`}></div>
+                <div className={`${activeModal === 'catalog' ? "rotate-[-45deg] translate-y-[-3px]" : "rotate-0"} duration-200 w-[18px] h-[2.3px] bg-black`}></div>
               </div>
               <span className={` ${isScrolled ? "hidden" : ""} duration-300 max-sm:hidden`}>Каталог</span>
             </button>
+
             {isScrolled && (
                 <Link className="scLog overflow-hidden max-sm:hidden" to={'/'}>
                   <img src={Logo} alt="Logo" className="w-[180px]" />
                 </Link>
             )}
+
             <div className="flex gap-8 max-xl:gap-4">
-              <button onClick={() => setCatalog2((c) => !c)} className={`${isScrolled ? "max-xl:hidden" : ""} text-black cursor-pointer max-lg:hidden`}>
-                О нас <span className="text-[#fec80b] text-[12px] inline-block transition-transform duration-200" style={{transform: catalog2 ? "rotate(180deg)" : "rotate(0deg)"}}>▼</span>
+              {/* "О нас" tugmasi */}
+              <button 
+                onClick={() => setActiveModal(activeModal === 'about' ? null : 'about')} 
+                className={`${isScrolled ? "max-xl:hidden" : ""} text-black cursor-pointer max-lg:hidden`}
+              >
+                О нас <span className="text-[#fec80b] text-[12px] inline-block transition-transform duration-200" style={{transform: activeModal === 'about' ? "rotate(180deg)" : "rotate(0deg)"}}>▼</span>
               </button>
-              <button onClick={() => setCatalog3((c) => !c)} className={`${isScrolled ? "max-xl:hidden" : ""} text-black cursor-pointer max-xl:hidden`}>
-                Медиа <span className="text-[#fec80b] text-[12px] inline-block transition-transform duration-200" style={{transform: catalog3 ? "rotate(180deg)" : "rotate(0deg)"}}>▼</span>
+
+              {/* "Медиа" tugmasi */}
+              <button 
+                onClick={() => setActiveModal(activeModal === 'media' ? null : 'media')} 
+                className={`${isScrolled ? "max-xl:hidden" : ""} text-black cursor-pointer max-xl:hidden`}
+              >
+                Медиа <span className="text-[#fec80b] text-[12px] inline-block transition-transform duration-200" style={{transform: activeModal === 'media' ? "rotate(180deg)" : "rotate(0deg)"}}>▼</span>
               </button>
+
               <nav className={`${isScrolled ? "max-xl:hidden" : ""} flex gap-6 max-xl:gap-4 max-lg:hidden`}>
                 {MenuData.map((item, idx) => (
                   <NavLink key={idx} to={item.path}>
@@ -182,17 +194,18 @@ const [favoriteCount, setFavoriteCount] = useState(() => {
           </div>
 
           <div className="flex items-center gap-5">
-
             <div className={`${isScrolled ? "w-[270px]!" : ""} h-9 w-[312px] max-xl:w-[270px] max-lg:hidden px-4 border border-[#fec80b] rounded-[40px] flex items-center justify-between duration-200 focus-within:shadow-[2px_1px_8px_#fec90b7d]`}>
               <input className="h-full w-full outline-hidden" type="text" placeholder="Поиск..." />
               <Search />
             </div>
             <Search width={'34px'} height={'34px'} className="hidden max-lg:flex" />
+            
             <Link to={"/cart"}>
                 <Badge count={totalItems}>
                   <ShoppingCart width={"30px"} height={"30px"} className="cursor-pointer" />
                 </Badge>
             </Link>
+            
             <Link to={"/heart"}>
                 <Badge count={favoriteCount}>
                   <Heart width={"30px"} height={"30px"} className="cursor-pointer" />
@@ -249,10 +262,16 @@ const [favoriteCount, setFavoriteCount] = useState(() => {
             </div>
           </div>
         </div>
-      <CatalogModal catalog={catalog} catalog2={catalog2} catalog3={catalog3} closeCatalog={closeCatalog} isScrolled={isScrolled} />
+
+        <CatalogModal 
+          catalog={activeModal === 'catalog'} 
+          catalog2={activeModal === 'about'} 
+          catalog3={activeModal === 'media'} 
+          closeCatalog={closeCatalog} 
+          isScrolled={isScrolled} 
+        />
 
       </header>
-
     </>
   );
 };

@@ -52,8 +52,8 @@ const HomeCategory = () => {
               <Link to={`/catalog/${item.slug}`} className="w-full h-full flex flex-col items-start! rounded-lg p-3">
                 <h4 className="text-[22px] max-xl:text-[19px] text-start">{item.title}</h4>
                 <span className="text-[#a1a1a1]">{item.trak.length} моделей</span>
-                <div className="w-full h-auto flex justify-end mt-6">
-                  <img className="h-[70%] w-[80%]!" src={item.cartImg} alt="Image" />
+                <div className="w-full h-auto flex justify-end mt-6 max-sm:mt-2">
+                  <img className="h-[70%] w-[80%]! max-sm:w-[55%]!" src={item.cartImg} alt="Image" />
                 </div>
               </Link>
             </SwiperSlide>

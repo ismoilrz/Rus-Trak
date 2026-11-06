@@ -41,7 +41,7 @@ const Footer = ({openCallModal}:FooterProps) => {
                             {MenuData.map((menu, idx) => (
                                 <Link key={idx} to={menu.path}>{menu.label}</Link>
                             ))}
-                            <Link to={"/articles"}>Полезные статьи</Link>
+                            <Link to={"/dvfdvs"}>Полезные статьи</Link>
                         </nav>
                     )}
                 </div>

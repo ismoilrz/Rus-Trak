@@ -1,5 +1,4 @@
 import About from "../pages/about/about";
-import Articles from "../pages/articles/articles";
 import Cart from "../pages/cart/card";
 import Catalog from "../pages/catalog/catalog";
 import CatalogDetail from "../pages/catalogDetail/catalogDetail";
@@ -11,6 +10,7 @@ import Home from "../pages/home/home";
 import Information from "../pages/information/information";
 import News from "../pages/news/news";
 import NewsDetail from "../pages/newsDetail/newsDetail";
+import NotFound from "../pages/notFound/notFound";
 import OurPartners from "../pages/ourpartners/ourPartners";
 import Production from "../pages/production/production";
 import Reklama from "../pages/reklama/reklama";
@@ -24,11 +24,11 @@ import Vacancies from "../pages/vacancies/vacancies";
 import Video from "../pages/video/video";
 import type { RoutesType } from "../types/routesType";
 
-export const router:RoutesType[] = [
+export const getRouter = (openCallModal: () => void): RoutesType[] => [
     {
         id: 1,
         path: "/",
-        element: <Home />
+        element: <Home openCallModal={openCallModal} /> 
     },
     {
         id: 2,
@@ -112,37 +112,37 @@ export const router:RoutesType[] = [
     },
     {
         id: 18,
-        path: "/articles",
-        element: <Articles />
-    },
-    {
-        id: 19,
         path: "/catalog",
         element: <Catalog />
     },
     {
-        id: 20,
+        id: 19,
         path: "/catalog/:selectedcatalog",
         element: <SelectedCatalog />
     },
     {
-        id: 21,
+        id: 20,
         path: "/news/:slug",
         element: <NewsDetail />
     },
     {
-        id: 22,
+        id: 21,
         path: "/catalog/:selectedCatalog/:slug",
         element: <CatalogDetail />
     },
     {
-        id: 23,
+        id: 22,
         path: "/cart",
         element: <Cart />
     },
     {
-        id: 24,
+        id: 23,
         path: "/heart",
         element: <HeartPage />
+    },
+    {
+        id: 24,
+        path: "*",
+        element: <NotFound />
     }
-]
+];

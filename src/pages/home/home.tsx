@@ -6,10 +6,13 @@ import HomeTopSlide from "./HomeTopSlide"
 import CircularScrollSection from "./scrollSect"
 import Statistics from "./statistics"
 
-const Home = () => {
+interface HomeProps {
+  openCallModal?: () => void;
+}
+const Home = ({openCallModal}:HomeProps) => {
   return (
     <>
-        <HomeTopSlide />
+        <HomeTopSlide openCallModal={openCallModal} />
         <HomeCategory />
         <AboutCompany />
         <Statistics />

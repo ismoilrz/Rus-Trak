@@ -5,7 +5,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Link } from "react-router-dom";
-import { MoveRight, X } from "lucide-react";
+import { MoveRight} from "lucide-react";
 import { NewsData } from "../../constants/news/newsData";
 
 const HomeNews = () => {

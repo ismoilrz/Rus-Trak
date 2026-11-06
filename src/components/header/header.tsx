@@ -16,8 +16,9 @@ import { Badge } from "antd";
 import { useCartStore } from "../../shared/useCartStore";
 
 type HeaderProps = {
-  isScrolled: boolean,
-  openCallModal: () => void,
+  isScrolled: boolean
+  openCallModal: () => void
+  openSearchF: () => void
 }
 
 const languages = {
@@ -26,7 +27,7 @@ const languages = {
   en: { flag: usa, label: 'English' }
 };
 
-const Header = ({ isScrolled, openCallModal }: HeaderProps) => {
+const Header = ({ isScrolled, openCallModal, openSearchF }: HeaderProps) => {
   const { t, i18n } = useTranslation();
   const [hoursDrop, setHoursDrop] = useState<boolean>(false);
   const hoursDropRef = useRef<HTMLDivElement | null>(null);
@@ -194,7 +195,7 @@ const Header = ({ isScrolled, openCallModal }: HeaderProps) => {
           </div>
 
           <div className="flex items-center gap-5">
-            <div className={`${isScrolled ? "w-[270px]!" : ""} h-9 w-[312px] max-xl:w-[270px] max-lg:hidden px-4 border border-[#fec80b] rounded-[40px] flex items-center justify-between duration-200 focus-within:shadow-[2px_1px_8px_#fec90b7d]`}>
+            <div onClick={openSearchF} className={`${isScrolled ? "w-[270px]!" : ""} h-9 w-[312px] max-xl:w-[270px] max-lg:hidden px-4 border border-[#fec80b] rounded-[40px] flex items-center justify-between duration-200 focus-within:shadow-[2px_1px_8px_#fec90b7d]`}>
               <input className="h-full w-full outline-hidden" type="text" placeholder="Поиск..." />
               <Search />
             </div>

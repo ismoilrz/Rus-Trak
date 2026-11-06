@@ -12,10 +12,15 @@ import CallModal from "./components/callModal/callModal"
 import { getRouter } from "./router/routes" // <-- getRouter ni import qilamiz
 import Loading from "./components/spinner/spinner"
 import { ScrollToTop } from "./components/scrollTop/scrollTop"
+import SearchCom from "./components/search/search"
 
 function App() {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [callModal, setCallModal] = useState<boolean>(false);
+
+  const [openSearch, setOpenSearch] = useState<boolean>(false)
+  const openSearchF = () => setOpenSearch(true)
+  const closeSearchf = () => setOpenSearch(false)
 
   const openCallModal = () => setCallModal(true);
   const closeCallModal = () => setCallModal(false);
@@ -53,12 +58,11 @@ function App() {
 
   const isGrayBackground = isCatalog || isNewsDetail;
 
-  // openCallModal ni routlarga uzatamiz
   const router = getRouter(openCallModal);
 
   return (
     <div>
-      <Header openCallModal={openCallModal} isScrolled={isScrolled} />
+      <Header openSearchF={openSearchF} openCallModal={openCallModal} isScrolled={isScrolled} />
       <main className={`${isScrolled ? "pt-[20vh]" : ""} ${isGrayBackground ? "bg-[#f5f5f5]" : "bg-white"}`}>
         <div className="container max-xl:px-[3%]">
           <Breadcrumbs />
@@ -75,6 +79,7 @@ function App() {
       <AnyQuestion isGrayBack={isGrayBackground} />
       <Footer openCallModal={openCallModal} />
 
+      <SearchCom openSearch={openSearch} closeSearchF={closeSearchf} />
       <CallModal callModal={callModal} closeCallModal={closeCallModal} />
     </div>
   );

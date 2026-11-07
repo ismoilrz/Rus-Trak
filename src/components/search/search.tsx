@@ -28,26 +28,23 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
     };
   }, [openSearch]);
 
-  // 1. catalogConfig'dan ham kategoriya kalitini (selectedCatalog), ham trak elementlarini birga yig'amiz
   const allTracks = catalogConfig 
     ? Object.entries(catalogConfig).flatMap(([categoryKey, categoryValue]) => {
         const traks = categoryValue.trak || [];
         return traks.map((item) => ({
           ...item,
-          categoryKey, // Masalan: "Curtain-trucks"
+          categoryKey,
         }));
       })
     : [];
 
-  // 2. title bo'yicha qidirish
   const filteredItems = allTracks.filter((item) =>
     item.title?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // 3. Natija bosilganda tegishli detail sahifasiga o'tish
   const handleItemClick = (categoryKey: string, slug: string) => {
     navigate(`/catalog/${categoryKey}/${slug}`);
-    handleClose(); // Qidiruv modalini yopamiz va tozalaymiz
+    handleClose();
   };
 
   return (
@@ -57,15 +54,11 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
     >
         <div 
           onClick={(e) => e.stopPropagation()} 
-          className="w-[55%] max-lg:w-[70%] max-sm:w-[90%] h-[95vh] bg-[#b4b4b4ab] rounded-2xl border border-white flex flex-col pb-3"
+          className="w-[55%] max-lg:w-[70%] max-sm:w-[90%] h-[95%] bg-[#b4b4b4ab] rounded-2xl border border-white flex flex-col pb-3"
         >
-            {/* Input qismi */}
             <div className="w-[96%] h-10 mx-auto mt-3 rounded-full bg-[#9e9e9ec1] flex items-center px-4 shadow-xl border border-white inset-shadow-[4px_4px_8px_#fff] shrink-0">
                 <Search size={26} stroke="#fff" />
-                <input 
-                  type="text" 
-                  placeholder="Поиск..." 
-                  value={searchTerm}
+                <input type="text" placeholder="Поиск..." value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-4 text-[#444] outline-none placeholder:text-white bg-transparent w-full" 
                 />
@@ -78,7 +71,6 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
               <button onClick={handleClose} className="py-1 px-3 bg-[#9e9e9ec1] border text-white border-white rounded-full inset-shadow-[4px_4px_8px_#fff]">Выход</button>
             </div>
 
-            {/* Natijalar ro'yxati */}
             <div className="w-[96%] mx-auto mt-3 overflow-y-auto flex-1 pr-2 pb-4 space-y-2 resultS">
                 {searchTerm.trim() === "" ? (
                   <p className="text-white/70 text-center mt-10">Введите название продукта...</p>

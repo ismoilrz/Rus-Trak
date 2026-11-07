@@ -37,9 +37,18 @@ button {
   background: none;
   width: 2px;
 }
-.catalog::-webkit-scrollbar-track{
-  
+
+.resultS::-webkit-scrollbar {
+  width: 3px !important;
 }
+ .resultS::-webkit-scrollbar-track {
+  width: 3px;
+  background: #0005;
+ }
+
+ .resultS::-webkit-scrollbar-thumb {
+  background: white;
+ }
 
 li {
   list-style: none;

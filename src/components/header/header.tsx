@@ -199,7 +199,7 @@ const Header = ({ isScrolled, openCallModal, openSearchF }: HeaderProps) => {
               <input className="h-full w-full outline-hidden" type="text" placeholder="Поиск..." />
               <Search />
             </div>
-            <Search width={'34px'} height={'34px'} className="hidden max-lg:flex" />
+            <Search onClick={openSearchF} width={'34px'} height={'34px'} className="hidden max-lg:flex" />
             
             <Link to={"/cart"}>
                 <Badge count={totalItems}>

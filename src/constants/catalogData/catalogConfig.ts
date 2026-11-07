@@ -2294,7 +2294,7 @@ export const catalogConfig: Record<string, {
     },
     ]
   },
-  "ADR-EXII-category-trucks": {
+"ADR-EXII-category-trucks": {
     slug: "ADR-EXII-category-trucks",
     title: "Автомобили ДОПОГ категория EXII", 
     cartImg: cartImg11,

@@ -75,8 +75,8 @@ const HomeProduct = () => {
                 modules={[Pagination, Navigation]}
                 className="mySwiper"
             >
-                {allTrakItems.map((trakItem, index) => (
-                <SwiperSlide key={trakItem.id || index} className="h-[370px]! bg-[#fff]!">
+                {allTrakItems.map((trakItem, idx) => (
+                <SwiperSlide key={`${trakItem.id}-${idx}`} className="h-[370px]! bg-[#fff]!">
                     <Link to={`/catalog/${trakItem.categorySlug}/${trakItem.slug}`} className="w-full h-full flex flex-col items-start rounded-lg">
                     <img className="h-[56%]!" src={trakItem.img} alt="" />
                     <h4 className="text-[17px] line-clamp-2 text-start m-3 min-h-12">

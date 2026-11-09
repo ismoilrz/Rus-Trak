@@ -9,11 +9,12 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'ru',
-    lng: 'ru', 
-    debug: false,
+    load: 'languageOnly', 
     interpolation: {
       escapeValue: false,
     },
+    detection: {
+      order: ['localStorage', 'navigator'],
+      caches: ['localStorage'],
+    },
   });
-
-export default i18n;

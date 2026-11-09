@@ -125,11 +125,11 @@ export const getRouter = (openCallModal: () => void): RoutesType[] => [
         path: "/news/:slug",
         element: <NewsDetail />
     },
-    {
-        id: 21,
-        path: "/catalog/:selectedCatalog/:slug",
-        element: <CatalogDetail />
-    },
+        {
+            id: 21,
+            path: "/catalog/:selectedCatalog/:slug",
+            element: <CatalogDetail />
+        },
     {
         id: 22,
         path: "/cart",

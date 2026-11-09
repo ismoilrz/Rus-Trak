@@ -29,6 +29,10 @@ const languages = {
 
 const Header = ({ isScrolled, openCallModal, openSearchF }: HeaderProps) => {
   const { t, i18n } = useTranslation();
+  
+  // i18n.language "en-US" kabi kelsa ham faqat asosiy qismini ("en") olamiz
+  const currentLang = (i18n.language || 'ru').split('-')[0];
+
   const [hoursDrop, setHoursDrop] = useState<boolean>(false);
   const hoursDropRef = useRef<HTMLDivElement | null>(null);
   
@@ -120,22 +124,22 @@ const Header = ({ isScrolled, openCallModal, openSearchF }: HeaderProps) => {
             <div className="flex gap-[60px] max-xl:gap-8 relative">
               <div ref={hoursDropRef} className="flex flex-col items-end relative">
                 <button onClick={() => setHoursDrop((h) => !h)} className="text-black flex items-center gap-1 cursor-pointer max-lg:hidden">
-                  Время работы <span className="text-[#fec80b] text-[12px] inline-block transition-transform duration-200" style={{transform: hoursDrop ? "rotate(180deg)" : "rotate(0deg)"}}>▼</span>
+                  {t("working_hours")} <span className="text-[#fec80b] text-[12px] inline-block transition-transform duration-200" style={{transform: hoursDrop ? "rotate(180deg)" : "rotate(0deg)"}}>▼</span>
                 </button>
                 <p className="text-[15px] max-lg:text-[14px] max-md:hidden max-lg:max-w-[200px] max-lg:text-end text-[#a1a1a1]">г. Нижний Новгород ул. Торфяная, 35</p>
 
                 {hoursDrop && (
                   <div className={`${isScrolled ? "hidden" : ''} max-lg:hidden absolute top-7 right-0 bg-[#fec80b] shadow-xl rounded-md z-50! px-4 py-2`}>
-                    <p className="text-black text-sm">Пн-пт: с 8:00 до 18:00</p>
-                    <p className="text-black text-sm">Сб-вс: Выходной</p>
+                    <p className="text-black text-sm">{t("monday_friday")}</p>
+                    <p className="text-black text-sm">{t("saturday_sunday")}</p>
                   </div>
                 )}
               </div>
 
               <div className="flex gap-6">
                 <div className="flex flex-col items-end text-[#a1a1a1] max-sm:hidden">
-                  <p className="max-lg:text-[14px]">Для регионов: 8 (800)-511-05-25</p>
-                  <p className="max-lg:text-[14px]">Нижний Новгород: 8 (831) 235-26-16</p>
+                  <p className="max-lg:text-[14px]">{t("regions_phone")}: 8 (800)-511-05-25</p>
+                  <p className="max-lg:text-[14px]">{t("nizhny_novgorod_phone")}: 8 (831) 235-26-16</p>
                 </div>
                 <button onClick={openCallModal} className="w-[46px] h-[46px] bg-[#fec80b] rounded-full flex items-center justify-center cursor-pointer">
                   <img src={Call} alt="Phone" />
@@ -158,7 +162,7 @@ const Header = ({ isScrolled, openCallModal, openSearchF }: HeaderProps) => {
                 <div className={`${activeModal === 'catalog' ? "hidden" : "flex"} duration-200 w-[18px] h-[2.3px] bg-black`}></div>
                 <div className={`${activeModal === 'catalog' ? "rotate-[-45deg] translate-y-[-3px]" : "rotate-0"} duration-200 w-[18px] h-[2.3px] bg-black`}></div>
               </div>
-              <span className={` ${isScrolled ? "hidden" : ""} duration-300 max-sm:hidden`}>Каталог</span>
+              <span className={` ${isScrolled ? "hidden" : ""} duration-300 max-sm:hidden`}>{t("catalog")}</span>
             </button>
 
             {isScrolled && (
@@ -173,7 +177,7 @@ const Header = ({ isScrolled, openCallModal, openSearchF }: HeaderProps) => {
                 onClick={() => setActiveModal(activeModal === 'about' ? null : 'about')} 
                 className={`${isScrolled ? "max-xl:hidden" : ""} text-black cursor-pointer max-lg:hidden`}
               >
-                О нас <span className="text-[#fec80b] text-[12px] inline-block transition-transform duration-200" style={{transform: activeModal === 'about' ? "rotate(180deg)" : "rotate(0deg)"}}>▼</span>
+                {t("about")} <span className="text-[#fec80b] text-[12px] inline-block transition-transform duration-200" style={{transform: activeModal === 'about' ? "rotate(180deg)" : "rotate(0deg)"}}>▼</span>
               </button>
 
               {/* "Медиа" tugmasi */}
@@ -181,13 +185,13 @@ const Header = ({ isScrolled, openCallModal, openSearchF }: HeaderProps) => {
                 onClick={() => setActiveModal(activeModal === 'media' ? null : 'media')} 
                 className={`${isScrolled ? "max-xl:hidden" : ""} text-black cursor-pointer max-xl:hidden`}
               >
-                Медиа <span className="text-[#fec80b] text-[12px] inline-block transition-transform duration-200" style={{transform: activeModal === 'media' ? "rotate(180deg)" : "rotate(0deg)"}}>▼</span>
+                {t("media")} <span className="text-[#fec80b] text-[12px] inline-block transition-transform duration-200" style={{transform: activeModal === 'media' ? "rotate(180deg)" : "rotate(0deg)"}}>▼</span>
               </button>
 
               <nav className={`${isScrolled ? "max-xl:hidden" : ""} flex gap-6 max-xl:gap-4 max-lg:hidden`}>
                 {MenuData.map((item, idx) => (
                   <NavLink key={idx} to={item.path}>
-                    {item.label}
+                    {t(item.label)}
                   </NavLink>
                 ))}
               </nav>
@@ -196,7 +200,7 @@ const Header = ({ isScrolled, openCallModal, openSearchF }: HeaderProps) => {
 
           <div className="flex items-center gap-5">
             <div onClick={openSearchF} className={`${isScrolled ? "w-[270px]!" : ""} h-9 w-[312px] max-xl:w-[270px] max-lg:hidden px-4 border border-[#fec80b] rounded-[40px] flex items-center justify-between duration-200 focus-within:shadow-[2px_1px_8px_#fec90b7d]`}>
-              <input className="h-full w-full outline-hidden" type="text" placeholder="Поиск..." />
+              <input className="h-full w-full outline-hidden" type="text" placeholder={t("search_placeholder")} />
               <Search />
             </div>
             <Search onClick={openSearchF} width={'34px'} height={'34px'} className="hidden max-lg:flex" />
@@ -225,8 +229,8 @@ const Header = ({ isScrolled, openCallModal, openSearchF }: HeaderProps) => {
                 className="w-10 h-10 rounded-full overflow-hidden cursor-pointer flex items-center justify-center bg-white"
               >
                 <img className="w-full h-full object-cover" 
-                  src={languages[i18n.language as keyof typeof languages]?.flag || rus} 
-                  alt={i18n.language} 
+                  src={languages[currentLang as keyof typeof languages]?.flag || rus} 
+                  alt={currentLang} 
                 />
               </button>
 
@@ -234,7 +238,7 @@ const Header = ({ isScrolled, openCallModal, openSearchF }: HeaderProps) => {
                 <div className="absolute right-0 top-12 bg-white border border-gray-200 shadow-lg rounded-md p-2 flex flex-col gap-2 z-50">
                   <button 
                     onClick={() => changeLanguage('ru')} 
-                    className={`w-20 h-10 border flex items-center justify-center gap-2 duration-200 hover:bg-[#e1e1e1] hover:rounded-lg ${i18n.language === 'ru' ? 'border-[#fec80b] border rounded-lg bg-[#fec80b] hover:bg-[#fec80b]' : 'border-transparent'}`}
+                    className={`w-20 h-10 border flex items-center justify-center gap-2 duration-200 hover:bg-[#e1e1e1] hover:rounded-lg ${currentLang === 'ru' ? 'border-[#fec80b] border rounded-lg bg-[#fec80b] hover:bg-[#fec80b]' : 'border-transparent'}`}
                     title="Русский"
                   >
                     <img className="w-8 h-8 object-cover" src={rus} alt="Ru" />
@@ -243,7 +247,7 @@ const Header = ({ isScrolled, openCallModal, openSearchF }: HeaderProps) => {
 
                   <button 
                     onClick={() => changeLanguage('uz')} 
-                    className={`w-20 h-10 border flex items-center justify-center gap-2 duration-200 hover:bg-[#e1e1e1] hover:rounded-lg ${i18n.language === 'uz' ? 'border-[#fec80b] border rounded-lg bg-[#fec80b] hover:bg-[#fec80b]' : 'border-transparent'}`}
+                    className={`w-20 h-10 border flex items-center justify-center gap-2 duration-200 hover:bg-[#e1e1e1] hover:rounded-lg ${currentLang === 'uz' ? 'border-[#fec80b] border rounded-lg bg-[#fec80b] hover:bg-[#fec80b]' : 'border-transparent'}`}
                     title="O'zbekcha"
                   >
                     <img className="w-8 h-8 object-cover" src={uzb} alt="Uz" />
@@ -252,7 +256,7 @@ const Header = ({ isScrolled, openCallModal, openSearchF }: HeaderProps) => {
 
                   <button 
                     onClick={() => changeLanguage('en')} 
-                    className={`w-20 h-10 border flex items-center justify-center gap-2 duration-200 hover:bg-[#e1e1e1] hover:rounded-lg ${i18n.language === 'en' ? 'border-[#fec80b] border rounded-lg bg-[#fec80b] hover:bg-[#fec80b]' : 'border-transparent'}`}
+                    className={`w-20 h-10 border flex items-center justify-center gap-2 duration-200 hover:bg-[#e1e1e1] hover:rounded-lg ${currentLang === 'en' ? 'border-[#fec80b] border rounded-lg bg-[#fec80b] hover:bg-[#fec80b]' : 'border-transparent'}`}
                     title="English"
                   >
                     <img className="w-8 h-8 object-cover" src={usa} alt="Us" />

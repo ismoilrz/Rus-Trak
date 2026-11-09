@@ -1,3 +1,18 @@
 {
-    "purpose": "maxsus transport vositalarini ishlab chiqarish va sotish"
+    "purpose": "Sanoat va ishlab chiqarish uchun sifatli jihozlar",
+    "working_hours": "Ish vaqti",
+    "monday_friday": "Dush-Jum: 8:00 dan 18:00 gacha",
+    "saturday_sunday": "Shan-Yak: Dam olish kuni",
+    "regions_phone": "Hududlar uchun",
+    "nizhny_novgorod_phone": "Nijniy Novgorod",
+    "catalog": "Katalog",
+    "about": "Biz haqimizda",
+    "media": "Media",
+    "search_placeholder": "Qidirish...",
+    "menu": {
+        "service": "Xizmat",
+        "repair": "Ta'mirlash",
+        "news": "Yangiliklar",
+        "contacts": "Aloqa"
+    }
 }

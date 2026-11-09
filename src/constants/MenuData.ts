@@ -1,24 +1,24 @@
 import type { MenuDataTypes } from "../types/MenuDataType";
 
 export const MenuData:MenuDataTypes[] = [
-    {
+   {
         id: 1,
-        label: "Сервис",
+        label: "menu.service",
         path: "/service",
     },
     {
         id: 2,
-        label: "Ремонт",
+        label: "menu.repair",
         path: "/repair",
     },
     {
         id: 3,
-        label: "Новости",
+        label: "menu.news",
         path: "/news",
     },
     {
         id: 4,
-        label: "Контакты",
+        label: "menu.contacts",
         path: "/contacts",
     },
 ]

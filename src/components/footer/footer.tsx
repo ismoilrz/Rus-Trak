@@ -53,9 +53,9 @@ const Footer = ({openCallModal}:FooterProps) => {
 
                     {openMenu2 && (
                         <nav className="gap-2 text-[14px] mt-4 text-[#e5e5e5 footMenuAni2">
-                            <Link to={"/"}>Фотогалерея</Link>
-                            <Link to={"/"}>Видео</Link>
-                            <Link to={"/"}>Рекламные материалы</Link>
+                            <Link to={"/galeriya"}>Фотогалерея</Link>
+                            <Link to={"/video"}>Видео</Link>
+                            <Link to={"/reklama"}>Рекламные материалы</Link>
                         </nav>
                     )}
                 </div>

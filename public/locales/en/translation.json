@@ -1,0 +1,18 @@
+{
+  "purpose": "Quality equipment for industry and manufacturing",
+  "working_hours": "Working hours",
+  "monday_friday": "Mon-Fri: 8:00 AM to 6:00 PM",
+  "saturday_sunday": "Sat-Sun: Day off",
+  "regions_phone": "For regions",
+  "nizhny_novgorod_phone": "Nizhny Novgorod",
+  "catalog": "Catalog",
+  "about": "About us",
+  "media": "Media",
+  "search_placeholder": "Search...",
+  "menu": {
+    "service": "Service",
+    "repair": "Repair",
+    "news": "News",
+    "contacts": "Contacts"
+  }
+}

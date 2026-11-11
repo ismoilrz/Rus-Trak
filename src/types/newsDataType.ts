@@ -1,9 +1,8 @@
-export interface NewsDataType {
-    id: number;
-    slug: string;
-    title: string;
-    date: string;
-    desc: string[];
-    pick: string[];
-    parametrs?: string[];
+
+export type NewsDataType = {
+    id: number
+    slug: string
+    translationKey: string
+    date: string
+    pick: string[]
 }

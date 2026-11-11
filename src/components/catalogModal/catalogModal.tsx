@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { AboutMenuData, MediaMenuData, MenuData } from "../../constants/MenuData";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 type CatalogProps = {
     catalog: boolean,
@@ -16,13 +17,14 @@ const CatalogModal = ({ catalog, catalog2, catalog3, closeCatalog, isScrolled }:
   const [catalogMenu1, setCatalogMenu1] = useState<boolean>(false)
   const [catalogMenu2, setCatalogMenu2] = useState<boolean>(false)
   const [catalogMenu3, setCatalogMenu3] = useState<boolean>(false)
+  const { t } = useTranslation();
 
   return (
     <div className={`${catalog || catalog2 || catalog3 ? "flex" : "hidden"} ${isScrolled ? "h-[93vh]! max-md:h-[95vh]!" : "h-[86vh]!"} max-md:h-[90vh]! flex-col justify-between catalog cat absolute top-full left-0 w-full bg-[#efefef] z-40 max-xl:overflow-y-auto`}>
         <div className="container pt-8 flex justify-between max-xl:px-[3%] max-md:flex-col max-md:justify-start max-sm:gap-4 max-md:gap-5 max-xl:pb-20">
           <div className="flex justify-between w-1/2 max-lg:w-[60%] max-md:w-[85%] max-sm:flex-col max-sm:gap-4">
             <nav className="flex flex-col gap-5">
-              <strong className="text-[22px] font-[800] max-sm:hidden">Категории</strong>
+              <strong className="text-[22px] font-[800] max-sm:hidden">{t("categories")}</strong>
               <div className="flex flex-col gap-3 max-sm:hidden">
                 <Link to={'/catalog/Curtain-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Шторные автомобили</li></Link>
                 <Link to={'/catalog/Crane-manipulators'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Краны-манипуляторы</li></Link>
@@ -38,7 +40,7 @@ const CatalogModal = ({ catalog, catalog2, catalog3, closeCatalog, isScrolled }:
             </div>
               
               <button onClick={() => setCatalogMenu1((c) => !c)} className="text-[22px] font-[800] hidden max-sm:flex items-center gap-2">
-                Категории 
+                {t("categories")} 
                 <span className="text-[#fec80b] text-[16px] inline-block transition-transform duration-200" style={{transform: catalogMenu1 ? "rotate(-180deg)" : "rotate(0deg)"}}>▼</span>
               </button>
 
@@ -60,22 +62,22 @@ const CatalogModal = ({ catalog, catalog2, catalog3, closeCatalog, isScrolled }:
               
             </nav>
             <nav className="flex flex-col gap-5">
-              <strong className="text-[22px] font-[800] max-sm:hidden">О нас</strong>
+              <strong className="text-[22px] font-[800] max-sm:hidden">{t("about")}</strong>
               <div className="flex flex-col gap-3 max-sm:hidden">
                 {AboutMenuData.map((menu, idx) => (
-                  <Link to={menu.path} key={idx}><li onClick={closeCatalog} className="text-black duration-200 inline-block hover:text-[#fec80b]">{menu.label}</li></Link>
+                  <Link to={menu.path} key={idx}><li onClick={closeCatalog} className="text-black duration-200 inline-block hover:text-[#fec80b]">{t(menu.labelKey)}</li></Link>
                 ))}
               </div>
 
               <button onClick={() => setCatalogMenu2((c) => !c)} className="text-[22px] font-[800] hidden max-sm:flex items-center gap-2">
-                О нас 
+                {t("about")} 
                 <span className="text-[#fec80b] text-[16px] inline-block transition-transform duration-200" style={{transform: catalogMenu2 ? "rotate(-180deg)" : "rotate(0deg)"}}>▼</span>
               </button>
 
               {catalogMenu2 && (
                 <div className="flex-col gap-3 overflow-hidden catMenAni2 hidden max-sm:flex">
                   {AboutMenuData.map((menu1, idx) => (
-                    <Link key={idx} to={menu1.path}><li onClick={closeCatalog} className="text-black duration-200 inline-block hover:text-[#fec80b]">{menu1.label}</li></Link>
+                    <Link key={idx} to={menu1.path}><li onClick={closeCatalog} className="text-black duration-200 inline-block hover:text-[#fec80b]">{t(menu1.labelKey)}</li></Link>
                   ))}
                 </div>
               )}
@@ -84,22 +86,22 @@ const CatalogModal = ({ catalog, catalog2, catalog3, closeCatalog, isScrolled }:
 
           <div className="flex max-lg:flex-col max-lg:justify-start max-lg:gap-10 max-sm:gap-4 max-lg:w-1/3 max-md:w-full justify-between w-[40%]">
               <nav className="flex flex-col gap-5">
-                <strong className="text-[22px] font-[800] max-sm:hidden">Медиа</strong>
+                <strong className="text-[22px] font-[800] max-sm:hidden">{t("media")}</strong>
                 <div className="flex flex-col gap-3 max-sm:hidden">
                   {MediaMenuData.map((menu, idx) => (
-                    <Link key={idx} to={menu.path}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{menu.label}</li></Link>
+                    <Link key={idx} to={menu.path}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t(menu.labelKey)}</li></Link>
                   ))}
                 </div>
 
                 <button onClick={() => setCatalogMenu3((c) => !c)} className="text-[22px] font-[800] hidden max-sm:flex items-center gap-2">
-                  Медиа 
+                  {t("media")} 
                   <span className="text-[#fec80b] text-[16px] inline-block transition-transform duration-200" style={{transform: catalogMenu3 ? "rotate(-180deg)" : "rotate(0deg)"}}>▼</span>
                 </button>
 
                 {catalogMenu3 && (
                   <div className="flex-col gap-3 overflow-hidden catMenAni3 hidden max-sm:flex">
                     {MediaMenuData.map((menu2, idx) => (
-                      <Link key={idx} to={menu2.path}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{menu2.label}</li></Link>
+                      <Link key={idx} to={menu2.path}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t(menu2.labelKey)}</li></Link>
                      ))}
                   </div>
                 )}
@@ -107,7 +109,7 @@ const CatalogModal = ({ catalog, catalog2, catalog3, closeCatalog, isScrolled }:
               </nav>
               <nav className="flex flex-col gap-5">
                 {MenuData.map((menu, idx) => (
-                  <Link key={idx} to={menu.path}><b onClick={closeCatalog} className="text-[22px] font-[800] duration-200 hover:text-[#fec80b]">{menu.label}</b></Link>
+                  <Link key={idx} to={menu.path}><b onClick={closeCatalog} className="text-[22px] font-[800] duration-200 hover:text-[#fec80b]">{t(menu.label)}</b></Link>
                 ))}
               </nav>
           </div>

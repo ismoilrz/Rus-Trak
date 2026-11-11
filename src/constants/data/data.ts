@@ -23,64 +23,64 @@ export const Employees:EmployeesType[] = [
     {
         id: 1,
         pick: emp1,
-        fullName: "Шаронов Сергей Владимирович",
-        role: "Генеральный директор",
+        fullName: "contacts_page.emp1_name",
+        role: "contacts_page.emp1_role",
         phone: "8 (831) 225-00-55",
         job: "komdir@rtrf.ru"
     },
     {
         id: 2,
         pick: emp2,
-        fullName: "Сучков Александр Алексеевич",
-        role: "Коммерческий директор",
+        fullName: "contacts_page.emp2_name",
+        role: "contacts_page.emp2_role",
         phone: "8 (831) 225-00-55",
         job: "sale@rtrf.ru"
     },
     {
         id: 3,
         pick: emp3,
-        fullName: "Савенко Екатерина Юрьевна",
-        role: "Менеджер по продажам",
+        fullName: "contacts_page.emp3_name",
+        role: "contacts_page.emp3_role",
         phone: "88312352517 доб.214",
         job: "RK+10653@rtrf.ru"
     },
     {
         id: 4,
         pick: emp4,
-        fullName: "Сергеева Юлия Юрьевна",
-        role: "Менеджер по продажам",
+        fullName: "contacts_page.emp4_name",
+        role: "contacts_page.emp4_role",
         phone: "88312352551 доб.215",
         job: "sale4+10653@rtrf.ru"
     },
     {
         id: 5,
         pick: emp5,
-        fullName: "Конев Максим Анатольевич",
-        role: "Руководитель направления развития дилерской сети",
+        fullName: "contacts_page.emp5_name",
+        role: "contacts_page.emp5_role",
         phone: "88312250055 доб.213",
         job: "sale3@rtrf.ru"
     },
     {
         id: 6,
         pick: emp6,
-        fullName: "Киселёв Иван Александрович",
-        role: "Руководитель отдела по сертификации ООО «РусТрак»",
+        fullName: "contacts_page.emp6_name",
+        role: "contacts_page.emp6_role",
         phone: "88312250055 доб.212",
         job: "sale2@rtrf.ru"
     },
     {
         id: 7,
         pick: emp7,
-        fullName: "Шалявин Дмитрий Леонидович",
-        role: "Главный конструктор",
+        fullName: "contacts_page.emp7_name",
+        role: "contacts_page.emp7_role",
         phone: "88312250055 доб.701",
         job: "kb@rtrf.ru"
     },
     {
         id: 8,
         pick: emp8,
-        fullName: "Ярилин Александр Валерьевич",
-        role: "Инженер по гарантии",
+        fullName: "contacts_page.emp8_name",
+        role: "contacts_page.emp8_role",
         phone: "88312250055 доб.610",
         job: "kb1@rtrf.ru"
     },
@@ -90,37 +90,37 @@ export const AboutSliders:AboutSliderType[] = [
     {
         id: 1,
         img: aboutSlide1,
-        title: "Собственная производственная база",
-        desc: "позволяет максимально снизить себестоимость продукции, повышая её конкурентоспособность",
+        title: "about_page.sliders.item1_title",
+        desc: "about_page.sliders.item1_desc",
     },
     {
         id: 2,
         img: aboutSlide2,
-        title: "Отдел контроля качества",
-        desc: "проверяет каждую единицу спецтехники, что гарантирует длительный срок эксплуатации и безотказную работу техники.",
+        title: "about_page.sliders.item2_title",
+        desc: "about_page.sliders.item2_desc",
     },
     {
         id: 3,
         img: aboutSlide3,
-        title: "Разработка надстроек шасси",
-        desc: "производится на шасси мировых производителей и позволяет предлагать уникальную технику — надёжную в эксплуатации и максимально адаптированную под конкретные условия работы.",
+        title: "about_page.sliders.item3_title",
+        desc: "about_page.sliders.item3_desc",
     },
     {
         id: 4,
         img: aboutSlide4,
-        title: "Наличие конструкторского бюро",
-        desc: "обеспечивает возможность индивидуального подхода к каждому клиенту.",
+        title: "about_page.sliders.item4_title",
+        desc: "about_page.sliders.item4_desc",
     },
     {
         id: 5,
         img: aboutSlide5,
-        title: "Собственная служба логистики",
-        desc: "предельно уменьшает сроки доставки комплектующих и агрегатов.",
+        title: "about_page.sliders.item5_title",
+        desc: "about_page.sliders.item5_desc",
     },
     {
         id: 6,
         img: aboutSlide6,
-        title: "Сервисная партнёрская сеть",
-        desc: "гарантирует техническую помощь на всей территории РФ."
+        title: "about_page.sliders.item6_title",
+        desc: "about_page.sliders.item6_desc",
     }
 ]

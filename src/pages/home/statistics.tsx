@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 const Counter = ({ end, duration = 2000 }: { end: number; duration?: number }) => {
   const [count, setCount] = useState(0);
@@ -50,25 +51,27 @@ const Counter = ({ end, duration = 2000 }: { end: number; duration?: number }) =
 };
 
 const Statistics = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="bg-[#fec80b] pt-[54px] pb-[65px]">
       <div className="container flex justify-between gap-[136px] max-xl:px-[3%] max-lg:gap-[80px] max-md:flex-col">
         <div className="flex flex-col items-start">
           <strong className="text-[100px] font-[500]"><Counter end={17} /></strong>
-          <h4 className="text-[32px] mt-[-25px] font-[500]">лет</h4>
-          <p className="text-lg text-start">За 17 лет деятельности ООО «РусТрак» превратилось в крупное предприятие по производству и продаже специальной техники</p>
+          <h4 className="text-[32px] mt-[-25px] font-[500]">{t("statistics.years")}</h4>
+          <p className="text-lg text-start">{t("statistics.years_desc")}</p>
         </div>
 
         <div className="flex flex-col items-start">
           <strong className="text-[100px] font-[500]"><Counter end={85} /></strong>
-          <h4 className="text-[32px] mt-[-25px] font-[500]">субъектов</h4>
-          <p className="text-lg text-start">Мы обеспечили 85 субъектов РФ надёжной техникой коммерческого и специализированного предназначения</p>
+          <h4 className="text-[32px] mt-[-25px] font-[500]">{t("statistics.subjects")}</h4>
+          <p className="text-lg text-start">{t("statistics.subjects_desc")}</p>
         </div>
 
         <div className="flex flex-col items-start">
           <strong className="text-[100px] font-[500]"><Counter end={11} /></strong>
-          <h4 className="text-[32px] mt-[-25px] font-[500]">концернов</h4>
-          <p className="text-lg text-start">ООО «РусТрак» дорожит доверием автопрома, которое подтверждено полномочиями от 11 автопроизводителей</p>
+          <h4 className="text-[32px] mt-[-25px] font-[500]">{t("statistics.concerns")}</h4>
+          <p className="text-lg text-start">{t("statistics.concerns_desc")}</p>
         </div>
       </div>
     </section>

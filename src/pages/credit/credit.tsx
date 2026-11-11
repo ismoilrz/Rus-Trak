@@ -1,94 +1,76 @@
+import { useTranslation } from "react-i18next";
+
 interface CreditType {
   id: number;
-  title: string;
-  desc: string;
+  titleKey: string;
+  descKey: string;
 }
 
 const CreditData: CreditType[] = [
   {
     id: 1,
-    title: "Кредит и лизинг на автоспецтехнику компании РусТрак",
-    desc: "Компания Рустрак предоставляет возможность покупки автоспецтехники в кредит и в лизинг. Мы работаем со всеми банками и лизинговыми компаниями. Помните, Вы можете выбрать любую лизинговую компанию, которая Вас устроит."
+    titleKey: "credit_page.item1_title",
+    descKey: "credit_page.item1_desc"
   },
   {
     id: 2,
-    title: "Основные условия лизинга",
-    desc: "Сумма аванса 5-30% от стоимости техники. Удорожание объекта лизинга в год на 8-9% Срок выплаты лизинговых платежей от 6-ти месяцев до 5-ти лет. После полного расчёта по лизингу техника переходит в собственность Вашей фирмы."
+    titleKey: "credit_page.item2_title",
+    descKey: "credit_page.item2_desc"
   },
   {
     id: 3,
-    title: "Преимущества лизинговых схем:",
-    desc: "Максимальная отсрочка платежа. Ускоренная амортизация: участники лизинговой сделки имеют право применять механизм ускоренной амортизации предмета лизинга с коэффициентом ускорения до 3, что позволяет быстрее окупить технику, варьировать длительность лизингового договора. Налоговая оптимизация: все платежи, производимые по договору лизинга, относятся на себестоимость продукции, тем самым, уменьшая налогооблагаемую базу по налогу на прибыль. Экономия средств лизингополучателя в результате отсутствия необходимости уплаты налога на имущество, т.к. предмет лизинга в большинстве случаев находится на балансе лизинговой компании. Возможность приобрести и использовать имущество, не отвлекая при этом собственные средства предприятия единовременно и в полном объёме. Возможность приобретения в собственность предмета лизинга, полностью освобожденного от налоговой нагрузки, по истечению срока договора лизинга. Самостоятельный выбор предмета лизинга и его продавца лизингополучателем."
+    titleKey: "credit_page.item3_title",
+    descKey: "credit_page.item3_desc"
   }
 ];
 
 const Credit = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="container max-xl:px-[3%] pt-6">
       <div className="flex flex-col gap-18">
         {CreditData.map((item) => (
           <div key={item.id} className="flex flex-col gap-7">
-            <h3 className="text-[28px] max-md:text-[24px] font-[500]">{item.title}</h3>
-            <p className="text-lg max-md:text-[16px] max-w-[75%] max-lg:max-w-full">{item.desc}</p>
+            <h3 className="text-[28px] max-md:text-[24px] font-[500]">{t(item.titleKey)}</h3>
+            <p className="text-lg max-md:text-[16px] max-w-[75%] max-lg:max-w-full">{t(item.descKey)}</p>
           </div>
         ))}
       </div>
-      <h3 className="text-[28px] max-md:text-[24px] font-[500] mt-18">Три основных вида лизинга:</h3>
+      <h3 className="text-[28px] max-md:text-[24px] font-[500] mt-18">{t("credit_page.leasing_types_title")}</h3>
       <div className="w-full p-7 max-md:pl-0 flex flex-col gap-7">
         <div className="flex gap-5 w-full">
           <div className="w-10 h-10 max-md:w-9 max-md:h-9 max-sm:h-8 max-md:text-[22px] bg-[#fec80b] rounded-full text-[24px] font-semibold flex items-center justify-center">1</div>
           <div className="w-full">
-            <h5 className="text-[20px] max-md:text-lg font-[500]">Финансовый лизинг</h5>
+            <h5 className="text-[20px] max-md:text-lg font-[500]">{t("credit_page.type1_title")}</h5>
             <p className="max-w-[65%] text-lg text-[16px] max-lg:max-w-[80%] max-sm:max-w-[95%]">
-              Лизингодатель (лизинговая компания) приобретает в собственность
-              указанное лизингополучателем имущество у определённого продавца и
-              передаёт лизингополучателю это имущество в качестве предмета
-              лизинга на определённых условиях во временное владение и
-              пользование. Имущество (предмет лизинга) переходит в собственность
-              лизингополучателя при условии выплаты лизингополучателем всех
-              лизинговых платежей.
+              {t("credit_page.type1_desc")}
             </p>
           </div>
         </div>
         <div className="flex gap-5 w-full">
           <div className="w-10 h-10 max-md:w-9 max-md:h-9 max-sm:h-8 max-md:text-[22px] bg-[#fec80b] rounded-full text-[24px] font-semibold flex items-center justify-center">2</div>
           <div className="w-full">
-            <h5 className="text-[20px] max-md:text-lg font-[500]">Оперативный лизинг</h5>
+            <h5 className="text-[20px] max-md:text-lg font-[500]">{t("credit_page.type2_title")}</h5>
             <p className="max-w-[65%] text-lg text-[16px] max-lg:max-w-[80%] max-sm:max-w-[95%]">
-              Имущество не выкупается лизингополучателем, а остаётся в
-              собственности лизинговой компании и после окончания срока действия
-              договора лизинга ещё раз передаётся в лизинг или аренду.
+              {t("credit_page.type2_desc")}
             </p>
           </div>
         </div>
         <div className="flex gap-5 w-full">
           <div className="w-10 h-10 max-md:w-9 max-md:h-9 max-sm:h-8 max-md:text-[22px] bg-[#fec80b] rounded-full text-[24px] font-semibold flex items-center justify-center">3</div>
           <div className="w-full">
-            <h5 className="text-[20px] max-md:text-lg font-[500]">Возвратный лизинг</h5>
+            <h5 className="text-[20px] max-md:text-lg font-[500]">{t("credit_page.type3_title")}</h5>
             <p className="max-w-[65%] text-lg text-[16px] max-lg:max-w-[80%] max-sm:max-w-[95%]">
-              Предприятие покупает имущество на собственные средства, а затем
-              обращается в лизинговую компанию. Это один из способов достаточно
-              быстро вернуть оборотные средства. Лизинговая компания
-              рассматривает имущество как предмет лизинга и приобретает его по
-              договору купли-продажи у предприятия. Это же имущество передается
-              в лизинг этому же предприятию.
+              {t("credit_page.type3_desc")}
             </p>
           </div>
         </div>
       </div>
       <div className="mt-11">
-        <h3 className="text-[28px] max-lg:text-[24px] font-[500]">Информация о партнёре - компания "CARCADE"</h3>
+        <h3 className="text-[28px] max-lg:text-[24px] font-[500]">{t("credit_page.partner_title")}</h3>
         <p className="text-lg mt-6 max-w-[75%] max-lg:max-w-full">
-          Компания CARCADE – это универсальный лизинговый партнёр. CARCADE
-          финансирует покупку как легковых автомобилей, так и коммерческого
-          транспорта. Оформить коммерческие автомобили или спецтехнику в
-          лизинг можно без предоставления финансовой отчётности по 2
-          документам. Условия оформления сделки: аванс от 4% до 50%, срок
-          лизинга от 12 до 60 месяцев, последний платёж от 1% до 15%.
-          Дополнительная выгода клиентов CARCADE: каско в рассрочку,
-          бесплатная цессия, электронный документооборот. За получением более
-          подробной информации по спецтехники и приобретению в лизинг
-          обращайтесь по телефону: 8 (831) 225-00-55
+          {t("credit_page.partner_desc")}
         </p>
       </div>
     </section>

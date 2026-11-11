@@ -2,15 +2,17 @@ import { Link, NavLink } from "react-router-dom"
 import qr from "../../assets/qr.svg"
 import { Socials } from "../../constants/socials"
 import { ChevronUp } from "lucide-react"
-import { AboutMenuData, MenuData } from "../../constants/MenuData"
 import { useState } from "react"
+import { useTranslation } from "react-i18next"
+import { AboutMenuData, MediaMenuData } from "../../constants/MenuData"
+// import { AboutMenuData, MediaMenuData } from "../../constants/FooterMenuData"
 
 type FooterProps = {
     openCallModal: () => void,
 }
 
-const Footer = ({openCallModal}:FooterProps) => {
-
+const Footer = ({ openCallModal }: FooterProps) => {
+    const { t } = useTranslation();
     const [openMenu1, setOpenMenu1] = useState<boolean>(false)
     const [openMenu2, setOpenMenu2] = useState<boolean>(false)
 
@@ -20,84 +22,83 @@ const Footer = ({openCallModal}:FooterProps) => {
         <div className="container flex justify-between max-lg:justify-start max-lg:gap-5 max-xl:px-[3%]">
             <div className="text-white">
                 <div className="flex flex-col gap-2">
-                    <p className="font-[500]">Тел/факс: <a href="tel:8 (831) 235-25-51">8 (831) 235-25-51</a></p>
+                    <p className="font-[500]">{t("footer.phone_label")} <a href="tel:88312352551">8 (831) 235-25-51</a></p>
                     <p className="font-[500]">Email: <a href="#">info+10653@rtrf.ru</a></p>
-                    <p className="font-[500]">г. Нижний Новгород ул. Торфяная, 35</p>
+                    <p className="font-[500]">{t("footer.address")}</p>
                 </div>
-                <button onClick={openCallModal} className="py-3 mt-4 mb-6 px-[30px] text-black rounded-[4px] bg-[#fec80b] duration-200 hover:opacity-[0.8]">Заказать звонок</button>
+                <button onClick={openCallModal} className="py-3 mt-4 mb-6 px-[30px] text-black rounded-[4px] bg-[#fec80b] duration-200 hover:opacity-[0.8]">{t("footer.order_call")}</button>
                 <img className="w-[180px]" src={qr} alt="QR Code" />
 
                 {/* media menu */}
                 <div className="hidden max-lg:block mt-10">
                     <button onClick={() => setOpenMenu1((m) => !m)} className="font-[500] flex items-center gap-3">
-                        О нас <span><ChevronUp className={`text-[#a1a1a1] transition-transform duration-200 ${openMenu1 ? "" : "rotate-180"}`} /></span>
+                        {t("footer.about_title")} <span><ChevronUp className={`text-[#a1a1a1] transition-transform duration-200 ${openMenu1 ? "" : "rotate-180"}`} /></span>
                     </button>
 
                     {openMenu1 && (
-                        <nav className="gap-2 text-[14px] text-[#e5e5e5] mt-4 footMenuAni">
-                            {AboutMenuData.map((menu, idx) => (
-                                <Link key={idx} to={menu.path}>{menu.label}</Link>
+                        <nav className="flex flex-col gap-2 text-[14px] text-[#e5e5e5] mt-4 footMenuAni">
+                            {AboutMenuData.map((menu) => (
+                                <Link key={menu.id} to={menu.path}>{t(menu.labelKey)}</Link>
                             ))}
-                            {MenuData.map((menu, idx) => (
-                                <Link key={idx} to={menu.path}>{menu.label}</Link>
+                            {MediaMenuData.map((menu) => (
+                                <Link key={menu.id} to={menu.path}>{t(menu.labelKey)}</Link>
                             ))}
-                            <Link to={"/dvfdvs"}>Полезные статьи</Link>
+                            <Link to={"/articles"}>{t("footer.useful_articles")}</Link>
                         </nav>
                     )}
                 </div>
 
                 <div className="hidden max-sm:block mt-3">
                     <button onClick={() => setOpenMenu2((m) => !m)} className="font-[500] flex items-center gap-3">
-                        Медиа <span><ChevronUp className={`text-[#a1a1a1] transition-transform duration-200 ${openMenu2 ? "" : "rotate-180"}`} /></span>
+                        {t("footer.media_title")} <span><ChevronUp className={`text-[#a1a1a1] transition-transform duration-200 ${openMenu2 ? "" : "rotate-180"}`} /></span>
                     </button>
 
                     {openMenu2 && (
-                        <nav className="gap-2 text-[14px] mt-4 text-[#e5e5e5 footMenuAni2">
-                            <Link to={"/galeriya"}>Фотогалерея</Link>
-                            <Link to={"/video"}>Видео</Link>
-                            <Link to={"/reklama"}>Рекламные материалы</Link>
+                        <nav className="flex flex-col gap-2 text-[14px] mt-4 text-[#e5e5e5] footMenuAni2">
+                            {MediaMenuData.map((menu) => (
+                                <Link key={menu.id} to={menu.path}>{t(menu.labelKey)}</Link>
+                            ))}
                         </nav>
                     )}
                 </div>
 
                 {/* media socials */}
                 <div className="max-lg:flex mt-10 gap-3 hidden">
-                    {Socials.map((item ,idx) => (
+                    {Socials.map((item, idx) => (
                         <a key={idx} href={item.path}>
                             <img className={item.isDes ? "w-11 h-8" : "w-8 h-8"} src={item.icon} alt="Icon" />
                         </a>
                     ))}
                 </div>
 
-                <p className="text-[14px] text-[#a1a1a1] max-w-[450px] max-xl:max-w-[300px] leading-[110%] max-lg:mt-10 mt-7">2009 - 2026 © Rus - Trucks Информация на сайте не является публичной офертой, определяемой согласно статье 435 Гражданского кодекса РФ и носит исключительно информационный характер.</p>
+                <p className="text-[14px] text-[#a1a1a1] max-w-[450px] max-xl:max-w-[300px] leading-[110%] max-lg:mt-10 mt-7">
+                    {t("footer.copyright")}
+                </p>
             </div>
 
             <div className="flex max-lg:hidden flex-col items-center gap-12 text-white text-[14px]">
                 <div>
-                    <strong className="text-white font-[500] text-[16px]">О нас</strong>
+                    <strong className="text-white font-[500] text-[16px]">{t("footer.about_title")}</strong>
                     <div className="flex gap-25 max-xl:gap-15 mt-10">
                         <nav className="flex flex-col gap-2">
-                            <NavLink to={"/about"}>О компании ООО «Рустрак»</NavLink>
-                            <NavLink to={"/news"}>Новости</NavLink>
-                            <NavLink to={"/ourpartners"}>Наши партнёры</NavLink>
-                            <NavLink to={"/production"}>Производство</NavLink>
-                            <NavLink to={"/supliers"}>Поставщикам и партнёрам</NavLink>
-                            <NavLink to={"/reviews"}>Отзывы</NavLink>
-                            <NavLink to={"/sertificate"}>Сертификаты</NavLink>
+                            {AboutMenuData.slice(0, 7).map((menu) => (
+                                <NavLink key={menu.id} to={menu.path}>{t(menu.labelKey)}</NavLink>
+                            ))}
                         </nav>
 
                         <nav className="flex flex-col gap-2">
-                            <NavLink to={"/vacancies"}>Вакансии</NavLink>
-                            <NavLink to={"/credit"}>Кредит и лизинг</NavLink>
-                            <NavLink to={"/service"}>Сервис</NavLink>
-                            <NavLink to={"/repair"}>Ремонт</NavLink>
-                            <NavLink to={"/contacts"}>Контакты</NavLink>
-                            <NavLink to={"/articles"}>Полезные статьи</NavLink>
+                            {AboutMenuData.slice(7).map((menu) => (
+                                <NavLink key={menu.id} to={menu.path}>{t(menu.labelKey)}</NavLink>
+                            ))}
+                            <NavLink to={"/service"}>{t("menu.service")}</NavLink>
+                            <NavLink to={"/repair"}>{t("menu.repair")}</NavLink>
+                            <NavLink to={"/contacts"}>{t("menu.contacts")}</NavLink>
+                            <NavLink to={"/articles"}>{t("footer.useful_articles")}</NavLink>
                         </nav>
                     </div>
                 </div>
                 <div className="flex gap-3">
-                    {Socials.map((item ,idx) => (
+                    {Socials.map((item, idx) => (
                         <a key={idx} href={item.path}>
                             <img className={item.isDes ? "w-11 h-8" : "w-8 h-8"} src={item.icon} alt="Icon" />
                         </a>
@@ -106,11 +107,11 @@ const Footer = ({openCallModal}:FooterProps) => {
             </div>
 
             <div className="max-sm:hidden">
-                <strong className="text-white font-[500] text-[16px]">Медиа</strong>
+                <strong className="text-white font-[500] text-[16px]">{t("footer.media_title")}</strong>
                 <nav className="text-white text-[14px] mt-10 flex flex-col gap-2">
-                    <NavLink to={"/galeriya"}>Фотогалерея</NavLink>
-                    <NavLink to={"/video"}>Видео</NavLink>
-                    <NavLink to={"/reklama"}>Рекламные материалы</NavLink>
+                    {MediaMenuData.map((menu) => (
+                        <NavLink key={menu.id} to={menu.path}>{t(menu.labelKey)}</NavLink>
+                    ))}
                 </nav>
             </div>
         </div>

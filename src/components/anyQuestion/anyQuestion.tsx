@@ -1,11 +1,13 @@
 import React, { useState, useRef } from 'react'
 import tr from '../../assets/truckImage-3gWCICr4.webp'
+import { useTranslation } from 'react-i18next'
 
 type AnyQuestionProps = {
   isGrayBack: boolean
 }
 
 const AnyQuestion = ({ isGrayBack }: AnyQuestionProps) => {
+  const { t } = useTranslation();
   const [text, setText] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [textNull, setTextNull] = useState<boolean>(false);
@@ -109,25 +111,25 @@ const AnyQuestion = ({ isGrayBack }: AnyQuestionProps) => {
         
         {isSubmitted ? (
           <div className="flex flex-col items-center justify-center text-center w-full">
-            <h3 className="text-[42px] max-lg:text-[34px] font-[500] text-black mb-2">УСПЕШНО!</h3>
+            <h3 className="text-[42px] max-lg:text-[34px] font-[500] text-black mb-2">{t("any_question.success_title")}</h3>
             <p className="text-[18px] text-black mb-4 max-w-[30%]">
-              Ваши данные направлену нашему менеджеру. Мы свяжемся с вами в ближайшее время!
+              {t("any_question.success_desc")}
             </p>
             <button 
               onClick={handleReset} 
               className="px-8 h-12 bg-black text-white rounded-[4px] font-[500] hover:opacity-[0.8] cursor-pointer duration-200"
             >
-              Закрыть
+              {t("any_question.close")}
             </button>
           </div>
         ) : (
           <div className='max-lg:flex max-lg:flex-col max-lg:items-center w-full'>
-            <h3 className="text-[42px] font-[500] max-lg:text-center max-lg:text-[34px]">ОСТАЛИСЬ ВОПРОСЫ?</h3>
-            <p className="text-[18px] max-lg:text-center">Оставьте свои контактные данные, и мы перезвоним вам в ближайшее время</p>
+            <h3 className="text-[42px] font-[500] max-lg:text-center max-lg:text-[34px]">{t("any_question.title")}</h3>
+            <p className="text-[18px] max-lg:text-center">{t("any_question.subtitle")}</p>
             
             <form className="flex items-start gap-4 pt-9 max-lg:pt-5 pb-4 max-lg:flex-col max-lg:items-center max-lg:w-full">
               <div className="flex flex-col gap-1 max-lg:w-full">
-                <label className={`${textNull ? "text-red-600" : "text-black"} text-[14px]`}>Имя *</label>
+                <label className={`${textNull ? "text-red-600" : "text-black"} text-[14px]`}>{t("any_question.name_label")}</label>
                 <input 
                   value={text}
                   onChange={(e) => {
@@ -136,15 +138,15 @@ const AnyQuestion = ({ isGrayBack }: AnyQuestionProps) => {
                   }}
                   className={`max-lg:w-full h-11 w-[294px] rounded-[4px] border ${textNull ? "border-red-600" : "border-black"} outline-hidden px-4`} 
                   type="text" 
-                  placeholder="Имя" 
+                  placeholder={t("any_question.name_placeholder")} 
                 />
                 {textNull && (
-                  <p className="text-[13px] text-red-600 mt-1">Поле обязательно для заполнения</p>
+                  <p className="text-[13px] text-red-600 mt-1">{t("any_question.name_error")}</p>
                 )}
               </div>
 
               <div className="flex flex-col gap-1 max-lg:w-full">
-                <label className={`${phoneError ? "text-red-600" : "text-black"} text-[14px]`}>Телефон *</label>
+                <label className={`${phoneError ? "text-red-600" : "text-black"} text-[14px]`}>{t("any_question.phone_label")}</label>
                 <input 
                   ref={phoneInputRef}
                   value={phone}
@@ -159,7 +161,7 @@ const AnyQuestion = ({ isGrayBack }: AnyQuestionProps) => {
                   placeholder="+998" 
                 />
                 {phoneError && (
-                  <p className="text-[13px] text-red-600 mt-1">Введите номер полностью</p>
+                  <p className="text-[13px] text-red-600 mt-1">{t("any_question.phone_error")}</p>
                 )}
               </div>
 
@@ -167,12 +169,12 @@ const AnyQuestion = ({ isGrayBack }: AnyQuestionProps) => {
                 onClick={handleSubBtn} 
                 className="px-[30px] max-sm:w-full h-11 bg-[#fec80b] duration-200 rounded-[4px] hover:opacity-[0.7] cursor-pointer mt-[25px] max-lg:mt-2 font-[500]"
               >
-                Отправить
+                {t("any_question.submit_btn")}
               </button>
             </form>
 
             <p className="text-black/60 text-[14px] max-lg:text-center mt-2">
-              Нажимая на кнопку отправить <a className="text-purple-900 underline hover:no-underline" href="#">Вы соглашаетесь на обработку персональных данных</a>
+                {t("any_question.agreement")} <a className="text-purple-900 underline hover:no-underline" href="#">{t("any_question.agreement_link")}</a>
             </p>
           </div>
         )}

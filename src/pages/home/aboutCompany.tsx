@@ -1,27 +1,25 @@
 import { MoveRight } from "lucide-react"
 import { Link } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 import pre from "../../assets/about-truck32.png"
 
 const AboutCompany = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="container flex items-center justify-between py-25 max-xl:px-[3%] max-lg:flex-col max-lg:gap-8">
         <div className="w-1/2 max-lg:w-full">
-            <h2 className="text-[42px] font-[500]">О компании <span className="text-[#fec80b]">Рустрак</span></h2>
+            <h2 className="text-[42px] font-[500]">{t("about_company.title_part1")} <span className="text-[#fec80b]">{t("about_company.title_highlight")}</span></h2>
             <p className="text-[18px] mt-4">
-                Наша компания занимает лидирующие позиции на рынке спецтехники: 
-                каждый день мы вносим свой вклад в развитие отечественного автопрома
-                и укрепление российской экономики.
+                {t("about_company.desc1")}
             </p>
             <p className="text-[18px] py-10">
-                «РусТрак» является ведущим производителем коммерческого транспорта и 
-                специализированной техники. Наша работа признана и высоко оценена крупнейшими 
-                отечественными корпорациями и государственными структурами: мы поставляем 
-                спецтехнику для таких корпораций, как Газпром, Росатом, Россети, РСК «МИГ» и других.
+                {t("about_company.desc2")}
             </p>
             <Link to={"/about"}>
                 <button className="flex items-center gap-3 px-7 py-3 rounded-[4px] text-black bg-[#fec80b] duration-200 hover:opacity-[0.7]">
-                    Подробнее 
+                    {t("about_company.more")}
                     <MoveRight />
                 </button>
             </Link>

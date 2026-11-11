@@ -9,10 +9,545 @@
     "about": "Biz haqimizda",
     "media": "Media",
     "search_placeholder": "Qidirish...",
+    "get_quote": "Narxni oling",
     "menu": {
         "service": "Xizmat",
         "repair": "Ta'mirlash",
         "news": "Yangiliklar",
         "contacts": "Aloqa"
+    },
+    "home_slider": {
+    "slide1_title": "Rustrak tomonidan ishlari mexanizmsiz bortli svayper ishlab chiqildi",
+    "slide1_desc1": "Ochilish vaqti 3 soniya.",
+    "slide1_desc2": "Stropsiz, remsiz, to'xtovsiz!",
+    "slide2_title": "Sotuvda KAMAZ 4308 tentli furgonlari mavjud",
+    "slide2_desc1": "Ustqurilma o'lchamlari 6200x2550x2850 mm.",
+    "slide2_desc2": "Narxi 5 500 000 rubl.",
+    "slide3_title": "Tent mexanizmiga ega bortli platformalar",
+    "slide3_desc": "Tijorat transporti, bortli platformalar, shu jumladan siljydigan tentlar va siljydigan tomlar ishlab chiqarish va yetkazib berish.",
+    "slide4_title": "MChJ «RusTrak»",
+    "slide4_desc": "Ixtisoslashtirilgan texnika va maxsus transport ishlab chiqarish va yetkazib berish",
+    "slide5_title": "MCV/HCV yuk mashinalari bazasidagi kran-manipulyatorlar",
+    "slide5_desc": "Kran-manipulyator qurilmalari o'rnatilgan avtomobillar ishlab chiqarish. Siljishga qarshi plitalardan foydalanish.",
+    "slide6_title": "MCV/HCV yuk mashinalari bazasidagi avtobenzintashuvchilar",
+    "slide6_desc": "Sig'imi 8 va 6 kub metr bo'lgan avtobenzintashuvchilar ishlab chiqarish va yetkazib berish. Alyuminiy kommunikatsiyalar, kompozit bosimli-so'ruvchi shlanglar, samarali yoqilg'i tarqatish tuguni.",
+    "more": "Batafsil",
+    "order_call": "Qo'ng'iroq buyurtma qilish",
+    "open_catalog": "Katalog ochish"
+  },
+  "categories": "Kategoriyalar",
+  "models_count": "modellar",
+  "Curtain-trucks": "Tentli yuk avtomobillari",
+  "Crane-manipulators": "Kran-manipulyatorlar",
+  "Fuel-bowsers": "Yoqilg‘i quyish avtomobillari",
+  "Aerial-work-platforms": "Avtogidravlik ko‘targichlar",
+  "Tanker-trucks": "Avtosisternalar",
+  "Tow-trucks": "Evakuatorlar",
+  "Insulated-vans": "Izotermik furgonlar",
+  "Container-chassis-trucks": "Konteyner tashuvchi avtomobillar",
+  "Hook-lifts": "Ilgakli yuk ko‘targichlar",
+  "Dump-trucks": "Samosvallar",
+  "ADR-EXII-category-trucks": "DOPOG EXII toifasidagi avtomobillar",
+  "about_company": {
+    "title_part1": "Kompaniya haqida",
+    "title_highlight": "Rustrak",
+    "desc1": "Kompaniyamiz maxsus texnika bozorida yetakchi o'rinlarni egallaydi: har kuni biz mahalliy avtomobilsozlikni rivojlantirishga va Rossiya iqtisodiyotini mustahkamlashga o'z hissamizni qo'shamiz.",
+    "desc2": "«RusTrak» tijorat transporti va ixtisoslashtirilgan texnikaning yetakchi ishlab chiqaruvchisi hisoblanadi. Bizning ishimiz yirik mahalliy korporatsiyalar va davlat tuzilmalari tomonidan e'tirof etilgan va yuqori baholangan: biz Gazprom, Rosatom, Rosseti, RSK «MIG» va boshqa korporatsiyalar uchun maxsus texnika yetkazib beramiz.",
+    "more": "Batafsil"
+  },
+  "statistics": {
+    "years": "yil",
+    "years_desc": "17 yillik faoliyati davomida «RusTrak» MChJ maxsus texnikalar ishlab chiqarish va sotish bo'yicha yirik korxonaga aylandi",
+    "subjects": "hududlar",
+    "subjects_desc": "Biz RFning 85 ta subyektini tijorat va maxsus maqsaddagi ishonchli texnika bilan ta'minladik",
+    "concerns": "kontsernlar",
+    "concerns_desc": "«RusTrak» MChJ 11 ta avtomobil ishlab chiqaruvchilarning vakolatlari bilan tasdiqlangan avtosanoat ishonchini qadrlaydi"
+  },
+  "circular_scroll": {
+    "steps": [
+      {
+        "title": "Konstruktorlik byurosi",
+        "desc": "O'z konstruktorlik byuromiz mijozning individual loyihalarini amalga oshirish imkonini beradi."
+      },
+      {
+        "title": "Loyihalash",
+        "desc": "Barcha loyihalar kuzov ishlab chiqaruvchilarining qo'llanmasiga muvofiq ishlab chiqilgan."
+      },
+      {
+        "title": "Ishlab chiqarish bazasi",
+        "desc": "O'z ishlab chiqarish bazamiz mahsulot tannarxini imkon qadar pasaytirib, uning raqobatbardoshligini oshiradi."
+      },
+      {
+        "title": "Kafolat",
+        "desc": "Ustqurilmalar va ishlar uchun kafolat shassi kafolatiga mos keladi."
+      },
+      {
+        "title": "Xizmat",
+        "desc": "Xizmat ko'rsatish: Rossiya Federatsiyasi bo'ylab hamkor servis tarmog'i."
+      }
+    ]
+  },
+  "titlePr": "Tavsiya etilgan mahsulotlar",
+  "more": "Batafsil",
+  "CurtainTrucks1Title": "MAZ 438121 (5389D5 modeli) tentli yuk avtomobili",
+    "CurtainTrucks1Price": "Narx so‘rov asosida",
+    "CurtainTrucks2Title": "MAZ 631228-524-010 (4389M2 modeli) tentli yuk avtomobili",
+    "CurtainTrucks2Price": "Narx so‘rov asosida",
+    "CurtainTrucks3Title": "KAMAZ 4308 tentli yuk avtomobili",
+    "CurtainTrucks3Price": "Narx so‘rov asosida",
+    "CurtainTrucks4Title": "KAMAZ 65657 tentli yuk avtomobili",
+    "CurtainTrucks4Price": "Narx so‘rov asosida",
+    "CurtainTrucks5Title": "KOMPAS 5 tentli yuk avtomobili",
+    "CurtainTrucks5Price": "Narx so‘rov asosida",
+    "CurtainTrucks6Title": "KAMAZ 65117 (4388F3 modeli) tentli yuk avtomobili",
+    "CurtainTrucks6Price": "Narx so‘rov asosida",
+    "CraneManipulators1Title": "MAZ 6312C5-8535-012, INMAN IT 150 kran-manipulyatorli avtomobil (4389N8 modeli)",
+    "CraneManipulators1Price": "Narx so‘rov asosida",
+    "CraneManipulators2Title": "MAZ 631228, PALFINGER SPK 23500 kran-manipulyatorli avtomobil",
+    "CraneManipulators2Price": "Narx so‘rov asosida",
+    "CraneManipulators3Title": "MAZ 631228, INMAN IT 150 kran-manipulyatorli avtomobil",
+    "CraneManipulators3Price": "Narx so‘rov asosida",
+    "CraneManipulators4Title": "KAMAZ 43118, INMAN IM150N kran-manipulyatorli avtomobil (4388C2-10 modeli)",
+    "CraneManipulators4Price": "Narx so‘rov asosida",
+    "FuelBowsers1Title": "SADKO 9 (C41A13) shassisida ikki bo‘limli 4,5 m³ yonilg‘i tashuvchi avtomobil",
+    "FuelBowsers1Price": "8 800 000₽ dan boshlab",
+    "FuelBowsers2Title": "GAZ C41R13 shassisidagi yonilg‘i quyish avtomobili (4389JY modeli)",
+    "FuelBowsers2Price": "6 200 000₽ dan boshlab",
+    "AerialWorkPlatforms1Title": "GAZ C41R33 shassisidagi PALFINGER P 180T avto-gidrokotaruvchi",
+    "AerialWorkPlatforms1Price": "Narx so‘rov asosida",
+    "TankerTrucks1Title": "KAMAZ 43089 oziq-ovqat sisternasi",
+    "TankerTrucks1Price": "Narx so‘rov asosida",
+    "TankerTrucks2Title": "4,2 m³ oziq-ovqat sisternali GAZON NEXT",
+    "TankerTrucks2Price": "Narx so‘rov asosida",
+    "TowTrucks1Title": "KAMAZ-4308 shassisidagi PALFINGER PK 13500T kran-manipulyatorli evakuator",
+    "TowTrucks1Price": "Narx so‘rov asosida",
+    "InsulatedVans1Title": "MAZ 631228 bortli avtomobili",
+    "InsulatedVans1Price": "Narx so‘rov asosida",
+    "InsulatedVans2Title": "JAC N90L bortli avtomobili",
+    "InsulatedVans2Price": "Narx so‘rov asosida",
+    "InsulatedVans3Title": "KAMAZ 43082 bortli avtomobili",
+    "InsulatedVans3Price": "Narx so‘rov asosida",
+    "ContainerChassisTrucks1Title": "KAMAZ 43082 izotermik furgoni",
+    "ContainerChassisTrucks1Price": "Narx so‘rov asosida",
+    "ContainerChassisTrucks2Title": "JAC 35 izotermik furgoni",
+    "ContainerChassisTrucks2Price": "Narx so‘rov asosida",
+    "HookLifts1Title": "KAMAZ 65115 shassisidagi konteyner tashuvchi avtomobil",
+    "HookLifts1Price": "Narx so‘rov asosida",
+    "DumpTrucks1Title": "KOMPAS 9 shassisidagi samosval",
+    "DumpTrucks1Price": "Narx so‘rov asosida",
+    "DumpTrucks2Title": "KAMAZ 6520-3072-53 shassisidagi don tashuvchi samosval (4388G6 modeli)",
+    "DumpTrucks2Price": "Narx so‘rov asosida",
+    "AdrExiiCategoryTrucks1Title": "KAMAZ 4308 tentli yuk avtomobili, EXII ADR (4388H2-10 modeli)",
+    "AdrExiiCategoryTrucks1Price": "Narx so‘rov asosida",
+    "AdrExiiCategoryTrucks2Title": "KAMAZ 4308-3083-69 bortli avtomobili, EX II ADR toifasi (4388H2-10 modeli)",
+    "AdrExiiCategoryTrucks2Price": "Narx so‘rov asosida",
+    
+  "news": {
+    "container": {
+      "title": "Rossiyada KAMAZ-65658 shassisidagi birinchi konteyner tashuvchi avtomobil «РУСТРАК» tomonidan ishlab chiqarildi",
+      "desc": [
+        "«РУСТРАК» MChJ KAMAZ 65658-1766-49 shassisida konteyner tashuvchi avtomobilni ishlab chiqdi. Bu ushbu shassi bazasida Rossiyada amalga oshirilgan birinchi loyihadir. U konteyner logistikasida foydalanish uchun mo‘ljallangan ixcham va manevrchan yechim hisoblanadi. Avtomobil ADR tasnifi bo‘yicha FL va AT toifasidagi xavfli yuklarni tashishga mo‘ljallangan."
+      ]
+    },
+    "comvex": {
+      "title": "«Rustrak» kompaniyasi COMVEX 2026 ko‘rgazmasidagi ishtiroki yakunlarini sarhisob qildi",
+      "desc": [
+        "«Rustrak» MChJ yilning eng yirik sohaviy tadbiridagi faoliyatini muvaffaqiyatli yakunladi. Kompaniya ekspozitsiyasi tijorat transporti sohasidagi ko‘plab mutaxassislar, ekspertlar va biznes vakillarining e’tiborini tortdi.",
+        "Ko‘rgazmaning barcha kunlari davomida kompaniya jamoasi stendda faoliyat olib bordi, mavjud hamkorlar va yangi mijozlar bilan uchrashuvlar hamda muzokaralar o‘tkazdi. Ishbilarmonlik dasturi davomida kelgusidagi hamkorlikning asosiy yo‘nalishlari belgilandi va sheriklik munosabatlarini rivojlantirishga qaratilgan bir qator muhim kelishuvlarga erishildi.",
+        "Stendimizga tashrif buyurgan barcha mehmonlarga qiziqishlari, ishonchlari va samarali muloqot uchun minnatdorchilik bildiramiz. Keyingi uchrashuvlargacha!"
+      ]
+    },
+    "sadko": {
+      "title": "Sadko 9 Farmer burg‘ilash uskunasiga ega kran-manipulyator bilan jihozlandi",
+      "desc": [
+        "«Rustrak» zavodi Sadko NEXT 9 shassisiga TAURUS 035A burg‘ilash va kran qurilmasiga ega kran-manipulyatorni o‘rnatdi.",
+        "Kran-manipulyator va burg‘ilash uskunasiga ega Sadko 9 avtomobili elektr energetikasi, qurilish va kommunal xizmatlar korxonalarining yo‘ldan tashqarida samarali ishlay oladigan transport vositalariga bo‘lgan ehtiyojini qondiradi. To‘liq uzatmali shassi va ikki qatorli kabina bilan birlashtirilgan universal uskuna yo‘lsiz sharoitlarda ish vaqtining yo‘qotilishini kamaytiradi.",
+        "«Rustrak» zavodi bosh konstruktori Dmitriy Leonidovich Dolgovanin izohi: «Ushbu avtomobil energetika sohasida ishlaydi, biroq uning geologik qidiruv, qurilish, neft-gaz sanoati va kommunal xizmatlargacha bo‘lgan qo‘llanish doirasi vazifalarni bajarish vaqtini sezilarli darajada qisqartiradi. Aslida, bu bir nechta maxsus texnika o‘rnini bosa oladigan mustaqil kompleksdir»."
+      ],
+      "parametrs": [
+        "Avtomobilning texnik xususiyatlari",
+        "Yuk avtomobilining yuk ko‘tarish xususiyatlari",
+        "Yuk ko‘tarish qobiliyati 2,05 tonnagacha",
+        "7 o‘rinli kabina",
+        "Yuk platformasining ichki o‘lchamlari: 3,5 × 2,4 metr",
+        "TAURUS 035A kran-burg‘ilash qurilmasining xususiyatlari",
+        "Yuk momenti: 7000 kgm",
+        "Strela uzunligi: 12,5 metr",
+        "2 metr masofada 3,5 tonna, 12,5 metr masofada 350 kg yuk ko‘tarish qobiliyati",
+        "8 metrgacha burg‘ilash chuqurligiga ega burg‘ilash qurilmasi",
+        "Burg‘ilash uskunasining maksimal ish radiusi: 6 metr",
+        "Ustunning o‘z o‘qi atrofida uzluksiz 360° aylanishi",
+        "Strela ko‘tarilish burchagi: -10° dan 70° gacha",
+        "Rotatorning maksimal aylanish momenti: 5 000 Nm",
+        "Burg‘ilash asbobining aylanish tezligi: 35 ayl/min"
+      ]
+    },
+    "womensDay": {
+      "title": "«Rustrak» kompaniyasi sizlarni Xalqaro xotin-qizlar kuni bilan tabriklaydi!",
+      "desc": [
+        "Hurmatli ayollar!",
+        "Sizlarni eng go‘zal bayram — 8-Mart bilan chin qalbimizdan tabriklaymiz! Ushbu kun ilk bahor gullari kabi yorqin va go‘zal bo‘lsin. Atrofimizdagi dunyoni yanada mehribon, uyg‘un va nurli qilayotganingiz uchun rahmat. Siz bizning ilhom manbaimizsiz!",
+        "Sizlarga samimiy tabassumlar, yaqinlaringiz e’tibori va har kuni ajoyib kayfiyat tilaymiz!",
+        "Hurmat va ezgu tilaklar bilan, «Rustrak» jamoasi."
+      ]
+    },
+    "dealer": {
+      "title": "«RUSTRAK» kompaniyasi INMAN va VELMASH-S rasmiy dileri maqomini uzaytirdi!",
+      "desc": [
+        "«RUSTRAK» kompaniyasi «INMAN» va «VELMASH-S» kran-manipulyator ishlab chiqaruvchilari bilan dilerlik shartnomalarini uzaytirdi.",
+        "Rasmiy diler maqomi mijozlarimizga original uskunalar yetkazib berilishi, zavod kafolati va to‘liq servis xizmatini kafolatlaydi.",
+        "Biz ishonchli Rossiya kran-manipulyator ishlab chiqaruvchilari bilan hamkorlikni davom ettiramiz. Xarid bo‘yicha murojaatlar uchun savdo bo‘limiga bog‘laning."
+      ]
+    },
+    "fatherland": {
+      "title": "«Rustrak» kompaniyasi sizlarni Vatan himoyachilari kuni bilan tabriklaydi!",
+      "desc": [
+        "Hurmatli hamkorlar!",
+        "Sizlarni Vatan himoyachilari kuni bilan tabriklaymiz!",
+        "Jasorat, or-nomus va sadoqat — bu fazilatlar har kuni dadil qarorlar qabul qilishda va biz uchun qadrli insonlar manfaatlarini himoya qilishda muhim ahamiyatga ega.",
+        "Ishonchliligingiz va hamkorlikdagi qo‘llab-quvvatlovingiz uchun rahmat. Hamkorligimiz bilan faxrlanamiz va birgalikda har qanday vazifani uddalashimizga ishonamiz.",
+        "Bayramingiz muborak bo‘lsin!"
+      ]
+    },
+    "fuel": {
+      "title": "«Rustrak» yoqilg‘i tashuvchi avtomobillari Sanoat va savdo vazirligi reyestriga kiritildi",
+      "desc": [
+        "«Rustrak» zavodining GAZ C41R13 shassisidagi yoqilg‘i tashuvchi avtomobillari sertifikatlashdan muvaffaqiyatli o‘tdi va Rossiya Federatsiyasi Sanoat va savdo vazirligining sanoat mahsulotlari reyestriga kiritildi.",
+        "Reyestrga C41R13 shassisidagi 4389JY modifikatsiyali yoqilg‘i tashuvchi avtomobillar kiritildi. Ular GAZ rusumli avtomobil bazasida ishlab chiqarilgan, yoqilg‘i tarqatish uskunasiga ega sisternalar bo‘lib, neft mahsulotlarini tashish uchun mo‘ljallangan."
+      ],
+      "parametrs": [
+        "Texnik xususiyatlari:",
+        "Ikki bo‘limli sisterna",
+        "Sig‘imi: 5 300 litr",
+        "SHHN-50/600P nasosi, parrakli turdagi (600 l/min)",
+        "Sisterna materiali: 09G2S po‘lat, 3 mm",
+        "Yoqilg‘i tarqatish shlangi Du-25, uzunligi 10 m",
+        "Alyuminiy quvurlar va kommunikatsiyalar"
+      ]
+    },
+    "newYear": {
+      "title": "«Rustrak» kompaniyasi hamkorlarini Yangi yil va Rojdestvo bayramlari bilan tabriklaydi!",
+      "desc": [
+        "Hurmatli hamkorlar!",
+        "Sizlarni Yangi yil va Rojdestvo bayramlari bilan chin qalbimizdan tabriklaymiz! Kirib kelayotgan yil yorqin g‘oyalar va yangi yutuqlar yili bo‘lsin. Sizga va yaqinlaringizga bayramona shinamlik, iliqlik va quvonch tilaymiz. Oilangizda tinchlik, sog‘lik va baxt hukm sursin!"
+      ]
+    },
+    "pageTitle": "RusTrak yangiliklari",
+    "readMore": "Batafsil",
+    "showMore": "Yana ko‘rsatish",
+    "next": "Keyingi >",
+    "previous": "< Oldingi",
+    "notFound": "Yangilik topilmadi",
+    "back": "Orqaga",
+    "moreNews": "Yana yangiliklar",
+    "information": "Axborot materiallari"
+  },
+  "any_question": {
+    "success_title": "MUVAFFAQIYATLI!",
+    "success_desc": "Ma'lumotlaringiz menejerimizga yuborildi. Tez orada siz bilan bog'lanamiz!",
+    "close": "Yopish",
+    "title": "SAVOLLARINGIZ QOLDIMI?",
+    "subtitle": "Aloqa ma'lumotlaringizni qoldiring, biz tez orada sizga qo'ng'iroq qilamiz",
+    "name_label": "Ism *",
+    "name_placeholder": "Ism",
+    "name_error": "Maydonni to'ldirish shart",
+    "phone_label": "Telefon *",
+    "phone_error": "Raqamni to'liq kiriting",
+    "submit_btn": "Yuborish",
+    "agreement": "Yuborish tugmachasini bosish orqali",
+    "agreement_link": "shaxsiy ma'lumotlarni qayta ishlashga rozilik berasiz"
+  },
+  "footer": {
+    "phone_label": "Tel/faks:",
+    "address": "Nijniy Novgorod sh., Torfyanaya ko'ch., 35",
+    "order_call": "Qo'ng'iroq buyurtma qilish",
+    "about_title": "Biz haqimizda",
+    "media_title": "Media",
+    "useful_articles": "Foydali maqolalar",
+    "copyright": "2009 - 2026 © Rus - Trucks Saytdagi ma'lumot RF Fuqarolik kodeksining 435-moddasiga muvofiq ommaviy oferta hisoblanmaydi va faqat axborot xarakteriga ega."
+  },
+  "about_menu": {
+    "item1": "«Rustrak» MChJ kompaniyasi haqida",
+    "item2": "Yangiliklar",
+    "item3": "Bizning hamkorlarimiz",
+    "item4": "Ishlab chiqarish",
+    "item5": "Yetkazib beruvchilar va hamkorlarga",
+    "item6": "Sharhlar",
+    "item7": "Sertifikatlar",
+    "item8": "Vakansiyalar",
+    "item9": "Kredit va lizing"
+  },
+  "media_menu": {
+    "item1": "Fotogalereya",
+    "item2": "Video",
+    "item3": "Reklama materiallari",
+    "item4": "Axborot materiallari"
+  },
+  "service_page": {
+    "title": "RusTrak avtomobil maxsus texnikalarini kafolatli ta'mirlash xizmati",
+    "description": "«RusTrak» MChJ mahsulotlarini sotib olganingizdan so'ng, kafolatli xizmat ko'rsatish, transport vositasini sozlash va ta'mirlash, qo'shimcha uskunalar yetkazib berish, shuningdek, mijozning vazifalariga ko'ra o'zgartirishlar kiritish bo'yicha har qanday masalada doimo yordam so'rab murojaat qilishingiz mumkin. Shartnoma tuzilgandan keyin istalgan vaqtda va istalgan muddatda texnik yordam va ekspluatatsiya bo'yicha maslahat olish uchun murojaat qilishingiz mumkin.",
+    "support_title": "Qanday qilib yordam olish mumkin?",
+    "step1": "Mas'ul shaxsning imzosi va tashkilot muhri kiritilgan Reklamatsiya aktini to'ldiring, nosozlik xarakterini batafsil tavsiflang. Rasmlarni ilova qiling: yo'lovchi eshigidagi shilda, ishdan chiqqan uskuna shildasi, PTSning birinchi sahifasi.",
+    "step2": "Nosozliklarni, shuningdek buyumning umumiy ko'rinishini suratga oling.",
+    "step3": "To'ldirilgan aktni, PTS nusxasini, nosozliklar fotosuratlarini elektron pochta orqali yuboring:",
+    "after_text1": "Shundan so'ng kafolat xizmati mutaxassislari egasi bilan bog'lanib, ta'mirlashni tashkil etish variantlarini taklif qilishadi.",
+    "after_text2": "«RusTrak» MChJ ishlab chiqarishidagi texnikalarga kafolatli xizmat ko'rsatish bo'yicha har qanday savollarni quyidagi telefon raqami orqali berishingiz mumkin",
+    "or_email": "yoki elektron pochta orqali:",
+    "employee_name": "Sharonov Sergey",
+    "employee_position": "kafolat va servis xizmati masalalari bo'yicha menejer",
+    "fill_A": "Shikoyat shaklini to'ldiring"
+  },
+  "repair_page": {
+    "main_title": "Nijniy Novgorodda «Rustrak» kompaniyasidan shtorkali yarim tirkamalarni ta'mirlash",
+    "main_desc": "Logistika sohasi tirkama texnikasining turg'un ishlashiga tayanadi. Shtorkali yarim tirkamalarni ta'mirlash intensiv ekspluatatsiyadan keyin konstruksiya ish qobiliyatini tiklashni ta'minlaydi. Bizning ustalarimiz tugunlarning konstruktiv xususiyatlarini hisobga oladi va tekshirilgan xizmat ko'rsatish usullarini qo'llaydi. Nijniy Novgorod shahridagi «RusTrak» kompaniyasi sifat va jihozlarning uzoq muddat xizmat qilishiga yo'naltirilgan xizmatni taklif etadi. O'z vaqtida o'tkaziladigan texnik tadbirlar tirkamalarning kuchli yuklamalardagi barqaror holatini qo'llab-quvvatlaydi. Xizmat ko'rsatishga bo'lgan ishonchli yondashuv texnikaning uzluksiz ishlashiga ishonch hosil qiladi.",
+    "calc_btn": "Ta'mirlash narxini hisoblash",
+    "services_title": "Bizning xizmatlar",
+    "services_desc": "«RusTrak» kompaniyasi shikastlangandan yoki ishdan chiqqandan keyin Nijniy Novgorodda yarim tirkamalarni to'liq ta'mirlash ishlarini bajaradi. Biz tirkama konstruksiyasini tiklaymiz, karkas va yon tentlarni to'g'rilaymiz, eshiklar, qulflar va ochilish mexanizmlarini ta'mirlaymiz, shuningdek tirkama pol va bortlarini tiklaymiz. Barcha ishlar yuqori aniqlik va sifat standartlariga rioya qilgan holda bajariladi, bu tiklangan elementlarning uzoq muddat xizmat qilishini kafolatlaydi.",
+    "important": "Muhim:",
+    "important_desc": "xodovoy, dvigatelni ta'mirlash, moylarni almashtirish va rejali texnik xizmat ko'rsatish bajarilmaydi.",
+    "advantages_title": "«RusTrak» kompaniyasining afzalliklari",
+    "advantages": [
+      "Katta ishlab chiqarish bazasi – bir vaqtning o'zida bir nechta yirik buyurtmalarni bajarish va ko'p sonli texnikalarga xizmat ko'rsatish imkonini beradi.",
+      "Sig'imli sexlar – yirik gabaritli yarim tirkamalar bilan ishlash qulayligini va xodimlar uchun qulaylikni ta'minlaydi.",
+      "Professional ustalar – tajriba va bilimga ega mutaxassislar sifatli va aniq ta'mirlashni kafolatlaydi.",
+      "To'liq ishlab chiqarish sikli – barcha ishlar chetdagi pudratchilarni jalb qilmasdan, tashxisdan tortib yakuniy yig'ishgacha o'z joyida bajariladi.",
+      "17 yillik tajriba – bozorda uzoq muddat ishlash kompaniyaning ishonchliligi va vakolatliligini tasdiqlaydi.",
+      "Ta'mirlash kafolati – bajarilgan ishlarning sifati va uzoq muddat xizmat qilishiga ishonchni ta'minlaydi."
+    ],
+    "quality_title": "Yarim tirkamalar uchun sifatli servis",
+    "quality_desc": "Shtorkali yarim tirkamalarni ta'mirlash texnikaning xizmat muddatini uzaytirishga va uning funksionalligini saqlab qolishga yordam beradi. Ishonchli va aniq xizmatdan foydalanish uchun jamoamizga murojaat qiling. Nijniy Novgorod shahridagi «RusTrak» kompaniyasi ishlarni detallarga e'tibor va qat'iy sifat standartlari bilan bajaradi. Texnik vazifalarni bizga ishonib topshiring va kutilgan natijani oling. Xizmat ko'rsatishni oldindan rejalashtiring va servisimiz qulayligiga ishonch hosil qiling. Hamkorlikni boshlash uchun biz bilan istalgan qulay usulda bog'laning, biz barchasini tez va professional tarzda tashkil etishga yordam beramiz.",
+    "form": {
+      "title": "Ta'mirlash narxini hisoblash",
+      "subtitle": "Ma'lumotlaringizni qoldiring, menejerimiz narxni hisoblash uchun siz bilan bog'lanadi.",
+      "name_label": "Ismingiz",
+      "name_placeholder": "Ivan",
+      "name_error": "Maydonni to'ldirish shart",
+      "phone_label": "Telefon",
+      "phone_error": "Raqamni to'liq kiriting",
+      "submit_btn": "Narxni hisoblash",
+      "success_title": "Muvaffaqiyatli!",
+      "success_desc": "Ma'lumotlaringiz menejerimizga yuborildi. Tez orada siz bilan bog'lanamiz!",
+      "close": "Yopish"
     }
+  },
+  "contacts_page": {
+    "title": "«RusTrak» avtomobil maxsus texnikalari ishlab chiqaruvchisining kontaktlari",
+    "address": "603035 Nijniy Novgorod sh., Torfyanaya ko'ch., 35-uy",
+    "nizhny_novgorod": "Nijniy Novgorod:",
+    "regions": "Hududlar uchun:",
+    "email": "Elektron pochta:",
+    "maintenance_booking": "Texnik xizmat ko'rsatishga yozilish:",
+    "employees_title": "Xodimlar",
+    "emp1_name": "Sharonov Sergey Vladimirovich",
+    "emp1_role": "Bosh direktor",
+    "emp2_name": "Suchkov Aleksandr Alekseyevich",
+    "emp2_role": "Tijorat direktori",
+    "emp3_name": "Savenko Ekaterina Yuryevna",
+    "emp3_role": "Savdo menejeri",
+    "emp4_name": "Sergeyeva Yuliya Yuryevna",
+    "emp4_role": "Savdo menejeri",
+    "emp5_name": "Konev Maksim Anatolyevich",
+    "emp5_role": "Dilerlik tarmog'ini rivojlantirish yo'nalishi rahbari",
+    "emp6_name": "Kiselyov Ivan Aleksandrovich",
+    "emp6_role": "«RusTrak» MChJ sertifikatsiyalash bo'limi rahbari",
+    "emp7_name": "Shalyavin Dmitriy Leonidovich",
+    "emp7_role": "Bosh konstruktor",
+    "emp8_name": "Yarilin Aleksandr Valeryevich",
+    "emp8_role": "Kafolat bo'yicha muhandis"
+  },
+  "about_page": {
+    "banner": {
+      "title": "«RusTrak» avtomobil zavodi - Nijniy Novgorod shahridagi tijorat transporti va ixtisoslashtirilgan texnikaning yetakchi ishlab chiqaruvchisi."
+    },
+    "swiper_title": "«RusTrak» avtomobil zavodi to'qnashuv va texnologik ishlanmalardan tortib tayyor mahsulotgacha bo'lgan to'liq sikl korxonasi hisoblanadi.",
+    "sliders": {
+      "item1_title": "O'z ishlab chiqarish bazasi",
+      "item1_desc": "mahsulot tannarxini maksimal darajada pasaytirishga, uning raqobatbardoshligini oshirishga imkon beradi",
+      "item2_title": "Sifat nazorati bo'limi",
+      "item2_desc": "maxsus texnikaning har bir birligini tekshiradi, bu esa uzoq muddatli ekspluatatsiya muddatini va texnikaning uzluksiz ishlashini kafolatlaydi.",
+      "item3_title": "Shassi ustki qismlarini ishlab chiqish",
+      "item3_desc": "jahon ishlab chiqaruvchilari shassilarida amalga oshiriladi va ekspluatatsiyada ishonchli hamda muayyan ish sharoitlariga maksimal darajada moslashtirilgan noyob texnikani taklif qilish imkonini beradi.",
+      "item4_title": "Konstruktorlik byurosining mavjudligi",
+      "item4_desc": "har bir mijozga yakka tartibda yondashish imkoniyatini ta'minlaydi.",
+      "item5_title": "O'z logistika xizmati",
+      "item5_desc": "butlovchi qismlar va agregatlarni yetkazib berish muddatlarini cheklangan darajada qisqartiradi.",
+      "item6_title": "Servis hamkorlik tarmog'i",
+      "item6_desc": "Rossiya Federatsiyasining butun hududi bo'ylab texnik yordamni kafolatlaydi."
+    },
+    "th": {
+      "title": "Bugungi kunda «RusTrak» MChJ - bu:",
+      "item1": "umumiy maydoni 7000 m2 dan ortiq bo'lgan 3 ta ishlab chiqarish korpusi;",
+      "item2": "20000 m2 dan ortiq ishlab chiqarish hududi;",
+      "item3": "yuqori sifatli texnika chiqarilishini kafolatlaydigan sifat xizmati;",
+      "item4": "stanok uskunalari zamonaviy parki;",
+      "item5": "chiqariladigan texnikaning oylik hajmi - 110 tagacha birlik.",
+      "item6": "o'z konstruktorlik-texnologik xizmatining mavjudligi"
+    },
+    "application": {
+      "industries_title": "Ishlab chiqariladigan texnikaning qo'llanilish sohalari:",
+      "industries_desc": "Qurilish, telekommunikatsiya, kommunal xo'jaligi, yo'l xo'jaligi, logika, qishloq xo'jaligi.",
+      "vehicles_title": "Ishlab chiqariladigan texnika:",
+      "vehicles_desc": "Manipulyator kranlar, yonilg'i quyish mashinalari, avtovishkalar, furgonlar, samosvallar, bort platformalari, evakuatorlar, ilmoqli yuklagichlar, ustaxonalar, oziq-ovqat sisternalari, vakuumli mashinalar, avtogidroyig'uvchilar.",
+      "p1": "«RusTrak» MChJ Rossiya Federatsiyasi hududida quyidagi brendlarning rasmiy dileri hisoblanadi: Palfinger, INMAN, HKTC, UNIC, DongYang, FASSI, Hangil, XCMG, HIAB.",
+      "p2": "16 yillik faoliyat davomida kompaniya distribyutorlar va avtoishlab chiqaruvchilarning yuqori darajadagi ishonchini qozondi: ISUZU RUS, KAMAZ, GAZ, DAEWOO, FAW, JAC, TRAKS VOSTOK RUS (KOMPAS), MAZ RUS, DAIMLER KAMAZ RUS (FUSO), HINO MOTORS, FOTON, DONG FENG, SHACHMAN, NEFAZ, ZAVOD START",
+      "p3": "Bizning mijozlarimiz: Gazprom, Rosatom, Rosseti, RSK «MIG», Rosneft va boshqalar."
+    }
+  },
+  "our_page": {
+    "title": "Hamkorlar",
+    "kamaz_title": "КАМАЗ",
+    "kamaz_desc": "«КАМАZ» kompaniyalar guruhi – Rossiya Federatsiyasining eng yirik avtomobil korporatsiyasi. PАО «КАМАЗ» og'ir yuk mashinalari ishlab chiqaruvchi yetakchi jahonning 20 taligiga kiradi va to'liq massasi 16 tonnadan ortiq bo'lgan og'ir yuk mashinalarini ishlab chiqarish hajmi bo'yicha 16-o'rinni egallaydi. PАО «KAMAZ» tashkilotlari guruhi Rossiya, MDH va uzoq xorij hududida 109 ta kompaniyani birlashtiradi. PАО «КАМАЗ» tashkilotlari guruhining yagona ishlab chiqarish majmuasi yuk avtomobillarini ishlab chiqarishning butun texnologik siklini – texnikani ishlab chiqish, tayyorlash, yig'ish va avtotheginalardan tortib tayyor mahsulotni sotish va servis hamkorligigacha qamrab oladi.",
+    "gaz_title": "GAZ guruhi",
+    "gaz_desc": "«GAZ guruhi» yengil va o'rta tonnajli tijorat avtomobillari, avtobuslar, og'ir yuk mashinalari, quvvat agregatlari va avtoelektronika butlovchi qismlarini ishlab chiqish va ishlab chiqarishga ixtisoslashgan.",
+    "dunfeng_title": "DUNFENQ TRAK RUS",
+    "dunfeng_desc": "DUNFENQ TRAK RUS",
+    "foton_title": "«Foton Motor» MChJ",
+    "foton_desc": "«Foton Motor» MChJ kompaniyasi 2009-yil 27-aprelda Moskva shahrida tashkil etilgan bo'lib, Pekin mashinasozlik kompaniyasi Beiqi Foton Motor Co., Ltd. ning Rossiya Federatsiyasidagi vakolatxonasi hisoblanadi.",
+    "ferro_title": "«FERRO ОТТИМО» MChJ",
+    "ferro_desc": "FASSI RF dagi eksklyuziv distribyutori «FERRO OTTIMO» MChJ",
+    "faw_title": "FAW",
+    "faw_desc": "FAW",
+    "shacman_title": "«Shakman motors» MChJ",
+    "shacman_desc": "Rossiyada Shacman yuk texnikasining rasmiy distribyutori.",
+    "partners1": {
+      "item1_title": "«Traks Vostok Rus» MChJ",
+      "item1_desc": "«Traks Vostok Rus» MChJ turli xil ustki qism variantlariga ega Kompas 9 va Kompas 12 o'rta tonnajli yuk avtomobillarining rasmiy distribyutori hisoblanadi.",
+      "item2_title": "«NEFAZ» Ochiq aksiyadorlik jamiyati.",
+      "item2_desc": "«NEFAZ» Ochiq aksiyadorlik jamiyati PАО «КАМАЗ» korxonalar guruhiga kiradi va КАМАZ shassilarida maxsus ustki qismlar ishlab chiqaruvchi Rossiyadagi eng yirik zavod hisoblanadi.",
+      "item3_title": "«Palfinger Kran Rus» MChJ",
+      "item3_desc": "«Palfinger Kran Rus» - Palfinger konserni (Avstriya) va Kraft Invest guruhi (Rossiya) qo'shma korxonasi bo'lib, Rossiya Federatsiyasi va MDH mamlakatlarida Palfinger ning eksklyuziv distribyutori hisoblanadi.",
+      "item4_title": "«KMU-RUS» MChJ",
+      "item4_desc": "«KMU-RUS» MChJ taniqli janubiy koreyalik brendlarning kran-manipulyatorlari, avtovishkalarini sotadi.",
+      "item5_title": "\"Zavod Start\" OAJ",
+      "item5_desc": "\"Zavod Start\" OAJ mahalliy va xorijiy ishlab chiqarishdagi keng turdagi shassilarda transport avtosisternalarini ishlab chiqarish va sotishga ixtisoslashgan.",
+      "item6_title": "MAZ",
+      "item6_desc": "Rossiyada MAZ tijorat texnikasining rasmiy distribyutori.",
+      "item7_title": "JAC Motors RUS",
+      "item7_desc": "JAC Motors RUS kompaniyasi Xitoyning JAC avtokonserni mahsulotlarining Rossiya hududidagi eksklyuziv importchisi va distribyutori hisoblanadi."
+    }
+  },
+  "production_page": {
+    "title": "Ishlab chiqarish",
+    "desc1": "«RusTrak» kompaniyasi — Nijniy Novgorod shahridagi tijorat transporti va ixtisoslashtirilgan texnikaning yetakchi ishlab chiqaruvchisi. Bizning mahsulotlarimiz - avtofurgonlar, bort platformalari, kran-manipulyatorlar, ustaxonalar, oziq-ovqat sisternalari, yonilg'i quyish mashinalari, avtogidroyig'uvchilar, samosvallar, vakuumli mashinalar, evakuatorlar, ilmoqli yuklagichlar. Barcha avtomobillar o'z ishlab chiqarishimizda yig'iladi.",
+    "desc2": "«RusTrak» ishlab chiqarish quvvatlari umumiy maydoni 7000 kvadrat metrdan ortiq bo'lgan 3 ta korpusdan iborat. Stanoklar parki zamonaviy yuqori texnologiyali uskunalar bilan jihozlangan bo'lib, bu tayyor mahsulotning yuqori sifatini belgilaydi. Kompaniya taniqli jahon va mahalliy ishlab chiqaruvchilarning butlovchi qismlaridan foydalanadi. Bugungi kunda kompaniyaning unumdorligi - oyiga 110 tagacha birlikni tashkil etadi.",
+    "staff_title": "Yuqori malakali xodimlar",
+    "staff_desc": "«RusTrak» MChJ mahsulotlari sifatining garovi - bu kompaniyaning texnologik uskunalarida ishlaydigan professionallar jamoasining mehnati. Kompaniya rahbariyati xodimlar uchun imkon qadar qulay mehnat sharoitlarini yaratish va xodimlarning professional tayyorgarligini oshirish haqida qayg'uradi. Har yarim yilda kompaniya xodimlari bilim va ko'nikmalarini qayta attestatsiyadan o'tkazadilar hamda malaka oshirish kurslaridan o'tadilar.",
+    "bureau_title": "O'z konstruktorlik byurosi",
+    "bureau_desc": "«RusTrak» kompaniyasi ishlab chiqarish bilan yaqin hamkorlikda ishlaydigan o'z konstruktorlik-texnologik byurosiga ega. Ishning bunday sxemasi mijozlarimizning istaklarini inobatga olgan holda ishlab chiqariladigan maxsus texnikani doimiy ravishda yaxshilash va modernizatsiya qilish imkonini beradi. Biz deyarli har qanday ehtiyojlar uchun avtomobil tayyorlashga tayyormiz!",
+    "quality_title": "Sifat nazorati",
+    "quality_desc": "Mahsulotlarimiz sifatini nazorat qilish ishlab chiqarishning barcha bosqichlarida amalga oshiriladi. Biz faqat ishonchli butlovchi qismlardan foydalanamiz, ularni sinovdan o'tgan yetkazib beruvchilardan sotib olamiz. «RusTrak» mutaxassislari ishlab chiqarish texnologiyasining bajarilishini qattiq nazorat qiladilar. Chiqariladigan mahsulotlarni doimiy sinovdan o'tkazish va tekshirish shikoyatlar kelib tushishini istisno qiladi. Ishlab chiqarishda mahsulot muvofiqligini sertifikatlashning umumjahon amaliyoti kiritilgan: ishlab chiqarishimizdan chiqadigan maxsus texnikaning har bir birligida xalqaro namunadagi sertifikat (ISO 9001) mavjud.",
+    "desc3": "Sifat nazorati bo'limi texnikaning har bir birligini baholaydi, bu esa xaridorlarimizga uzoq muddatli ekspluatatsiya muddatini va texnikaning uzluksiz ishlashini kafolatlaydi."
+  },
+  "suppliers_page": {
+    "title": "Yetkazib beruvchilar va hamkorlarga",
+    "subtitle": "«Rustrak» MChJ hamkorlikka taklif qiladi.",
+    "desc1": "Bizning kompaniyamiz 17 yildan beri tijorat transporti va maxsus texnika ishlab chiqarish hamda sotish bozorida faoliyat yuritib kelmoqda va Rossiya bozorida yetakchi o'rinlarni egallab turibdi.",
+    "desc2_p1": "Biz kompaniya rivojlanishining asosiy yo'nalishlaridan biri sifatida butlovchi qismlar yetkazib beruvchilarni hamkorlikka taklif qilamiz.",
+    "desc2_p2": "Bizning kompaniyamiz uzoq muddatli va samarali hamkorlikdan manfaatdor.",
+    "partners_title": "Hamkorlarda quyidagilarni qadrlaymiz:",
+    "item1": "Yuqori sifatli mahsulotlar;",
+    "item2": "Moslashuvchan narx siyosati;",
+    "item3": "Mahsulotlar assortimenti va ombordagi qoldiqlar haqida muntazam ravishda xabardor qilib borish;",
+    "item4": "Minimal yetkazib berish muddatlari.",
+    "principles_title": "«RusTrak» MChJning hamkorlar bilan o'zaro munosabatlardagi asosiy prinsiplari:",
+    "principle1": "Ishonch,",
+    "principle2": "halollik,",
+    "principle3": "o'zaro yordam;",
+    "footer_p1": "O'zaro manfaatli asosda uzoq muddatli hamkorlik. Kelishuvlarning bajarilishida majburiyatlilik va aniqlik. Ishbilarmonlik etikasining xalqaro me'yorlariga rioya qilish.",
+    "footer_p2": "Sizni doimo ko'rsatdan xursandmiz!"
+  },
+  "reviews": "Sharhlar",
+  "sertificates": "Sertifikatlar",
+  "vacancies_page": {
+    "vacancies": "Vakansiyalar",
+    "electrician": "Avtoelektrik",
+    "responsibilities": "Majburiyatlar:",
+    "resp1": "yoritish uskunalarini elektromontaj qilish",
+    "resp2": "maxsus avtomobillarga elektr uskunalar va ustki qismlarni montaj qilish",
+    "requirements": "Talablar:",
+    "req1": "ish tajribasi ma'qullanadi",
+    "req2": "yangi narsalarni o'rganish xohishi",
+    "conditions": "Sharoitlar:",
+    "cond1": "yangi narsalarni o'rganish xohishi",
+    "cond2": "to'liq ijtimoiy paket",
+    "cond3": "isitiladigan sex, yaxshi maishiy sharoitlar",
+    "cond4": "ushbu yo'nalish bo'yicha ta'lim beramiz",
+    "respond": "Topshirish",
+    "success_title": "Muvaffaqiyatli!",
+    "success_desc": "Ma'lumotlaringiz menejerimizga yuborildi. Tez orada siz bilan bog'lanamiz!",
+    "close": "Yopish",
+    "form_title": "Arizani qoldirish",
+    "form_subtitle": "«Avtoelektrik» vakansiyasiga",
+    "name_label": "Ismingiz *",
+    "name_placeholder": "Ism",
+    "name_error": "Maydonni to'ldirish shart",
+    "email_label": "E-mail *",
+    "email_error": "To'g'ri E-mail kiriting",
+    "phone_label": "Telefon *",
+    "phone_error": "Raqamni to'liq kiriting",
+    "resume_label": "Rezyumega havola *",
+    "resume_error": "Rezyumega havola ko'rsating",
+    "consent_text": "Shaxsiy ma'lumotlarni qayta ishlashga roziman",
+    "submit_btn": "Arizani yuborish"
+  },
+  "credit_page": {
+    "item1_title": "«RusTrak» kompaniyasining maxsus avtotexnikasi uchun kredit va lizing",
+    "item1_desc": "«RusTrak» kompaniyasi maxsus avtotexnikani kredit va lizingga sotib olish imkoniyatini taqdim etadi. Biz barcha banklar va lizing kompaniyalari bilan ishlaymiz. Yodingizda tuting, siz o'zingizga ma'qul kelgan har qanday lizing kompaniyasini tanlashingiz mumkin.",
+    "item2_title": "Lizingning asosiy shartlari",
+    "item2_desc": "Boshlang'ich to'lov miqdori texnika qiymatining 5-30% ini tashkil etadi. Lizing obyekti narxining yillik oshishi 8-9%. Lizing to'lovlarini to'lash muddati 6 oydan 5 yilgacha. Lizing bo'yicha to'liq hisob-kitob qilingandan so'ng, texnika sizning firmangiz mulkiga o'tadi.",
+    "item3_title": "Lizing sxemalarining afzalliklari:",
+    "item3_desc": "Maksimal to'lovni kechiktirish imkoniyati. Tezlashtirilgan amortizatsiya: lizing bitimi ishtirokchilari lizing predmetiga 3 gacha bo'lgan ko'paytirish koeffitsienti bilan tezlashtirilgan amortizatsiya mexanizmini qo'llash huquqiga ega, bu esa texnika xarajatlarini tezroq qoplash va lizing shartnomasi muddatini o'zgartirish imkonini beradi. Soliq optimallashtirish: lizing shartnomasi bo'yicha amalga oshiriladigan barcha to'lovlar mahsulot tannarxiga kiritiladi va shu orqali foyda solig'i bo mezonini kamaytiradi. Lizing oluvchi mulk solig'ini to'lash zarurati yo'qligi sababli mablag'larini tejaydi, chunki lizing predmeti aksariyat hollarda lizing kompaniyasining balansida bo'ladi. Korxonaning o'z mablag'larini bir vaqtning o'zida va to'liq hajfda sarflamay turib, mol-mulkni sotib olish va undan foydalanish imkoniyati. Lizing shartnomasi muddati tugagandan so'ng, soliq yukidan to'liq ozod qilingan lizing predmetini mulk sifatida sotib olish imkoniyati. Lizing oluvchi tomonidan lizing predmeti va uning sotuvchisini mustaqil ravishda tanlash.",
+    "leasing_types_title": "Lizingning uchta asosiy turi:",
+    "type1_title": "Moliyaviy lizing",
+    "type1_desc": "Lizing beruvchi (lizing kompaniyasi) lizing oluvchi ko'rsatgan mol-mulkni ma'lum bir sotuvchidan mulk qilib sotib oladi va uni lizing predmeti sifatida muayyan shartlar asosida vaqtincha egalik qilish va foydalanish uchun lizing oluvchiga topshiradi. Lizing oluvchi barcha lizing to'lovlarini to'lagan taqdirda, mol-mulk (lizing predmeti) lizing oluvchining mulkiga o'tadi.",
+    "type2_title": "Operativ lizing",
+    "type2_desc": "Mol-mulk lizing oluvchi tomonidan sotib olinmaydi, balki lizing kompaniyasining mulkida qoladi va lizing shartnomasi muddati tugagandan so'ng yana bir bor lizingga yoki ijaraga beriladi.",
+    "type3_title": "Qaytish lizingi",
+    "type3_desc": "Korxona mol-mulkni o'z mablag'lariga sotib oladi va keyin lizing kompaniyasiga murojaat qiladi. Bu oborot mablag'larini tezda qaytarishning usullaridan biridir. Lizing kompaniyasi mol-mulkni lizing predmeti sifatida ko'rib chiqadi va uni oldi-sotdi shartnomasi bo'yicha korxonadan sotib oladi. Ushbu mol-mulk xuddi shu korxonaga lizingga beriladi.",
+    "partner_title": "Hamkor haqida ma'lumot - \"CARCADE\" kompaniyasi",
+    "partner_desc": "CARCADE kompaniyasi universal lizing hamkoridir. CARCADE ham yengil avtomobillar, ham tijorat transporti xaridini moliyalashtiradi. Tijorat avtomobillari yoki maxsus texnikani lizingga rasmiylashtirish moliyaviy hisobotlarsiz, faqat 2 ta hujjat bo'yicha amalga oshirilishi mumkin. Bitimni rasmiylashtirish shartlari: boshlang'ich to'lov 4% dan 50% gacha, lizing muddati 12 oydan 60 oygacha, oxirgi to'lov 1% dan 15% gacha. CARCADE mijozlarining qo'shimcha afzalliklari: KASKO sug'urtasini bo'lib to'lash, bepul ssessiya, elektron hujjat aylanishi. Maxsus texnika va uni lizingga sotib olish bo'yicha batafsil ma'lumot olish uchun telefon: 8 (831) 225-00-55"
+  },
+  "gallery_page": {
+    "title": "«RusTrak» maxsus avtotexnika ishlab chiqaruvchisining fotogalereyasi",
+    "watch_video": "Videoni tomosha qilish",
+    "no_images": "Rasmlar topilmadi",
+    "btn_cars": "Avtomobillar",
+    "btn_production": "Ishlab chiqarish",
+    "btn_about": "Kompaniya haqida",
+    "btn_exhibitions": "Ko'rgazmalar"
+  },
+  "video_page": {
+    "title": "«RusTrak» maxsus avtotexnika ishlab chiqaruvchisining videofalereyasi",
+    "watch_photos": "Rasmlarni ko'rish",
+    "title1": "Kamaz Kompas shassisidagi HKTC kran-manipulyatori",
+    "title2": "KAMAZ Kompas 2022 | Suriladigan parda va tent tom | KAMAZ obzori | Bortli yuk mashinasi |",
+    "title3": "FUSO Canter shassisidagi UNIC374K kran-manipulyator qurilmasi",
+    "title4": "PALFINGER manipulyatorli ISUZU bazasidagi to'g'ri platformali evakuator",
+    "title5": "ISUZU GIGA don tashuvchi samosval",
+    "title6": "HANSIN AGP avtovishkali Hyundai HD78",
+    "title7": "ISUZU NPR75 ATZ ELF 7.5 bazasidagi 5.2 kub metr hajmli yonilg'i quyish mashinasi",
+    "title8": "GAZon NEXT avtokelektronika yonilg'i quyish mashinasi",
+    "title9": "FUSO Canter oziq-ovqat sisternasi",
+    "title10": "Suriladigan tom va yon pardali ISUZU yuk bortli mashinasi",
+    "title11": "Kirib kelayotgan yangi yil bilan!",
+    "title12": "UNIC kran-manipulyatorli GAZON NEXT",
+    "title13": "Gazon Next avtotonilg'i quyish mashinasi (ATZ)",
+    "title14": "STT 2017 Rustrak MChJ ko'rgazmasi yakunlari",
+    "title15": "Suriladigan tom va pardali bort platformasi FOTON 1093 / Commercial vehicle FOTON 1093",
+    "title16": "ISUZU NQR90 shassisidagi INMAN IT90 kran-manipulyatori"
+  },
+  "reklama_page": {
+    "title": "Reklama materiallari",
+    "item1_title": "OOO RUSTRAK",
+    "item1_url": "Tijorat transportini qayta jihozlash zavodi",
+    "item2_title": "Avtoyonilg'i quyish mashinalari",
+    "item2_url1": "GAZ NEXT varaqasi",
+    "item2_url2": "GAZ varaqasi",
+    "item2_url3": "FUSO varaqasi",
+    "item3_title": "Oziq-ovqat sisternalari",
+    "item3_url1": "GAZ NEXT oziq-ovqat sisternasi varaqasi",
+    "item3_url2": "FUSO oziq-ovqat sisternasi varaqasi"
+  }
+
+
 }

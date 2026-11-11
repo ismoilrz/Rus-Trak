@@ -9,10 +9,544 @@
   "about": "About us",
   "media": "Media",
   "search_placeholder": "Search...",
+  "get_quote": "Get a quote",
   "menu": {
     "service": "Service",
     "repair": "Repair",
     "news": "News",
     "contacts": "Contacts"
+  },
+  "home_slider": {
+    "slide1_title": "Frameless Swiper developed by Rustrak",
+    "slide1_desc1": "Opening in 3 seconds.",
+    "slide1_desc2": "No slings, no belts, no stops!",
+    "slide2_title": "KAMAZ 4308 curtain sider vans in stock",
+    "slide2_desc1": "Superstructure dimensions 6200x2550x2850 mm.",
+    "slide2_desc2": "Price 5,500,000 rub.",
+    "slide3_title": "Flatbed platforms with curtain mechanism",
+    "slide3_desc": "Production and delivery of commercial vehicles, flatbed platforms, including with sliding curtains and sliding roof.",
+    "slide4_title": "LLC «RusTrak»",
+    "slide4_desc": "Production and supply of specialized equipment and special transport",
+    "slide5_title": "Crane manipulators based on MCV/HCV trucks",
+    "slide5_desc": "Production of vehicles with crane-manipulator units. Use of anti-shift plates.",
+    "slide6_title": "Fuel bowsers based on MCV/HCV trucks",
+    "slide6_desc": "Production and delivery of fuel bowsers with a volume of 8 and 6 cubic meters. Aluminum communications, composite pressure-suction hoses, high-performance fuel dispensing unit.",
+    "more": "Read more",
+    "order_call": "Request a call",
+    "open_catalog": "Open catalog"
+},
+"categories": "Categories",
+"models_count": "models",
+"Curtain-trucks": "Curtain-side trucks",
+"Crane-manipulators": "Loader cranes",
+"Fuel-bowsers": "Fuel tanker trucks",
+"Aerial-work-platforms": "Aerial work platforms",
+"Tanker-trucks": "Tanker trucks",
+"Tow-trucks": "Tow trucks",
+"Insulated-vans": "Insulated vans",
+"Container-chassis-trucks": "Container carrier trucks",
+"Hook-lifts": "Hooklift trucks",
+"Dump-trucks": "Dump trucks",
+"ADR-EXII-category-trucks": "ADR EXII category vehicles",
+"about_company": {
+    "title_part1": "About",
+    "title_highlight": "Rustrak",
+    "desc1": "Our company holds leading positions in the special equipment market: every day we contribute to the development of domestic automotive industry and the strengthening of the Russian economy.",
+    "desc2": "«RusTrak» is a leading manufacturer of commercial vehicles and specialized equipment. Our work is recognized and highly appreciated by major domestic corporations and government structures: we supply special equipment for corporations such as Gazprom, Rosatom, Rosseti, RSK «MiG» and others.",
+    "more": "Read more"
+  },
+  "statistics": {
+    "years": "years",
+    "years_desc": "Over 17 years of activity, LLC «RusTrak» has grown into a large enterprise for the production and sale of special equipment",
+    "subjects": "regions",
+    "subjects_desc": "We have provided 85 regions of the Russian Federation with reliable commercial and specialized vehicles",
+    "concerns": "concerns",
+    "concerns_desc": "LLC «RusTrak» values the trust of the automotive industry, which is confirmed by authorizations from 11 automakers"
+  },
+  "circular_scroll": {
+    "steps": [
+      {
+        "title": "Design Bureau",
+        "desc": "Our own design bureau makes it possible to implement individual client projects."
+      },
+      {
+        "title": "Development",
+        "desc": "All projects are developed in accordance with the bodybuilders' manual."
+      },
+      {
+        "title": "Production Base",
+        "desc": "Our own production base allows us to minimize product cost, increasing its competitiveness."
+      },
+      {
+        "title": "Warranty",
+        "desc": "The warranty for superstructures and works corresponds to the chassis warranty."
+      },
+      {
+        "title": "Service",
+        "desc": "Service maintenance: partner service network throughout the Russian Federation."
+      }
+    ]
+  },
+  "titlePr": "Recommended products",
+  "more": "Read more",
+  "CurtainTrucks1Title": "MAZ 438121 Curtain-Side Truck (Model 5389D5)",
+    "CurtainTrucks1Price": "Price upon request",
+    "CurtainTrucks2Title": "MAZ 631228-524-010 Curtain-Side Truck (Model 4389M2)",
+    "CurtainTrucks2Price": "Price upon request",
+    "CurtainTrucks3Title": "KAMAZ 4308 Curtain-Side Truck",
+    "CurtainTrucks3Price": "Price upon request",
+    "CurtainTrucks4Title": "KAMAZ 65657 Curtain-Side Truck",
+    "CurtainTrucks4Price": "Price upon request",
+    "CurtainTrucks5Title": "KOMPAS 5 Curtain-Side Truck",
+    "CurtainTrucks5Price": "Price upon request",
+    "CurtainTrucks6Title": "KAMAZ 65117 Curtain-Side Truck (Model 4388F3)",
+    "CurtainTrucks6Price": "Price upon request",
+    "CraneManipulators1Title": "MAZ 6312C5-8535-012 Truck with INMAN IT 150 Loader Crane (Model 4389N8)",
+    "CraneManipulators1Price": "Price upon request",
+    "CraneManipulators2Title": "MAZ 631228 Truck with PALFINGER SPK 23500 Loader Crane",
+    "CraneManipulators2Price": "Price upon request",
+    "CraneManipulators3Title": "MAZ 631228 Truck with INMAN IT 150 Loader Crane",
+    "CraneManipulators3Price": "Price upon request",
+    "CraneManipulators4Title": "KAMAZ 43118 Truck with INMAN IM150N Loader Crane (Model 4388C2-10)",
+    "CraneManipulators4Price": "Price upon request",
+    "FuelBowsers1Title": "SADKO 9 (C41A13) Fuel Bowser with 4.5 m³ Two-Section Tank",
+    "FuelBowsers1Price": "From 8 800 000₽",
+    "FuelBowsers2Title": "Fuel Bowser on GAZ C41R13 Chassis (Model 4389JY)",
+    "FuelBowsers2Price": "From 6 200 000₽",
+    "AerialWorkPlatforms1Title": "PALFINGER P 180T Aerial Work Platform on GAZ C41R33 Chassis",
+    "AerialWorkPlatforms1Price": "Price upon request",
+    "TankerTrucks1Title": "KAMAZ 43089 Food-Grade Tanker",
+    "TankerTrucks1Price": "Price upon request",
+    "TankerTrucks2Title": "GAZON NEXT with 4.2 m³ Food-Grade Tank",
+    "TankerTrucks2Price": "Price upon request",
+    "TowTrucks1Title": "Tow Truck on KAMAZ-4308 Chassis with PALFINGER PK 13500T Loader Crane",
+    "TowTrucks1Price": "Price upon request",
+    "InsulatedVans1Title": "MAZ 631228 Flatbed Truck",
+    "InsulatedVans1Price": "Price upon request",
+    "InsulatedVans2Title": "JAC N90L Flatbed Truck",
+    "InsulatedVans2Price": "Price upon request",
+    "InsulatedVans3Title": "KAMAZ 43082 Flatbed Truck",
+    "InsulatedVans3Price": "Price upon request",
+    "ContainerChassisTrucks1Title": "KAMAZ 43082 Insulated Van",
+    "ContainerChassisTrucks1Price": "Price upon request",
+    "ContainerChassisTrucks2Title": "JAC 35 Insulated Van",
+    "ContainerChassisTrucks2Price": "Price upon request",
+    "HookLifts1Title": "Container Carrier on KAMAZ 65115 Chassis",
+    "HookLifts1Price": "Price upon request",
+    "DumpTrucks1Title": "Dump Truck on KOMPAS 9 Chassis",
+    "DumpTrucks1Price": "Price upon request",
+    "DumpTrucks2Title": "Grain-Dump Truck on KAMAZ 6520-3072-53 Chassis (Model 4388G6)",
+    "DumpTrucks2Price": "Price upon request",
+    "AdrExiiCategoryTrucks1Title": "KAMAZ 4308 Curtain-Side Truck, ADR EXII (Model 4388H2-10)",
+    "AdrExiiCategoryTrucks1Price": "Price upon request",
+    "AdrExiiCategoryTrucks2Title": "KAMAZ 4308-3083-69 Flatbed Truck, ADR EX II Category (Model 4388H2-10)",
+    "AdrExiiCategoryTrucks2Price": "Price upon request",
+
+  "news": {
+    "container": {
+      "title": "Russia's first container truck on the KAMAZ-65658 chassis has been manufactured by Rustrak",
+      "desc": [
+        "LLC Rustrak has developed a container truck on the KAMAZ 65658-1766-49 chassis — the first project of its kind in Russia based on this chassis. It is a compact and manoeuvrable solution for container logistics. The vehicle is designed to transport dangerous goods in FL and AT vehicle categories according to ADR classification."
+      ]
+    },
+    "comvex": {
+      "title": "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition",
+      "desc": [
+        "LLC Rustrak successfully completed its work at the largest industry event of the year. The Rustrak exhibition attracted the attention of a wide range of specialists, experts, and business representatives in the commercial vehicle sector.",
+        "Throughout the exhibition, the company team actively worked at the stand, holding meetings and negotiations with existing partners and new clients. During the business programme, key areas for further cooperation were outlined, and a number of important agreements aimed at developing partnerships were reached.",
+        "We thank all visitors to our stand for their interest, trust, and productive dialogue. See you next time!"
+      ]
+    },
+    "sadko": {
+      "title": "Sadko 9 Farmer has been equipped with a crane manipulator and drilling rig",
+      "desc": [
+        "The Rustrak plant installed a crane manipulator with a TAURUS 035A drilling and crane unit on the Sadko NEXT 9 chassis.",
+        "The Sadko 9 with a loader crane and drilling equipment meets the needs of energy, construction, and utility companies for vehicles capable of operating effectively off-road. The versatile equipment, combined with an all-wheel-drive chassis and double cab, minimises downtime in off-road conditions.",
+        "Comment by Dmitry Leonidovich Dolgovanin, Chief Designer of the Rustrak plant: «This vehicle will operate in the energy sector, but its range of applications — from geological exploration, construction, and oil and gas to utilities — significantly reduces task completion time. In fact, it is an autonomous unit capable of replacing several specialised machines»."
+      ],
+      "parametrs": [
+        "Vehicle technical specifications",
+        "Truck payload specifications",
+        "Payload capacity: up to 2.05 tonnes",
+        "7-seat cabin",
+        "Internal cargo platform dimensions: 3.5 × 2.4 metres",
+        "TAURUS 035A crane-drill specifications",
+        "Load moment: 7,000 kgm",
+        "Boom length: 12.5 metres",
+        "Lifting capacity: 3.5 tonnes at 2 metres and 350 kg at 12.5 metres",
+        "Drilling rig with a drilling depth of up to 8 metres",
+        "Maximum drill working radius: 6 metres",
+        "Continuous 360° column rotation around its axis",
+        "Boom elevation angle: -10° to 70°",
+        "Maximum rotator torque: 5,000 Nm",
+        "Drilling tool rotation speed: 35 rpm"
+      ]
+    },
+    "womensDay": {
+      "title": "Rustrak wishes you a happy International Women's Day!",
+      "desc": [
+        "Dear women!",
+        "We sincerely congratulate you on the wonderful holiday of March 8! May this day be as bright and beautiful as the first spring flowers. Thank you for making the world around us kinder, more harmonious, and brighter. You are our inspiration!",
+        "We wish you sincere smiles, attention from your loved ones, and a wonderful mood every day!",
+        "With respect and warmest wishes, the Rustrak team."
+      ]
+    },
+    "dealer": {
+      "title": "Rustrak has extended its official dealer status with INMAN and VELMASH-S!",
+      "desc": [
+        "Rustrak has extended its dealer agreements with loader crane manufacturers INMAN and VELMASH-S.",
+        "Official dealer status guarantees our customers the supply of original equipment, a manufacturer's warranty, and full service support.",
+        "We continue working with reliable Russian loader crane manufacturers. For purchase enquiries, please contact our sales department."
+      ]
+    },
+    "fatherland": {
+      "title": "Rustrak wishes you a happy Defender of the Fatherland Day!",
+      "desc": [
+        "Dear partners!",
+        "We congratulate you on Defender of the Fatherland Day!",
+        "Courage, honour, and loyalty are essential qualities in making bold decisions every day and standing up for the interests of those we care about.",
+        "Thank you for your reliability and partnership support. We are proud of our cooperation and confident that together we can handle any challenge.",
+        "Happy holiday!"
+      ]
+    },
+    "fuel": {
+      "title": "Rustrak fuel trucks have been included in the Ministry of Industry and Trade register",
+      "desc": [
+        "Fuel trucks manufactured by the Rustrak plant on the GAZ C41R13 chassis have successfully passed certification and have been included in the Register of Russian Industrial Products of the Ministry of Industry and Trade of the Russian Federation.",
+        "The register includes C41R13 fuel trucks, modification 4389JY — tankers with fuel dispensing equipment mounted on a GAZ C41R13 vehicle chassis. They are designed for transporting petroleum products."
+      ],
+      "parametrs": [
+        "Technical specifications:",
+        "Two-compartment tank",
+        "Capacity: 5,300 litres",
+        "SSHN-50/600P vane pump (600 l/min)",
+        "Tank material: 3 mm 09G2S steel",
+        "Du-25 dispensing hose, 10 m long",
+        "Aluminium piping and connections"
+      ]
+    },
+    "newYear": {
+      "title": "Rustrak congratulates its partners on the New Year and Christmas!",
+      "desc": [
+        "Dear partners!",
+        "We sincerely congratulate you on the New Year and Christmas! May the coming year bring bright ideas and new achievements. We wish you and your loved ones comfort, warmth, and joy during the holidays. May peace, health, and happiness reign in your families!"
+      ]
+    },
+    "pageTitle": "RusTrak News",
+    "readMore": "Read more",
+    "showMore": "Show more",
+    "next": "Next >",
+    "previous": "< Previous",
+    "notFound": "News not found",
+    "back": "Back",
+    "moreNews": "More news",
+    "information": "Information materials"
+  },
+  "any_question": {
+    "success_title": "SUCCESS!",
+    "success_desc": "Your data has been sent to our manager. We will contact you shortly!",
+    "close": "Close",
+    "title": "ANY QUESTIONS?",
+    "subtitle": "Leave your contact details and we will call you back shortly",
+    "name_label": "Name *",
+    "name_placeholder": "Name",
+    "name_error": "Field is required",
+    "phone_label": "Phone *",
+    "phone_error": "Enter full number",
+    "submit_btn": "Submit",
+    "agreement": "By clicking submit, you",
+    "agreement_link": "agree to the processing of personal data"
+  },
+  "footer": {
+    "phone_label": "Tel/fax:",
+    "address": "Nizhny Novgorod, Torfyanaya str., 35",
+    "order_call": "Request a call",
+    "about_title": "About us",
+    "media_title": "Media",
+    "useful_articles": "Useful articles",
+    "copyright": "2009 - 2026 © Rus - Trucks The information on the website is not a public offer, determined in accordance with Article 435 of the Civil Code of the Russian Federation and is for informational purposes only."
+  },
+  "about_menu": {
+    "item1": "About LLC «RusTrak»",
+    "item2": "News",
+    "item3": "Our partners",
+    "item4": "Production",
+    "item5": "To suppliers and partners",
+    "item6": "Reviews",
+    "item7": "Certificates",
+    "item8": "Vacancies",
+    "item9": "Credit and leasing"
+  },
+  "media_menu": {
+    "item1": "Photo gallery",
+    "item2": "Video",
+    "item3": "Advertising materials",
+    "item4": "Information materials"
+  },
+  "service_page": {
+    "title": "Rustrak warranty repair service for special vehicles",
+    "description": "After purchasing products from LLC «RusTrak», you can always contact us for help on any issues related to warranty service, vehicle tuning and repair, supply of additional equipment, as well as making modifications to suit the client's tasks. You can apply for technical support and operation consulting at any time and at any period after concluding the contract.",
+    "support_title": "How to get support?",
+    "step1": "Fill out the Claim Act with the signature of the responsible person and the seal of the organization, describe in detail the nature of the failure. Attach photos: the nameplate in the passenger door, the nameplate of the failed equipment, the first page of the vehicle passport (PTS).",
+    "step2": "Take pictures of the malfunctions, as well as the general view of the product as a whole.",
+    "step3": "Send the completed act, a copy of the PTS, and malfunction photos by email:",
+    "after_text1": "After that, warranty service specialists will contact the owner and offer options for organizing repairs.",
+    "after_text2": "Any questions regarding warranty maintenance of equipment manufactured by «RusTrak» can be asked by phone",
+    "or_email": "or by email:",
+    "employee_name": "Sharonov Sergey",
+    "employee_position": "warranty and service manager",
+    "fill_A": "Fill out a complaint form"
+  },
+  "repair_page": {
+    "main_title": "Curtain sider semi-trailer repair by «RusTrak» in Nizhny Novgorod",
+    "main_desc": "The logistics sector relies on the stable operation of trailer equipment. Curtain sider semi-trailer repair ensures the restoration of structural performance after intensive operation. Our masters take into account the design features of components and use proven maintenance methods. «RusTrak» company in Nizhny Novgorod offers service focused on quality and equipment durability. Timely technical activities maintain the stable condition of trailers under intensive loads. A reliable approach to maintenance creates confidence in the uninterrupted operation of the equipment.",
+    "calc_btn": "Calculate repair cost",
+    "services_title": "Our services",
+    "services_desc": "«RusTrak» company performs complete semi-trailer repairs in Nizhny Novgorod after damage or failure. We restore the trailer structure, repair the frame and side curtains, fix doors, locks and opening mechanisms, and also restore the trailer floor and sides. All work is performed with high precision and compliance with quality standards, which guarantees the durability of the restored elements.",
+    "important": "Important:",
+    "important_desc": "chassis and engine repairs, oil changes and scheduled maintenance are not performed.",
+    "advantages_title": "Advantages of «RusTrak» company",
+    "advantages": [
+      "Large production base – allows simultaneous execution of several large orders and servicing a large number of vehicles.",
+      "Spacious workshops – provide convenience when working with large-sized semi-trailers and comfort for employees.",
+      "Professional masters – specialists with experience and knowledge guarantee high-quality and precise repairs.",
+      "Full production cycle – all work is performed on-site, from diagnostics to final assembly, without involving third-party contractors.",
+      "17 years of experience – long-term market presence confirms the company's reliability and competence.",
+      "Repair warranty – provides confidence in the durability and quality of completed work."
+    ],
+    "quality_title": "Quality service for semi-trailers",
+    "quality_desc": "Curtain sider semi-trailer repair helps extend the service life of equipment and maintain its functionality. Contact our team to get reliable and careful service. «RusTrak» company in Nizhny Novgorod performs work with attention to detail and strict quality standards. Entrust us with technical tasks and get results that meet expectations. Plan your maintenance in advance and make sure of the convenience of our service. To start cooperation, contact us in any convenient way, and we will help organize everything quickly and professionally.",
+    "form": {
+      "title": "Calculate repair cost",
+      "subtitle": "Leave your details and our manager will contact you to calculate the cost.",
+      "name_label": "Your name",
+      "name_placeholder": "Ivan",
+      "name_error": "Field is required",
+      "phone_label": "Phone",
+      "phone_error": "Enter full number",
+      "submit_btn": "Calculate cost",
+      "success_title": "Success!",
+      "success_desc": "Your data has been sent to our manager. We will contact you shortly!",
+      "close": "Close"
+    }
+  },
+  "contacts_page": {
+    "title": "Contacts of «RusTrak» special vehicles manufacturer",
+    "address": "603035 Nizhny Novgorod, Torfyanaya str., 35",
+    "nizhny_novgorod": "Nizhny Novgorod:",
+    "regions": "For regions:",
+    "email": "E-mail:",
+    "maintenance_booking": "Maintenance appointment:",
+    "employees_title": "Employees",
+    "emp1_name": "Sharonov Sergey Vladimirovich",
+    "emp1_role": "General Director",
+    "emp2_name": "Suchkov Alexander Alekseevich",
+    "emp2_role": "Commercial Director",
+    "emp3_name": "Savenko Ekaterina Yuryevna",
+    "emp3_role": "Sales Manager",
+    "emp4_name": "Sergeeva Yulia Yuryevna",
+    "emp4_role": "Sales Manager",
+    "emp5_name": "Konev Maxim Anatolyevich",
+    "emp5_role": "Head of Dealer Network Development",
+    "emp6_name": "Kiselev Ivan Alexandrovich",
+    "emp6_role": "Head of Certification Department LLC «RusTrak»",
+    "emp7_name": "Shalyavin Dmitry Leonidovich",
+    "emp7_role": "Chief Designer",
+    "emp8_name": "Yarilin Alexander Valerievich",
+    "emp8_role": "Warranty Engineer"
+  },
+  "about_page": {
+    "banner": {
+      "title": "Automobile plant «RusTrak» is a leading manufacturer of commercial vehicles and specialized equipment in Nizhny Novgorod."
+    },
+    "swiper_title": "Automobile plant «RusTrak» is a full-cycle enterprise: from design and technological developments to the finished product.",
+    "sliders": {
+      "item1_title": "Own production base",
+      "item1_desc": "allows minimizing product cost while increasing its competitiveness",
+      "item2_title": "Quality control department",
+      "item2_desc": "checks every unit of special equipment, which guarantees a long service life and trouble-free operation of the equipment.",
+      "item3_title": "Chassis superstructure development",
+      "item3_desc": "is carried out on the chassis of world manufacturers and allows offering unique equipment — reliable in operation and maximally adapted to specific working conditions.",
+      "item4_title": "Presence of a design bureau",
+      "item4_desc": "provides the opportunity for an individual approach to each client.",
+      "item5_title": "Own logistics service",
+      "item5_desc": "extremely reduces the delivery time of components and assemblies.",
+      "item6_title": "Service partner network",
+      "item6_desc": "guarantees technical assistance throughout the territory of the Russian Federation."
+    },
+    "th": {
+      "title": "Today LLC «RusTrak» is:",
+      "item1": "3 production buildings with a total area of over 7,000 m2;",
+      "item2": "production area of over 20,000 m2;",
+      "item3": "quality service guaranteeing the output of high-quality equipment;",
+      "item4": "modern fleet of machine tool equipment;",
+      "item5": "monthly output of manufactured equipment - up to 110 units.",
+      "item6": "presence of own design and technological service"
+    },
+    "application": {
+      "industries_title": "Fields of application of manufactured equipment:",
+      "industries_desc": "Construction, telecommunications, utilities, road maintenance, logistics, agriculture.",
+      "vehicles_title": "Manufactured equipment:",
+      "vehicles_desc": "Crane manipulators, fuel tankers, aerial platforms, vans, dump trucks, flatbed platforms, tow trucks, workshops, food tankers, vacuum trucks, hydraulic aerial lifts.",
+      "p1": "LLC «RusTrak» is an official dealer in the territory of the Russian Federation of the following brands: Palfinger, INMAN, HKTC, UNIC, DongYang, FASSI, Hangil, XCMG, HIAB.",
+      "p2": "Over 16 years of activity, the company has earned a high level of trust from distributors and automakers: ISUZU RUS, KAMAZ, GAZ, DAEWOO, FAW, JAC, TRAKS VOSTOK RUS (KOMPAS), MAZ RUS, DAIMLER KAMAZ RUS (FUSO), HINO MOTORS, FOTON, DONG FENG, SHACHMAN, NEFAZ, ZAVOD START",
+      "p3": "Our clients: Gazprom, Rosatom, Rosseti, RSK «MiG», Rosneft, etc."
+    }
+  },
+  "our_page": {
+    "title": "Partners",
+    "kamaz_title": "KAMAZ",
+    "kamaz_desc": "The KAMAZ Group of Companies is the largest automotive corporation of the Russian Federation. PJSC KAMAZ is among the top 20 leading global manufacturers of heavy trucks and ranks 16th in production volumes of heavy trucks with a gross weight of over 16 tons. The organization group of PJSC KAMAZ unites 109 companies in Russia, the CIS, and far abroad. The unified production complex of the PJSC KAMAZ organization group covers the entire technological cycle of truck production – from development, manufacturing, assembly of vehicles and auto components to sales of finished products and service support.",
+    "gaz_title": "GAZ Group",
+    "gaz_desc": "GAZ Group specializes in the development and production of light and medium-duty commercial vehicles, buses, heavy trucks, power units, and auto components.",
+    "dunfeng_title": "DUNFENG TRUCK RUS",
+    "dunfeng_desc": "DUNFENG TRUCK RUS",
+    "foton_title": "LLC «Foton Motor»",
+    "foton_desc": "LLC «Foton Motor» was founded on April 27, 2009 in Moscow and is the representative office of the Beijing engineering company Beiqi Foton Motor Co., Ltd. in the Russian Federation.",
+    "ferro_title": "LLC «FERRO OTTIMO»",
+    "ferro_desc": "FASSI Exclusive Distributor in the Russian Federation LLC «FERRO OTTIMO»",
+    "faw_title": "FAW",
+    "faw_desc": "FAW",
+    "shacman_title": "LLC «Shacman motors»",
+    "shacman_desc": "Official distributor of Shacman cargo equipment in Russia.",
+    "partners1": {
+      "item1_title": "LLC «Trucks Vostok Rus»",
+      "item1_desc": "LLC «Trucks Vostok Rus» is the official distributor of medium-duty trucks Compass 9 and Compass 12 with various superstructure options.",
+      "item2_title": "Public Joint Stock Company «NEFAZ».",
+      "item2_desc": "Public Joint Stock Company «NEFAZ» is part of the PJSC «KAMAZ» group of enterprises and is the largest plant in Russia for the production of special superstructures on KAMAZ chassis.",
+      "item3_title": "LLC «Palfinger Crane Rus»",
+      "item3_desc": "«Palfinger Crane Rus» - a joint venture of the Palfinger concern (Austria) and Kraft Invest Group (Russia) is the exclusive distributor of Palfinger in the Russian Federation and CIS countries.",
+      "item4_title": "LLC «KMU-RUS»",
+      "item4_desc": "LLC «KMU-RUS» sells crane manipulators and aerial platforms of famous South Korean brands.",
+      "item5_title": "JSC \"Zavod Start\"",
+      "item5_desc": "JSC \"Zavod Start\" specializes in the production and sale of transport tankers on a wide range of domestic and foreign chassis varieties.",
+      "item6_title": "MAZ",
+      "item6_desc": "Official distributor of MAZ commercial vehicles in Russia.",
+      "item7_title": "JAC Motors RUS",
+      "item7_desc": "JAC Motors RUS is the exclusive importer and distributor of products from the Chinese auto concern JAC in Russia."
+    }
+  },
+  "production_page": {
+    "title": "Production",
+    "desc1": "Automobile plant «RusTrak» is a leading manufacturer of commercial vehicles and specialized equipment in Nizhny Novgorod. Our products are vans, flatbed platforms, crane manipulators, workshops, food tankers, fuel tankers, aerial platforms, dump trucks, vacuum trucks, tow trucks, hook loaders. All vehicles are assembled at our own production facility.",
+    "desc2": "The production facilities of «RusTrak» consist of 3 buildings with a total area of over 7,000 square meters. The machine park is equipped with modern high-tech equipment, which determines the high quality of finished products. The company uses components from well-known global and domestic manufacturers. Today, the company's output capacity is from 110 units per month.",
+    "staff_title": "Highly qualified personnel",
+    "staff_desc": "The key to the quality of products of LLC «RusTrak» is the work of a team of professionals on the company's technological equipment. The company's management cares about its employees, creating the most comfortable working conditions and improving the professional training of employees. Every six months, the company's employees undergo re-certification of knowledge and skills and take advanced training courses.",
+    "bureau_title": "Own design bureau",
+    "bureau_desc": "«RusTrak» company has its own design and technological bureau, which works in close cooperation with production. This working scheme allows to constantly improve and modernize the manufactured special equipment, taking into account the wishes of our clients. We are ready to manufacture a vehicle for almost any need!",
+    "quality_title": "Quality control",
+    "quality_desc": "Quality control of our products is carried out at all stages of production. We use only reliable components, purchasing them from trusted suppliers. «RusTrak» specialists strictly monitor the implementation of production technology. Constant testing and trials of manufactured products eliminate the receipt of claims. The global practice of product conformity certification has been introduced at the production: each unit of special equipment that leaves our production has an international standard certificate (ISO 9001).",
+    "desc3": "The quality control department evaluates each unit of equipment, which guarantees our customers a long service life and trouble-free operation of the equipment."
+  },
+  "suppliers_page": {
+    "title": "To suppliers and partners",
+    "subtitle": "LLC «Rustrak» invites to cooperation.",
+    "desc1": "Our company has been operating in the market of production and sale of commercial transport and special equipment for 17 years and firmly occupies leading positions in the Russian market.",
+    "desc2_p1": "We invite component suppliers to cooperate as one of the main areas of the company's development.",
+    "desc2_p2": "Our company is interested in long-term and effective cooperation.",
+    "partners_title": "We value in partners:",
+    "item1": "High quality products;",
+    "item2": "Flexible pricing policy;",
+    "item3": "Regular information on the assortment and warehouse balances of products;",
+    "item4": "Minimum delivery times.",
+    "principles_title": "The main principles of LLC «RusTrak» when interacting with partners:",
+    "principle1": "Trust,",
+    "principle2": "honesty,",
+    "principle3": "mutual assistance;",
+    "footer_p1": "Long-term cooperation on a mutually beneficial basis. Obligation and accuracy in the fulfillment of agreements. Compliance with international business ethics standards.",
+    "footer_p2": "Always glad to see you!"
+  },
+  "reviews": "Reviews",
+  "sertificates": "Certificates",
+  "vacancies_page": {
+    "vacancies": "Vacancies",
+    "electrician": "Auto Electrician",
+    "responsibilities": "Responsibilities:",
+    "resp1": "electrical installation of lighting equipment",
+    "resp2": "installation of electrical equipment and superstructures on special vehicles",
+    "requirements": "Requirements:",
+    "req1": "work experience welcomed",
+    "req2": "desire to learn new things",
+    "conditions": "Conditions:",
+    "cond1": "desire to learn new things",
+    "cond2": "full social package",
+    "cond3": "heated workshop, good living conditions",
+    "cond4": "we provide training in this area",
+    "respond": "Apply",
+    "success_title": "Successful!",
+    "success_desc": "Your data has been sent to our manager. We will contact you shortly!",
+    "close": "Close",
+    "form_title": "Submit application",
+    "form_subtitle": "for «Auto Electrician» vacancy",
+    "name_label": "Your name *",
+    "name_placeholder": "Name",
+    "name_error": "Field is required",
+    "email_label": "E-mail *",
+    "email_error": "Enter valid E-mail",
+    "phone_label": "Phone *",
+    "phone_error": "Enter full number",
+    "resume_label": "Link to resume *",
+    "resume_error": "Provide a link to your resume",
+    "consent_text": "I agree to personal data processing",
+    "submit_btn": "Submit application"
+  },
+  "credit_page": {
+    "item1_title": "Credit and leasing for special vehicles by RusTrak",
+    "item1_desc": "RusTrak provides the opportunity to purchase commercial special equipment on credit and leasing. We work with all banks and leasing companies. Remember, you can choose any leasing company that suits you.",
+    "item2_title": "Main leasing terms",
+    "item2_desc": "Down payment amount is 5-30% of the equipment cost. Appreciation of the leasing object per year is 8-9%. Leasing payment period ranges from 6 months to 5 years. After full settlement of the leasing, the equipment becomes the property of your firm.",
+    "item3_title": "Advantages of leasing schemes:",
+    "item3_desc": "Maximum payment deferral. Accelerated depreciation: participants in a leasing transaction have the right to apply the mechanism of accelerated depreciation of the leasing subject with an acceleration factor of up to 3, which allows for faster payback on equipment and flexibility in contract duration. Tax optimization: all payments under the leasing agreement are attributed to the cost of production, thereby reducing the taxable base for income tax. Savings for the lessee due to no property tax obligations, as the leased asset usually remains on the leasing company's balance sheet. Ability to acquire and use property without diverting the enterprise's own funds all at once. Ability to acquire ownership of the leased asset, completely free from tax burden, upon expiration of the leasing contract. Independent selection of the leasing subject and its seller by the lessee.",
+    "leasing_types_title": "Three main types of leasing:",
+    "type1_title": "Financial leasing",
+    "type1_desc": "The lessor (leasing company) acquires ownership of the property specified by the lessee from a certain seller and transfers this property to the lessee as a leasing object under certain conditions for temporary possession and use. The property transfers to the lessee provided that all leasing payments are made.",
+    "type2_title": "Operating leasing",
+    "type2_desc": "The property is not bought out by the lessee, but remains the property of the leasing company and, after the expiration of the leasing contract, is leased or rented out again.",
+    "type3_title": "Leaseback",
+    "type3_desc": "An enterprise buys property with its own funds and then applies to a leasing company. This is one way to quickly return working capital. The leasing company considers the property as a leasing object and purchases it under a sales contract from the enterprise. The same property is then leased back to the same enterprise.",
+    "partner_title": "Partner information - \"CARCADE\" company",
+    "partner_desc": "CARCADE is a universal leasing partner. CARCADE finances the purchase of both passenger cars and commercial vehicles. Commercial vehicles or special equipment can be leased without providing financial statements using just 2 documents. Transaction terms: down payment from 4% to 50%, leasing term from 12 to 60 months, final payment from 1% to 15%. Additional benefits for CARCADE clients: comprehensive insurance in installments, free assignment, electronic document management. For more detailed information on special equipment and leasing options, call: 8 (831) 225-00-55"
+  },
+  "gallery_page": {
+    "title": "Photo gallery of special vehicles manufacturer RusTrak",
+    "watch_video": "Watch video",
+    "no_images": "No images found",
+    "btn_cars": "Cars",
+    "btn_production": "Production",
+    "btn_about": "About company",
+    "btn_exhibitions": "Exhibitions"
+  },
+  "video_page": {
+    "title": "Video gallery of special vehicles manufacturer RusTrak",
+    "watch_photos": "View photos",
+    "title1": "HKTC crane manipulator on Kamaz Kompas chassis",
+    "title2": "KAMAZ Kompas 2022 | Sliding Curtain and Tent Roof | KAMAZ Review | Flatbed Truck |",
+    "title3": "UNIC374K crane-manipulator installation on FUSO Canter chassis",
+    "title4": "Flatbed tow truck on ISUZU base with PALFINGER manipulator",
+    "title5": "ISUZU GIGA grain dump truck",
+    "title6": "Hyundai HD78 with HANSIN aerial platform",
+    "title7": "Fuel tanker 5.2 cubic meters based on ISUZU NPR75 ATZ ELF 7 5",
+    "title8": "GAZon NEXT fuel tanker",
+    "title9": "FUSO Canter food tanker",
+    "title10": "ISUZU flatbed cargo with sliding roof and side curtains",
+    "title11": "Happy New Year!",
+    "title12": "GAZON NEXT with UNIC crane manipulator",
+    "title13": "Fuel tanker (ATZ) Gazon Next",
+    "title14": "STT 2017 Exhibition Results LLC Rustrak",
+    "title15": "Flatbed platform with sliding roof and curtain FOTON 1093 / Commercial vehicle FOTON 1093",
+    "title16": "INMAN IT90 crane-manipulator on ISUZU NQR90 chassis"
+  },
+  "reklama_page": {
+    "title": "Advertising materials",
+    "item1_title": "LLC RUSTRAK",
+    "item1_url": "Commercial vehicle body builder plant",
+    "item2_title": "Fuel tankers",
+    "item2_url1": "GAZ NEXT leaflet",
+    "item2_url2": "GAZ leaflet",
+    "item2_url3": "FUSO leaflet",
+    "item3_title": "Food tankers",
+    "item3_url1": "GAZ NEXT food tanker leaflet",
+    "item3_url2": "FUSO food tanker leaflet"
   }
+
 }

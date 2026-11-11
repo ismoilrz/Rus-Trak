@@ -7,15 +7,18 @@ import 'swiper/css/navigation';
 import { Link } from "react-router-dom";
 import { MoveRight} from "lucide-react";
 import { NewsData } from "../../constants/news/newsData";
+import { useTranslation } from "react-i18next";
 
 const HomeNews = () => {
+
+    const { t } = useTranslation()
 
   return (
     <>
         <section className="bg-[#fff] pt-16 pb-12">
         <div className="container max-xl:px-[3%]">
             <div className="w-full flex justify-between py-14 pb-8 max-sm:flex-col max-sm:gap-6 max-sm:pb-3">
-            <h3 className="text-[40px] max-md:text-3xl font-medium">Рекомендуемая продукция</h3>
+            <h3 className="text-[40px] max-md:text-3xl font-medium">{t("titlePr")}</h3>
             <div className="flex gap-3">
                 <button id="cat-slide-left" className="w-10 h-10 rounded-md border-1 text-3xl text-[#a1a1a1] duration-200 hover:bg-[#fec80b] hover:text-black active:bg-[#fec80b]">{'<'}</button>
                 <button id="cat-slide-next" className="w-10 h-10 rounded-md border-1 text-3xl text-[#a1a1a1] duration-200 hover:bg-[#fec80b] hover:text-black active:bg-[#fec80b]">{'>'}</button>
@@ -57,10 +60,10 @@ const HomeNews = () => {
                     <img className="h-[56%]!" src={item.pick[0]} alt="" />
                     <span className="text-[16px] px-3 mt-4">{item.date}</span>
                     <h4 className="text-[17px] font-medium line-clamp-2 px-3 text-start min-h-12">
-                        {item.title}
+                        {t(`${item.translationKey}.title`)}
                     </h4>
                     <div className="flex justify-between w-full px-3 pt-7 text-[14px]">
-                        <button className="text-lg flex items-center gap-3 transition group-hover:text-[#fec80b]">Подробнее <MoveRight /></button>
+                        <button className="text-lg flex items-center gap-3 transition group-hover:text-[#fec80b]">{t("more")}<MoveRight /></button>
                     </div>
                     </Link>
                 </SwiperSlide>

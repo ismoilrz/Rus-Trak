@@ -1,3 +1,4 @@
+
 import type { NewsDataType } from "../../types/newsDataType"
 
 import news1 from "../../assets/news1.webp"
@@ -26,929 +27,450 @@ import news23 from "../../assets/news23.webp"
 import news24 from "../../assets/news24.webp"
 import news25 from "../../assets/news25.webp"
 
-export const NewsData:NewsDataType[] = [
+const newsPicks = {
+    container: [news20, news21, news22, news23, news24, news25],
+    comvex: [news1],
+    sadko: [news2, news3, news4, news5],
+    womensDay: [news6],
+    dealer: [news7],
+    fatherland: [news8],
+    fuel: [
+        news9, news10, news11, news12, news13,
+        news14, news15, news16, news17, news18
+    ],
+    newYear: [news19]
+}
+
+export const NewsData: NewsDataType[] = [
     {
         id: 1,
         slug: "first-kamaz-65658-container-truck",
-        title: "Первый в России контейнеровоз на шасси КАМАЗ‑65658 выпустил «Рустрак»",
+        translationKey: "news.container",
         date: "07.07.2026",
-        desc: [
-            `ООО «РУСТРАК» разработал контейнеровоз на шасси КАМАЗ 65658-1766-49 — первый в России проект на базе этого шасси. Это компактное и маневренное решение для контейнерной логистики. Предназначен для перевозки контейнеров с опасными грузами (категории ТС FL, АТ по классификации ДОПОГ).`
-        ],
-        pick: [news20, news21, news22, news23, news24, news25]
+        pick: newsPicks.container
     },
     {
         id: 2,
         slug: "rustrak-comvex-2026-results",
-        title: "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition.",
+        translationKey: "news.comvex",
         date: "08.06.2026",
-        desc: [
-            `LLC "Rustrak" successfully completed its work at the largest industry event of the year. The "Rustrak" exposition attracted the attention of a wide range of specialists, experts, and business representatives in the commercial vehicle sector.`,
-            `Throughout all the days of the exhibition, the company team actively worked at the stand, holding meetings and negotiations with existing partners as well as new clients. During the business program, key directions for further cooperation were outlined, and a number of important agreements aimed at developing partnership relations were reached.`,
-            `We thank all guests of our stand for their interest, trust, and productive dialogue. See you next time!`
-        ],
-        pick: [news1]
+        pick: newsPicks.comvex
     },
     {
         id: 3,
         slug: "sadko-9-crane-manipulator-drilling-rig",
-        title: "Sadko 9 Farmer acquired a crane manipulator with a drilling rig",
+        translationKey: "news.sadko",
         date: "26.03.2026",
-        desc: [
-            `The «Rustrak» plant installed a <0>crane manipulator with a TAURUS 035A drilling and crane unit on the Sadko NEXT 9 chassis.`,
-            `Sadko 9 with loader crane and drilling equipment meets the needs of energy, construction, and utility companies for vehicles capable of working effectively off-road. The versatility of equipment combined with all-wheel drive chassis and double cab minimises downtime in off-road environments.`,
-            `Comment by Dmitry Leonidovich Dolgovanin, Chief Designer of «Rustrak» plant: «This vehicle will work in energy sector, but its scope of application from geological exploration, construction, oil and gas to utility sector gives an undeniable reduction of task completion time. In fact, it is an autonomous complex capable of replacing several specialized equipment units».`
-        ],
-        pick: [news2, news3, news4, news5],
-        parametrs: [
-            "Vehicle Technical Specifications",
-            "Truck payload specifications",
-            "Payload capacity up to 2.05 tons",
-            "7-seat cabin",
-            "Cargo platform internal dimensions 3.5 by 2.4 meters",
-            "TAURUS 035A Crane-Drill Specifications",
-            "Load moment: 7000 kgm",
-            "Boom length 12.5 meters",
-            "Lifting capacity 3.5 tons at 2 meters and 350 kg at 12.5 meters",
-            "Drilling rig with drilling depth up to 8 meters",
-            "Maximum working radius of the drill 6 meters",
-            "Continuous 360° column rotation around its axis",
-            "Boom elevation angle -10° ~ 70°",
-            "Max torque on rotator: 5 000 Nm",
-            "Drilling tool rotation speed: 35 rpm"
-        ]
+        pick: newsPicks.sadko
     },
     {
         id: 4,
         slug: "rustrak-womens-day-congratulations",
-        title: "Rustrak congratulates you on International Women's Day!",
+        translationKey: "news.womensDay",
         date: "06.03.2026",
-        desc: [
-            "Dear women!",
-            "We sincerely congratulate you on the most gentle holiday — March 8th! May this day be as bright and beautiful as the first spring flowers. Thank you for making the world around us kinder, more harmonious, and brighter. You are our inspiration!",
-            "We wish you sincere smiles, attention from your loved ones, and a great mood every single day!",
-            "With respect and warmest wishes, Your Rustrak."
-        ],
-        pick: [news6]
+        pick: newsPicks.womensDay
     },
     {
         id: 5,
         slug: "rustrak-official-dealer-inman-velmash",
-        title: "RUSTRAK has extended its status as an official dealer of INMAN and VELMASH-S!",
+        translationKey: "news.dealer",
         date: "26.02.2026",
-        desc: [
-            `«RUSTRAK» has extended dealer agreements with the manufacturers of loader cranes «INMAN» and «VELMASH-S».`,
-            "The official dealer status guarantees our clients the supply of original equipment, factory warranty, and full service support.",
-            "We continue working with reliable Russian manufacturers of loader cranes. For purchasing inquiries, please contact the sales department."
-        ],
-        pick: [news7]
+        pick: newsPicks.dealer
     },
     {
         id: 6,
         slug: "rustrak-defender-of-the-fatherland-day",
-        title: "Rustrak congratulates you on Defender of the Fatherland Day.",
+        translationKey: "news.fatherland",
         date: "20.02.2026",
-        desc: [
-            "Dear partners!",
-            "We congratulate you on Defender of the Fatherland Day!",
-            "Courage, honor, and loyalty — these qualities are essential every day when making bold decisions and standing up for the interests of those we care about.",
-            "Thank you for your reliability and partnership support. We are proud of our cooperation and confident that together we can handle any task.",
-            "Happy holiday!",
-        ],
-        pick: [news8]
+        pick: newsPicks.fatherland
     },
     {
         id: 7,
         slug: "rustrak-fuel-trucks-ministry-register",
-        title: "Rustrak fuel trucks are included in the Ministry of Industry and Trade's register.",
+        translationKey: "news.fuel",
         date: "11.02.2026",
-        desc: [
-            "Refuelers of the «Rustrak» plant on the GAZ C41R13 chassis have successfully passed certification and are included in the registry of Russian industrial products of the Ministry of Industry and Trade of the Russian Federation.",
-            "Included in the registry: C41R13 Refuelers modification 4389JY — a tanker with a fuel dispensing unit on a vehicle / base chassis of the GAZ brand, modification C41R13. Transport vehicles for carrying petroleum products.",
-        ],
-        pick: [news9, news10, news11, news12, news13, news14, news15, news16, news17, news18],
-        parametrs: [
-            "Technical Specifications:",
-            "Two-section tank",
-            "Capacity 5,300 liters.",
-            "Pump SSHN-50/600P Vane type (600 l/min)",
-            "Tank material: Steel 09G2S 3mm",
-            "Dispensing hose Du-25, length 10 m",
-            "Aluminum piping/communications"
-        ],
+        pick: newsPicks.fuel
     },
     {
         id: 8,
         slug: "rustrak-new-year-christmas-congratulations",
-        title: "Rustrak congratulates its partners on the New Year and Christmas!",
+        translationKey: "news.newYear",
         date: "30.12.2025",
-        desc: [
-            "Dear partners!",
-            "We sincerely congratulate you on the New Year and Christmas! May the coming year be a time of bright ideas and new achievements. We wish you holiday comfort, warmth, and joy for you and your loved ones. May peace, health, and happiness reign in your families!",
-        ],
-        pick: [news19]
+        pick: newsPicks.newYear
     },
     {
         id: 9,
         slug: "rustrak-comvex-2026-results-2",
-        title: "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition.",
+        translationKey: "news.comvex",
         date: "08.06.2026",
-        desc: [
-            `LLC "Rustrak" successfully completed its work at the largest industry event of the year. The "Rustrak" exposition attracted the attention of a wide range of specialists, experts, and business representatives in the commercial vehicle sector.`,
-            `Throughout all the days of the exhibition, the company team actively worked at the stand, holding meetings and negotiations with existing partners as well as new clients. During the business program, key directions for further cooperation were outlined, and a number of important agreements aimed at developing partnership relations were reached.`,
-            `We thank all guests of our stand for their interest, trust, and productive dialogue. See you next time!`
-        ],
-        pick: [news1]
+        pick: newsPicks.comvex
     },
     {
         id: 10,
         slug: "sadko-9-crane-manipulator-drilling-rig-2",
-        title: "Sadko 9 Farmer acquired a crane manipulator with a drilling rig",
+        translationKey: "news.sadko",
         date: "26.03.2026",
-        desc: [
-            `The «Rustrak» plant installed a <0>crane manipulator with a TAURUS 035A drilling and crane unit on the Sadko NEXT 9 chassis.`,
-            `Sadko 9 with loader crane and drilling equipment meets the needs of energy, construction, and utility companies for vehicles capable of working effectively off-road. The versatility of equipment combined with all-wheel drive chassis and double cab minimises downtime in off-road environments.`,
-            `Comment by Dmitry Leonidovich Dolgovanin, Chief Designer of «Rustrak» plant: «This vehicle will work in energy sector, but its scope of application from geological exploration, construction, oil and gas to utility sector gives an undeniable reduction of task completion time. In fact, it is an autonomous complex capable of replacing several specialized equipment units».`
-        ],
-        pick: [news2, news3, news4, news5],
-        parametrs: [
-            "Vehicle Technical Specifications",
-            "Truck payload specifications",
-            "Payload capacity up to 2.05 tons",
-            "7-seat cabin",
-            "Cargo platform internal dimensions 3.5 by 2.4 meters",
-            "TAURUS 035A Crane-Drill Specifications",
-            "Load moment: 7000 kgm",
-            "Boom length 12.5 meters",
-            "Lifting capacity 3.5 tons at 2 meters and 350 kg at 12.5 meters",
-            "Drilling rig with drilling depth up to 8 meters",
-            "Maximum working radius of the drill 6 meters",
-            "Continuous 360° column rotation around its axis",
-            "Boom elevation angle -10° ~ 70°",
-            "Max torque on rotator: 5 000 Nm",
-            "Drilling tool rotation speed: 35 rpm"
-        ]
+        pick: newsPicks.sadko
     },
     {
         id: 11,
         slug: "rustrak-womens-day-congratulations-2",
-        title: "Rustrak congratulates you on International Women's Day!",
+        translationKey: "news.womensDay",
         date: "06.03.2026",
-        desc: [
-            "Dear women!",
-            "We sincerely congratulate you on the most gentle holiday — March 8th! May this day be as bright and beautiful as the first spring flowers. Thank you for making the world around us kinder, more harmonious, and brighter. You are our inspiration!",
-            "We wish you sincere smiles, attention from your loved ones, and a great mood every single day!",
-            "With respect and warmest wishes, Your Rustrak."
-        ],
-        pick: [news6]
+        pick: newsPicks.womensDay
     },
     {
         id: 12,
         slug: "rustrak-official-dealer-inman-velmash-2",
-        title: "RUSTRAK has extended its status as an official dealer of INMAN and VELMASH-S!",
+        translationKey: "news.dealer",
         date: "26.02.2026",
-        desc: [
-            `«RUSTRAK» has extended dealer agreements with the manufacturers of loader cranes «INMAN» and «VELMASH-S».`,
-            "The official dealer status guarantees our clients the supply of original equipment, factory warranty, and full service support.",
-            "We continue working with reliable Russian manufacturers of loader cranes. For purchasing inquiries, please contact the sales department."
-        ],
-        pick: [news7]
+        pick: newsPicks.dealer
     },
     {
         id: 13,
         slug: "rustrak-defender-of-the-fatherland-day-2",
-        title: "Rustrak congratulates you on Defender of the Fatherland Day.",
+        translationKey: "news.fatherland",
         date: "20.02.2026",
-        desc: [
-            "Dear partners!",
-            "We congratulate you on Defender of the Fatherland Day!",
-            "Courage, honor, and loyalty — these qualities are essential every day when making bold decisions and standing up for the interests of those we care about.",
-            "Thank you for your reliability and partnership support. We are proud of our cooperation and confident that together we can handle any task.",
-            "Happy holiday!",
-        ],
-        pick: [news8]
+        pick: newsPicks.fatherland
     },
     {
         id: 14,
         slug: "rustrak-fuel-trucks-ministry-register-2",
-        title: "Rustrak fuel trucks are included in the Ministry of Industry and Trade's register.",
+        translationKey: "news.fuel",
         date: "11.02.2026",
-        desc: [
-            "Refuelers of the «Rustrak» plant on the GAZ C41R13 chassis have successfully passed certification and are included in the registry of Russian industrial products of the Ministry of Industry and Trade of the Russian Federation.",
-            "Included in the registry: C41R13 Refuelers modification 4389JY — a tanker with a fuel dispensing unit on a vehicle / base chassis of the GAZ brand, modification C41R13. Transport vehicles for carrying petroleum products.",
-        ],
-        pick: [news9, news10, news11, news12, news13, news14, news15, news16, news17, news18],
-        parametrs: [
-            "Technical Specifications:",
-            "Two-section tank",
-            "Capacity 5,300 liters.",
-            "Pump SSHN-50/600P Vane type (600 l/min)",
-            "Tank material: Steel 09G2S 3mm",
-            "Dispensing hose Du-25, length 10 m",
-            "Aluminum piping/communications"
-        ],
+        pick: newsPicks.fuel
     },
     {
         id: 15,
         slug: "rustrak-new-year-christmas-congratulations-2",
-        title: "Rustrak congratulates its partners on the New Year and Christmas!",
+        translationKey: "news.newYear",
         date: "30.12.2025",
-        desc: [
-            "Dear partners!",
-            "We sincerely congratulate you on the New Year and Christmas! May the coming year be a time of bright ideas and new achievements. We wish you holiday comfort, warmth, and joy for you and your loved ones. May peace, health, and happiness reign in your families!",
-        ],
-        pick: [news19]
+        pick: newsPicks.newYear
     },
     {
         id: 16,
         slug: "rustrak-comvex-2026-results-3",
-        title: "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition.",
+        translationKey: "news.comvex",
         date: "08.06.2026",
-        desc: [
-            `LLC "Rustrak" successfully completed its work at the largest industry event of the year. The "Rustrak" exposition attracted the attention of a wide range of specialists, experts, and business representatives in the commercial vehicle sector.`,
-            `Throughout all the days of the exhibition, the company team actively worked at the stand, holding meetings and negotiations with existing partners as well as new clients. During the business program, key directions for further cooperation were outlined, and a number of important agreements aimed at developing partnership relations were reached.`,
-            `We thank all guests of our stand for their interest, trust, and productive dialogue. See you next time!`
-        ],
-        pick: [news1]
+        pick: newsPicks.comvex
     },
     {
         id: 17,
         slug: "sadko-9-crane-manipulator-drilling-rig-3",
-        title: "Sadko 9 Farmer acquired a crane manipulator with a drilling rig",
+        translationKey: "news.sadko",
         date: "26.03.2026",
-        desc: [
-            `The «Rustrak» plant installed a <0>crane manipulator with a TAURUS 035A drilling and crane unit on the Sadko NEXT 9 chassis.`,
-            `Sadko 9 with loader crane and drilling equipment meets the needs of energy, construction, and utility companies for vehicles capable of working effectively off-road. The versatility of equipment combined with all-wheel drive chassis and double cab minimises downtime in off-road environments.`,
-            `Comment by Dmitry Leonidovich Dolgovanin, Chief Designer of «Rustrak» plant: «This vehicle will work in energy sector, but its scope of application from geological exploration, construction, oil and gas to utility sector gives an undeniable reduction of task completion time. In fact, it is an autonomous complex capable of replacing several specialized equipment units».`
-        ],
-        pick: [news2, news3, news4, news5],
-        parametrs: [
-            "Vehicle Technical Specifications",
-            "Truck payload specifications",
-            "Payload capacity up to 2.05 tons",
-            "7-seat cabin",
-            "Cargo platform internal dimensions 3.5 by 2.4 meters",
-            "TAURUS 035A Crane-Drill Specifications",
-            "Load moment: 7000 kgm",
-            "Boom length 12.5 meters",
-            "Lifting capacity 3.5 tons at 2 meters and 350 kg at 12.5 meters",
-            "Drilling rig with drilling depth up to 8 meters",
-            "Maximum working radius of the drill 6 meters",
-            "Continuous 360° column rotation around its axis",
-            "Boom elevation angle -10° ~ 70°",
-            "Max torque on rotator: 5 000 Nm",
-            "Drilling tool rotation speed: 35 rpm"
-        ]
+        pick: newsPicks.sadko
     },
     {
         id: 18,
         slug: "rustrak-womens-day-congratulations-3",
-        title: "Rustrak congratulates you on International Women's Day!",
+        translationKey: "news.womensDay",
         date: "06.03.2026",
-        desc: [
-            "Dear women!",
-            "We sincerely congratulate you on the most gentle holiday — March 8th! May this day be as bright and beautiful as the first spring flowers. Thank you for making the world around us kinder, more harmonious, and brighter. You are our inspiration!",
-            "We wish you sincere smiles, attention from your loved ones, and a great mood every single day!",
-            "With respect and warmest wishes, Your Rustrak."
-        ],
-        pick: [news6]
+        pick: newsPicks.womensDay
     },
     {
         id: 19,
         slug: "rustrak-official-dealer-inman-velmash-3",
-        title: "RUSTRAK has extended its status as an official dealer of INMAN and VELMASH-S!",
+        translationKey: "news.dealer",
         date: "26.02.2026",
-        desc: [
-            `«RUSTRAK» has extended dealer agreements with the manufacturers of loader cranes «INMAN» and «VELMASH-S».`,
-            "The official dealer status guarantees our clients the supply of original equipment, factory warranty, and full service support.",
-            "We continue working with reliable Russian manufacturers of loader cranes. For purchasing inquiries, please contact the sales department."
-        ],
-        pick: [news7]
+        pick: newsPicks.dealer
     },
     {
         id: 20,
         slug: "rustrak-defender-of-the-fatherland-day-3",
-        title: "Rustrak congratulates you on Defender of the Fatherland Day.",
+        translationKey: "news.fatherland",
         date: "20.02.2026",
-        desc: [
-            "Dear partners!",
-            "We congratulate you on Defender of the Fatherland Day!",
-            "Courage, honor, and loyalty — these qualities are essential every day when making bold decisions and standing up for the interests of those we care about.",
-            "Thank you for your reliability and partnership support. We are proud of our cooperation and confident that together we can handle any task.",
-            "Happy holiday!",
-        ],
-        pick: [news8]
+        pick: newsPicks.fatherland
     },
     {
         id: 21,
         slug: "rustrak-fuel-trucks-ministry-register-3",
-        title: "Rustrak fuel trucks are included in the Ministry of Industry and Trade's register.",
+        translationKey: "news.fuel",
         date: "11.02.2026",
-        desc: [
-            "Refuelers of the «Rustrak» plant on the GAZ C41R13 chassis have successfully passed certification and are included in the registry of Russian industrial products of the Ministry of Industry and Trade of the Russian Federation.",
-            "Included in the registry: C41R13 Refuelers modification 4389JY — a tanker with a fuel dispensing unit on a vehicle / base chassis of the GAZ brand, modification C41R13. Transport vehicles for carrying petroleum products.",
-        ],
-        pick: [news9, news10, news11, news12, news13, news14, news15, news16, news17, news18],
-        parametrs: [
-            "Technical Specifications:",
-            "Two-section tank",
-            "Capacity 5,300 liters.",
-            "Pump SSHN-50/600P Vane type (600 l/min)",
-            "Tank material: Steel 09G2S 3mm",
-            "Dispensing hose Du-25, length 10 m",
-            "Aluminum piping/communications"
-        ],
+        pick: newsPicks.fuel
     },
     {
         id: 22,
         slug: "rustrak-new-year-christmas-congratulations-3",
-        title: "Rustrak congratulates its partners on the New Year and Christmas!",
+        translationKey: "news.newYear",
         date: "30.12.2025",
-        desc: [
-            "Dear partners!",
-            "We sincerely congratulate you on the New Year and Christmas! May the coming year be a time of bright ideas and new achievements. We wish you holiday comfort, warmth, and joy for you and your loved ones. May peace, health, and happiness reign in your families!",
-        ],
-        pick: [news19]
+        pick: newsPicks.newYear
     },
     {
         id: 23,
         slug: "rustrak-comvex-2026-results-4",
-        title: "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition.",
+        translationKey: "news.comvex",
         date: "08.06.2026",
-        desc: [
-            `LLC "Rustrak" successfully completed its work at the largest industry event of the year. The "Rustrak" exposition attracted the attention of a wide range of specialists, experts, and business representatives in the commercial vehicle sector.`,
-            `Throughout all the days of the exhibition, the company team actively worked at the stand, holding meetings and negotiations with existing partners as well as new clients. During the business program, key directions for further cooperation were outlined, and a number of important agreements aimed at developing partnership relations were reached.`,
-            `We thank all guests of our stand for their interest, trust, and productive dialogue. See you next time!`
-        ],
-        pick: [news1]
+        pick: newsPicks.comvex
     },
     {
         id: 24,
         slug: "sadko-9-crane-manipulator-drilling-rig-4",
-        title: "Sadko 9 Farmer acquired a crane manipulator with a drilling rig",
+        translationKey: "news.sadko",
         date: "26.03.2026",
-        desc: [
-            `The «Rustrak» plant installed a <0>crane manipulator with a TAURUS 035A drilling and crane unit on the Sadko NEXT 9 chassis.`,
-            `Sadko 9 with loader crane and drilling equipment meets the needs of energy, construction, and utility companies for vehicles capable of working effectively off-road. The versatility of equipment combined with all-wheel drive chassis and double cab minimises downtime in off-road environments.`,
-            `Comment by Dmitry Leonidovich Dolgovanin, Chief Designer of «Rustrak» plant: «This vehicle will work in energy sector, but its scope of application from geological exploration, construction, oil and gas to utility sector gives an undeniable reduction of task completion time. In fact, it is an autonomous complex capable of replacing several specialized equipment units».`
-        ],
-        pick: [news2, news3, news4, news5],
-        parametrs: [
-            "Vehicle Technical Specifications",
-            "Truck payload specifications",
-            "Payload capacity up to 2.05 tons",
-            "7-seat cabin",
-            "Cargo platform internal dimensions 3.5 by 2.4 meters",
-            "TAURUS 035A Crane-Drill Specifications",
-            "Load moment: 7000 kgm",
-            "Boom length 12.5 meters",
-            "Lifting capacity 3.5 tons at 2 meters and 350 kg at 12.5 meters",
-            "Drilling rig with drilling depth up to 8 meters",
-            "Maximum working radius of the drill 6 meters",
-            "Continuous 360° column rotation around its axis",
-            "Boom elevation angle -10° ~ 70°",
-            "Max torque on rotator: 5 000 Nm",
-            "Drilling tool rotation speed: 35 rpm"
-        ]
+        pick: newsPicks.sadko
     },
     {
         id: 25,
         slug: "rustrak-womens-day-congratulations-4",
-        title: "Rustrak congratulates you on International Women's Day!",
+        translationKey: "news.womensDay",
         date: "06.03.2026",
-        desc: [
-            "Dear women!",
-            "We sincerely congratulate you on the most gentle holiday — March 8th! May this day be as bright and beautiful as the first spring flowers. Thank you for making the world around us kinder, more harmonious, and brighter. You are our inspiration!",
-            "We wish you sincere smiles, attention from your loved ones, and a great mood every single day!",
-            "With respect and warmest wishes, Your Rustrak."
-        ],
-        pick: [news6]
+        pick: newsPicks.womensDay
     },
     {
         id: 26,
         slug: "rustrak-official-dealer-inman-velmash-4",
-        title: "RUSTRAK has extended its status as an official dealer of INMAN and VELMASH-S!",
+        translationKey: "news.dealer",
         date: "26.02.2026",
-        desc: [
-            `«RUSTRAK» has extended dealer agreements with the manufacturers of loader cranes «INMAN» and «VELMASH-S».`,
-            "The official dealer status guarantees our clients the supply of original equipment, factory warranty, and full service support.",
-            "We continue working with reliable Russian manufacturers of loader cranes. For purchasing inquiries, please contact the sales department."
-        ],
-        pick: [news7]
+        pick: newsPicks.dealer
     },
     {
         id: 27,
         slug: "rustrak-defender-of-the-fatherland-day-4",
-        title: "Rustrak congratulates you on Defender of the Fatherland Day.",
+        translationKey: "news.fatherland",
         date: "20.02.2026",
-        desc: [
-            "Dear partners!",
-            "We congratulate you on Defender of the Fatherland Day!",
-            "Courage, honor, and loyalty — these qualities are essential every day when making bold decisions and standing up for the interests of those we care about.",
-            "Thank you for your reliability and partnership support. We are proud of our cooperation and confident that together we can handle any task.",
-            "Happy holiday!",
-        ],
-        pick: [news8]
+        pick: newsPicks.fatherland
     },
     {
         id: 28,
         slug: "rustrak-fuel-trucks-ministry-register-4",
-        title: "Rustrak fuel trucks are included in the Ministry of Industry and Trade's register.",
+        translationKey: "news.fuel",
         date: "11.02.2026",
-        desc: [
-            "Refuelers of the «Rustrak» plant on the GAZ C41R13 chassis have successfully passed certification and are included in the registry of Russian industrial products of the Ministry of Industry and Trade of the Russian Federation.",
-            "Included in the registry: C41R13 Refuelers modification 4389JY — a tanker with a fuel dispensing unit on a vehicle / base chassis of the GAZ brand, modification C41R13. Transport vehicles for carrying petroleum products.",
-        ],
-        pick: [news9, news10, news11, news12, news13, news14, news15, news16, news17, news18],
-        parametrs: [
-            "Technical Specifications:",
-            "Two-section tank",
-            "Capacity 5,300 liters.",
-            "Pump SSHN-50/600P Vane type (600 l/min)",
-            "Tank material: Steel 09G2S 3mm",
-            "Dispensing hose Du-25, length 10 m",
-            "Aluminum piping/communications"
-        ],
+        pick: newsPicks.fuel
     },
     {
         id: 29,
         slug: "rustrak-new-year-christmas-congratulations-4",
-        title: "Rustrak congratulates its partners on the New Year and Christmas!",
+        translationKey: "news.newYear",
         date: "30.12.2025",
-        desc: [
-            "Dear partners!",
-            "We sincerely congratulate you on the New Year and Christmas! May the coming year be a time of bright ideas and new achievements. We wish you holiday comfort, warmth, and joy for you and your loved ones. May peace, health, and happiness reign in your families!",
-        ],
-        pick: [news19]
+        pick: newsPicks.newYear
     },
     {
         id: 30,
         slug: "rustrak-comvex-2026-results-5",
-        title: "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition.",
+        translationKey: "news.comvex",
         date: "08.06.2026",
-        desc: [
-            `LLC "Rustrak" successfully completed its work at the largest industry event of the year. The "Rustrak" exposition attracted the attention of a wide range of specialists, experts, and business representatives in the commercial vehicle sector.`,
-            `Throughout all the days of the exhibition, the company team actively worked at the stand, holding meetings and negotiations with existing partners as well as new clients. During the business program, key directions for further cooperation were outlined, and a number of important agreements aimed at developing partnership relations were reached.`,
-            `We thank all guests of our stand for their interest, trust, and productive dialogue. See you next time!`
-        ],
-        pick: [news1]
+        pick: newsPicks.comvex
     },
     {
         id: 31,
         slug: "rustrak-womens-day-congratulations-5",
-        title: "Rustrak congratulates you on International Women's Day!",
+        translationKey: "news.womensDay",
         date: "06.03.2026",
-        desc: [
-            "Dear women!",
-            "We sincerely congratulate you on the most gentle holiday — March 8th! May this day be as bright and beautiful as the first spring flowers. Thank you for making the world around us kinder, more harmonious, and brighter. You are our inspiration!",
-            "We wish you sincere smiles, attention from your loved ones, and a great mood every single day!",
-            "With respect and warmest wishes, Your Rustrak."
-        ],
-        pick: [news6]
+        pick: newsPicks.womensDay
     },
     {
         id: 32,
         slug: "rustrak-official-dealer-inman-velmash-5",
-        title: "RUSTRAK has extended its status as an official dealer of INMAN and VELMASH-S!",
+        translationKey: "news.dealer",
         date: "26.02.2026",
-        desc: [
-            `«RUSTRAK» has extended dealer agreements with the manufacturers of loader cranes «INMAN» and «VELMASH-S».`,
-            "The official dealer status guarantees our clients the supply of original equipment, factory warranty, and full service support.",
-            "We continue working with reliable Russian manufacturers of loader cranes. For purchasing inquiries, please contact the sales department."
-        ],
-        pick: [news7]
+        pick: newsPicks.dealer
     },
     {
         id: 33,
         slug: "rustrak-defender-of-the-fatherland-day-5",
-        title: "Rustrak congratulates you on Defender of the Fatherland Day.",
+        translationKey: "news.fatherland",
         date: "20.02.2026",
-        desc: [
-            "Dear partners!",
-            "We congratulate you on Defender of the Fatherland Day!",
-            "Courage, honor, and loyalty — these qualities are essential every day when making bold decisions and standing up for the interests of those we care about.",
-            "Thank you for your reliability and partnership support. We are proud of our cooperation and confident that together we can handle any task.",
-            "Happy holiday!",
-        ],
-        pick: [news8]
+        pick: newsPicks.fatherland
     },
     {
         id: 34,
         slug: "rustrak-fuel-trucks-ministry-register-5",
-        title: "Rustrak fuel trucks are included in the Ministry of Industry and Trade's register.",
+        translationKey: "news.fuel",
         date: "11.02.2026",
-        desc: [
-            "Refuelers of the «Rustrak» plant on the GAZ C41R13 chassis have successfully passed certification and are included in the registry of Russian industrial products of the Ministry of Industry and Trade of the Russian Federation.",
-            "Included in the registry: C41R13 Refuelers modification 4389JY — a tanker with a fuel dispensing unit on a vehicle / base chassis of the GAZ brand, modification C41R13. Transport vehicles for carrying petroleum products.",
-        ],
-        pick: [news9, news10, news11, news12, news13, news14, news15, news16, news17, news18],
-        parametrs: [
-            "Technical Specifications:",
-            "Two-section tank",
-            "Capacity 5,300 liters.",
-            "Pump SSHN-50/600P Vane type (600 l/min)",
-            "Tank material: Steel 09G2S 3mm",
-            "Dispensing hose Du-25, length 10 m",
-            "Aluminum piping/communications"
-        ],
+        pick: newsPicks.fuel
     },
     {
         id: 35,
         slug: "rustrak-new-year-christmas-congratulations-5",
-        title: "Rustrak congratulates its partners on the New Year and Christmas!",
+        translationKey: "news.newYear",
         date: "30.12.2025",
-        desc: [
-            "Dear partners!",
-            "We sincerely congratulate you on the New Year and Christmas! May the coming year be a time of bright ideas and new achievements. We wish you holiday comfort, warmth, and joy for you and your loved ones. May peace, health, and happiness reign in your families!",
-        ],
-        pick: [news19]
+        pick: newsPicks.newYear
     },
     {
         id: 36,
         slug: "rustrak-comvex-2026-results-6",
-        title: "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition.",
+        translationKey: "news.comvex",
         date: "08.06.2026",
-        desc: [
-            `LLC "Rustrak" successfully completed its work at the largest industry event of the year. The "Rustrak" exposition attracted the attention of a wide range of specialists, experts, and business representatives in the commercial vehicle sector.`,
-            `Throughout all the days of the exhibition, the company team actively worked at the stand, holding meetings and negotiations with existing partners as well as new clients. During the business program, key directions for further cooperation were outlined, and a number of important agreements aimed at developing partnership relations were reached.`,
-            `We thank all guests of our stand for their interest, trust, and productive dialogue. See you next time!`
-        ],
-        pick: [news1]
+        pick: newsPicks.comvex
     },
     {
         id: 37,
         slug: "sadko-9-crane-manipulator-drilling-rig-5",
-        title: "Sadko 9 Farmer acquired a crane manipulator with a drilling rig",
+        translationKey: "news.sadko",
         date: "26.03.2026",
-        desc: [
-            `The «Rustrak» plant installed a <0>crane manipulator with a TAURUS 035A drilling and crane unit on the Sadko NEXT 9 chassis.`,
-            `Sadko 9 with loader crane and drilling equipment meets the needs of energy, construction, and utility companies for vehicles capable of working effectively off-road. The versatility of equipment combined with all-wheel drive chassis and double cab minimises downtime in off-road environments.`,
-            `Comment by Dmitry Leonidovich Dolgovanin, Chief Designer of «Rustrak» plant: «This vehicle will work in energy sector, but its scope of application from geological exploration, construction, oil and gas to utility sector gives an undeniable reduction of task completion time. In fact, it is an autonomous complex capable of replacing several specialized equipment units».`
-        ],
-        pick: [news2, news3, news4, news5],
-        parametrs: [
-            "Vehicle Technical Specifications",
-            "Truck payload specifications",
-            "Payload capacity up to 2.05 tons",
-            "7-seat cabin",
-            "Cargo platform internal dimensions 3.5 by 2.4 meters",
-            "TAURUS 035A Crane-Drill Specifications",
-            "Load moment: 7000 kgm",
-            "Boom length 12.5 meters",
-            "Lifting capacity 3.5 tons at 2 meters and 350 kg at 12.5 meters",
-            "Drilling rig with drilling depth up to 8 meters",
-            "Maximum working radius of the drill 6 meters",
-            "Continuous 360° column rotation around its axis",
-            "Boom elevation angle -10° ~ 70°",
-            "Max torque on rotator: 5 000 Nm",
-            "Drilling tool rotation speed: 35 rpm"
-        ]
+        pick: newsPicks.sadko
     },
     {
         id: 38,
         slug: "rustrak-womens-day-congratulations-5",
-        title: "Rustrak congratulates you on International Women's Day!",
+        translationKey: "news.womensDay",
         date: "06.03.2026",
-        desc: [
-            "Dear women!",
-            "We sincerely congratulate you on the most gentle holiday — March 8th! May this day be as bright and beautiful as the first spring flowers. Thank you for making the world around us kinder, more harmonious, and brighter. You are our inspiration!",
-            "We wish you sincere smiles, attention from your loved ones, and a great mood every single day!",
-            "With respect and warmest wishes, Your Rustrak."
-        ],
-        pick: [news6]
+        pick: newsPicks.womensDay
     },
     {
         id: 39,
         slug: "rustrak-official-dealer-inman-velmash-6",
-        title: "RUSTRAK has extended its status as an official dealer of INMAN and VELMASH-S!",
+        translationKey: "news.dealer",
         date: "26.02.2026",
-        desc: [
-            `«RUSTRAK» has extended dealer agreements with the manufacturers of loader cranes «INMAN» and «VELMASH-S».`,
-            "The official dealer status guarantees our clients the supply of original equipment, factory warranty, and full service support.",
-            "We continue working with reliable Russian manufacturers of loader cranes. For purchasing inquiries, please contact the sales department."
-        ],
-        pick: [news7]
+        pick: newsPicks.dealer
     },
     {
         id: 40,
         slug: "rustrak-defender-of-the-fatherland-day-6",
-        title: "Rustrak congratulates you on Defender of the Fatherland Day.",
+        translationKey: "news.fatherland",
         date: "20.02.2026",
-        desc: [
-            "Dear partners!",
-            "We congratulate you on Defender of the Fatherland Day!",
-            "Courage, honor, and loyalty — these qualities are essential every day when making bold decisions and standing up for the interests of those we care about.",
-            "Thank you for your reliability and partnership support. We are proud of our cooperation and confident that together we can handle any task.",
-            "Happy holiday!",
-        ],
-        pick: [news8]
+        pick: newsPicks.fatherland
     },
     {
         id: 41,
         slug: "rustrak-fuel-trucks-ministry-register-6",
-        title: "Rustrak fuel trucks are included in the Ministry of Industry and Trade's register.",
+        translationKey: "news.fuel",
         date: "11.02.2026",
-        desc: [
-            "Refuelers of the «Rustrak» plant on the GAZ C41R13 chassis have successfully passed certification and are included in the registry of Russian industrial products of the Ministry of Industry and Trade of the Russian Federation.",
-            "Included in the registry: C41R13 Refuelers modification 4389JY — a tanker with a fuel dispensing unit on a vehicle / base chassis of the GAZ brand, modification C41R13. Transport vehicles for carrying petroleum products.",
-        ],
-        pick: [news9, news10, news11, news12, news13, news14, news15, news16, news17, news18],
-        parametrs: [
-            "Technical Specifications:",
-            "Two-section tank",
-            "Capacity 5,300 liters.",
-            "Pump SSHN-50/600P Vane type (600 l/min)",
-            "Tank material: Steel 09G2S 3mm",
-            "Dispensing hose Du-25, length 10 m",
-            "Aluminum piping/communications"
-        ],
+        pick: newsPicks.fuel
     },
     {
         id: 42,
         slug: "rustrak-new-year-christmas-congratulations-6",
-        title: "Rustrak congratulates its partners on the New Year and Christmas!",
+        translationKey: "news.newYear",
         date: "30.12.2025",
-        desc: [
-            "Dear partners!",
-            "We sincerely congratulate you on the New Year and Christmas! May the coming year be a time of bright ideas and new achievements. We wish you holiday comfort, warmth, and joy for you and your loved ones. May peace, health, and happiness reign in your families!",
-        ],
-        pick: [news19]
+        pick: newsPicks.newYear
     },
     {
         id: 43,
         slug: "rustrak-comvex-2026-results-7",
-        title: "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition.",
+        translationKey: "news.comvex",
         date: "08.06.2026",
-        desc: [
-            `LLC "Rustrak" successfully completed its work at the largest industry event of the year. The "Rustrak" exposition attracted the attention of a wide range of specialists, experts, and business representatives in the commercial vehicle sector.`,
-            `Throughout all the days of the exhibition, the company team actively worked at the stand, holding meetings and negotiations with existing partners as well as new clients. During the business program, key directions for further cooperation were outlined, and a number of important agreements aimed at developing partnership relations were reached.`,
-            `We thank all guests of our stand for their interest, trust, and productive dialogue. See you next time!`
-        ],
-        pick: [news1]
+        pick: newsPicks.comvex
     },
     {
         id: 44,
         slug: "sadko-9-crane-manipulator-drilling-rig-6",
-        title: "Sadko 9 Farmer acquired a crane manipulator with a drilling rig",
+        translationKey: "news.sadko",
         date: "26.03.2026",
-        desc: [
-            `The «Rustrak» plant installed a <0>crane manipulator with a TAURUS 035A drilling and crane unit on the Sadko NEXT 9 chassis.`,
-            `Sadko 9 with loader crane and drilling equipment meets the needs of energy, construction, and utility companies for vehicles capable of working effectively off-road. The versatility of equipment combined with all-wheel drive chassis and double cab minimises downtime in off-road environments.`,
-            `Comment by Dmitry Leonidovich Dolgovanin, Chief Designer of «Rustrak» plant: «This vehicle will work in energy sector, but its scope of application from geological exploration, construction, oil and gas to utility sector gives an undeniable reduction of task completion time. In fact, it is an autonomous complex capable of replacing several specialized equipment units».`
-        ],
-        pick: [news2, news3, news4, news5],
-        parametrs: [
-            "Vehicle Technical Specifications",
-            "Truck payload specifications",
-            "Payload capacity up to 2.05 tons",
-            "7-seat cabin",
-            "Cargo platform internal dimensions 3.5 by 2.4 meters",
-            "TAURUS 035A Crane-Drill Specifications",
-            "Load moment: 7000 kgm",
-            "Boom length 12.5 meters",
-            "Lifting capacity 3.5 tons at 2 meters and 350 kg at 12.5 meters",
-            "Drilling rig with drilling depth up to 8 meters",
-            "Maximum working radius of the drill 6 meters",
-            "Continuous 360° column rotation around its axis",
-            "Boom elevation angle -10° ~ 70°",
-            "Max torque on rotator: 5 000 Nm",
-            "Drilling tool rotation speed: 35 rpm"
-        ]
+        pick: newsPicks.sadko
     },
     {
         id: 45,
         slug: "rustrak-womens-day-congratulations-6",
-        title: "Rustrak congratulates you on International Women's Day!",
+        translationKey: "news.womensDay",
         date: "06.03.2026",
-        desc: [
-            "Dear women!",
-            "We sincerely congratulate you on the most gentle holiday — March 8th! May this day be as bright and beautiful as the first spring flowers. Thank you for making the world around us kinder, more harmonious, and brighter. You are our inspiration!",
-            "We wish you sincere smiles, attention from your loved ones, and a great mood every single day!",
-            "With respect and warmest wishes, Your Rustrak."
-        ],
-        pick: [news6]
+        pick: newsPicks.womensDay
     },
     {
         id: 46,
         slug: "rustrak-official-dealer-inman-velmash-7",
-        title: "RUSTRAK has extended its status as an official dealer of INMAN and VELMASH-S!",
+        translationKey: "news.dealer",
         date: "26.02.2026",
-        desc: [
-            `«RUSTRAK» has extended dealer agreements with the manufacturers of loader cranes «INMAN» and «VELMASH-S».`,
-            "The official dealer status guarantees our clients the supply of original equipment, factory warranty, and full service support.",
-            "We continue working with reliable Russian manufacturers of loader cranes. For purchasing inquiries, please contact the sales department."
-        ],
-        pick: [news7]
+        pick: newsPicks.dealer
     },
     {
         id: 47,
         slug: "rustrak-defender-of-the-fatherland-day-7",
-        title: "Rustrak congratulates you on Defender of the Fatherland Day.",
+        translationKey: "news.fatherland",
         date: "20.02.2026",
-        desc: [
-            "Dear partners!",
-            "We congratulate you on Defender of the Fatherland Day!",
-            "Courage, honor, and loyalty — these qualities are essential every day when making bold decisions and standing up for the interests of those we care about.",
-            "Thank you for your reliability and partnership support. We are proud of our cooperation and confident that together we can handle any task.",
-            "Happy holiday!",
-        ],
-        pick: [news8]
+        pick: newsPicks.fatherland
     },
     {
         id: 48,
         slug: "rustrak-fuel-trucks-ministry-register-7",
-        title: "Rustrak fuel trucks are included in the Ministry of Industry and Trade's register.",
+        translationKey: "news.fuel",
         date: "11.02.2026",
-        desc: [
-            "Refuelers of the «Rustrak» plant on the GAZ C41R13 chassis have successfully passed certification and are included in the registry of Russian industrial products of the Ministry of Industry and Trade of the Russian Federation.",
-            "Included in the registry: C41R13 Refuelers modification 4389JY — a tanker with a fuel dispensing unit on a vehicle / base chassis of the GAZ brand, modification C41R13. Transport vehicles for carrying petroleum products.",
-        ],
-        pick: [news9, news10, news11, news12, news13, news14, news15, news16, news17, news18],
-        parametrs: [
-            "Technical Specifications:",
-            "Two-section tank",
-            "Capacity 5,300 liters.",
-            "Pump SSHN-50/600P Vane type (600 l/min)",
-            "Tank material: Steel 09G2S 3mm",
-            "Dispensing hose Du-25, length 10 m",
-            "Aluminum piping/communications"
-        ],
+        pick: newsPicks.fuel
     },
     {
         id: 49,
         slug: "rustrak-new-year-christmas-congratulations-7",
-        title: "Rustrak congratulates its partners on the New Year and Christmas!",
+        translationKey: "news.newYear",
         date: "30.12.2025",
-        desc: [
-            "Dear partners!",
-            "We sincerely congratulate you on the New Year and Christmas! May the coming year be a time of bright ideas and new achievements. We wish you holiday comfort, warmth, and joy for you and your loved ones. May peace, health, and happiness reign in your families!",
-        ],
-        pick: [news19]
+        pick: newsPicks.newYear
     },
     {
         id: 50,
         slug: "rustrak-comvex-2026-results-8",
-        title: "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition.",
+        translationKey: "news.comvex",
         date: "08.06.2026",
-        desc: [
-            `LLC "Rustrak" successfully completed its work at the largest industry event of the year. The "Rustrak" exposition attracted the attention of a wide range of specialists, experts, and business representatives in the commercial vehicle sector.`,
-            `Throughout all the days of the exhibition, the company team actively worked at the stand, holding meetings and negotiations with existing partners as well as new clients. During the business program, key directions for further cooperation were outlined, and a number of important agreements aimed at developing partnership relations were reached.`,
-            `We thank all guests of our stand for their interest, trust, and productive dialogue. See you next time!`
-        ],
-        pick: [news1]
+        pick: newsPicks.comvex
     },
     {
         id: 51,
         slug: "sadko-9-crane-manipulator-drilling-rig-7",
-        title: "Sadko 9 Farmer acquired a crane manipulator with a drilling rig",
+        translationKey: "news.sadko",
         date: "26.03.2026",
-        desc: [
-            `The «Rustrak» plant installed a <0>crane manipulator with a TAURUS 035A drilling and crane unit on the Sadko NEXT 9 chassis.`,
-            `Sadko 9 with loader crane and drilling equipment meets the needs of energy, construction, and utility companies for vehicles capable of working effectively off-road. The versatility of equipment combined with all-wheel drive chassis and double cab minimises downtime in off-road environments.`,
-            `Comment by Dmitry Leonidovich Dolgovanin, Chief Designer of «Rustrak» plant: «This vehicle will work in energy sector, but its scope of application from geological exploration, construction, oil and gas to utility sector gives an undeniable reduction of task completion time. In fact, it is an autonomous complex capable of replacing several specialized equipment units».`
-        ],
-        pick: [news2, news3, news4, news5],
-        parametrs: [
-            "Vehicle Technical Specifications",
-            "Truck payload specifications",
-            "Payload capacity up to 2.05 tons",
-            "7-seat cabin",
-            "Cargo platform internal dimensions 3.5 by 2.4 meters",
-            "TAURUS 035A Crane-Drill Specifications",
-            "Load moment: 7000 kgm",
-            "Boom length 12.5 meters",
-            "Lifting capacity 3.5 tons at 2 meters and 350 kg at 12.5 meters",
-            "Drilling rig with drilling depth up to 8 meters",
-            "Maximum working radius of the drill 6 meters",
-            "Continuous 360° column rotation around its axis",
-            "Boom elevation angle -10° ~ 70°",
-            "Max torque on rotator: 5 000 Nm",
-            "Drilling tool rotation speed: 35 rpm"
-        ]
+        pick: newsPicks.sadko
     },
     {
         id: 52,
         slug: "rustrak-womens-day-congratulations-7",
-        title: "Rustrak congratulates you on International Women's Day!",
+        translationKey: "news.womensDay",
         date: "06.03.2026",
-        desc: [
-            "Dear women!",
-            "We sincerely congratulate you on the most gentle holiday — March 8th! May this day be as bright and beautiful as the first spring flowers. Thank you for making the world around us kinder, more harmonious, and brighter. You are our inspiration!",
-            "We wish you sincere smiles, attention from your loved ones, and a great mood every single day!",
-            "With respect and warmest wishes, Your Rustrak."
-        ],
-        pick: [news6]
+        pick: newsPicks.womensDay
     },
     {
         id: 53,
         slug: "rustrak-official-dealer-inman-velmash-8",
-        title: "RUSTRAK has extended its status as an official dealer of INMAN and VELMASH-S!",
+        translationKey: "news.dealer",
         date: "26.02.2026",
-        desc: [
-            `«RUSTRAK» has extended dealer agreements with the manufacturers of loader cranes «INMAN» and «VELMASH-S».`,
-            "The official dealer status guarantees our clients the supply of original equipment, factory warranty, and full service support.",
-            "We continue working with reliable Russian manufacturers of loader cranes. For purchasing inquiries, please contact the sales department."
-        ],
-        pick: [news7]
+        pick: newsPicks.dealer
     },
     {
         id: 54,
         slug: "rustrak-defender-of-the-fatherland-day-8",
-        title: "Rustrak congratulates you on Defender of the Fatherland Day.",
+        translationKey: "news.fatherland",
         date: "20.02.2026",
-        desc: [
-            "Dear partners!",
-            "We congratulate you on Defender of the Fatherland Day!",
-            "Courage, honor, and loyalty — these qualities are essential every day when making bold decisions and standing up for the interests of those we care about.",
-            "Thank you for your reliability and partnership support. We are proud of our cooperation and confident that together we can handle any task.",
-            "Happy holiday!",
-        ],
-        pick: [news8]
+        pick: newsPicks.fatherland
     },
     {
         id: 55,
         slug: "rustrak-fuel-trucks-ministry-register-8",
-        title: "Rustrak fuel trucks are included in the Ministry of Industry and Trade's register.",
+        translationKey: "news.fuel",
         date: "11.02.2026",
-        desc: [
-            "Refuelers of the «Rustrak» plant on the GAZ C41R13 chassis have successfully passed certification and are included in the registry of Russian industrial products of the Ministry of Industry and Trade of the Russian Federation.",
-            "Included in the registry: C41R13 Refuelers modification 4389JY — a tanker with a fuel dispensing unit on a vehicle / base chassis of the GAZ brand, modification C41R13. Transport vehicles for carrying petroleum products.",
-        ],
-        pick: [news9, news10, news11, news12, news13, news14, news15, news16, news17, news18],
-        parametrs: [
-            "Technical Specifications:",
-            "Two-section tank",
-            "Capacity 5,300 liters.",
-            "Pump SSHN-50/600P Vane type (600 l/min)",
-            "Tank material: Steel 09G2S 3mm",
-            "Dispensing hose Du-25, length 10 m",
-            "Aluminum piping/communications"
-        ],
+        pick: newsPicks.fuel
     },
     {
         id: 56,
         slug: "rustrak-new-year-christmas-congratulations-8",
-        title: "Rustrak congratulates its partners on the New Year and Christmas!",
+        translationKey: "news.newYear",
         date: "30.12.2025",
-        desc: [
-            "Dear partners!",
-            "We sincerely congratulate you on the New Year and Christmas! May the coming year be a time of bright ideas and new achievements. We wish you holiday comfort, warmth, and joy for you and your loved ones. May peace, health, and happiness reign in your families!",
-        ],
-        pick: [news19]
+        pick: newsPicks.newYear
     },
     {
         id: 57,
         slug: "rustrak-comvex-2026-results-9",
-        title: "Rustrak summed up the results of its participation in the COMVEX 2026 exhibition.",
+        translationKey: "news.comvex",
         date: "08.06.2026",
-        desc: [
-            `LLC "Rustrak" successfully completed its work at the largest industry event of the year. The "Rustrak" exposition attracted the attention of a wide range of specialists, experts, and business representatives in the commercial vehicle sector.`,
-            `Throughout all the days of the exhibition, the company team actively worked at the stand, holding meetings and negotiations with existing partners as well as new clients. During the business program, key directions for further cooperation were outlined, and a number of important agreements aimed at developing partnership relations were reached.`,
-            `We thank all guests of our stand for their interest, trust, and productive dialogue. See you next time!`
-        ],
-        pick: [news1]
+        pick: newsPicks.comvex
     },
     {
         id: 58,
         slug: "sadko-9-crane-manipulator-drilling-rig-8",
-        title: "Sadko 9 Farmer acquired a crane manipulator with a drilling rig",
+        translationKey: "news.sadko",
         date: "26.03.2026",
-        desc: [
-            `The «Rustrak» plant installed a <0>crane manipulator with a TAURUS 035A drilling and crane unit on the Sadko NEXT 9 chassis.`,
-            `Sadko 9 with loader crane and drilling equipment meets the needs of energy, construction, and utility companies for vehicles capable of working effectively off-road. The versatility of equipment combined with all-wheel drive chassis and double cab minimises downtime in off-road environments.`,
-            `Comment by Dmitry Leonidovich Dolgovanin, Chief Designer of «Rustrak» plant: «This vehicle will work in energy sector, but its scope of application from geological exploration, construction, oil and gas to utility sector gives an undeniable reduction of task completion time. In fact, it is an autonomous complex capable of replacing several specialized equipment units».`
-        ],
-        pick: [news2, news3, news4, news5],
-        parametrs: [
-            "Vehicle Technical Specifications",
-            "Truck payload specifications",
-            "Payload capacity up to 2.05 tons",
-            "7-seat cabin",
-            "Cargo platform internal dimensions 3.5 by 2.4 meters",
-            "TAURUS 035A Crane-Drill Specifications",
-            "Load moment: 7000 kgm",
-            "Boom length 12.5 meters",
-            "Lifting capacity 3.5 tons at 2 meters and 350 kg at 12.5 meters",
-            "Drilling rig with drilling depth up to 8 meters",
-            "Maximum working radius of the drill 6 meters",
-            "Continuous 360° column rotation around its axis",
-            "Boom elevation angle -10° ~ 70°",
-            "Max torque on rotator: 5 000 Nm",
-            "Drilling tool rotation speed: 35 rpm"
-        ]
+        pick: newsPicks.sadko
     },
     {
         id: 59,
         slug: "rustrak-womens-day-congratulations-8",
-        title: "Rustrak congratulates you on International Women's Day!",
+        translationKey: "news.womensDay",
         date: "06.03.2026",
-        desc: [
-            "Dear women!",
-            "We sincerely congratulate you on the most gentle holiday — March 8th! May this day be as bright and beautiful as the first spring flowers. Thank you for making the world around us kinder, more harmonious, and brighter. You are our inspiration!",
-            "We wish you sincere smiles, attention from your loved ones, and a great mood every single day!",
-            "With respect and warmest wishes, Your Rustrak."
-        ],
-        pick: [news6]
+        pick: newsPicks.womensDay
     }
-
 ]
+
+const getNewsTranslationKey = (slug: string) => {
+    if (slug.includes("first-kamaz")) return "news.container"
+    if (slug.includes("comvex")) return "news.comvex"
+    if (slug.includes("sadko")) return "news.sadko"
+    if (slug.includes("womens-day")) return "news.womensDay"
+    if (slug.includes("official-dealer")) return "news.dealer"
+    if (slug.includes("fatherland")) return "news.fatherland"
+    if (slug.includes("fuel-trucks")) return "news.fuel"
+    if (slug.includes("new-year")) return "news.newYear"
+
+    return "news.comvex"
+}
+
+export const NewsDataWithKeys: NewsDataType[] = NewsData.map((item) => ({
+    ...item,
+    translationKey: getNewsTranslationKey(item.slug)
+}))

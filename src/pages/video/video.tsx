@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom"
 import { VideoData } from "../../constants/videoData"
+import { useTranslation } from "react-i18next"
 
 import play from "../../assets/play.png"
 import { useState } from "react"
 
 const Video = () => {
-
+  const { t } = useTranslation();
   const [openVideo, setOpenVideo] = useState<number[]>([])
 
   const handleOpenVideo = (id: number) => {
@@ -17,10 +18,10 @@ const Video = () => {
   return (
     <section className="container max-xl:px-[3%]">
       <div className="flex justify-between items-center py-5">
-        <h1 className="text-[32px] max-md:text-[26px] max-sm:text-[22px] font-[500]">Видеогалерея производителя автоспецтехники РусТрак</h1>
+        <h1 className="text-[32px] max-md:text-[26px] max-sm:text-[22px] font-[500]">{t("video_page.title")}</h1>
         <Link to={'/galeriya'}>
           <button className="max-lg:hidden px-[30px] max-lg:hidden py-2 rounded-[6px] border-2 border-[#fec80b] duration-200 hover:bg-[#fec80b] active:bg-[#fec80b]">
-              Смотреть фото
+              {t("video_page.watch_photos")}
           </button>
         </Link>
       </div>
@@ -36,7 +37,7 @@ const Video = () => {
               </button>
             </div>
             <iframe className={`${isOpen ? "block" : "hidden"} max-lg:h-[240px] max-md:h-[350px]`} src={vid.vid} width={"100%"} height={"380px"} allow="autoplay; encrypted-media" allowFullScreen></iframe>
-            <h4 className="text-lg font-[500] mt-5">{vid.title}</h4>
+            <h4 className="text-lg font-[500] mt-5">{t(vid.title)}</h4>
           </div>
           )
         })}

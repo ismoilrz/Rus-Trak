@@ -10,6 +10,7 @@ import ser7 from "../../assets/ser7.jpg"
 import ser8 from "../../assets/ser8.jpg"
 import ser9 from "../../assets/ser9.jpg"
 import { SearchX } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface SerDataType {
   id: number;
@@ -29,11 +30,12 @@ const SerData: SerDataType[] = [
 ];
 
 const Sertificate = () => {
+  const { t } = useTranslation();
   const fancyboxRef = useFancybox({});
 
   return (
     <section ref={fancyboxRef} className="container max-xl:px-[3%]">
-      <h1 className="text-[32px] font-[500] py-6">Сертификаты</h1>
+      <h1 className="text-[32px] font-[500] py-6">{t("sertificates")}</h1>
       <div className="flex flex-wrap justify-start max-sm:justify-center gap-6 w-full">
         {SerData.map((rev) => (
           <a className="reviews relative" key={rev.id} data-fancybox="gallery" href={rev.pick}>

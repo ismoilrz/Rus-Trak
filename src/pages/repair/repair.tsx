@@ -14,40 +14,10 @@ import comp3 from "../../assets/comp3.jpg";
 import comp4 from "../../assets/comp4.jpg";
 import { useEffect, useState, useRef } from 'react';
 import { X } from 'lucide-react';
-
-interface RepairLiType {
-  id: number;
-  desc: string;
-}
-
-const RepairLi: RepairLiType[] = [
-  {
-    id: 1,
-    desc: "Большая производственная база – позволяет одновременно выполнять несколько крупных заказов и обслуживать большое количество техники."
-  },
-  {
-    id: 2,
-    desc: "Вместительные цеха – обеспечивают удобство работы с крупногабаритными полуприцепами и комфорт для сотрудников."
-  },
-  {
-    id: 3,
-    desc: "Профессиональные мастера – специалисты с опытом и знаниями гарантируют качественный и точный ремонт."
-  },
-  {
-    id: 4,
-    desc: "Полный цикл производства – все работы выполняются на месте, от диагностики до финальной сборки, без привлечения сторонних подрядчиков."
-  },
-  {
-    id: 5,
-    desc: "Опыт 17 лет – долгий срок работы на рынке подтверждает надёжность и компетентность компании."
-  }, 
-  {
-    id: 6,
-    desc: "Гарантия на ремонт – обеспечивает уверенность в долговечности и качестве выполненных работ."
-  }
-];
+import { useTranslation } from 'react-i18next';
 
 const Repair = () => {
+  const { t } = useTranslation();
   const [repairForm, setRepairForm] = useState<boolean>(false);
 
   const [text, setText] = useState<string>('');
@@ -165,23 +135,16 @@ const Repair = () => {
     }
   };
 
+  const advantagesList = (t("repair_page.advantages", { returnObjects: true }) as string[]) || [];
+
   return (
     <div className="container max-xl:px-[3%]">
       <div>
         <h3 className="font-[500] text-[32px] py-5 max-md:text-[25px]">
-          Ремонт шторных полуприцепов от компании «Рустрак» в Нижнем Новгороде
+          {t("repair_page.main_title")}
         </h3>
         <p className="text-[18px] max-w-[90%]">
-          Логистическая сфера опирается на устойчивую работу прицепной техники.
-          Ремонт шторных полуприцепов обеспечивает восстановление
-          работоспособности конструкции после интенсивной эксплуатации. Наши
-          мастера учитывают конструктивные особенности узлов и применяют
-          проверенные методы обслуживания. Компания «Рустрак» в Нижнем Новгороде
-          предлагает сервис, ориентированный на качество и долговечность
-          оборудования. Своевременные технические мероприятия поддерживают
-          стабильное состояние прицепов при интенсивных нагрузках. Надёжный
-          подход к обслуживанию формирует уверенность в бесперебойной работе
-          техники.
+          {t("repair_page.main_desc")}
         </p>
         <div className="w-full flex max-lg:flex-col max-lg:items-center gap-5 justify-center py-6">
           <img className="w-[37%] max-lg:w-[620px] rounded-[4px]" src={repair1} alt="To" />
@@ -189,23 +152,17 @@ const Repair = () => {
         </div>
         <div className="w-full flex justify-center">
           <button onClick={openRepairForm} className="px-5 py-2 bg-[#fec80b] rounded-[6px] text-lg font-bold duration-200 hover:opacity-[0.7] cursor-pointer">
-            Рассчитать стоимость ремонта
+            {t("repair_page.calc_btn")}
           </button>
         </div>
       </div>
 
       <div className="mt-3">
-        <strong className="text-[22px]">Наши услуги</strong>
+        <strong className="text-[22px]">{t("repair_page.services_title")}</strong>
         <p className="text-lg max-w-[90%] mt-3">
-          Компания «Рустрак» выполняет полный ремонт полуприцепов в Нижнем
-          Новгороде после повреждений или выхода из строя. Мы восстанавливаем
-          конструкцию прицепа, исправляем каркас и боковые тенты, ремонтируем
-          двери, замки и механизмы открывания, а также восстанавливаем пол и
-          борта прицепа. Все работы выполняются с высокой точностью и
-          соблюдением стандартов качества, что гарантирует долговечность
-          восстановленных элементов.
+          {t("repair_page.services_desc")}
         </p>
-        <p className="text-lg"><b>Важно:</b> ремонт ходовой, двигателя, замена масел и плановое техническое обслуживание не производятся.</p>
+        <p className="text-lg"><b>{t("repair_page.important")}</b> {t("repair_page.important_desc")}</p>
         
         <div className='w-full max-lg:flex-col max-lg:items-center flex justify-center gap-5 py-10'>
           <ReactCompareSlider className='w-[45%] max-lg:w-[90%] max-sm:w-full h-[400px] rounded-[6px] shadow-[2px_2px_10px_#0005]'
@@ -234,12 +191,12 @@ const Repair = () => {
         </div>
         
         <div>
-          <strong className='text-[22px]'>Преимущества компании «Рустрак»</strong>
+          <strong className='text-[22px]'>{t("repair_page.advantages_title")}</strong>
           <ol className='flex flex-col gap-3 mt-3'>
-            {RepairLi.map((rep) => (
-              <div key={rep.id} className='flex gap-4'>
+            {advantagesList.map((desc, idx) => (
+              <div key={idx} className='flex gap-4'>
                 <span className='text-[#fec80b]'>♦</span>
-                <li className='text-lg max-w-[90%]'>{rep.desc}</li>
+                <li className='text-lg max-w-[90%]'>{desc}</li>
               </div>
             ))}
           </ol>
@@ -256,22 +213,15 @@ const Repair = () => {
           </div>
           <div className='w-full flex items-center justify-center py-6'>
             <button onClick={openRepairForm} className="px-5 py-2 bg-[#fec80b] rounded-[6px] text-lg font-bold duration-200 hover:opacity-[0.7] cursor-pointer">
-              Рассчитать стоимость ремонта
+              {t("repair_page.calc_btn")}
             </button>
           </div>
         </div>
 
         <div>
-          <strong className='text-[22px]'>Качественный сервис для полуприцепов</strong>
+          <strong className='text-[22px]'>{t("repair_page.quality_title")}</strong>
           <p className='mt-3 text-lg max-w-[90%]'>
-            Ремонт шторных полуприцепов помогает продлить срок службы техники и 
-            сохранить её функциональность. Обратитесь к нашей команде, чтобы получить 
-            надежное и аккуратное обслуживание. Компания «Рустрак» в Нижнем Новгороде 
-            выполняет работы с вниманием к деталям и строгими стандартами качества. 
-            Доверьте нам технические задачи и получите результат, который оправдает 
-            ожидания. Запланируйте обслуживание заранее и убедитесь в удобстве нашего 
-            сервиса. Для начала сотрудничества свяжитесь с нами любым удобным способом, 
-            и мы поможем организовать все быстро и профессионально.
+            {t("repair_page.quality_desc")}
           </p>
         </div>
       </div>
@@ -284,24 +234,23 @@ const Repair = () => {
 
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center py-6 text-center w-full">
-                <h3 className="text-[32px] font-[500] text-black mb-3">Успешно!</h3>
-                <p className="text-black mb-6 text-lg">Ваши данные направлены нашему менеджеру. Мы свяжемся с вами в ближайшее время!</p>
+                <h3 className="text-[32px] font-[500] text-black mb-3">{t("repair_page.form.success_title")}</h3>
+                <p className="text-black mb-6 text-lg">{t("repair_page.form.success_desc")}</p>
                 <button 
                   onClick={closeRepairForm} 
                   className="py-3 px-8 w-[60%] rounded-[4px] bg-black text-white duration-200 hover:bg-transparent hover:text-black border-2 border-black font-bold"
                 >
-                  Закрыть
+                  {t("repair_page.form.close")}
                 </button>
               </div>
             ) : (
               <>
-                <b className='text-[20px] text-center'>Рассчитать стоимость ремонта</b>
-                <p className='text-base text-gray-600 text-center mt-2'>Оставьте свои данные, и наш менеджер свяжется с вами для расчета стоимости.</p>
+                <b className='text-[20px] text-center'>{t("repair_page.form.title")}</b>
+                <p className='text-base text-gray-600 text-center mt-2'>{t("repair_page.form.subtitle")}</p>
                 
                 <form className='w-full flex flex-col gap-4 mt-4'>
-                  {/* Ism */}
                   <div className='flex flex-col gap-1'>
-                    <label className={`${textNull ? "text-red-500" : "text-black"} text-[15px]`}>Ваше имя <span className='text-red-600'>*</span></label>
+                    <label className={`${textNull ? "text-red-500" : "text-black"} text-[15px]`}>{t("repair_page.form.name_label")} <span className='text-red-600'>*</span></label>
                     <input 
                       value={text}
                       onChange={(e) => {
@@ -310,14 +259,13 @@ const Repair = () => {
                       }}
                       className={`h-11 border ${textNull ? "border-red-500" : "border-[#a1a1a1]"} rounded-[4px] px-3 bg-white outline-none`} 
                       type="text" 
-                      placeholder='Иван' 
+                      placeholder={t("repair_page.form.name_placeholder")} 
                     />
-                    {textNull && <p className="text-[13px] text-red-500">Поле обязательно для заполнения</p>}
+                    {textNull && <p className="text-[13px] text-red-500">{t("repair_page.form.name_error")}</p>}
                   </div>
 
-                  {/* Telefon */}
                   <div className='flex flex-col gap-1'>
-                    <label className={`${phoneError ? "text-red-500" : "text-black"} text-[15px]`}>Телефон <span className='text-red-600'>*</span></label>
+                    <label className={`${phoneError ? "text-red-500" : "text-black"} text-[15px]`}>{t("repair_page.form.phone_label")} <span className='text-red-600'>*</span></label>
                     <input 
                       ref={phoneInputRef}
                       value={phone}
@@ -331,11 +279,11 @@ const Repair = () => {
                       type="text" 
                       placeholder='+998' 
                     />
-                    {phoneError && <p className="text-[13px] text-red-500">Введите номер полностью</p>}
+                    {phoneError && <p className="text-[13px] text-red-500">{t("repair_page.form.phone_error")}</p>}
                   </div>
 
                   <button onClick={handleSubBtn} className='w-full h-11 font-bold text-lg rounded-[5px] bg-[#fec80b] hover:opacity-[0.8] cursor-pointer duration-200 mt-2'>
-                    Рассчитать стоимость
+                    {t("repair_page.form.submit_btn")}
                   </button>
                 </form>
               </>
@@ -343,7 +291,7 @@ const Repair = () => {
           </div>
         </div>
       )}
-    </div>
+  </div>
   );
 };
 

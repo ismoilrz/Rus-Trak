@@ -8,6 +8,7 @@ import { catalogConfig } from "../../constants/catalogData/catalogConfig";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const HomeProduct = () => {
     const [catalogForm, setCatalogForm] = useState<boolean>(false)
@@ -175,12 +176,14 @@ const HomeProduct = () => {
     }
   };
 
+  const { t } = useTranslation();
+
   return (
     <>
         <section className="bg-[#f5f5f5] pb-12">
         <div className="container max-xl:px-[3%]">
             <div className="w-full flex justify-between py-14 pb-8 max-sm:flex-col max-sm:gap-6 max-sm:pb-3">
-            <h3 className="text-[40px] max-md:text-3xl font-medium">Рекомендуемая продукция</h3>
+            <h3 className="text-[40px] max-md:text-3xl font-medium">{t("titlePr")}</h3>
             <div className="flex gap-3">
                 <button id="cat-slide-left" className="w-10 h-10 rounded-md border-1 text-3xl text-[#a1a1a1] duration-200 hover:bg-[#fec80b] hover:text-black active:bg-[#fec80b]">{'<'}</button>
                 <button id="cat-slide-next" className="w-10 h-10 rounded-md border-1 text-3xl text-[#a1a1a1] duration-200 hover:bg-[#fec80b] hover:text-black active:bg-[#fec80b]">{'>'}</button>
@@ -221,12 +224,12 @@ const HomeProduct = () => {
                     <Link to={`/catalog/${trakItem.categorySlug}/${trakItem.slug}`} className="w-full h-full flex flex-col items-start rounded-lg">
                     <img className="h-[56%]!" src={trakItem.img} alt="" />
                     <h4 className="text-[17px] line-clamp-2 text-start m-3 min-h-12">
-                        {trakItem.title}
+                        {t(trakItem.titleKey)}
                     </h4>
-                    <span className="text-xl font-medium px-3">{trakItem.price}</span>
+                    <span className="text-xl font-medium px-3">{t(trakItem.priceKey)}</span>
                     <div className="flex justify-between w-full px-3 pt-2 text-[14px]">
-                        <button className="px-4 py-2 rounded-md bg-[#fec80b]">Подробнее</button>
-                        <button onClick={(e) => {e.preventDefault(); e.stopPropagation(); setCatalogForm(true)}}>Получить КП</button>
+                        <button className="px-4 py-2 rounded-md bg-[#fec80b]">{t("more")}</button>
+                        <button onClick={(e) => {e.preventDefault(); e.stopPropagation(); setCatalogForm(true)}}>{t("get_quote")}</button>
                     </div>
                     </Link>
                 </SwiperSlide>

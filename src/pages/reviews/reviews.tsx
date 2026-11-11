@@ -6,6 +6,7 @@ import review3 from "../../assets/review3.jpg"
 import review4 from "../../assets/review4.jpg"
 import review5 from "../../assets/review5.jpg"
 import { SearchX } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface ReviewDataType {
   id: number;
@@ -21,11 +22,12 @@ const ReviewData: ReviewDataType[] = [
 ];
 
 const Reviews = () => {
+  const { t } = useTranslation();
   const fancyboxRef = useFancybox({});
 
   return (
     <section ref={fancyboxRef} className="container max-xl:px-[3%]">
-      <h1 className="text-[32px] font-[500] py-6">Отзывы</h1>
+      <h1 className="text-[32px] font-[500] py-6">{t("reviews")}</h1>
       <div className="flex flex-wrap justify-start max-sm:justify-center gap-6 w-full">
         {ReviewData.map((rev) => (
           <a className="reviews relative" key={rev.id} data-fancybox="gallery" href={rev.pick}>

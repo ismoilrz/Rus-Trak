@@ -1,8 +1,10 @@
 import { Collapse } from 'antd';
 import { X } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Vacancies = () => {
+  const { t } = useTranslation();
   const [vacancies, setVacancies] = useState<boolean>(false);
   
   // Form state'lari
@@ -44,19 +46,18 @@ const Vacancies = () => {
 
   useEffect(() => {
     const scrollClosed = vacancies;
- 
+
     if (scrollClosed) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
- 
+
     return () => {
       document.body.style.overflow = "";
     };
   }, [vacancies]);
 
-  // Telefon raqam maskasi
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target;
     const cursorPosition = input.selectionStart || 0; 
@@ -114,7 +115,6 @@ const Vacancies = () => {
     }
   };
 
-  // Validatsiya va yuborish
   const handleSubBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     let hasError: boolean = false;
@@ -135,7 +135,6 @@ const Vacancies = () => {
       setEmailError(false);
     }
 
-    // Telefon (9 ta raqam)
     const pureDigits = phone.replace(/\D/g, '').slice(3);
     if (pureDigits.length < 9) {
       setPhoneError(true);
@@ -144,7 +143,6 @@ const Vacancies = () => {
       setPhoneError(false);
     }
 
-    // Rezume havolasi
     if (resume.trim() === '') {
       setResumeError(true);
       hasError = true;
@@ -152,7 +150,6 @@ const Vacancies = () => {
       setResumeError(false);
     }
 
-    // Checkbox
     if (!isChecked) {
       setCheckboxError(true);
       hasError = true;
@@ -172,27 +169,27 @@ const Vacancies = () => {
         items={[
           { 
             key: '1', 
-            label: 'Автоэлектрик', 
+            label: t("vacancies_page.electrician"), 
             children: (
               <>
-                <span className='text-lg max-sm:text-[16px] font-[500]'>Обязанности:</span>
+                <span className='text-lg max-sm:text-[16px] font-[500]'>{t("vacancies_page.responsibilities")}</span>
                 <ol className='mb-7 mt-2'>
-                  <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>электромонтаж осветительного оборудования</li>
-                  <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>монтаж электрооборудования и надстроек на спецавтомобили</li>
+                  <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>{t("vacancies_page.resp1")}</li>
+                  <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>{t("vacancies_page.resp2")}</li>
                 </ol>
-                <span className='text-lg max-sm:text-[16px] font-[500]'>Требования:</span>
+                <span className='text-lg max-sm:text-[16px] font-[500]'>{t("vacancies_page.requirements")}</span>
                 <ol className='mt-2 mb-7'>
-                  <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>опыт работы приветствуется</li>
-                  <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>желание обучаться новому</li>
+                  <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>{t("vacancies_page.req1")}</li>
+                  <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>{t("vacancies_page.req2")}</li>
                 </ol>
-                <span className='text-lg max-sm:text-[16px] font-[500]'>Условия:</span>
+                <span className='text-lg max-sm:text-[16px] font-[500]'>{t("vacancies_page.conditions")}</span>
                 <ol className='mt-2'>
-                  <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>желание обучаться новому</li>
-                  <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>полный соцпакет</li>
-                  <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>отапливаемый цех, хорошие бытовые условия</li>
-                  <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>предоставляем обучение по данному направлению</li>
+                  <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>{t("vacancies_page.cond1")}</li>
+                  <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>{t("vacancies_page.cond2")}</li>
+                  <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>{t("vacancies_page.cond3")}</li>
+                  <li className='list-disc! ml-10 max-sm:ml-8 max-sm:text-[14px] text-[17px]'>{t("vacancies_page.cond4")}</li>
                 </ol>
-                <button onClick={openVacancies} className='px-7 py-2.5 mt-6 ml-10 duration-200 hover:opacity-[0.8] bg-[#fec80b] rounded-[4px] cursor-pointer'>Откликнуться</button>
+                <button onClick={openVacancies} className='px-7 py-2.5 mt-6 ml-10 duration-200 hover:opacity-[0.8] bg-[#fec80b] rounded-[4px] cursor-pointer'>{t("vacancies_page.respond")}</button>
               </>
             ),
           }
@@ -209,37 +206,37 @@ const Vacancies = () => {
 
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center py-8 mt-[30%] text-center w-full">
-                <h3 className="text-[32px] max-sm:text-[26px] font-[500] text-black mb-3">Успешно!</h3>
-                <p className="text-black mb-6">Ваши данные направлены нашему менеджеру. Мы свяжемся с вами в ближайшее время!</p>
+                <h3 className="text-[32px] max-sm:text-[26px] font-[500] text-black mb-3">{t("vacancies_page.success_title")}</h3>
+                <p className="text-black mb-6">{t("vacancies_page.success_desc")}</p>
                 <button 
                   onClick={closeVacancies} 
                   className="py-3 w-[60%] rounded-[4px] bg-black border-2 border-black text-white duration-200 hover:bg-transparent hover:text-black font-medium"
                 >
-                  Закрыть
+                  {t("vacancies_page.close")}
                 </button>
               </div>
             ) : (
               <>
-                <h3 className="text-[32px] max-sm:text-[26px] font-[500] text-black">Оставить заявку</h3>
-                <p className="max-w-[90%] max-sm:text-center text-gray-600 mb-2">на вакансию «Автоэлектрик»</p>
+                <h3 className="text-[32px] max-sm:text-[26px] font-[500] text-black">{t("vacancies_page.form_title")}</h3>
+                <p className="max-w-[90%] max-sm:text-center text-gray-600 mb-2">{t("vacancies_page.form_subtitle")}</p>
                 
                 <form className="w-[85%] py-6 flex flex-col gap-3 max-sm:w-[90%]">
                   {/* Ism */}
                   <div className="flex flex-col gap-1">
-                    <label className={`${textNull ? "text-red-500" : "text-black"} text-[14px]`}>Ваше имя *</label>
+                    <label className={`${textNull ? "text-red-500" : "text-black"} text-[14px]`}>{t("vacancies_page.name_label")}</label>
                     <input 
                       value={text} 
                       onChange={(e) => {setText(e.target.value); setTextNull(false)}}
                       className={`rounded-[4px] border ${textNull ? "border-red-500" : "border-black"} w-full h-11 pl-4 outline-hidden duration-200 focus-within:shadow-[2px_1px_8px_#fec90b7d] focus-within:border-[#fec80b] bg-white`} 
                       type="text" 
-                      placeholder="Имя" 
+                      placeholder={t("vacancies_page.name_placeholder")} 
                     />
-                    {textNull && <p className="text-[13px] text-red-500">Поле обязательно для заполнения</p>}
+                    {textNull && <p className="text-[13px] text-red-500">{t("vacancies_page.name_error")}</p>}
                   </div>
 
                   {/* E-mail */}
                   <div className="flex flex-col gap-1">
-                    <label className={`${emailError ? "text-red-500" : "text-black"} text-[14px]`}>E-mail *</label>
+                    <label className={`${emailError ? "text-red-500" : "text-black"} text-[14px]`}>{t("vacancies_page.email_label")}</label>
                     <input 
                       value={email} 
                       onChange={(e) => {setEmail(e.target.value); setEmailError(false)}}
@@ -247,12 +244,12 @@ const Vacancies = () => {
                       type="text" 
                       placeholder="your@mail.com" 
                     />
-                    {emailError && <p className="text-[13px] text-red-500">Введите корректный E-mail</p>}
+                    {emailError && <p className="text-[13px] text-red-500">{t("vacancies_page.email_error")}</p>}
                   </div>
 
                   {/* Telefon */}
                   <div className="flex flex-col gap-1">
-                    <label className={`${phoneError ? "text-red-500" : "text-black"} text-[14px]`}>Телефон *</label>
+                    <label className={`${phoneError ? "text-red-500" : "text-black"} text-[14px]`}>{t("vacancies_page.phone_label")}</label>
                     <input 
                       ref={phoneInputRef}
                       value={phone} 
@@ -266,12 +263,12 @@ const Vacancies = () => {
                       type="text" 
                       placeholder="+998" 
                     />
-                    {phoneError && <p className="text-[13px] text-red-500">Введите номер полностью</p>}
+                    {phoneError && <p className="text-[13px] text-red-500">{t("vacancies_page.phone_error")}</p>}
                   </div>
 
                   {/* Rezume */}
                   <div className="flex flex-col gap-1">
-                    <label className={`${resumeError ? "text-red-500" : "text-black"} text-[14px]`}>Ссылка на резюме *</label>
+                    <label className={`${resumeError ? "text-red-500" : "text-black"} text-[14px]`}>{t("vacancies_page.resume_label")}</label>
                     <input 
                       value={resume}
                       onChange={(e) => {setResume(e.target.value); setResumeError(false)}}
@@ -279,7 +276,7 @@ const Vacancies = () => {
                       type="text" 
                       placeholder="https://..." 
                     />
-                    {resumeError && <p className="text-[13px] text-red-500">Укажите ссылку на резюме</p>}
+                    {resumeError && <p className="text-[13px] text-red-500">{t("vacancies_page.resume_error")}</p>}
                   </div>
 
                   {/* Checkbox */}
@@ -303,12 +300,12 @@ const Vacancies = () => {
                       </label>
                     </div>
                     <p className={`text-[14px] leading-[110%] ${checkboxError ? "text-red-500" : "text-[#a1a1a1]"}`}>
-                      Я согласен <a className="text-purple-800" href="#">на обработку персональных данных</a>
+                      {t("vacancies_page.consent_text")} <a className="text-purple-800" href="#">{t("vacancies_page.consent_link")}</a>
                     </p>
                   </div>
                 </form>
 
-                <button onClick={handleSubBtn} className="py-3 rounded-[4px] bg-[#fec80b] w-[85%] duration-200 hover:opacity-[0.7] cursor-pointer font-medium">Оставить заявку</button>
+                <button onClick={handleSubBtn} className="py-3 rounded-[4px] bg-[#fec80b] w-[85%] duration-200 hover:opacity-[0.7] cursor-pointer font-medium">{t("vacancies_page.submit_btn")}</button>
               </>
             )}
           </div>

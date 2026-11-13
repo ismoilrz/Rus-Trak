@@ -2069,6 +2069,14 @@
     "Hook-lifts": "Hook lifts",
     "Dump-trucks": "Dump trucks",
     "ADR-EXII-category-trucks": "ADR EXII category trucks"
-  }
+  },
+
+  "catalogPage": {
+    "modelsCount": "models"
+  },
+
+  "address": "Nizhny Novgorod, Torfyanaya str., 35",
+  "regionsPhone": "For regions: 8 (800)-511-05-25",
+  "cityPhone": "Nizhny Novgorod: 8 (831) 235-26-16"
 
 }

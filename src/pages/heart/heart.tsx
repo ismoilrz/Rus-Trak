@@ -195,12 +195,12 @@ const HeartPage = () => {
   };
 
   if (favorites.length === 0) {
-    return <div className="container pt-4">
+    return <div className="container max-xl:px-[3%] pt-4">
       <p className='text-[20px]'>{t('heartPage.emptyTitle')}</p>
       <p className='text-[20px]'>{t('heartPage.emptyDesc')}</p>
       <div className='flex gap-4 pt-6'>
-        <Link to={'/'}><button className='px-7 py-2 rounded-md border-2 border-[#fec80b] duration-200 hover:bg-[#fec80b]'>{t('heartPage.toHome')}</button></Link>
-        <Link to={'/catalog'}><button className=' px-7 py-2 rounded-md border-2 border-transparent duration-200 bg-[#fec80b] hover:bg-transparent hover:border-[#fec80b]'>{t('heartPage.toCatalog')}</button></Link>
+        <Link to={'/'}><button className='px-7 py-2 max-sm:text-[14px] rounded-md border-2 border-[#fec80b] duration-200 hover:bg-[#fec80b]'>{t('heartPage.toHome')}</button></Link>
+        <Link to={'/catalog'}><button className=' px-7 py-2 max-sm:text-[14px] rounded-md border-2 border-transparent duration-200 bg-[#fec80b] hover:bg-transparent hover:border-[#fec80b]'>{t('heartPage.toCatalog')}</button></Link>
       </div>
     </div>;
   }

@@ -2069,7 +2069,15 @@
     "Hook-lifts": "Ilmoqli yuklagichlar",
     "Dump-trucks": "Samosvallar",
     "ADR-EXII-category-trucks": "DOPOG EXII toifasidagi avtomobillar"
-  }
+  },
+
+  "catalogPage": {
+    "modelsCount": "modellar"
+  },
+
+  "address": "Nijniy Novgorod sh., Torfyanaya ko'ch., 35",
+  "regionsPhone": "Hududlar uchun: 8 (800)-511-05-25",
+  "cityPhone": "Nijniy Novgorod: 8 (831) 235-26-16"
   
 
 

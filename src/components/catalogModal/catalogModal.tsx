@@ -116,10 +116,10 @@ const CatalogModal = ({ catalog, catalog2, catalog3, closeCatalog, isScrolled }:
         </div>
 
         <div className="hidden max-sm:flex flex-col px-[3%] pb-11 max-md:pb-17">
-          <p className="text-[#a1a1a1]">г. Нижний Новгород ул. Торфяная, 35</p>
+          <p className="text-[#a1a1a1]">{t("address")}</p>
           <div className="text-[#a1a1a1] mt-2 flex flex-col">
-            <p>Для регионов: 8 (800)-511-05-25</p>
-            <p>Нижний Новгород: 8 (831) 235-26-16</p>
+            <p>{t("regionsPhone")}</p>
+            <p>{t("cityPhone")}</p>
           </div>
         </div>
     </div>

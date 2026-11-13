@@ -228,7 +228,7 @@ const Repair = () => {
 
       {repairForm && (
         <div onClick={closeRepairForm} className='flex items-center justify-center inset-0 fixed top-0 left-0 z-40 bg-[#0009] duration-200'>
-          <div onClick={(e) => e.stopPropagation()} className={`p-7 w-[480px] min-h-[50%] max-sm:w-[90%] relative flex flex-col items-center rounded-lg shadow-2xl duration-300 ${isSubmitted ? "bg-[#fec80b]" : "bg-white"}`}>
+          <div onClick={(e) => e.stopPropagation()} className={`p-7 w-[480px] max-h-[55%] max-sm:w-[90%] relative flex flex-col items-center rounded-lg shadow-2xl duration-300 ${isSubmitted ? "bg-[#fec80b]" : "bg-white"}`}>
             
             <button onClick={closeRepairForm} className='absolute top-[10px] right-[10px] cursor-pointer'><X /></button>
 

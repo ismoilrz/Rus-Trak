@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, Fragment } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { catalogConfig } from "../../constants/catalogData/catalogConfig";
 import { ArrowDownToLine, Heart, LayoutGrid, List, Search, Settings2, ShoppingCart, X } from "lucide-react";
@@ -9,6 +9,43 @@ import { useCartStore } from "../../shared/useCartStore";
 import { useTranslation } from "react-i18next";
 
 
+const CYR_TO_LAT: Record<string, string> = {
+  а: "a", б: "b", в: "v", г: "g", д: "d", е: "e", ё: "e", ж: "zh", з: "z",
+  и: "i", й: "y", к: "k", л: "l", м: "m", н: "n", о: "o", п: "p", р: "r",
+  с: "s", т: "t", у: "u", ф: "f", х: "h", ц: "c", ч: "ch", ш: "sh",
+  щ: "sch", ъ: "", ы: "y", ь: "", э: "e", ю: "yu", я: "ya",
+};
+
+const transliterate = (value: unknown): string =>
+  String(value ?? "")
+    .toLowerCase()
+    .split("")
+    .map((ch) => (CYR_TO_LAT[ch] !== undefined ? CYR_TO_LAT[ch] : ch))
+    .join("");
+
+const tokenize = (value: unknown): string[] =>
+  transliterate(value)
+    .split(/[^a-z0-9]+/)
+    .filter(Boolean);
+
+const buildTokenSet = (texts: unknown[]): Set<string> => {
+  const set = new Set<string>();
+  texts.forEach((text) => {
+    const tokens = tokenize(text);
+    tokens.forEach((tk, i) => {
+      set.add(tk);
+      if (i < tokens.length - 1) set.add(tk + tokens[i + 1]);
+    });
+  });
+  return set;
+};
+
+const BRAND_ALIASES: Record<string, string[]> = {
+  gaz: ["gazon", "gazel"],
+  valday: ["valdai"],
+  dongfeng: ["dongfeng"],
+};
+
 const SelectedCatalog = () => {
   const { t } = useTranslation();
   const [filterDrop, setFilterDrop] = useState<boolean>(false);
@@ -18,51 +55,53 @@ const SelectedCatalog = () => {
   const [catalogForm, setCatalogForm] = useState<boolean>(false)
 
   const [favorites, setFavorites] = useState<any[]>(() => {
-    const saved = localStorage.getItem('favorites');
-    return saved ? JSON.parse(saved) : [];
-  });
+  const saved = localStorage.getItem('favorites');
+  return saved ? JSON.parse(saved) : [];
+});
 
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-  }, [favorites]);
+useEffect(() => {
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+}, [favorites]);
 
-  const handleToggleFavorite = (item: any) => {
-    const itemWithCategory = { 
-      ...item, 
-      categorySlug: selectedcatalog 
-    };
+const handleToggleFavorite = (item: any) => {
+  const itemWithCategory = { 
+    ...item, 
+    categorySlug: selectedcatalog 
+  };
+  
+  setFavorites(prev => {
+    const exists = prev.some(fav => fav.id === item.id);
+    const updated = exists 
+      ? prev.filter(fav => fav.id !== item.id) 
+      : [...prev, itemWithCategory];
     
-    setFavorites(prev => {
-      const exists = prev.some(fav => fav.id === item.id);
-      const updated = exists 
-        ? prev.filter(fav => fav.id !== item.id) 
-        : [...prev, itemWithCategory];
-      
-      localStorage.setItem('favorites', JSON.stringify(updated));
-      window.dispatchEvent(new Event("favoritesChanged"));
-      return updated;
-    });
-  };  
+    localStorage.setItem('favorites', JSON.stringify(updated));
+    window.dispatchEvent(new Event("favoritesChanged"));
+    return updated;
+  });
+};  
 
   const openMobileAside = () => setMobileAside(true)
   const closeMobileAside = () => setMobileAside(false)
+  // const closeCatalogForm = () => setCatalogForm(false)
 
   const addToCart = useCartStore((state) => state.addToCart);
 
-  const handleAddToCart = (item: any) => {
-    addToCart({
-      id: item.id,
-      title: item.title,
-      price: item.price,
-      img: item.img, 
-      slug: item.slug,         
-      category: selectedcatalog || ""
-    });
-  };
+const handleAddToCart = (item: any) => {
+  addToCart({
+    id: item.id,
+    title: item.title,
+    price: item.price,
+    img: item.img, 
+    slug: item.slug,         
+    category: selectedcatalog || ""
+  });
+  
+};
 
   const [changeTraksUI, setChangeTraksUI] = useState<"tab1" | "tab2">("tab1")
 
-  useEffect(() => {
+    useEffect(() => {
     const scrollClosed = catalogForm || mobileAside;
 
     if (scrollClosed) {
@@ -78,26 +117,26 @@ const SelectedCatalog = () => {
 
 
   const desktopDropdownRef = useRef<HTMLDivElement>(null);
-  const mobileDropdownRef = useRef<HTMLDivElement>(null);
+const mobileDropdownRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as Node;
-      const isOutsideDesktop = desktopDropdownRef.current && !desktopDropdownRef.current.contains(target);
-      const isOutsideMobile = mobileDropdownRef.current && !mobileDropdownRef.current.contains(target);
+  const handleClickOutside = (e: MouseEvent) => {
+    const target = e.target as Node;
+    const isOutsideDesktop = desktopDropdownRef.current && !desktopDropdownRef.current.contains(target);
+    const isOutsideMobile = mobileDropdownRef.current && !mobileDropdownRef.current.contains(target);
 
-      if (isOutsideDesktop && isOutsideMobile) {
-        setFilterDrop(false);
-      }
-    };
-
-    if (filterDrop) {
-      document.addEventListener("click", handleClickOutside);
+    if (isOutsideDesktop && isOutsideMobile) {
+      setFilterDrop(false);
     }
+  };
 
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [filterDrop]);
+  if (filterDrop) {
+    document.addEventListener("click", handleClickOutside);
+  }
+
+  return () => {
+    document.removeEventListener("click", handleClickOutside);
+  };
+}, [filterDrop]);
 
   const { selectedcatalog } = useParams<{ selectedcatalog: string }>();
   const currentCategory = selectedcatalog ? catalogConfig[selectedcatalog] : null;
@@ -113,148 +152,132 @@ const SelectedCatalog = () => {
   const [appliedRanges, setAppliedRanges] = useState<Record<string, [number, number]>>({});
 
 
-  const [text, setText] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [phone, setPhone] = useState<string>('');
+const [text, setText] = useState<string>('');
+const [email, setEmail] = useState<string>('');
+const [phone, setPhone] = useState<string>('');
 
-  const [textNull, setTextNull] = useState<boolean>(false);
-  const [emailError, setEmailError] = useState<boolean>(false);
-  const [phoneError, setPhoneError] = useState<boolean>(false);
+const [textNull, setTextNull] = useState<boolean>(false);
+const [emailError, setEmailError] = useState<boolean>(false);
+const [phoneError, setPhoneError] = useState<boolean>(false);
 
-  const [isChecked, setIsChecked] = useState<boolean>(false);
-  const [checkboxError, setCheckboxError] = useState<boolean>(false);
+const [isChecked, setIsChecked] = useState<boolean>(false);
+const [checkboxError, setCheckboxError] = useState<boolean>(false);
 
-  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
-  const phoneInputRef = useRef<HTMLInputElement>(null);
+const phoneInputRef = useRef<HTMLInputElement>(null);
 
-  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const input = e.target;
-    const cursorPosition = input.selectionStart || 0; 
-    const rawValue = input.value.replace(/\D/g, ''); 
-    const digits = rawValue.startsWith('998') ? rawValue.slice(3, 12) : rawValue.slice(0, 9);
+const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const input = e.target;
+  const cursorPosition = input.selectionStart || 0; 
+  const rawValue = input.value.replace(/\D/g, ''); 
+  const digits = rawValue.startsWith('998') ? rawValue.slice(3, 12) : rawValue.slice(0, 9);
+  
+  let formatted = '+998 (';
+  for (let i = 0; i < 9; i++) {
+    if (i === 2) formatted += ') ';
+    if (i === 5) formatted += '-';
+    if (i === 7) formatted += '-';
     
-    let formatted = '+998 (';
-    for (let i = 0; i < 9; i++) {
-      if (i === 2) formatted += ') ';
-      if (i === 5) formatted += '-';
-      if (i === 7) formatted += '-';
-      
-      formatted += digits[i] || '_'; 
+    formatted += digits[i] || '_'; 
+  }
+  
+  setPhone(formatted);
+  setPhoneError(false);
+
+  setTimeout(() => {
+    if (phoneInputRef.current) {
+      phoneInputRef.current.setSelectionRange(cursorPosition, cursorPosition);
     }
-    
-    setPhone(formatted);
+  }, 0);
+};
+
+const closeCatalogForm = () => {
+  setCatalogForm(false);
+  setTimeout(() => {
+    setIsSubmitted(false);
+    setText('');
+    setEmail('');
+    setPhone('');
+    setTextNull(false);
+    setEmailError(false);
     setPhoneError(false);
+    setIsChecked(false);
+    setCheckboxError(false);
+  }, 300);
+};
 
-    setTimeout(() => {
-      if (phoneInputRef.current) {
-        phoneInputRef.current.setSelectionRange(cursorPosition, cursorPosition);
-      }
-    }, 0);
-  };
-
-  const closeCatalogForm = () => {
-    setCatalogForm(false);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setText('');
-      setEmail('');
-      setPhone('');
-      setTextNull(false);
-      setEmailError(false);
-      setPhoneError(false);
-      setIsChecked(false);
-      setCheckboxError(false);
-    }, 300);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'];
-    if (!/[0-9]/.test(e.key) && !allowedKeys.includes(e.key)) {
-      e.preventDefault();
-    }
-  };
-
-  const handleMouseEnter = () => {
-    if (!phone) {
-      setPhone('+998 (__) ___-__-__');
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (phone === '+998 (__) ___-__-__') {
-      setPhone('');
-    }
-  };
-
-  const handleFocus = () => {
-    if (!phone) {
-      setPhone('+998 (__) ___-__-__');
-    }
-  };
-
-  const handleBlur = () => {
-    const pureDigits = phone.replace(/\D/g, '').slice(3);
-    if (pureDigits.length === 0) {
-      setPhone('');
-    }
-  };
-
-  const handleSubBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
+const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'];
+  if (!/[0-9]/.test(e.key) && !allowedKeys.includes(e.key)) {
     e.preventDefault();
-    let hasError: boolean = false;
+  }
+};
 
-    if (text.trim() === '') {
-      setTextNull(true);
-      hasError = true;
-    } else {
-      setTextNull(false);
-    }
+const handleMouseEnter = () => {
+  if (!phone) {
+    setPhone('+998 (__) ___-__-__');
+  }
+};
 
-    if (!email.includes('@') || email.trim() === '') {
-      setEmailError(true);
-      hasError = true;
-    } else {
-      setEmailError(false);
-    }
+const handleMouseLeave = () => {
+  if (phone === '+998 (__) ___-__-__') {
+    setPhone('');
+  }
+};
 
-    const pureDigits = phone.replace(/\D/g, '').slice(3);
-    if (pureDigits.length < 9) {
-      setPhoneError(true);
-      hasError = true;
-    } else {
-      setPhoneError(false);
-    }
+const handleFocus = () => {
+  if (!phone) {
+    setPhone('+998 (__) ___-__-__');
+  }
+};
 
-    if (!isChecked) {
-      setCheckboxError(true);
-      hasError = true;
-    } else {
-      setCheckboxError(false);
-    }
+const handleBlur = () => {
+  const pureDigits = phone.replace(/\D/g, '').slice(3);
+  if (pureDigits.length === 0) {
+    setPhone('');
+  }
+};
 
-    if (!hasError) {
-      setIsSubmitted(true);
-    }
-  };
+const handleSubBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
+  e.preventDefault();
+  let hasError: boolean = false;
 
-  // ---- helpers for list view (real data instead of hardcoded text) ----
-  const getSpec = (item: any, key: string) => {
-    const i = item.descKey?.findIndex((k: string) => k.trim().startsWith(key));
-    return i >= 0 ? item.descValue[i] : null;
-  };
+  if (text.trim() === '') {
+    setTextNull(true);
+    hasError = true;
+  } else {
+    setTextNull(false);
+  }
 
-  const getBrand = (item: any) => {
-    const first = item.descValue?.[0]?.split(" ")[0];
-    return first ? t(first) : "—";
-  };
+  if (!email.includes('@') || email.trim() === '') {
+    setEmailError(true);
+    hasError = true;
+  } else {
+    setEmailError(false);
+  }
 
-  const getDimensions = (item: any) => {
-    const l = getSpec(item, "Длина автомобиля");
-    const w = getSpec(item, "Ширина автомобиля");
-    const h = getSpec(item, "Высота автомобиля");
-    return l && w && h ? `${l} x ${w} x ${h} ${t("мм")}` : "—";
-  };
+  const pureDigits = phone.replace(/\D/g, '').slice(3);
+  if (pureDigits.length < 9) {
+    setPhoneError(true);
+    hasError = true;
+  } else {
+    setPhoneError(false);
+  }
+
+  if (!isChecked) {
+    setCheckboxError(true);
+    hasError = true;
+  } else {
+    setCheckboxError(false);
+  }
+
+  if (!hasError) {
+    setIsSubmitted(true);
+  }
+};
+  
+
 
 
   if (!currentCategory) {
@@ -300,11 +323,29 @@ const SelectedCatalog = () => {
     setAppliedRanges(tempRanges);
   };
 
+  
+  const productMatchesBrand = (item: any, brand: string) => {
+    const brandTokens = tokenize(brand);
+    if (brandTokens.length === 0) return false;
+
+    const brandKey = brandTokens.join("");
+    const candidates = [brandKey, ...(BRAND_ALIASES[brandKey] || [])];
+
+    const productTokens = buildTokenSet([
+      item.slug,
+      item.title,
+      item.titleKey ? t(item.titleKey) : "",
+      item.title ? t(item.title) : "",
+    ]);
+
+    return candidates.some((c) => productTokens.has(c));
+  };
+
   const countMatchingProducts = () => {
     return currentCategory.trak.filter((item) => {
       if (tempSelectedBrands.length > 0) {
         const matchesBrand = tempSelectedBrands.some((brand) =>
-          item.title.toLowerCase().includes(brand.toLowerCase())
+          productMatchesBrand(item, brand)
         );
         if (!matchesBrand) return false;
       }
@@ -322,19 +363,19 @@ const SelectedCatalog = () => {
       }
 
       for (const [label, rangeValues] of Object.entries(tempRanges)) {
-        if (rangeValues && rangeValues.length === 2) {
-          let itemNumber = 0;
-          if (label.toLowerCase().includes("цена") || label.toLowerCase().includes("стоимость")) {
-            itemNumber = item.priceValue || 0;
-          } else if (label.toLowerCase().includes("масса")) {
-            itemNumber = item.mass ? Number(item.mass.replace(/\D/g, "")) : 0;
-          }
-
-          if (itemNumber < rangeValues[0] || itemNumber > rangeValues[1]) {
-            return false;
-          }
-        }
+    if (rangeValues && rangeValues.length === 2) {
+      let itemNumber = 0;
+      if (label.toLowerCase().includes("цена") || label.toLowerCase().includes("стоимость")) {
+        itemNumber = item.priceValue || 0;
+      } else if (label.toLowerCase().includes("масса")) {
+        itemNumber = item.mass ? Number(item.mass.replace(/\D/g, "")) : 0;
       }
+
+      if (itemNumber < rangeValues[0] || itemNumber > rangeValues[1]) {
+        return false;
+      }
+    }
+  }
 
       return true;
     }).length;
@@ -343,7 +384,7 @@ const SelectedCatalog = () => {
   const filteredTracks = currentCategory.trak.filter((item) => {
     if (appliedBrands.length > 0) {
       const matchesBrand = appliedBrands.some((brand) =>
-        item.title.toLowerCase().includes(brand.toLowerCase())
+        productMatchesBrand(item, brand)
       );
       if (!matchesBrand) return false;
     }
@@ -392,228 +433,6 @@ const SelectedCatalog = () => {
     return a.title.localeCompare(b.title);
   });
 
-  const renderContent = () => (
-    <div className="text-lg max-md:text-[16px] mt-20">
-      <p>{t(currentCategory.content?.intro ?? "")}</p>
-      <div>
-        <h5 className="text-[22px] mt-6 font-[400]">{t(currentCategory.content?.assortment ?? "")}</h5>
-        <p className="mt-3">{t(currentCategory.content?.assortmentdesc1 ?? "")}</p>
-        <div className="flex flex-col gap-2 py-2">
-          <p>{t(currentCategory.content?.brand ?? "")}</p>
-          {currentCategory.content?.brands?.map((br, idx) => (
-            <div key={idx} className="flex gap-3"><span className="text-[#fec80b]">♦</span><li>{t(br)}</li></div>
-          ))}
-        </div>
-        <p>{t(currentCategory.content?.assortmentdesc2 ?? "")}</p>
-        <div className="flex flex-col gap-4 mt-4">
-          {currentCategory.content?.assortmentdesc2features?.map((asdec, idx) => (
-            <div key={idx} className="flex gap-3">
-              <span className="text-[#fec80b]">♦</span>
-              <li>{t(asdec)}</li>
-            </div>
-          ))}
-        </div>
-        <p className="mt-3">{t(currentCategory.content?.assortmentdesc3 ?? "")}</p>
-      </div>
-
-      <div>
-        <h5 className="text-[22px] font-[400] mt-2">{t(currentCategory.content?.featuresLabel ?? "")}</h5>
-        <div className="mt-2 flex flex-col gap-3">
-          {currentCategory.content?.features?.map((fea, idx) => (
-            <div key={idx} className="flex gap-3"><span className="text-[#fec80b]">♦</span> 
-              <div>
-                <p>{t(fea.featuresLAbel ?? "")}</p>
-                <p>{t(fea.featuresdesc)}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <h5 className="text-[22px] font-[400] mt-6">{t(currentCategory.content?.applicationLabel ?? "")}</h5>
-        <p className="mt-3">{t(currentCategory.content?.applicationDesc ?? "")}</p>
-        <h5 className="text-[22px] font-[400] mt-6">{t(currentCategory.content?.workingTitle ?? "")}</h5>
-        <div className="flex flex-col gap-4 mt-3">
-          {currentCategory.content?.workingfeatures?.map((work, idx) => (
-            <div key={idx} className="flex gap-3">
-              <span className="text-[#fec80b]">♦</span>
-              <div>
-                <p>{t(work.workingFeaturesLabel ?? "")}</p>
-                <p>{t(work.workingFeaturesDesc)}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <h5 className="text-[22px] font-[400] mt-6">{t(currentCategory.content?.equipmentTItle ?? "")}</h5>
-        <p className="mt-4">{t(currentCategory.content?.equipmentdesc ?? "")}</p>
-      </div>
-    </div>
-  );
-
-  const renderSortDropdown = () => (
-    <div onClick={(e) => e.stopPropagation()} className="absolute z-40 duration-200 transition rounded-[6px] flex flex-col items-start border h-auto w-[220px] font-[500] bg-[#fff] shadow-md">
-      <button onClick={() => { setSortType("По бренду"); setFilterDrop(false); }} className="py-2 pl-3 border-b w-full text-start">{t("По бренду")}</button>
-      <button onClick={() => { setSortType("По популярности"); setFilterDrop(false); }} className="py-2 pl-3 border-b w-full text-start">{t("По популярности")}</button>
-      <button onClick={() => { setSortType("Сначала новые"); setFilterDrop(false); }} className="py-2 pl-3 border-b w-full text-start">{t("Сначала новые")}</button>
-      <button onClick={() => { setSortType("В наличии"); setFilterDrop(false); }} className="py-2 pl-3 border-b w-full text-start">{t("В наличии")}</button>
-      <button onClick={() => { setSortType("По возрастанию цены"); setFilterDrop(false); }} className="py-2 pl-3 w-full text-start">{t("По возрастанию цены")}</button>
-    </div>
-  );
-
-  const renderFilters = () =>
-    currentCategory.filters.map((filter, index) => { 
-      if (filter.type === "search") {
-        const filteredOptions = filter.options?.filter((opt: string) =>
-          opt.toLowerCase().includes(searchBrandQuery.toLowerCase())
-        );
-
-        return (
-          <div key={index} className="flex flex-col gap-3">
-            <label className="font-semibold text-gray-800 text-sm">{t(filter.label)}</label>
-            <div className="relative">
-              <div className="w-full border flex items-center justify-between py-2 rounded-md overflow-hidden px-2 bg-white">
-                <input type="text" placeholder={t("Найти")} value={searchBrandQuery}
-                  onChange={(e) => setSearchBrandQuery(e.target.value)}
-                  className="w-full outline-none text-sm" 
-                />
-                <Search size={24} />
-              </div>
-            </div>
-
-            {filteredOptions && (
-              <div className="flex flex-col gap-2 pr-1">
-                {filteredOptions.map((opt: string, optIdx: number) => (
-                  <label key={optIdx} className="flex items-center gap-2.5 text-sm text-gray-700 cursor-pointer">
-                    <div className="checkbox-wrapper-33">
-                      <span className="checkbox">
-                        <input className="checkbox__trigger visuallyhidden" type="checkbox" checked={tempSelectedBrands.includes(opt)}
-                          onChange={() => handleTempBrandChange(opt)}
-                        />
-                        <span className="checkbox__symbol">
-                          <svg aria-hidden="true" className="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28" version="1" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 14l8 7L24 7"></path>
-                          </svg>
-                        </span>
-                        <p className="checkbox__textwrapper">{t(opt)}</p>
-                      </span>
-                    </div>
-                  </label>
-                ))}
-              </div>
-            )}
-          </div>
-        );
-      }
-
-      if (filter.type === "checkbox") {
-        return (
-          <div key={index} className="flex flex-col gap-3">
-            <label className="font-semibold text-gray-800 text-sm">{t(filter.label)}</label>
-            <div className="flex flex-col gap-2 pr-1">
-              {filter.options.map((opt: string, optIdx: number) => {
-                const checked = tempSelectedFilters[filter.label]?.includes(opt) || false;
-                return (
-                  <label key={optIdx} className="flex items-center gap-2.5 text-sm text-gray-700 cursor-pointer">
-                    <div className="checkbox-wrapper-33">
-                      <span className="checkbox">
-                        <input className="checkbox__trigger visuallyhidden" type="checkbox" checked={checked} onChange={() => handleTempCheckboxChange(filter.label, opt)}/>
-                        <span className="checkbox__symbol">
-                          <svg aria-hidden="true" className="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28" version="1" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 14l8 7L24 7"></path>
-                          </svg>
-                        </span>
-                        <p className="checkbox__textwrapper">{t(opt)}</p>
-                      </span>
-                    </div>
-                  </label>
-                );
-              })}
-            </div>
-          </div>
-        );
-      }
-
-      if (filter.type === "range") {
-        const currentRange = tempRanges[filter.label] || [0, 10000000];
-
-        return (
-          <div key={index} className="flex flex-col gap-3">
-            <label className="font-semibold text-gray-800 text-sm">{t(filter.label)}</label>
-            <div className="px-2">
-              <Slider range min={0} max={10000000} step={100000} value={currentRange}
-                onChange={(values) => {
-                  handleRangeChange(filter.label, values as [number, number]);
-                }}
-              />
-            </div>
-            
-            <div className="flex items-center gap-2">
-              <div className="w-1/2 flex items-center border border-gray-300 rounded-lg px-2 py-1.5 focus-within:border-[#fec80b]">
-                <span className="text-xs text-gray-400 mr-1">{t("от")}</span>
-                <input type="number" value={currentRange[0]}
-                  onChange={(e) => {
-                    const val = Number(e.target.value);
-                    handleRangeChange(filter.label, [val, currentRange[1]]);
-                  }}
-                  className="w-full text-sm outline-none bg-transparent"
-                />
-              </div>
-              <div className="w-1/2 flex items-center border border-gray-300 rounded-lg px-2 py-1.5 focus-within:border-[#fec80b]">
-                <span className="text-xs text-gray-400 mr-1">{t("до")}</span>
-                <input type="number" value={currentRange[1]}
-                  onChange={(e) => {
-                    const val = Number(e.target.value);
-                    handleRangeChange(filter.label, [currentRange[0], val]);
-                  }}
-                  className="w-full text-sm outline-none bg-transparent"
-                />
-              </div>
-            </div>
-          </div>
-        );
-      }
-      return null;
-    });
-
-  const renderGridCard = (item: any, extraClass: string) => (
-    <Link key={item.id} to={`/catalog/${selectedcatalog}/${item.slug}`}>
-      <div className={`${extraClass} bg-[#fff] relative rounded-lg overflow-hidden`}>
-        <img className="h-[65%] max-lg:h-[45%] w-full object-cover" src={item.img} alt={t(item.titleKey)} />
-        <span className="text-[18px] max-sm:mt-[-10px] max-md:text-[16px] line-clamp-1 max-lg:line-clamp-2 mt-3 ml-3">{t(item.titleKey)}</span>
-        <div className="h-[35%] p-3 flex flex-col justify-between">
-          <div className="max-md:mt-[-10px] max-sm:mt-[-25px]">
-            <h5 className="text-[22px] max-md:text-lg max-sm:text-[16px] pb-2 font-[500]">{t(item.priceKey)}</h5>
-            <div className="flex items-center justify-between max-lg:flex-col max-lg:gap-3">
-              <div className="w-full flex items-center gap-3 max-sm:justify-between">
-                <button className="px-5 max-lg:px-10 max-md:px-6 max-sm:w-[80%] py-2 text-[12px] rounded-[4px] bg-[#fec80b] font-medium">{t("Подробнее")}</button>
-                <button onClick={(e) => { handleAddToCart(item); e.preventDefault(); e.stopPropagation() }}><ShoppingCart size={26} className="max-sm:w-5 max-sm:h-5" /></button>
-              </div>
-              <button onClick={(e) => { setCatalogForm(true); e.preventDefault(); e.stopPropagation() }} className="flex items-center gap-2 text-[12px] whitespace-nowrap">{t("Получить КП")} <ArrowDownToLine width={'15px'} height={'15px'} /></button>
-              <button onClick={(e) => { handleToggleFavorite(item); e.preventDefault(); e.stopPropagation(); }} 
-                className="absolute top-2 right-2 p-1 z-10">
-                <Heart 
-                  width={'30px'} 
-                  height={'30px'} 
-                  className={`duration-200 stroke-1 ${favorites.some(fav => fav.id === item.id) ? 'fill-[#fec80b] ' : 'hover:fill-[#fec80b]'}`} />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-
-  const renderNotFound = () => (
-    <div className="col-span-3 flex flex-col items-center justify-center pt-15">
-      <img className="rounded-full w-60 h-60 object-cover mb-4" src={notTruk} alt={t("Товар не найден")} />
-      <p className="text-center text-gray-500 text-[20px]">{t("Товар не найден")}</p>
-    </div>
-  );
-
   return (
     <div className="pb-10 relative">
       <div className="container max-xl:px-[3%] flex justify-between items-center py-6 max-lg:flex-col max-lg:items-start">
@@ -624,17 +443,21 @@ const SelectedCatalog = () => {
 
         <div className="flex gap-30 items-center max-lg:hidden">
           <div ref={desktopDropdownRef} className="h-full flex gap-2 items-center relative">
-            <label className="text-[#a1a1a1] text-[14px]">{t("sort")}</label>
+            <label className="text-[#a1a1a1] text-[14px]">{t("Сортировка:")}</label>
             <button 
-              onClick={() => { setFilterDrop((v) => !v); }} 
+              onClick={() => {setFilterDrop((v) => !v);}} 
               className="duration-200 hover:text-[#fec80b] font-medium"
             >
               {t(sortType)}
             </button>
 
             {filterDrop && (
-              <div className="absolute z-40 top-7 left-[-20px]">
-                {renderSortDropdown()}
+              <div onClick={(e) => e.stopPropagation()} className="absolute z-40 top-7 left-[-20px] duration-200 transition rounded-[6px] flex flex-col items-start border h-auto w-[220px] font-[500] bg-[#fff] shadow-md">
+                <button onClick={() => { setSortType("По бренду"); setFilterDrop(false); }} className="py-2 pl-3 border-b w-full text-start">{t("По бренду")}</button>
+                <button onClick={() => { setSortType("По популярности"); setFilterDrop(false); }} className="py-2 pl-3 border-b w-full text-start">{t("По популярности")}</button>
+                <button onClick={() => { setSortType("Сначала новые"); setFilterDrop(false); }} className="py-2 pl-3 border-b w-full text-start">{t("Сначала новые")}</button>
+                <button onClick={() => { setSortType("В наличии"); setFilterDrop(false); }} className="py-2 pl-3 border-b w-full text-start">{t("В наличии")}</button>
+                <button onClick={() => { setSortType("По возрастанию цены"); setFilterDrop(false); }} className="py-2 pl-3 w-full text-start">{t("По возрастанию цены")}</button>
               </div>
             )}
           </div>
@@ -651,17 +474,21 @@ const SelectedCatalog = () => {
             <span>{t("Фильтр")}</span>
           </div>
           <div ref={mobileDropdownRef} className="flex flex-col items-center relative">
-            <label className="text-[#a1a1a1] text-[14px]">{t("sort")}</label>
+            <label className="text-[#a1a1a1] text-[14px]">{t("Сортировка:")}</label>
             <button 
-              onClick={() => { setFilterDrop((v) => !v); }} 
+              onClick={() => {setFilterDrop((v) => !v);}} 
               className="duration-200 hover:text-[#fec80b] font-medium"
             >
               {t(sortType)}
             </button>
 
             {filterDrop && (
-              <div className="absolute z-40 top-12 right-[0px]">
-                {renderSortDropdown()}
+              <div onClick={(e) => e.stopPropagation()} className="absolute z-40 top-12 right-[0px] duration-200 transition rounded-[6px] flex flex-col items-start border h-auto w-[220px] font-[500] bg-[#fff] shadow-md">
+                <button onClick={() => { setSortType("По бренду"); setFilterDrop(false); }} className="py-2 pl-3 border-b w-full text-start">{t("По бренду")}</button>
+                <button onClick={() => { setSortType("По популярности"); setFilterDrop(false); }} className="py-2 pl-3 border-b w-full text-start">{t("По популярности")}</button>
+                <button onClick={() => { setSortType("Сначала новые"); setFilterDrop(false); }} className="py-2 pl-3 border-b w-full text-start">{t("Сначала новые")}</button>
+                <button onClick={() => { setSortType("В наличии"); setFilterDrop(false); }} className="py-2 pl-3 border-b w-full text-start">{t("В наличии")}</button>
+                <button onClick={() => { setSortType("По возрастанию цены"); setFilterDrop(false); }} className="py-2 pl-3 w-full text-start">{t("По возрастанию цены")}</button>
               </div>
             )}
           </div>
@@ -670,7 +497,120 @@ const SelectedCatalog = () => {
 
       <div className="container max-xl:px-[3%] flex justify-between gap-6"> 
         <aside className="w-[300px] max-lg:hidden catAs max-h-[80vh] overflow-y-auto p-6 bg-white rounded-[10px] shadow-sm border border-gray-100 flex flex-col gap-6 sticky top-[12vh]">
-          {renderFilters()}
+
+          {currentCategory.filters.map((filter, index) => { 
+            if (filter.type === "search") {
+              const filteredOptions = filter.options?.filter((opt: string) =>
+                opt.toLowerCase().includes(searchBrandQuery.toLowerCase())
+              );
+
+              return (
+                <div key={index} className="flex flex-col gap-3">
+                  <label className="font-semibold text-gray-800 text-sm">{t(filter.label)}</label>
+                  <div className="relative">
+                    <div className="w-full border flex items-center justify-between py-2 rounded-md overflow-hidden px-2 bg-white">
+                      <input type="text" placeholder={t("Найти")} value={searchBrandQuery}
+                        onChange={(e) => setSearchBrandQuery(e.target.value)}
+                        className="w-full outline-none text-sm" 
+                      />
+                      <Search size={24} />
+                    </div>
+                  </div>
+
+                  {filteredOptions && (
+                    <div className="flex flex-col gap-2 pr-1">
+                      {filteredOptions.map((opt: string, optIdx: number) => (
+                        <label key={optIdx} className="flex items-center gap-2.5 text-sm text-gray-700 cursor-pointer">
+                          <div className="checkbox-wrapper-33">
+                            <span className="checkbox">
+                              <input className="checkbox__trigger visuallyhidden" type="checkbox" checked={tempSelectedBrands.includes(opt)}
+                                onChange={() => handleTempBrandChange(opt)}
+                              />
+                              <span className="checkbox__symbol">
+                                <svg aria-hidden="true" className="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28" version="1" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M4 14l8 7L24 7"></path>
+                                </svg>
+                              </span>
+                              <p className="checkbox__textwrapper">{t(opt)}</p>
+                            </span>
+                          </div>
+                        </label>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            if (filter.type === "checkbox") {
+              return (
+                <div key={index} className="flex flex-col gap-3">
+                  <label className="font-semibold text-gray-800 text-sm">{t(filter.label)}</label>
+                  <div className="flex flex-col gap-2 pr-1">
+                    {filter.options.map((opt: string, optIdx: number) => {
+                      const isChecked = tempSelectedFilters[filter.label]?.includes(opt) || false;
+                      return (
+                        <label key={optIdx} className="flex items-center gap-2.5 text-sm text-gray-700 cursor-pointer">
+                          <div className="checkbox-wrapper-33">
+                            <span className="checkbox">
+                              <input className="checkbox__trigger visuallyhidden" type="checkbox" checked={isChecked} onChange={() => handleTempCheckboxChange(filter.label, opt)}/>
+                              <span className="checkbox__symbol">
+                                <svg aria-hidden="true" className="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28" version="1" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M4 14l8 7L24 7"></path>
+                                </svg>
+                              </span>
+                              <p className="checkbox__textwrapper">{t(opt)}</p>
+                            </span>
+                          </div>
+                        </label>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            }
+
+            if (filter.type === "range") {
+              const currentRange = tempRanges[filter.label] || [0, 10000000];
+
+              return (
+                <div key={index} className="flex flex-col gap-3">
+                  <label className="font-semibold text-gray-800 text-sm">{t(filter.label)}</label>
+                   <div className="px-2">
+                    <Slider range min={0} max={10000000} step={100000} value={currentRange}
+                      onChange={(values) => {
+                        handleRangeChange(filter.label, values as [number, number]);
+                      }}
+                    />
+                  </div>
+                  
+                  <div className="flex items-center gap-2">
+                    <div className="w-1/2 flex items-center border border-gray-300 rounded-lg px-2 py-1.5 focus-within:border-[#fec80b]">
+                      <span className="text-xs text-gray-400 mr-1">{t("от")}</span>
+                      <input type="number" value={currentRange[0]}
+                        onChange={(e) => {
+                          const val = Number(e.target.value);
+                          handleRangeChange(filter.label, [val, currentRange[1]]);
+                        }}
+                        className="w-full text-sm outline-none bg-transparent"
+                      />
+                    </div>
+                    <div className="w-1/2 flex items-center border border-gray-300 rounded-lg px-2 py-1.5 focus-within:border-[#fec80b]">
+                      <span className="text-xs text-gray-400 mr-1">{t("до")}</span>
+                      <input type="number" value={currentRange[1]}
+                        onChange={(e) => {
+                          const val = Number(e.target.value);
+                          handleRangeChange(filter.label, [currentRange[0], val]);
+                        }}
+                        className="w-full text-sm outline-none bg-transparent"
+                      />
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+            return null;
+          })}
 
           <button 
             onClick={handleApplyFilter}
@@ -682,178 +622,361 @@ const SelectedCatalog = () => {
 
         {changeTraksUI === "tab1" && (
           <main className="w-full flex-1">
-            <div className="w-full grid grid-cols-3 max-xl:grid-cols-2 max-lg:grid-cols-3 max-sm:grid-cols-2 gap-5 max-sm:gap-3">
-              {filteredTracks.length > 0 ? (
-                filteredTracks.map((item) =>
-                  renderGridCard(item, "h-[440px] max-lg:flex max-lg:flex-col max-lg:justify-between max-lg:h-[360px] max-sm:h-[300px]")
-                )
-              ) : renderNotFound()}
+          <div className="w-full grid grid-cols-3 max-xl:grid-cols-2 max-lg:grid-cols-3 max-sm:grid-cols-2 gap-5 max-sm:gap-3">
+            {filteredTracks.length > 0 ? (
+              filteredTracks.map((item) => (
+                  <Link key={item.id} to={`/catalog/${selectedcatalog}/${item.slug}`}>
+                    <div className="h-[440px] max-lg:flex max-lg:flex-col max-lg:justify-between max-lg:h-[360px] max-sm:h-[300px ] bg-[#fff] relative rounded-lg overflow-hidden">
+                        <img className="h-[65%] max-lg:h-[45%] w-full object-cover" src={item.img} alt={t("Rasm")} />
+                        <span className="text-[18px] max-sm:mt-[-10px] max-md:text-[16px] line-clamp-1 max-lg:line-clamp-2 mt-3 ml-3">{t(item.titleKey)}</span>
+                      <div className="h-[35%] p-3 flex flex-col justify-between">
+                        <div className="max-md:mt-[-10px] max-sm:mt-[-25px]">
+                            <h5 className="text-[22px] max-md:text-lg max-sm:text-[16px] pb-2 font-[500]">{t(item.priceKey)}</h5>
+                          <div className="flex items-center justify-between max-lg:flex-col max-lg:gap-3">
+                            <div className="w-full flex items-center gap-3 max-sm:justify-between">
+                              <button className="px-5 max-lg:px-10 max-md:px-6 max-sm:w-[80%] py-2 text-[12px] rounded-[4px] bg-[#fec80b] font-medium">{t("Подробнее")}</button>
+                              <button onClick={(e) => {handleAddToCart(item); e.preventDefault(); e.stopPropagation()} }><ShoppingCart size={26} className="max-sm:w-5 max-sm:h-5" /></button>
+                            </div>
+                            <button onClick={(e) => {setCatalogForm(true); e.preventDefault(); e.stopPropagation()}} className="flex items-center gap-2 text-[12px] whitespace-nowrap">{t("Получить КП")} <ArrowDownToLine width={'15px'} height={'15px'} /></button>
+                            <button onClick={(e) => { handleToggleFavorite(item); e.preventDefault(); 
+                                e.stopPropagation(); 
+                              }} 
+                              className="absolute top-2 right-2 p-1 z-10">
+                                <Heart 
+                                width={'30px'} 
+                                height={'30px'} 
+                                className={`duration-200 stroke-1 ${favorites.some(fav => fav.id === item.id) ? 'fill-[#fec80b] ' : 'hover:fill-[#fec80b]'}`} />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+              ))
+            ) : (
+              <div className="col-span-3 flex flex-col items-center justify-center pt-15">
+                <img className="rounded-full w-60 h-60 object-cover mb-4" src={notTruk} alt={t("Rasm topilmadi")} />
+                <p className="text-center text-gray-500 text-[20px]">{t("Товар не найден")}</p>
+              </div>
+            )}
+          </div>
+
+          <div className="text-lg max-md:text-[16px] mt-20">
+            <p>{t(currentCategory.content?.intro ?? "")}</p>
+            <div>
+              <h5 className="text-[22px] mt-6 font-[400]">{t(currentCategory.content?.assortment ?? "")}</h5>
+              <p className="mt-3">{t(currentCategory.content?.assortmentdesc1 ?? "")}</p>
+              <div className="flex flex-col gap-2 py-2">
+                <p>{t(currentCategory.content?.brand ?? "")}</p>
+                {currentCategory.content?.brands?.map((br, idx) => (
+                  <div key={idx} className="flex gap-3"><span className="text-[#fec80b]">♦</span><li>{t(br)}</li></div>
+                ))}
+              </div>
+              <p>{t(currentCategory.content?.assortmentdesc2 ?? "")}</p>
+              <div className="flex flex-col gap-4 mt-4">
+                {currentCategory.content?.assortmentdesc2features?.map((asdec, idx) => (
+                  <div key={idx} className="flex gap-3">
+                    <span className="text-[#fec80b]">♦</span>
+                    <li>{t(asdec)}</li>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-3">{t(currentCategory.content?.assortmentdesc3 ?? "")}</p>
             </div>
 
-            {renderContent()}
+            <div>
+              <h5 className="text-[22px] font-[400] mt-2">{t(currentCategory.content?.featuresLabel ?? "")}</h5>
+              <div className="mt-2 flex flex-col gap-3">
+                {currentCategory.content?.features?.map((fea, idx) => (
+                  <div key={idx} className="flex gap-3"><span className="text-[#fec80b]">♦</span> 
+                    <div>
+                      <p>{t(fea.featuresLAbel ?? "")}</p>
+                      <p>{t(fea.featuresdesc)}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h5 className="text-[22px] font-[400] mt-6">{t(currentCategory.content?.applicationLabel ?? "")}</h5>
+              <p className="mt-3">{t(currentCategory.content?.applicationDesc ?? "")}</p>
+              <h5 className="text-[22px] font-[400] mt-6">{t(currentCategory.content?.workingTitle ?? "")}</h5>
+              <div className="flex flex-col gap-4 mt-3">
+                {currentCategory.content?.workingfeatures?.map((work, idx) => (
+                  <div key={idx} className="flex gap-3">
+                    <span className="text-[#fec80b]">♦</span>
+                    <div>
+                      <p>{t(work.workingFeaturesLabel ?? "")}</p>
+                      <p>{t(work.workingFeaturesDesc)}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h5 className="text-[22px] font-[400] mt-6">{t(currentCategory.content?.equipmentTItle ?? "")}</h5>
+              <p className="mt-4">{t(currentCategory.content?.equipmentdesc ?? "")}</p>
+            </div>
+          </div>
           </main>
         )}
-
         {changeTraksUI === "tab2" && (
           <main className="w-full flex-1">
             <div className="w-full flex flex-col max-lg:grid max-lg:grid-cols-3 max-sm:grid-cols-2 gap-5">
               {filteredTracks.length > 0 ? (
                 filteredTracks.map((item) => (
-                  <Fragment key={item.id}>
+                  <div key={item.id} className="contents">
                     <Link to={`/catalog/${selectedcatalog}/${item.slug}`} className="h-[230px] max-lg:hidden w-full bg-[#fff] relative flex justify-between gap-4 rounded-lg overflow-hidden">
-                      <div className="flex w-[75%] gap-4">
-                        <img className="h-full w-[30%] object-cover rounded-md" src={item.img} alt={t(item.titleKey)} />
-                        <div className="w-full flex flex-col justify-center">
-                          <span className="text-[20px] mb-3">{t(item.titleKey)}</span>
-                          
-                          <div className="flex flex-col gap-2">
-                            <div className="flex items-center text-[14px] text-[#a1a1a1]">
-                              <span className="whitespace-nowrap pr-2">{t("Марка")}</span>
-                              <div className="border-b border-[#a1a1a1] border-dashed flex-1 mx-2"></div>
-                              <span className="whitespace-nowrap text-[#a1a1a1]">{getBrand(item)}</span>
-                            </div>
+                    <div className="flex w-[75%] gap-4">
+                      <img className="h-full w-[30%] object-cover rounded-md" src={item.img} alt={t("Rasm")} />
+                      <div className="w-full flex flex-col justify-center">
+                        <span className="text-[20px] mb-3">{t(item.titleKey)}</span>
+                        
+                        <div className="flex flex-col gap-2">
+                          <div className="flex items-center text-[14px] text-[#a1a1a1]">
+                            <span className="whitespace-nowrap pr-2">{t("Марка")}</span>
+                            <div className="border-b border-[#a1a1a1] border-dashed flex-1 mx-2"></div>
+                            <span className="whitespace-nowrap text-[#a1a1a1]">МАЗ</span>
+                          </div>
 
-                            <div className="flex items-center text-[14px] text-[#a1a1a1]">
-                              <span className="whitespace-nowrap pr-2">{t("Габариты ТС")}</span>
-                              <div className="border-b border-[#a1a1a1] border-dashed flex-1 mx-2"></div>
-                              <span className="whitespace-nowrap text-[#a1a1a1]">{getDimensions(item)}</span>
-                            </div>
+                          <div className="flex items-center text-[14px] text-[#a1a1a1]">
+                            <span className="whitespace-nowrap pr-2">{t("Габариты ТС")}</span>
+                            <div className="border-b border-[#a1a1a1] border-dashed flex-1 mx-2"></div>
+                            <span className="whitespace-nowrap text-[#a1a1a1]">10070 x 2550 x 2550 мм</span>
+                          </div>
 
-                            <div className="flex items-center text-[14px] text-[#a1a1a1]">
-                              <span className="whitespace-nowrap pr-2">{t("Грузоподъёмность, кг")}</span>
-                              <div className="border-b border-[#a1a1a1] border-dashed flex-1 mx-2"></div>
-                              <span className="whitespace-nowrap text-[#a1a1a1]">{getSpec(item, "Грузоподъёмность, кг") ?? "—"}</span>
+                          <div className="flex items-center text-[14px] text-[#a1a1a1]">
+                            <span className="whitespace-nowrap pr-2">{t("Грузоподъёмность, кг")}</span>
+                            <div className="border-b border-[#a1a1a1] border-dashed flex-1 mx-2"></div>
+                            <span className="whitespace-nowrap text-[#a1a1a1]">13800</span>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col items-center justify-center gap-1 pr-4">
+                      <h5 className="text-[22px] pb-2 font-[500]">{t(item.priceKey)}</h5>
+                      <div className="flex flex-col gap-3">
+                        <button className="w-[150px] py-2 text-[16px] rounded-[4px] bg-[#fec80b] whitespace-nowrap">{t("Подробнее")}</button>
+                        <button onClick={(e) => {setCatalogForm(true); e.preventDefault(); e.stopPropagation()}} className="w-[150px] flex items-center justify-center gap-2 text-[16px] whitespace-nowrap">{t("Получить КП")} <ArrowDownToLine width={'15px'} height={'15px'} /></button>
+                      </div>
+                      <button onClick={(e) => { handleToggleFavorite(item); e.preventDefault(); 
+                                e.stopPropagation(); 
+                              }} 
+                              className="absolute top-2 left-2 p-1 z-10">
+                                <Heart 
+                                width={'30px'} 
+                                height={'30px'} 
+                                className={`duration-200 stroke-1 ${favorites.some(fav => fav.id === item.id) ? 'fill-[#fec80b] ' : 'hover:fill-[#fec80b]'}`} />
+                            </button>
+                    </div>
+                    </Link>
+
+                    <Link to={`/catalog/${selectedcatalog}/${item.slug}`}>
+                      <div className="h-[360px] max-md:h-[330px] max-sm:h-[300px] hidden max-lg:flex max-lg:flex-col max-lg:justify-between max-lg:h-[360px] max-sm:h-[300px ] bg-[#fff] relative rounded-lg overflow-hidden">
+                        <img className="h-[65%] max-lg:h-[45%] w-full object-cover" src={item.img} alt={t("Rasm")} />
+                        <span className="text-[18px] max-sm:mt-[-10px] max-md:text-[16px] line-clamp-1 max-lg:line-clamp-2 mt-3 ml-3">{t(item.titleKey)}</span>
+                        <div className="h-[35%] p-3 flex flex-col justify-between">
+                          <div className="max-md:mt-[-10px] max-sm:mt-[-25px]">
+                            <h5 className="text-[22px] max-md:text-lg max-sm:text-[16px] pb-2 font-[500]">{t(item.priceKey)}</h5>
+                            <div className="flex items-center justify-between max-lg:flex-col max-lg:gap-3">
+                              <div className="w-full flex items-center gap-3 max-sm:justify-between">
+                                <button className="px-5 max-lg:px-10 max-md:px-6 max-sm:w-[80%] py-2 text-[12px] rounded-[4px] bg-[#fec80b] font-medium">{t("Подробнее")}</button>
+                                <button onClick={(e) => {handleAddToCart(item); e.preventDefault(); e.stopPropagation()}}><ShoppingCart size={26} className="max-sm:w-5 max-sm:h-5" /></button>
+                              </div>
+                              <button onClick={(e) => {setCatalogForm(true); e.preventDefault(); e.stopPropagation()}} className="flex items-center gap-2 text-[12px]">{t("Получить КП")} <ArrowDownToLine width={'15px'} height={'15px'} /></button>
+                              <button onClick={(e) => { handleToggleFavorite(item); e.preventDefault(); 
+                                e.stopPropagation(); 
+                              }} 
+                              className="absolute top-2 right-2 p-1 z-10">
+                                <Heart 
+                                width={'30px'} 
+                                height={'30px'} 
+                                className={`duration-200 stroke-1 ${favorites.some(fav => fav.id === item.id) ? 'fill-[#fec80b] ' : 'hover:fill-[#fec80b]'}`} />
+                            </button>
                             </div>
                           </div>
                         </div>
-                      </div>
-
-                      <div className="flex flex-col items-center justify-center gap-1 pr-4">
-                        <h5 className="text-[22px] pb-2 font-[500]">{t(item.priceKey)}</h5>
-                        <div className="flex flex-col gap-3">
-                          <button className="w-[150px] py-2 text-[16px] rounded-[4px] bg-[#fec80b] whitespace-nowrap">{t("Подробнее")}</button>
-                          <button onClick={(e) => { setCatalogForm(true); e.preventDefault(); e.stopPropagation() }} className="w-[150px] flex items-center justify-center gap-2 text-[16px] whitespace-nowrap">{t("Получить КП")} <ArrowDownToLine width={'15px'} height={'15px'} /></button>
                         </div>
-                        <button onClick={(e) => { handleToggleFavorite(item); e.preventDefault(); e.stopPropagation(); }} 
-                          className="absolute top-2 left-2 p-1 z-10">
-                          <Heart 
-                            width={'30px'} 
-                            height={'30px'} 
-                            className={`duration-200 stroke-1 ${favorites.some(fav => fav.id === item.id) ? 'fill-[#fec80b] ' : 'hover:fill-[#fec80b]'}`} />
-                        </button>
-                      </div>
                     </Link>
-
-                    <div className="hidden max-lg:block">
-                      {renderGridCard(item, "h-[360px] max-md:h-[330px] max-sm:h-[300px] max-lg:flex max-lg:flex-col max-lg:justify-between")}
-                    </div>
-                  </Fragment>
+                  </div>
                 ))
-              ) : renderNotFound()}
+              ) : (
+                <div className="col-span-3 flex flex-col items-center justify-center pt-15">
+                  <img className="rounded-full w-60 h-60 object-cover mb-4" src={notTruk} alt={t("Rasm topilmadi")} />
+                  <p className="text-center text-gray-500 text-[20px]">{t("Товар не найден")}</p>
+                </div>
+              )}
             </div>
 
-            {renderContent()}
+              <div className="text-lg max-md:text-[16px] mt-20">
+                      <p>{t(currentCategory.content?.intro ?? "")}</p>
+                      <div>
+                        <h5 className="text-[22px] mt-6 font-[400]">{t(currentCategory.content?.assortment ?? "")}</h5>
+                        <p className="mt-3">{t(currentCategory.content?.assortmentdesc1 ?? "")}</p>
+                        <div className="flex flex-col gap-2 py-2">
+                          <p>{t(currentCategory.content?.brand ?? "")}</p>
+                          {currentCategory.content?.brands?.map((br, idx) => (
+                            <div key={idx} className="flex gap-3"><span className="text-[#fec80b]">♦</span><li>{t(br)}</li></div>
+                          ))}
+                        </div>
+                        <p>{t(currentCategory.content?.assortmentdesc2 ?? "")}</p>
+                        <div className="flex flex-col gap-4 mt-4">
+                          {currentCategory.content?.assortmentdesc2features?.map((asdec, idx) => (
+                            <div key={idx} className="flex gap-3">
+                              <span className="text-[#fec80b]">♦</span>
+                              <li>{t(asdec)}</li>
+                            </div>
+                          ))}
+                        </div>
+                        <p className="mt-3">{t(currentCategory.content?.assortmentdesc3 ?? "")}</p>
+                      </div>
+                      <div>
+                        <h5 className="text-[22px] font-[400] mt-2">{t(currentCategory.content?.featuresLabel ?? "")}</h5>
+                        <div className="mt-2 flex flex-col gap-3">
+                          {currentCategory.content?.features?.map((fea, idx) => (
+                            <div key={idx} className="flex gap-3"><span className="text-[#fec80b]">♦</span> 
+                              <div>
+                                <p>{t(fea.featuresLAbel ?? "")}</p>
+                                <p>{t(fea.featuresdesc)}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
+                        <h5 className="text-[22px] font-[400] mt-6">{t(currentCategory.content?.applicationLabel ?? "")}</h5>
+                        <p className="mt-3">{t(currentCategory.content?.applicationDesc ?? "")}</p>
+                        <h5 className="text-[22px] font-[400] mt-6">{t(currentCategory.content?.workingTitle ?? "")}</h5>
+                        <div className="flex flex-col gap-4 mt-3">
+                          {currentCategory.content?.workingfeatures?.map((work, idx) => (
+                            <div key={idx} className="flex gap-3">
+                              <span className="text-[#fec80b]">♦</span>
+                              <div>
+                                <p>{t(work.workingFeaturesLabel ?? "")}</p>
+                                <p>{t(work.workingFeaturesDesc)}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
+                        <h5 className="text-[22px] font-[400] mt-6">{t(currentCategory.content?.equipmentTItle ?? "")}</h5>
+                        <p className="mt-4">{t(currentCategory.content?.equipmentdesc ?? "")}</p>
+                      </div>
+              </div>
           </main>
         )}
       </div>
 
       {/* form modal */}
+
       {catalogForm && (
-        <div onClick={closeCatalogForm} className="fixed top-0 left-0 inset-0 z-50 bg-[#0009] flex items-center justify-center">
-          <div onClick={(e) => e.stopPropagation()} className={`w-[500px] min-h-[70%] max-sm:w-[90%] py-12 px-6 flex flex-col items-center rounded-lg relative duration-300 ${isSubmitted ? "bg-[#fec80b]" : "bg-white"}`}>
-            
-            <button onClick={closeCatalogForm}>
-              <X width={'30px'} height={'30px'} className="absolute top-3 right-3 cursor-pointer text-black" />
-            </button>
-            {isSubmitted ? (
-              <div className="flex flex-col items-center justify-center py-8 mt-[20%] text-center w-full">
-                <h3 className="text-[32px] max-sm:text-[26px] font-[500] text-black mb-3">{t("Успешно!")}</h3>
-                <p className="text-black mb-6">{t("Ваши данные направлены нашему менеджеру. Мы свяжемся с вами в ближайшее время!")}</p>
-                <button 
-                  onClick={closeCatalogForm} 
-                  className="py-3 w-[60%] rounded-[4px] bg-black text-white duration-200 border-2 border-black hover:text-black hover:bg-transparent font-medium"
-                >
-                  {t("Закрыть")}
-                </button>
-              </div>
-            ) : (
-              <>
-                <h3 className="text-[24px] text-center max-sm:text-[20px] max-w-[80%] font-[500] text-black">{t("Получить коммерческое предложение")}</h3>
-                
-                <form className="w-[85%] py-6 flex flex-col gap-3 max-sm:w-[90%]">
-                  <div className="flex flex-col gap-1">
-                    <label className={`${textNull ? "text-red-500" : "text-black"} text-[14px]`}>{t("Ваше имя *")}</label>
-                    <input 
-                      value={text} 
-                      onChange={(e) => { setText(e.target.value); setTextNull(false) }}
-                      className={`rounded-[4px] border ${textNull ? "border-red-500" : "border-black"} w-full h-11 pl-4 outline-hidden duration-200 focus-within:shadow-[2px_1px_8px_#fec90b7d] focus-within:border-[#fec80b] bg-white`} 
-                      type="text" 
-                      placeholder={t("Имя")} 
-                    />
-                    {textNull && <p className="text-[13px] text-red-500">{t("Поле обязательно для заполнения")}</p>}
-                  </div>
+      <div onClick={closeCatalogForm} className="fixed top-0 left-0 inset-0 z-50 bg-[#0009] flex items-center justify-center">
+        <div onClick={(e) => e.stopPropagation()} className={`w-[500px] min-h-[70%] max-sm:w-[90%] py-12 px-6 flex flex-col items-center rounded-lg relative duration-300 ${isSubmitted ? "bg-[#fec80b]" : "bg-white"}`}>
+          
+          <button onClick={closeCatalogForm}>
+            <X width={'30px'} height={'30px'} className="absolute top-3 right-3 cursor-pointer text-black" />
+          </button>
+          {/* Muvaffaqiyatli yuborilgandagi holat (Sariq ekran) */}
+          {isSubmitted ? (
+            <div className="flex flex-col items-center justify-center py-8 mt-[20%] text-center w-full">
+              <h3 className="text-[32px] max-sm:text-[26px] font-[500] text-black mb-3">{t("Успешно!")}</h3>
+              <p className="text-black mb-6">{t("Ваши данные направлены нашему менеджеру. Мы свяжемся с вами в ближайшее время!")}</p>
+              <button 
+                onClick={closeCatalogForm} 
+                className="py-3 w-[60%] rounded-[4px] bg-black text-white duration-200 border-2 border-black hover:text-black hover:bg-transparent font-medium"
+              >
+                {t("Закрыть")}
+              </button>
+            </div>
+          ) : (
+            /* Asosiy Forma */
+            <>
+              <h3 className="text-[24px] text-center max-sm:text-[20px] max-w-[80%] font-[500] text-black">{t("Получить коммерческое предложение")}</h3>
+              
+              <form className="w-[85%] py-6 flex flex-col gap-3 max-sm:w-[90%]">
+                {/* Ism Maydoni */}
+                <div className="flex flex-col gap-1">
+                  <label className={`${textNull ? "text-red-500" : "text-black"} text-[14px]`}>{t("Ваше имя *")}</label>
+                  <input 
+                    value={text} 
+                    onChange={(e) => {setText(e.target.value); setTextNull(false)}}
+                    className={`rounded-[4px] border ${textNull ? "border-red-500" : "border-black"} w-full h-11 pl-4 outline-hidden duration-200 focus-within:shadow-[2px_1px_8px_#fec90b7d] focus-within:border-[#fec80b] bg-white`} 
+                    type="text" 
+                    placeholder={t("Имя")} 
+                  />
+                  {textNull && <p className="text-[13px] text-red-500">{t("Поле обязательно для заполнения")}</p>}
+                </div>
 
-                  <div className="flex flex-col gap-1">
-                    <label className={`${emailError ? "text-red-500" : "text-black"} text-[14px]`}>{t("E-mail *")}</label>
-                    <input 
-                      value={email} 
-                      onChange={(e) => { setEmail(e.target.value); setEmailError(false) }}
-                      className={`rounded-[4px] border ${emailError ? "border-red-500" : "border-black"} w-full h-11 pl-4 outline-hidden duration-200 focus-within:shadow-[2px_1px_8px_#fec90b7d] focus-within:border-[#fec80b] bg-white`} 
-                      type="text" 
-                      placeholder="your@mail.com" 
-                    />
-                    {emailError && <p className="text-[13px] text-red-500">{t("Введите корректный E-mail")}</p>}
-                  </div>
+                {/* E-mail Maydoni */}
+                <div className="flex flex-col gap-1">
+                  <label className={`${emailError ? "text-red-500" : "text-black"} text-[14px]`}>{t("E-mail *")}</label>
+                  <input 
+                    value={email} 
+                    onChange={(e) => {setEmail(e.target.value); setEmailError(false)}}
+                    className={`rounded-[4px] border ${emailError ? "border-red-500" : "border-black"} w-full h-11 pl-4 outline-hidden duration-200 focus-within:shadow-[2px_1px_8px_#fec90b7d] focus-within:border-[#fec80b] bg-white`} 
+                    type="text" 
+                    placeholder="your@mail.com" 
+                  />
+                  {emailError && <p className="text-[13px] text-red-500">{t("Введите корректный E-mail")}</p>}
+                </div>
 
-                  <div className="flex flex-col gap-1">
-                    <label className={`${phoneError ? "text-red-500" : "text-black"} text-[14px]`}>{t("Телефон *")}</label>
-                    <input 
-                      ref={phoneInputRef}
-                      value={phone} 
-                      onChange={handlePhoneChange}
-                      onKeyDown={handleKeyDown}
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                      onFocus={handleFocus}
-                      onBlur={handleBlur}
-                      className={`rounded-[4px] border ${phoneError ? "border-red-500" : "border-black"} w-full h-11 pl-4 outline-hidden duration-200 focus-within:shadow-[2px_1px_8px_#fec90b7d] focus-within:border-[#fec80b] bg-white`} 
-                      type="text" 
-                      placeholder="+998" 
-                    />
-                    {phoneError && <p className="text-[13px] text-red-500">{t("Введите номер полностью")}</p>}
-                  </div>
+                {/* Telefon Maydoni */}
+                <div className="flex flex-col gap-1">
+                  <label className={`${phoneError ? "text-red-500" : "text-black"} text-[14px]`}>{t("Телефон *")}</label>
+                  <input 
+                    ref={phoneInputRef}
+                    value={phone} 
+                    onChange={handlePhoneChange}
+                    onKeyDown={handleKeyDown}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    className={`rounded-[4px] border ${phoneError ? "border-red-500" : "border-black"} w-full h-11 pl-4 outline-hidden duration-200 focus-within:shadow-[2px_1px_8px_#fec90b7d] focus-within:border-[#fec80b] bg-white`} 
+                    type="text" 
+                    placeholder="+998" 
+                  />
+                  {phoneError && <p className="text-[13px] text-red-500">{t("Введите номер полностью")}</p>}
+                </div>
 
-                  <div className="flex items-center gap-2 mt-1">
-                    <div className="checkbox-wrapper-33">
-                      <label className="checkbox">
-                        <input 
-                          className="checkbox__trigger visuallyhidden" 
-                          type="checkbox" 
-                          checked={isChecked}
-                          onChange={(e) => {
-                            setIsChecked(e.target.checked);
-                            if (e.target.checked) setCheckboxError(false);
-                          }}
-                        />
-                        <span className="checkbox__symbol">
-                          <svg aria-hidden="true" className="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28" version="1" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 14l8 7L24 7"></path>
-                          </svg>
-                        </span>
-                      </label>
-                    </div>
-                    <p className={`text-[14px] leading-[110%] ${checkboxError ? "text-red-500" : "text-[#a1a1a1]"}`}>
-                      {t("Я согласен")} <a className="text-purple-800" href="#">{t("на обработку персональных данных")}</a>
-                    </p>
+                {/* Checkbox Maydoni */}
+                <div className="flex items-center gap-2 mt-1">
+                  <div className="checkbox-wrapper-33">
+                    <label className="checkbox">
+                      <input 
+                        className="checkbox__trigger visuallyhidden" 
+                        type="checkbox" 
+                        checked={isChecked}
+                        onChange={(e) => {
+                          setIsChecked(e.target.checked);
+                          if (e.target.checked) setCheckboxError(false);
+                        }}
+                      />
+                      <span className="checkbox__symbol">
+                        <svg aria-hidden="true" className="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28" version="1" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M4 14l8 7L24 7"></path>
+                        </svg>
+                      </span>
+                    </label>
                   </div>
-                </form>
+                  <p className={`text-[14px] leading-[110%] ${checkboxError ? "text-red-500" : "text-[#a1a1a1]"}`}>
+                    {t("Я согласен")} <a className="text-purple-800" href="#">{t("на обработку персональных данных")}</a>
+                  </p>
+                </div>
+              </form>
 
-                <button onClick={handleSubBtn} className="py-3 rounded-[4px] bg-[#fec80b] w-[85%] duration-200 hover:opacity-[0.7] cursor-pointer font-medium">{t("Получить КП")}</button>
-              </>
-            )}
-          </div>
+              {/* Yuborish Tugmasi */}
+              <button onClick={handleSubBtn} className="py-3 rounded-[4px] bg-[#fec80b] w-[85%] duration-200 hover:opacity-[0.7] cursor-pointer font-medium">{t("Получить КП")}</button>
+            </>
+          )}
         </div>
-      )}
+      </div>
+)}
 
       {/* mobile filter */}
       <div 
@@ -868,7 +991,139 @@ const SelectedCatalog = () => {
             ${mobileAside ? "translate-x-0" : "-translate-x-full"}`}
         >
           <button onClick={closeMobileAside} className="absolute top-3 right-3"><X size={28}/></button>
-          {renderFilters()}
+          {currentCategory.filters.map((filter, index) => { 
+            if (filter.type === "search") {
+              const filteredOptions = filter.options?.filter((opt: string) =>
+                opt.toLowerCase().includes(searchBrandQuery.toLowerCase())
+              );
+
+              return (
+                <div key={index} className="flex flex-col gap-3">
+                  <label className="font-semibold text-gray-800 text-sm">{t(filter.label)}</label>
+                  <div className="relative">
+                    <div className="w-full border flex items-center justify-between py-2 rounded-md overflow-hidden px-2 bg-white">
+                      <input 
+                        type="text" 
+                        placeholder={t("Найти")} 
+                        value={searchBrandQuery}
+                        onChange={(e) => setSearchBrandQuery(e.target.value)}
+                        className="w-full outline-none text-sm" 
+                      />
+                      <Search size={24} />
+                    </div>
+                  </div>
+
+                  {filteredOptions && (
+                    <div className="flex flex-col gap-2 pr-1">
+                      {filteredOptions.map((opt: string, optIdx: number) => (
+                        <label key={optIdx} className="flex items-center gap-2.5 text-sm text-gray-700 cursor-pointer">
+                          <div className="checkbox-wrapper-33">
+                            <span className="checkbox">
+                              <input 
+                                className="checkbox__trigger visuallyhidden" 
+                                type="checkbox" 
+                                checked={tempSelectedBrands.includes(opt)}
+                                onChange={() => handleTempBrandChange(opt)}
+                              />
+                              <span className="checkbox__symbol">
+                                <svg aria-hidden="true" className="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28" version="1" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M4 14l8 7L24 7"></path>
+                                </svg>
+                              </span>
+                              <p className="checkbox__textwrapper">{t(opt)}</p>
+                            </span>
+                          </div>
+                        </label>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            if (filter.type === "checkbox") {
+              return (
+                <div key={index} className="flex flex-col gap-3">
+                  <label className="font-semibold text-gray-800 text-sm">{t(filter.label)}</label>
+                  <div className="flex flex-col gap-2 pr-1">
+                    {filter.options.map((opt: string, optIdx: number) => {
+                      const isChecked = tempSelectedFilters[filter.label]?.includes(opt) || false;
+                      return (
+                        <label key={optIdx} className="flex items-center gap-2.5 text-sm text-gray-700 cursor-pointer">
+                          <div className="checkbox-wrapper-33">
+                            <span className="checkbox">
+                              <input 
+                                className="checkbox__trigger visuallyhidden" 
+                                type="checkbox" 
+                                checked={isChecked} 
+                                onChange={() => handleTempCheckboxChange(filter.label, opt)}
+                              />
+                              <span className="checkbox__symbol">
+                                <svg aria-hidden="true" className="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28" version="1" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M4 14l8 7L24 7"></path>
+                                </svg>
+                              </span>
+                              <p className="checkbox__textwrapper">{t(opt)}</p>
+                            </span>
+                          </div>
+                        </label>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            }
+
+            if (filter.type === "range") {
+              const currentRange = tempRanges[filter.label] || [0, 10000000];
+
+              return (
+                <div key={index} className="flex flex-col gap-3">
+                  <label className="font-semibold text-gray-800 text-sm">{t(filter.label)}</label>
+                  <div className="px-2">
+                    <Slider 
+                      range 
+                      min={0} 
+                      max={10000000} 
+                      step={100000} 
+                      value={currentRange}
+                      onChange={(values) => {
+                        handleRangeChange(filter.label, values as [number, number]);
+                      }}
+                    />
+                  </div>
+                  
+                  <div className="flex items-center gap-2">
+                    <div className="w-1/2 flex items-center border border-gray-300 rounded-lg px-2 py-1.5 focus-within:border-[#fec80b]">
+                      <span className="text-xs text-gray-400 mr-1">{t("от")}</span>
+                      <input 
+                        type="number" 
+                        value={currentRange[0]}
+                        onChange={(e) => {
+                          const val = Number(e.target.value);
+                          handleRangeChange(filter.label, [val, currentRange[1]]);
+                        }}
+                        className="w-full text-sm outline-none bg-transparent"
+                      />
+                    </div>
+                    <div className="w-1/2 flex items-center border border-gray-300 rounded-lg px-2 py-1.5 focus-within:border-[#fec80b]">
+                      <span className="text-xs text-gray-400 mr-1">{t("до")}</span>
+                      <input 
+                        type="number" 
+                        value={currentRange[1]}
+                        onChange={(e) => {
+                          const val = Number(e.target.value);
+                          handleRangeChange(filter.label, [currentRange[0], val]);
+                        }}
+                        className="w-full text-sm outline-none bg-transparent"
+                      />
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+            return null;
+          })}
 
           <button 
             onClick={() => {

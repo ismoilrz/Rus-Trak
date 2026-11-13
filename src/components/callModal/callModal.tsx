@@ -123,7 +123,7 @@ const CallModal = ({ callModal, closeCallModal }: CallProps ) => {
 
   return (
     <div onClick={closeCallModal} className={`fixed top-0 left-0 inset-0 items-center justify-center bg-[#0009] duration-200 z-50 ${callModal ? "flex" : "hidden"}`}>
-        <div onClick={(e) => e.stopPropagation()} className={`w-[472px] h-[80%] max-sm:h-[70%] max-sm:w-[90%] py-15 flex flex-col items-center rounded-lg relative duration-300 ${isSubmitted ? "bg-[#fec80b]" : "bg-white"}`}>
+        <div onClick={(e) => e.stopPropagation()} className={`w-[472px] max-h-[80%] max-sm:h-[70%] max-sm:w-[90%] py-15 flex flex-col items-center rounded-lg relative duration-300 ${isSubmitted ? "bg-[#fec80b]" : "bg-white"}`}>
             
             <button onClick={handleClose}>
                 <X width={'30px'} height={'30px'} className="absolute top-3 right-3 cursor-pointer text-black" />

@@ -26,17 +26,17 @@ const CatalogModal = ({ catalog, catalog2, catalog3, closeCatalog, isScrolled }:
             <nav className="flex flex-col gap-5">
               <strong className="text-[22px] font-[800] max-sm:hidden">{t("categories")}</strong>
               <div className="flex flex-col gap-3 max-sm:hidden">
-                <Link to={'/catalog/Curtain-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Шторные автомобили</li></Link>
-                <Link to={'/catalog/Crane-manipulators'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Краны-манипуляторы</li></Link>
-                <Link to={'/catalog/Fuel-bowsers'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Автотопливозаправщики</li></Link>
-                <Link to={'/catalog/Aerial-work-platforms'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Автогидроподъёмники</li></Link>
-                <Link to={'/catalog/Tanker-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Автоцистерны</li></Link>
-                <Link to={'/catalog/Tow-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Автоэвакуаторы</li></Link>
-                <Link to={'/catalog/Insulated-vans'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Изотермические фургоны</li></Link>
-                <Link to={'/catalog/Container-chassis-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Контейнеровозы</li></Link>
-                <Link to={'/catalog/Hook-lifts'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Крюковые погрузчики</li></Link>
-                <Link to={'/catalog/Dump-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Самосвалы</li></Link>
-                <Link to={'/catalog/ADR-EXII-category-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Автомобили ДОПОГ категория EXII</li></Link>
+                <Link to={'/catalog/Curtain-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.curtainTrucks")}</li></Link>
+                <Link to={'/catalog/Crane-manipulators'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.craneManipulators")}</li></Link>
+                <Link to={'/catalog/Fuel-bowsers'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.fuelBowsers")}</li></Link>
+                <Link to={'/catalog/Aerial-work-platforms'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.aerialPlatforms")}</li></Link>
+                <Link to={'/catalog/Tanker-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.tankerTrucks")}</li></Link>
+                <Link to={'/catalog/Tow-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.towTrucks")}</li></Link>
+                <Link to={'/catalog/Insulated-vans'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.insulatedVans")}</li></Link>
+                <Link to={'/catalog/Container-chassis-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.containerChassis")}</li></Link>
+                <Link to={'/catalog/Hook-lifts'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.hookLifts")}</li></Link>
+                <Link to={'/catalog/Dump-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.dumpTrucks")}</li></Link>
+                <Link to={'/catalog/ADR-EXII-category-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.adrExiiTrucks")}</li></Link>
             </div>
               
               <button onClick={() => setCatalogMenu1((c) => !c)} className="text-[22px] font-[800] hidden max-sm:flex items-center gap-2">
@@ -46,17 +46,17 @@ const CatalogModal = ({ catalog, catalog2, catalog3, closeCatalog, isScrolled }:
 
               {catalogMenu1 && (
                 <div className="flex flex-col gap-3 catMenAni1 overflow-hidden">
-                    <Link to={'/catalog/Curtain-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Шторные автомобили</li></Link>
-                    <Link to={'/catalog/Crane-manipulators'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Краны-манипуляторы</li></Link>
-                    <Link to={'/catalog/Fuel-bowsers'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Автотопливозаправщики</li></Link>
-                    <Link to={'/catalog/Aerial-work-platforms'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Автогидроподъёмники</li></Link>
-                    <Link to={'/catalog/Tanker-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Автоцистерны</li></Link>
-                    <Link to={'/catalog/Tow-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Автоэвакуаторы</li></Link>
-                    <Link to={'/catalog/Insulated-vans'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Изотермические фургоны</li></Link>
-                    <Link to={'/catalog/Container-chassis-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Контейнеровозы</li></Link>
-                    <Link to={'/catalog/Hook-lifts'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Крюковые погрузчики</li></Link>
-                    <Link to={'/catalog/Dump-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Самосвалы</li></Link>
-                    <Link to={'/catalog/ADR-EXII-category-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">Автомобили ДОПОГ категория EXII</li></Link>
+                    <Link to={'/catalog/Curtain-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.curtainTrucks")}</li></Link>
+                    <Link to={'/catalog/Crane-manipulators'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.craneManipulators")}</li></Link>
+                    <Link to={'/catalog/Fuel-bowsers'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.fuelBowsers")}</li></Link>
+                    <Link to={'/catalog/Aerial-work-platforms'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.aerialPlatforms")}</li></Link>
+                    <Link to={'/catalog/Tanker-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.tankerTrucks")}</li></Link>
+                    <Link to={'/catalog/Tow-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.towTrucks")}</li></Link>
+                    <Link to={'/catalog/Insulated-vans'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.insulatedVans")}</li></Link>
+                    <Link to={'/catalog/Container-chassis-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.containerChassis")}</li></Link>
+                    <Link to={'/catalog/Hook-lifts'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.hookLifts")}</li></Link>
+                    <Link to={'/catalog/Dump-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.dumpTrucks")}</li></Link>
+                    <Link to={'/catalog/ADR-EXII-category-trucks'}><li onClick={closeCatalog} className="text-black duration-200 inline hover:text-[#fec80b]">{t("categoriesList.adrExiiTrucks")}</li></Link>
                 </div>
                 )}
               

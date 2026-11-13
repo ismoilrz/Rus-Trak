@@ -1,5 +1,6 @@
 import { X } from "lucide-react"
 import { useState, useRef } from "react"
+import { useTranslation } from "react-i18next"
 
 type CallProps = {
     callModal: boolean,
@@ -7,6 +8,7 @@ type CallProps = {
 }
 
 const CallModal = ({ callModal, closeCallModal }: CallProps ) => {
+    const { t } = useTranslation();
 
     const [text, setText] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
@@ -129,39 +131,39 @@ const CallModal = ({ callModal, closeCallModal }: CallProps ) => {
 
             {isSubmitted ? (
                 <div className="flex flex-col items-center justify-center py-10 w-full h-full text-center px-4">
-                    <h3 className="text-[32px] max-sm:text-[26px] font-[500] text-black mb-4">Успешно!</h3>
-                    <p className="text-black mb-8">Ваши данные направлены нашему менеджеру. Мы свяжемся с вами в ближайшее время!</p>
+                    <h3 className="text-[32px] max-sm:text-[26px] font-[500] text-black mb-4">{t('callModal.successTitle')}</h3>
+                    <p className="text-black mb-8">{t('callModal.successDesc')}</p>
                     <button 
                         onClick={handleClose} 
                         className="py-3 w-[60%] rounded-[4px] bg-black text-white duration-200 hover:opacity-[0.8] cursor-pointer"
                     >
-                        Закрыть
+                        {t('callModal.closeBtn')}
                     </button>
                 </div>
             ) : (
                 <>
-                    <h3 className="text-[32px] max-sm:text-[26px] font-[500] text-black">Заказать звонок</h3>
-                    <p className="max-w-[90%] max-sm:text-center text-gray-600">Наш менеджер свяжется с Вами в ближайшее время</p>
+                    <h3 className="text-[32px] max-sm:text-[26px] font-[500] text-black">{t('callModal.mainTitle')}</h3>
+                    <p className="max-w-[90%] max-sm:text-center text-gray-600">{t('callModal.mainDesc')}</p>
                     
                     <form className="w-[70%] py-12 max-sm:py-8 flex flex-col gap-3 max-sm:w-[80%]">
                         {/* Ism */}
                         <div className="flex flex-col gap-1">
-                            <label className={`${textNull ? "text-red-500" : "text-black"} text-[14px]`}>Ваше имя *</label>
+                            <label className={`${textNull ? "text-red-500" : "text-black"} text-[14px]`}>{t('callModal.nameLabel')}</label>
                             <input 
                                 value={text} 
                                 onChange={(e) => {setText(e.target.value); setTextNull(false)}}
                                 className={`${textNull ? "border-red-500" : "border-black"} rounded-[4px] border w-full h-11 pl-4 outline-hidden duration-200 focus-within:shadow-[2px_1px_8px_#fec90b7d] focus-within:border-[#fec80b] bg-white`} 
                                 type="text" 
-                                placeholder="Имя" 
+                                placeholder={t('callModal.namePlaceholder')} 
                             />
                             {textNull && (
-                                <p className="text-[14px] text-red-500 mt-1">Поле обязательно для заполнения</p>
+                                <p className="text-[14px] text-red-500 mt-1">{t('callModal.nameError')}</p>
                             )}
                         </div>
 
                         {/* Telefon */}
                         <div className="flex flex-col gap-1">
-                            <label className={`${phoneError ? "text-red-500" : "text-black"} text-[14px]`}>Телефон *</label>
+                            <label className={`${phoneError ? "text-red-500" : "text-black"} text-[14px]`}>{t('callModal.phoneLabel')}</label>
                             <input 
                                 ref={phoneInputRef} 
                                 value={phone} 
@@ -173,10 +175,10 @@ const CallModal = ({ callModal, closeCallModal }: CallProps ) => {
                                 onBlur={handleBlur}
                                 className={`${phoneError ? "border-red-500" : "border-black"} rounded-[4px] border w-full h-11 pl-4 outline-hidden duration-200 focus-within:shadow-[2px_1px_8px_#fec90b7d] focus-within:border-[#fec80b] bg-white`} 
                                 type="text" 
-                                placeholder="+998" 
+                                placeholder={t('callModal.phonePlaceholder')} 
                             />
                             {phoneError && (
-                                <p className="text-[14px] text-red-500 mt-1">Введите номер полностью</p>
+                                <p className="text-[14px] text-red-500 mt-1">{t('callModal.phoneError')}</p>
                             )}
                         </div>
 
@@ -200,16 +202,15 @@ const CallModal = ({ callModal, closeCallModal }: CallProps ) => {
                                     </span>
                                 </label>
                             </div>
-                            {/* Agar xato bo'lsa matn qizil rangga o'zgaradi */}
                             <p className={`text-[14px] leading-[110%] ${checkboxError ? "text-red-500" : "text-[#a1a1a1]"}`}>
-                                Я согласен <a className="text-purple-800" href="#">на обработку персональных данных</a>
+                                {t('callModal.agreementText')} <a className="text-purple-800" href="#">{t('callModal.agreementLink')}</a>
                             </p>
                         </div>
                     </form>
 
-                    <button onClick={handleSubBtn} className="py-3 rounded-[4px] bg-[#fec80b] w-[70%] duration-200 hover:opacity-[0.7] cursor-pointer">Оставить заявку</button>
-                    <p className="text-[13px] mt-4">Для регионов: <a href="tel:88005110525">8 (800) 511-05-25</a></p>
-                    <p className="text-[13px]">Нижний Новгород: <a href="tel:88005110525">8 (800) 511-05-25</a></p>
+                    <button onClick={handleSubBtn} className="py-3 rounded-[4px] bg-[#fec80b] w-[70%] duration-200 hover:opacity-[0.7] cursor-pointer">{t('callModal.submitBtn')}</button>
+                    <p className="text-[13px] mt-4">{t('callModal.regionsPhone')} <a href="tel:88005110525">8 (800) 511-05-25</a></p>
+                    <p className="text-[13px]">{t('callModal.cityPhone')} <a href="tel:88005110525">8 (800) 511-05-25</a></p>
                 </>
             )}
         </div>

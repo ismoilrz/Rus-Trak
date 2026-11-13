@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ShoppingCart, ArrowDownToLine, Heart, X } from 'lucide-react';
-import { useCartStore } from '../../shared/useCartStore'; // Store joylashuvini loyihangizga moslang
+import { useCartStore } from '../../shared/useCartStore';
+import { useTranslation } from 'react-i18next';
 
 const HeartPage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [catalogForm, setCatalogForm] = useState<boolean>(false)
 
@@ -38,7 +40,7 @@ const HeartPage = () => {
       title: item.title,
       price: item.price,
       img: item.img, 
-      slug: item.slug,             
+      slug: item.slug,            
       category: item.categorySlug || ""
     });
   };
@@ -52,8 +54,6 @@ const HeartPage = () => {
     localStorage.setItem('favorites', JSON.stringify(updated));
     window.dispatchEvent(new Event("favoritesChanged"));
   };
-
-
 
   const [text, setText] = useState<string>('');
   const [email, setEmail] = useState<string>('');
@@ -84,8 +84,6 @@ const HeartPage = () => {
       setCheckboxError(false);
     }, 300);
   }
-
-  // const { selectedCatalog, slug } = useParams<{ selectedCatalog: string; slug: string }>();
 
   useEffect(() => {
     const scrollClosed = catalogForm;
@@ -196,15 +194,13 @@ const HeartPage = () => {
     }
   };
 
-
-
   if (favorites.length === 0) {
     return <div className="container pt-4">
-      <p className='text-[20px]'>Ваше избранное пусто.</p>
-      <p className='text-[20px]'>Воспользуйтесь каталогом или поиском, чтобы сохранить подходящий товар.</p>
+      <p className='text-[20px]'>{t('heartPage.emptyTitle')}</p>
+      <p className='text-[20px]'>{t('heartPage.emptyDesc')}</p>
       <div className='flex gap-4 pt-6'>
-        <Link to={'/'}><button className='px-7 py-2 rounded-md border-2 border-[#fec80b] duration-200 hover:bg-[#fec80b]'>На главную</button></Link>
-        <Link to={'/catalog'}><button className=' px-7 py-2 rounded-md border-2 border-transparent duration-200 bg-[#fec80b] hover:bg-transparent hover:border-[#fec80b]'>Открыть каталог</button></Link>
+        <Link to={'/'}><button className='px-7 py-2 rounded-md border-2 border-[#fec80b] duration-200 hover:bg-[#fec80b]'>{t('heartPage.toHome')}</button></Link>
+        <Link to={'/catalog'}><button className=' px-7 py-2 rounded-md border-2 border-transparent duration-200 bg-[#fec80b] hover:bg-transparent hover:border-[#fec80b]'>{t('heartPage.toCatalog')}</button></Link>
       </div>
     </div>;
   }
@@ -219,16 +215,16 @@ const HeartPage = () => {
           className="h-[440px] max-lg:flex max-lg:flex-col max-lg:justify-between max-lg:h-[360px] max-sm:h-[300px] bg-[#f5f5f5] relative overflow-hidden cursor-pointer"
         >
           <img className="h-[65%] max-lg:h-[50%] w-full object-cover" src={item.img} alt="Image" />
-          <span className="text-[18px] max-sm:mt-[-10px] max-md:text-[16px] line-clamp-1 max-lg:line-clamp-2 max-sm:line-clamp-1 mt-3 ml-3">{item.title}</span>
+          <span className="text-[18px] max-sm:mt-[-10px] max-md:text-[16px] line-clamp-1 max-lg:line-clamp-2 max-sm:line-clamp-1 mt-3 ml-3">{t(item.title)}</span>
           
           <div className="h-[35%] p-3 flex flex-col justify-between">
             <div className="max-md:mt-[-10px] max-sm:mt-[-25px]">
-              <h5 className="text-[22px] max-md:text-lg max-sm:text-[14px] pb-2 font-[500]">{item.price}</h5>
+              <h5 className="text-[22px] max-md:text-lg max-sm:text-[14px] pb-2 font-[500]">{t(item.price)}</h5>
               
               <div className="flex items-center max-md:flex-col justify-between max-lg:gap-3">
                 <div className="w-full flex items-center gap-3 max-sm:justify-between">
                   <button className="px-5 max-lg:px-6 max-md:w-[80%] py-2 text-[12px] rounded-[4px] bg-[#fec80b] font-medium">
-                    Подробнее
+                    {t('heartPage.detailsBtn')}
                   </button>
                   
                   <button onClick={(e) => handleAddToCart(item, e)}>
@@ -237,7 +233,7 @@ const HeartPage = () => {
                 </div>
                 
                 <button onClick={(e) => { e.stopPropagation(); setCatalogForm(true)}} className="flex items-center gap-2 text-[12px] whitespace-nowrap">
-                  Получить КП <ArrowDownToLine width={'15px'} height={'15px'} />
+                  {t('heartPage.getCpBtn')} <ArrowDownToLine width={'15px'} height={'15px'} />
                 </button>
                 
                 <button 
@@ -263,46 +259,46 @@ const HeartPage = () => {
 
             {isSubmitted ? (
               <div className="flex flex-col items-center justify-center py-8 text-center w-full h-full">
-                <h3 className="text-[32px] max-sm:text-[26px] font-[500] text-black mb-3">Успешно!</h3>
-                <p className="text-black mb-6">Ваши данные направлены нашему менеджеру. Мы свяжемся с вами в ближайшее время!</p>
+                <h3 className="text-[32px] max-sm:text-[26px] font-[500] text-black mb-3">{t('heartPage.successTitle')}</h3>
+                <p className="text-black mb-6">{t('heartPage.successDesc')}</p>
                 <button 
                   onClick={closeCatalogForm} 
                   className="py-3 w-[60%] rounded-[4px] bg-black border-2 border-black text-white duration-200 hover:bg-transparent hover:text-black"
                 >
-                  Закрыть
+                  {t('heartPage.closeBtn')}
                 </button>
               </div>
             ) : (
               <>
-                <h3 className="text-[24px] text-center max-sm:text-[20px] max-w-[80%] font-[500] text-black">Получить коммерческое предложение</h3>
+                <h3 className="text-[24px] text-center max-sm:text-[20px] max-w-[80%] font-[500] text-black">{t('heartPage.modalTitle')}</h3>
                 
                 <form className="w-[85%] py-6 flex flex-col gap-3">
                   <div className="flex flex-col gap-1">
-                    <label className={`${textNull ? "text-red-500" : "text-black"} text-[14px]`}>Ваше имя *</label>
+                    <label className={`${textNull ? "text-red-500" : "text-black"} text-[14px]`}>{t('heartPage.nameLabel')}</label>
                     <input 
                       value={text} 
                       onChange={(e) => {setText(e.target.value); setTextNull(false)}}
                       className={`rounded-[4px] border ${textNull ? "border-red-500" : "border-black"} w-full h-11 pl-4 outline-hidden duration-200 focus-within:shadow-[2px_1px_8px_#fec90b7d] focus-within:border-[#fec80b] bg-white`} 
                       type="text" 
-                      placeholder="Имя" 
+                      placeholder={t('heartPage.namePlaceholder')} 
                     />
-                    {textNull && <p className="text-[13px] text-red-500">Поле обязательно для заполнения</p>}
+                    {textNull && <p className="text-[13px] text-red-500">{t('heartPage.nameError')}</p>}
                   </div>
 
                   <div className="flex flex-col gap-1">
-                    <label className={`${emailError ? "text-red-500" : "text-black"} text-[14px]`}>E-mail *</label>
+                    <label className={`${emailError ? "text-red-500" : "text-black"} text-[14px]`}>{t('heartPage.emailLabel')}</label>
                     <input 
                       value={email} 
                       onChange={(e) => {setEmail(e.target.value); setEmailError(false)}}
                       className={`rounded-[4px] border ${emailError ? "border-red-500" : "border-black"} w-full h-11 pl-4 outline-hidden duration-200 focus-within:shadow-[2px_1px_8px_#fec90b7d] focus-within:border-[#fec80b] bg-white`} 
                       type="text" 
-                      placeholder="your@mail.com" 
+                      placeholder={t('heartPage.emailPlaceholder')} 
                     />
-                    {emailError && <p className="text-[13px] text-red-500">Введите корректный E-mail</p>}
+                    {emailError && <p className="text-[13px] text-red-500">{t('heartPage.emailError')}</p>}
                   </div>
 
                   <div className="flex flex-col gap-1">
-                    <label className={`${phoneError ? "text-red-500" : "text-black"} text-[14px]`}>Телефон *</label>
+                    <label className={`${phoneError ? "text-red-500" : "text-black"} text-[14px]`}>{t('heartPage.phoneLabel')}</label>
                     <input 
                       ref={phoneInputRef}
                       value={phone} 
@@ -314,9 +310,9 @@ const HeartPage = () => {
                       onBlur={handleBlur}
                       className={`rounded-[4px] border ${phoneError ? "border-red-500" : "border-black"} w-full h-11 pl-4 outline-hidden duration-200 focus-within:shadow-[2px_1px_8px_#fec90b7d] focus-within:border-[#fec80b] bg-white`} 
                       type="text" 
-                      placeholder="+998" 
+                      placeholder={t('heartPage.phonePlaceholder')} 
                     />
-                    {phoneError && <p className="text-[13px] text-red-500">Введите номер полностью</p>}
+                    {phoneError && <p className="text-[13px] text-red-500">{t('heartPage.phoneError')}</p>}
                   </div>
 
                   <div className="flex items-center gap-2 mt-1">
@@ -339,12 +335,12 @@ const HeartPage = () => {
                       </label>
                     </div>
                     <p className={`text-[14px] leading-[110%] ${checkboxError ? "text-red-500" : "text-[#a1a1a1]"}`}>
-                      Я согласен <a className="text-purple-800" href="#">на обработку персональных данных</a>
+                      {t('heartPage.agreementText')} <a className="text-purple-800" href="#">{t('heartPage.agreementLink')}</a>
                     </p>
                   </div>
                 </form>
 
-                <button onClick={handleSubBtn} className="py-3 rounded-[4px] bg-[#fec80b] w-[85%] duration-200 hover:opacity-[0.7] cursor-pointer font-medium">Получить КП</button>
+                <button onClick={handleSubBtn} className="py-3 rounded-[4px] bg-[#fec80b] w-[85%] duration-200 hover:opacity-[0.7] cursor-pointer font-medium">{t('heartPage.getCpBtn')}</button>
               </>
             )}
           </div>

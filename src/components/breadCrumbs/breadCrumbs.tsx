@@ -1,4 +1,5 @@
 import { Link, useLocation, matchPath } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const validRoutes = [
   "/",
@@ -24,18 +25,11 @@ const validRoutes = [
   "/catalog/:selectedCatalog/:slug",
   "/cart",
   "/heart",
-  
 ];
-
-// const routeNames: Record<string, string> = {
-//   about: "Biz haqimizda",
-//   news: "Yangiliklar",
-//   contacts: "Bog'lanish",
-//   services: "Xizmatlar",
-// };
 
 const Breadcrumbs = () => {
   const location = useLocation();
+  const { t } = useTranslation();
   const currentPath = location.pathname;
 
   if (currentPath === "/") return null;
@@ -58,14 +52,17 @@ const Breadcrumbs = () => {
     <nav className="text-sm text-gray-600 py-3">
       <div className="container flex items-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-none max-md:text-[13px]">
         <Link to="/" className="hover:text-[#fec80b] transition-colors shrink-0">
-          Главная
+          {t("breadcrumbs.home")}
         </Link>
 
         {pathnames.map((name, index) => {
           const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
           const isLast = index === pathnames.length - 1;
 
-          const displayName = decodeURIComponent(name);
+          const translationKey = `breadcrumbs.${name}`;
+          const translatedName = t(translationKey);
+          
+          const displayName = translatedName !== translationKey ? translatedName : decodeURIComponent(name);
 
           return (
             <span key={routeTo} className="flex items-center gap-2 shrink-0">

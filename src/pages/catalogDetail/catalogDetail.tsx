@@ -4,9 +4,11 @@ import useFancybox from "../../shared/useFancyBox";
 import { useEffect, useState, useRef } from "react";
 import { X } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useCartStore } from "../../shared/useCartStore";
 
 const CatalogDetail = () => {
   const { t } = useTranslation();
+  const addToCart = useCartStore((state) => state.addToCart);
   const [catalogForm, setCatalogForm] = useState<boolean>(false);
   const openCatForm = () => setCatalogForm(true);
   
@@ -175,6 +177,17 @@ const CatalogDetail = () => {
     ? trak.parametrs
     : (t(trak.parametrs, { returnObjects: true }) as string[]);
 
+  const handleAddToCart = () => {
+    addToCart({
+      id: `${selectedCatalog}-${trak.slug}`,
+      title: trak.title,
+      price: trak.price,
+      img: trak.img,
+      slug: trak.slug,
+      category: selectedCatalog || "",
+    });
+  };
+
   const tableLabels = t("detail.table_labels", { returnObjects: true }) as string[];
 
   return (
@@ -189,7 +202,7 @@ const CatalogDetail = () => {
         <div className="w-[30%] max-lg:w-full">
           <h4 className="text-3xl font-medium text-center max-lg:text-start">{t(trak.price)}</h4>
           <div className="w-full flex gap-4 my-3">
-            <button className="w-full max-lg:w-[200px] max-sm:w-auto max-sm:px-2 py-2 border border-transparent bg-[#fec80b] duration-200 rounded-md hover:border-[#fec80b] hover:bg-transparent cursor-pointer">
+            <button onClick={handleAddToCart} className="w-full max-lg:w-[200px] max-sm:w-auto max-sm:px-2 py-2 border border-transparent bg-[#fec80b] duration-200 rounded-md hover:border-[#fec80b] hover:bg-transparent cursor-pointer">
               {t("detail.add_to_cart")}
             </button>
             <button onClick={openCatForm} className="w-full max-lg:w-[200px] max-sm:w-auto max-sm:px-2 py-2 border border-[#fec80b] bg-transparent duration-200 rounded-md hover:bg-[#fec80b] cursor-pointer">

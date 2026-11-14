@@ -5,7 +5,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Link } from "react-router-dom";
-import { MoveRight} from "lucide-react";
+import { ChevronLeft, ChevronRight, MoveRight} from "lucide-react";
 import { NewsData } from "../../constants/news/newsData";
 import { useTranslation } from "react-i18next";
 
@@ -20,8 +20,8 @@ const HomeNews = () => {
             <div className="w-full flex justify-between py-14 pb-8 max-sm:flex-col max-sm:gap-6 max-sm:pb-3">
             <h3 className="text-[40px] max-md:text-3xl font-medium">{t("titlePr")}</h3>
             <div className="flex gap-3">
-                <button id="cat-slide-left" className="w-10 h-10 rounded-md border-1 text-3xl text-[#a1a1a1] duration-200 hover:bg-[#fec80b] hover:text-black active:bg-[#fec80b]">{'<'}</button>
-                <button id="cat-slide-next" className="w-10 h-10 rounded-md border-1 text-3xl text-[#a1a1a1] duration-200 hover:bg-[#fec80b] hover:text-black active:bg-[#fec80b]">{'>'}</button>
+                <button id="cat-slide-left2" className="w-10 h-10 flex items-center justify-center rounded-md border-1 text-3xl text-[#a1a1a1] duration-200 hover:bg-[#fec80b] hover:text-black active:bg-[#fec80b]"><ChevronLeft size={30} /></button>
+                <button id="cat-slide-next2" className="w-10 h-10 flex items-center justify-center rounded-md border-1 text-3xl text-[#a1a1a1] duration-200 hover:bg-[#fec80b] hover:text-black active:bg-[#fec80b]"><ChevronRight size={30} /></button>
             </div>
             </div>
 
@@ -31,8 +31,8 @@ const HomeNews = () => {
                 spaceBetween={25}
                 loop={true}
                 navigation={{
-                prevEl: "#cat-slide-left",
-                nextEl: "#cat-slide-next",
+                prevEl: "#cat-slide-left2",
+                nextEl: "#cat-slide-next2",
                 }}
                 pagination={{
                 clickable: true,

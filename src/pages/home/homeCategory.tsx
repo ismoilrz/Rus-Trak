@@ -7,6 +7,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { catalogConfig } from "../../constants/catalogData/catalogConfig";
 import { Link } from "react-router-dom";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const HomeCategory = () => {
   const { t } = useTranslation();
@@ -16,8 +17,10 @@ const HomeCategory = () => {
       <div className="w-full flex justify-between py-16 max-sm:flex-col max-sm:gap-6 max-sm:pb-3">
         <h3 className="text-4xl font-medium">{t("categories")}</h3>
         <div className="flex gap-3">
-          <button id="cat-slide-left" className="w-10 h-10 rounded-md border-1 text-3xl text-[#a1a1a1] duration-200 hover:bg-[#fec80b] hover:text-black active:bg-[#fec80b]">{'<'}</button>
-          <button id="cat-slide-next" className="w-10 h-10 rounded-md border-1 text-3xl text-[#a1a1a1] duration-200 hover:bg-[#fec80b] hover:text-black active:bg-[#fec80b]">{'>'}</button>
+          <button id="cat-slide-left" className="w-10 h-10 rounded-md border-1 text-3xl text-[#a1a1a1] flex items-center justify-center duration-200 hover:bg-[#fec80b] hover:text-black active:bg-[#fec80b]"><ChevronLeft size={30} /></button>
+          <button id="cat-slide-next" className="w-10 h-10 rounded-md border-1 text-3xl text-[#a1a1a1] flex items-center justify-center duration-200 hover:bg-[#fec80b] hover:text-black active:bg-[#fec80b]"><ChevronRight size={30} /></button>
+
+
         </div>
       </div>
 

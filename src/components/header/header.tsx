@@ -138,8 +138,8 @@ const Header = ({ isScrolled, openCallModal, openSearchF }: HeaderProps) => {
 
               <div className="flex gap-6">
                 <div className="flex flex-col items-end text-[#a1a1a1] max-sm:hidden">
-                  <p className="max-lg:text-[14px]">{t("regions_phone")}: 8 (800)-511-05-25</p>
-                  <p className="max-lg:text-[14px]">{t("nizhny_novgorod_phone")}: 8 (831) 235-26-16</p>
+                  <p className="max-lg:text-[14px]">{t("regions_phone")}: <a href="tel:8 (800)-511-05-25">8 (800)-511-05-25</a></p>
+                  <p className="max-lg:text-[14px]">{t("nizhny_novgorod_phone")}: <a href="tel:8 (831) 235-26-16">8 (831) 235-26-16</a></p>
                 </div>
                 <button onClick={openCallModal} className="w-[46px] h-[46px] bg-[#fec80b] rounded-full flex items-center justify-center cursor-pointer">
                   <img src={Call} alt="Phone" />
@@ -172,7 +172,6 @@ const Header = ({ isScrolled, openCallModal, openSearchF }: HeaderProps) => {
             )}
 
             <div className="flex gap-8 max-xl:gap-4">
-              {/* "О нас" tugmasi */}
               <button 
                 onClick={() => setActiveModal(activeModal === 'about' ? null : 'about')} 
                 className={`${isScrolled ? "max-xl:hidden" : ""} text-black cursor-pointer max-lg:hidden`}
@@ -180,7 +179,6 @@ const Header = ({ isScrolled, openCallModal, openSearchF }: HeaderProps) => {
                 {t("about")} <span className="text-[#fec80b] text-[12px] inline-block transition-transform duration-200" style={{transform: activeModal === 'about' ? "rotate(180deg)" : "rotate(0deg)"}}>▼</span>
               </button>
 
-              {/* "Медиа" tugmasi */}
               <button 
                 onClick={() => setActiveModal(activeModal === 'media' ? null : 'media')} 
                 className={`${isScrolled ? "max-xl:hidden" : ""} text-black cursor-pointer max-xl:hidden`}
@@ -199,10 +197,10 @@ const Header = ({ isScrolled, openCallModal, openSearchF }: HeaderProps) => {
           </div>
 
           <div className="flex items-center gap-5">
-            <div onClick={openSearchF} className={`${isScrolled ? "w-[270px]!" : ""} h-9 w-[312px] max-xl:w-[270px] max-lg:hidden px-4 border border-[#fec80b] rounded-[40px] flex items-center justify-between duration-200 focus-within:shadow-[2px_1px_8px_#fec90b7d]`}>
-              <input className="h-full w-full outline-hidden" type="text" placeholder={t("search_placeholder")} />
+            <button onClick={openSearchF} className={`${isScrolled ? "w-[270px]!" : ""} h-9 w-[312px] max-xl:w-[270px] max-lg:hidden px-4 border border-[#fec80b] rounded-[40px] flex items-center justify-between duration-200`}>
+              <p className="text-[#a1a1a1]">{t("search_placeholder")}</p>
               <Search />
-            </div>
+            </button>
             <Search onClick={openSearchF} width={'34px'} height={'34px'} className="hidden max-lg:flex" />
             
             <Link to={"/cart"}>

@@ -5,7 +5,7 @@ import review2 from "../../assets/review2.jpg"
 import review3 from "../../assets/review3.jpg"
 import review4 from "../../assets/review4.jpg"
 import review5 from "../../assets/review5.jpg"
-import { SearchX } from "lucide-react";
+import { Expand } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 interface ReviewDataType {
@@ -33,7 +33,7 @@ const Reviews = () => {
           <a className="reviews relative" key={rev.id} data-fancybox="gallery" href={rev.pick}>
             <img className="w-[315px] max-md:w-[280px] max-sm:w-[300px] h-[420px] border border-[#a1a1a150] rounded-[8px]" src={rev.pick} alt="Sample Image" />
             <div className="reviewOverlay w-full flex items-center justify-center duration-200 rounded-[8px] text-transparent h-full bg-transparent absolute top-0 left-0 transition-all">
-              <SearchX width={'40px'} height={'40px'} />
+              <Expand size={32} />
             </div>
           </a>
         ))}

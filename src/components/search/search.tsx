@@ -1,7 +1,8 @@
 import { Search } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Router orqali sahifaga o'tish uchun
+import { useEffect, useRef, useState } from "react"; // useRef qo'shildi
+import { useNavigate } from "react-router-dom";
 import { catalogConfig } from "../../constants/catalogData/catalogConfig";
+import { useTranslation } from "react-i18next";
 
 interface SearchComProps {
     openSearch: boolean;
@@ -12,6 +13,10 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
+  const { t } = useTranslation();
+  
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const handleClose = () => {
     setSearchTerm("");
     closeSearchF();
@@ -20,6 +25,12 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
   useEffect(() => {
     if (openSearch) {
       document.body.style.overflow = "hidden";
+      
+      const timer = setTimeout(() => {
+        inputRef.current?.focus();
+      }, 50);
+
+      return () => clearTimeout(timer);
     } else {
       document.body.style.overflow = "auto";
     }
@@ -58,7 +69,12 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
         >
             <div className="w-[96%] h-10 mx-auto mt-3 rounded-full bg-[#9e9e9ec1] flex items-center px-4 shadow-xl border border-white inset-shadow-[4px_4px_8px_#fff] shrink-0">
                 <Search size={26} stroke="#fff" />
-                <input type="text" placeholder="Поиск..." value={searchTerm}
+                
+                <input 
+                  ref={inputRef}
+                  type="text" 
+                  placeholder="Поиск..." 
+                  value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-4 text-[#444] outline-none placeholder:text-white bg-transparent w-full" 
                 />
@@ -85,8 +101,8 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
                         <img src={item.img} alt={item.title} className="w-16 h-12 object-cover rounded-lg" />
                       )}
                       <div>
-                        <h4 className="text-white font-medium text-sm max-sm:text-[12px]">{item.title}</h4>
-                        <p className="text-white/80 text-xs mt-1">{item.price}</p>
+                        <h4 className="text-white font-medium text-sm max-sm:text-[12px]">{t(item.title)}</h4>
+                        <p className="text-white/80 text-xs mt-1">{t(item.price)}</p>
                       </div>
                     </div>
                   ))

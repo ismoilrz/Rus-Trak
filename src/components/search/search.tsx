@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { catalogConfig } from "../../constants/catalogData/catalogConfig";
@@ -49,6 +49,8 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
 
   if (!openSearch) return null;
 
+  const trimmedSearch = searchTerm.trim().toLowerCase();
+
   const allTracks = catalogConfig
     ? Object.entries(catalogConfig).flatMap(([categoryKey, categoryValue]) => {
         const traks = categoryValue.trak || [];
@@ -59,10 +61,16 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
       })
     : [];
 
-  const filteredItems = allTracks.filter((item) => {
-    const translatedTitle = t(item.title).toLowerCase();
-    return translatedTitle.includes(searchTerm.trim().toLowerCase());
-  });
+  const filteredItems = trimmedSearch
+    ? allTracks.filter((item) => {
+        const translatedTitle = String(t(item.title)).toLowerCase();
+        const rawTitle = String(item.title).toLowerCase();
+        return (
+          translatedTitle.includes(trimmedSearch) ||
+          rawTitle.includes(trimmedSearch)
+        );
+      })
+    : [];
 
   const handleItemClick = (categoryKey: string, slug: string) => {
     navigate(`/catalog/${categoryKey}/${slug}`);
@@ -78,8 +86,9 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
         onClick={(e) => e.stopPropagation()}
         className="w-[55%] max-lg:w-[70%] max-sm:w-[90%] h-[95%] bg-[#b4b4b4ab] rounded-2xl border border-white flex flex-col pb-3"
       >
+        {/* Qidiruv inputi */}
         <div className="w-[96%] h-10 mx-auto mt-3 rounded-full bg-[#9e9e9ec1] flex items-center px-4 shadow-xl border border-white inset-shadow-[4px_4px_8px_#fff] shrink-0">
-          <Search size={26} stroke="#fff" />
+          <Search size={24} stroke="#fff" className="shrink-0" />
 
           <input
             ref={inputRef}
@@ -87,24 +96,41 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
             placeholder="Поиск..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-4 text-[#444] outline-none placeholder:text-white bg-transparent w-full"
+            className="pl-3 pr-2 text-[#444] outline-none placeholder:text-white bg-transparent w-full"
           />
+
+          {/* Inputda matn bo'lsa "X" tugmasi chiqadi, bosilganda matn ham, natijalar ham o'chadi */}
+          {searchTerm && (
+            <button
+              type="button"
+              onClick={() => {
+                setSearchTerm("");
+                inputRef.current?.focus();
+              }}
+              className="text-white/80 hover:text-white transition p-1"
+              title="Очистить"
+            >
+              <X size={18} />
+            </button>
+          )}
         </div>
 
+        {/* Sarlavha va yopish tugmasi */}
         <div className="w-full flex justify-between items-center px-5 py-4">
           <p className="text-[20px] max-sm:text-[16px] text-white pt-4 text-shadow-[2px_2px_10px_#0008] shrink-0">
             Результаты поиска:
           </p>
           <button
             onClick={handleClose}
-            className="py-1 px-3 bg-[#9e9e9ec1] border text-white border-white rounded-full inset-shadow-[4px_4px_8px_#fff]"
+            className="py-1 px-3 bg-[#9e9e9ec1] border text-white border-white rounded-full inset-shadow-[4px_4px_8px_#fff] cursor-pointer"
           >
             Выход
           </button>
         </div>
 
+        {/* Natijalar ro'yxati */}
         <div className="w-[96%] mx-auto mt-3 overflow-y-auto flex-1 pr-2 pb-4 space-y-2 resultS">
-          {searchTerm.trim() === "" ? (
+          {trimmedSearch === "" ? (
             <p className="text-white/70 text-center mt-10">
               Введите название продукта...
             </p>
@@ -118,7 +144,7 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
                 {item.img && (
                   <img
                     src={item.img}
-                    alt={item.title}
+                    alt={t(item.title)}
                     className="w-16 h-12 object-cover rounded-lg"
                   />
                 )}

@@ -2085,6 +2085,16 @@
     "vacancies": "Bo'sh ish o'rinlari",
     "cart": "Savat",
     "favorites": "Sevimlilar"
+  },
+
+  "search": {
+    "placeholder": "Qidirish...",
+    "clear": "Tozalash",
+    "resultsTitle": "Qidiruv natijalari:",
+    "exit": "Chiqish",
+    "enterProduct": "Mahsulot nomini kiriting...",
+    "enterMoreLetters": "Yana kamida 1 ta harf kiriting...",
+    "notFound": "Mahsulot topilmadi"
   }
   
 

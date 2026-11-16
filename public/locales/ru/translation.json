@@ -2085,6 +2085,16 @@
     "vacancies": "Вакансии",
     "cart": "Корзина",
     "favorites": "Избранное"
+  },
+
+  "search": {
+    "placeholder": "Поиск...",
+    "clear": "Очистить",
+    "resultsTitle": "Результаты поиска:",
+    "exit": "Выход",
+    "enterProduct": "Введите название продукта...",
+    "enterMoreLetters": "Введите еще хотя бы 1 букву...",
+    "notFound": "Товар не найден"
   }
 
 }

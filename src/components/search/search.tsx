@@ -61,14 +61,19 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
       })
     : [];
 
-  const filteredItems = trimmedSearch
+  const filteredItems = trimmedSearch.length >= 2
     ? allTracks.filter((item) => {
-        const translatedTitle = String(t(item.title)).toLowerCase();
-        const rawTitle = String(item.title).toLowerCase();
-        return (
-          translatedTitle.includes(trimmedSearch) ||
-          rawTitle.includes(trimmedSearch)
-        );
+        try {
+          const translatedTitle = item.title ? String(t(item.title)).toLowerCase() : "";
+          const rawTitle = item.title ? String(item.title).toLowerCase() : "";
+          
+          return (
+            translatedTitle.includes(trimmedSearch) ||
+            rawTitle.includes(trimmedSearch)
+          );
+        } catch {
+          return false;
+        }
       })
     : [];
 
@@ -90,16 +95,10 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
         <div className="w-[96%] h-10 mx-auto mt-3 rounded-full bg-[#9e9e9ec1] flex items-center px-4 shadow-xl border border-white inset-shadow-[4px_4px_8px_#fff] shrink-0">
           <Search size={24} stroke="#fff" className="shrink-0" />
 
-          <input
-            ref={inputRef}
-            type="text"
-            placeholder="Поиск..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+          <input ref={inputRef} type="text" placeholder={t("search.placeholder")} value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-3 pr-2 text-[#444] outline-none placeholder:text-white bg-transparent w-full"
           />
 
-          {/* Inputda matn bo'lsa "X" tugmasi chiqadi, bosilganda matn ham, natijalar ham o'chadi */}
           {searchTerm && (
             <button
               type="button"
@@ -107,32 +106,30 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
                 setSearchTerm("");
                 inputRef.current?.focus();
               }}
-              className="text-white/80 hover:text-white transition p-1"
-              title="Очистить"
+              className="text-white/80 hover:text-white transition p-1 cursor-pointer"
+              title={t("search.clear")}
             >
               <X size={18} />
             </button>
           )}
         </div>
 
-        {/* Sarlavha va yopish tugmasi */}
         <div className="w-full flex justify-between items-center px-5 py-4">
           <p className="text-[20px] max-sm:text-[16px] text-white pt-4 text-shadow-[2px_2px_10px_#0008] shrink-0">
-            Результаты поиска:
+            {t("search.resultsTitle")}
           </p>
           <button
             onClick={handleClose}
             className="py-1 px-3 bg-[#9e9e9ec1] border text-white border-white rounded-full inset-shadow-[4px_4px_8px_#fff] cursor-pointer"
           >
-            Выход
+            {t("search.exit")}
           </button>
         </div>
 
-        {/* Natijalar ro'yxati */}
         <div className="w-[96%] mx-auto mt-3 overflow-y-auto flex-1 pr-2 pb-4 space-y-2 resultS">
-          {trimmedSearch === "" ? (
+          {trimmedSearch.length === 0 ? (
             <p className="text-white/70 text-center mt-10">
-              Введите название продукта...
+              {t("search.enterProduct")}
             </p>
           ) : filteredItems.length > 0 ? (
             filteredItems.map((item) => (
@@ -144,20 +141,22 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
                 {item.img && (
                   <img
                     src={item.img}
-                    alt={t(item.title)}
+                    alt={item.title ? String(t(item.title)) : "Product"}
                     className="w-16 h-12 object-cover rounded-lg"
                   />
                 )}
                 <div>
                   <h4 className="text-white font-medium text-sm max-sm:text-[12px]">
-                    {t(item.title)}
+                    {item.title ? t(item.title) : ""}
                   </h4>
-                  <p className="text-white/80 text-xs mt-1">{t(item.price)}</p>
+                  <p className="text-white/80 text-xs mt-1">
+                    {item.price ? t(item.price) : ""}
+                  </p>
                 </div>
               </div>
             ))
           ) : (
-            <p className="text-white text-center mt-10">Товар не найден</p>
+            <p className="text-white text-center mt-10">{t("search.notFound")}</p>
           )}
         </div>
       </div>

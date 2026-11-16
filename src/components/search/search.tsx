@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { catalogConfig } from "../../constants/catalogData/catalogConfig";
 import { useTranslation } from "react-i18next";
 
+const SEARCH_LANGS = ["ru", "en", "uz"];
+
 interface SearchComProps {
   openSearch: boolean;
   closeSearchF: () => void;
@@ -13,7 +15,7 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [prevOpenSearch, setPrevOpenSearch] = useState(openSearch);
@@ -64,13 +66,13 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
   const filteredItems = trimmedSearch.length >= 2
     ? allTracks.filter((item) => {
         try {
-          const translatedTitle = item.title ? String(t(item.title)).toLowerCase() : "";
-          const rawTitle = item.title ? String(item.title).toLowerCase() : "";
-          
-          return (
-            translatedTitle.includes(trimmedSearch) ||
-            rawTitle.includes(trimmedSearch)
-          );
+          if (!item.title) return false;
+
+          // Sayt qaysi tilda bo'lishidan qat'i nazar, barcha tillardagi nom bo'yicha qidiriladi
+          return SEARCH_LANGS.some((lng) => {
+            const title = String(i18n.getFixedT(lng)(item.title)).toLowerCase();
+            return title.includes(trimmedSearch);
+          });
         } catch {
           return false;
         }
@@ -134,7 +136,7 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
           ) : filteredItems.length > 0 ? (
             filteredItems.map((item) => (
               <div
-                key={item.id}
+                key={`${item.categoryKey}-${item.slug}`}
                 onClick={() => handleItemClick(item.categoryKey, item.slug)}
                 className="flex items-center gap-4 bg-white/20 p-3 rounded-xl border border-white/30 hover:bg-[#0001] transition cursor-pointer"
               >

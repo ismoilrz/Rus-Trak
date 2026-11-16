@@ -1,5 +1,5 @@
 import { Search } from "lucide-react";
-import { useEffect, useRef, useState } from "react"; // useRef qo'shildi
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { catalogConfig } from "../../constants/catalogData/catalogConfig";
 import { useTranslation } from "react-i18next";
@@ -14,7 +14,6 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
   const navigate = useNavigate();
 
   const { t } = useTranslation();
-  
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClose = () => {
@@ -49,9 +48,10 @@ const SearchCom = ({ openSearch, closeSearchF }: SearchComProps) => {
       })
     : [];
 
-  const filteredItems = allTracks.filter((item) =>
-    item.title?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredItems = allTracks.filter((item) => {
+    const translatedTitle = t(item.title).toLowerCase();
+    return translatedTitle.includes(searchTerm.toLowerCase());
+  });
 
   const handleItemClick = (categoryKey: string, slug: string) => {
     navigate(`/catalog/${categoryKey}/${slug}`);

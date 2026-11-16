@@ -7,6 +7,7 @@ import notTruk from "../../assets/notTruk.webp"
 import { Slider } from "antd";
 import { useCartStore } from "../../shared/useCartStore";
 import { useTranslation } from "react-i18next";
+import { useDocumentTitle } from "../../shared/useDocumentTitle";
 
 
 const CYR_TO_LAT: Record<string, string> = {
@@ -48,6 +49,7 @@ const BRAND_ALIASES: Record<string, string[]> = {
 
 const SelectedCatalog = () => {
   const { t } = useTranslation();
+  
   const [filterDrop, setFilterDrop] = useState<boolean>(false);
   const [sortType, setSortType] = useState<string>("По бренду"); 
 
@@ -140,6 +142,9 @@ const mobileDropdownRef = useRef<HTMLDivElement>(null);
 
   const { selectedcatalog } = useParams<{ selectedcatalog: string }>();
   const currentCategory = selectedcatalog ? catalogConfig[selectedcatalog] : null;
+
+  useDocumentTitle(currentCategory?.title ? currentCategory.title : "")
+  
 
   const [searchBrandQuery, setSearchBrandQuery] = useState("");
   const [tempSelectedBrands, setTempSelectedBrands] = useState<string[]>([]);
@@ -288,6 +293,8 @@ const handleSubBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
     );
   }
 
+  
+
   const handleTempBrandChange = (brand: string) => {
     if (tempSelectedBrands.includes(brand)) {
       setTempSelectedBrands(tempSelectedBrands.filter((b) => b !== brand));
@@ -433,6 +440,7 @@ const handleSubBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
     return a.title.localeCompare(b.title);
   });
 
+
   return (
     <div className="pb-10 relative">
       <div className="container max-xl:px-[3%] flex justify-between items-center py-6 max-lg:flex-col max-lg:items-start">
@@ -443,7 +451,7 @@ const handleSubBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
 
         <div className="flex gap-30 items-center max-lg:hidden">
           <div ref={desktopDropdownRef} className="h-full flex gap-2 items-center relative">
-            <label className="text-[#a1a1a1] text-[14px]">{t("Сортировка:")}</label>
+            <label className="text-[#a1a1a1] text-[16px]">{t("sort")}</label>
             <button 
               onClick={() => {setFilterDrop((v) => !v);}} 
               className="duration-200 hover:text-[#fec80b] font-medium"
@@ -876,12 +884,11 @@ const handleSubBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
 
       {catalogForm && (
       <div onClick={closeCatalogForm} className="fixed top-0 left-0 inset-0 z-50 bg-[#0009] flex items-center justify-center">
-        <div onClick={(e) => e.stopPropagation()} className={`w-[500px] min-h-[70%] max-sm:w-[90%] py-12 px-6 flex flex-col items-center rounded-lg relative duration-300 ${isSubmitted ? "bg-[#fec80b]" : "bg-white"}`}>
+        <div onClick={(e) => e.stopPropagation()} className={`w-[500px] max-h-[70%] max-sm:w-[90%] py-12 px-6 flex flex-col items-center rounded-lg relative duration-300 ${isSubmitted ? "bg-[#fec80b]" : "bg-white"}`}>
           
           <button onClick={closeCatalogForm}>
             <X width={'30px'} height={'30px'} className="absolute top-3 right-3 cursor-pointer text-black" />
           </button>
-          {/* Muvaffaqiyatli yuborilgandagi holat (Sariq ekran) */}
           {isSubmitted ? (
             <div className="flex flex-col items-center justify-center py-8 mt-[20%] text-center w-full">
               <h3 className="text-[32px] max-sm:text-[26px] font-[500] text-black mb-3">{t("Успешно!")}</h3>

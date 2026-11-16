@@ -4,9 +4,11 @@ import { useTranslation } from "react-i18next"
 
 import play from "../../assets/play.png"
 import { useState } from "react"
+import { useDocumentTitle } from "../../shared/useDocumentTitle"
 
 const Video = () => {
   const { t } = useTranslation();
+  useDocumentTitle("video_page.title")
   const [openVideo, setOpenVideo] = useState<number[]>([])
 
   const handleOpenVideo = (id: number) => {

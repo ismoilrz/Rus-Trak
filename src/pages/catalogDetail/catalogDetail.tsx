@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import { X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useCartStore } from "../../shared/useCartStore";
+import { useDocumentTitle } from "../../shared/useDocumentTitle";
 
 const CatalogDetail = () => {
   const { t } = useTranslation();
@@ -157,6 +158,9 @@ const CatalogDetail = () => {
   const trak = categoryData?.trak?.find((p) => p.slug === slug);
   const fancyboxRef = useFancybox({});
 
+  useDocumentTitle(trak?.title ? t(trak.title) : "");
+
+
   if (!trak) {
     return (
       <div className="p-5">
@@ -164,6 +168,8 @@ const CatalogDetail = () => {
       </div>
     );
   }
+
+
 
   const descKeys = Array.isArray(trak.descKey)
     ? trak.descKey
@@ -189,6 +195,7 @@ const CatalogDetail = () => {
   };
 
   const tableLabels = t("detail.table_labels", { returnObjects: true }) as string[];
+
 
   return (
     <div ref={fancyboxRef} className="container max-xl:px-[3%] pb-10">

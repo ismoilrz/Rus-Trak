@@ -7,6 +7,7 @@ import review4 from "../../assets/review4.jpg"
 import review5 from "../../assets/review5.jpg"
 import { Expand } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useDocumentTitle } from "../../shared/useDocumentTitle";
 
 interface ReviewDataType {
   id: number;
@@ -24,6 +25,7 @@ const ReviewData: ReviewDataType[] = [
 const Reviews = () => {
   const { t } = useTranslation();
   const fancyboxRef = useFancybox({});
+  useDocumentTitle("reviews")
 
   return (
     <section ref={fancyboxRef} className="container max-xl:px-[3%]">

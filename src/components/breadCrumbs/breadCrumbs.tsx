@@ -1,5 +1,6 @@
 import { Link, useLocation, matchPath } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { catalogConfig } from "../../constants/catalogData/catalogConfig";
 
 const validRoutes = [
   "/",
@@ -48,6 +49,14 @@ const Breadcrumbs = () => {
 
   if (isNewsDetail) return null;
 
+  // /catalog/:selectedCatalog/:slug sahifasida oxirgi bo'lak slug o'rniga mahsulot nomi chiqadi
+  const isCatalogDetail = pathnames[0] === "catalog" && pathnames.length === 3;
+  const detailTrak = isCatalogDetail
+    ? catalogConfig[decodeURIComponent(pathnames[1])]?.trak?.find(
+        (p) => p.slug === decodeURIComponent(pathnames[2])
+      )
+    : undefined;
+
   return (
     <nav className="text-sm text-gray-600 py-3">
       <div className="container flex items-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-none max-md:text-[13px]">
@@ -62,7 +71,11 @@ const Breadcrumbs = () => {
           const translationKey = `breadcrumbs.${name}`;
           const translatedName = t(translationKey);
           
-          const displayName = translatedName !== translationKey ? translatedName : decodeURIComponent(name);
+          let displayName = translatedName !== translationKey ? translatedName : decodeURIComponent(name);
+
+          if (isLast && detailTrak) {
+            displayName = t(detailTrak.title);
+          }
 
           return (
             <span key={routeTo} className="flex items-center gap-2 shrink-0">

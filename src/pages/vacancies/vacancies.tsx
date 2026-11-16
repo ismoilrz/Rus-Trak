@@ -2,12 +2,13 @@ import { Collapse } from 'antd';
 import { X } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDocumentTitle } from '../../shared/useDocumentTitle';
 
 const Vacancies = () => {
   const { t } = useTranslation();
+  useDocumentTitle("docTitle.vacancies")
   const [vacancies, setVacancies] = useState<boolean>(false);
   
-  // Form state'lari
   const [text, setText] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [phone, setPhone] = useState<string>('');

@@ -25,9 +25,11 @@ const ProductionSlides: ProductionSlideType[] = [
 import "swiper/css";
 import "swiper/css/pagination";
 import { useTranslation } from "react-i18next";
+import { useDocumentTitle } from "../../shared/useDocumentTitle";
 
 const Production = () => {
   const { t } = useTranslation();
+  useDocumentTitle("production_page.title")
   return (
     <section className="container max-xl:px-[3%]">
       <h1 className="text-[32px] max-md:text-[26px] font-semibold pt-5 pb-7">

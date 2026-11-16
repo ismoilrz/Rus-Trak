@@ -1,7 +1,9 @@
 import { useTranslation } from "react-i18next";
+import { useDocumentTitle } from "../../shared/useDocumentTitle";
 
 const Supliers = () => {
   const { t } = useTranslation();
+  useDocumentTitle("suppliers_page.title")
 
   return (
     <section className="container max-xl:px-[3%]">

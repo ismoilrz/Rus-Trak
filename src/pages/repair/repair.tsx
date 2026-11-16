@@ -15,9 +15,11 @@ import comp4 from "../../assets/comp4.jpg";
 import { useEffect, useState, useRef } from 'react';
 import { X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useDocumentTitle } from '../../shared/useDocumentTitle';
 
 const Repair = () => {
   const { t } = useTranslation();
+  useDocumentTitle("repair_page.main_title")
   const [repairForm, setRepairForm] = useState<boolean>(false);
 
   const [text, setText] = useState<string>('');

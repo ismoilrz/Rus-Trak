@@ -1,8 +1,10 @@
 import { useTranslation } from "react-i18next";
 import { Employees } from "../../constants/data/data";
+import { useDocumentTitle } from "../../shared/useDocumentTitle";
 
 const Contacts = () => {
   const { t } = useTranslation();
+  useDocumentTitle("contacts_page.title")
 
   return (
     <section className="container max-xl:px-[3%]">

@@ -5,12 +5,14 @@ import { MoveLeft, MoveRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { useTranslation } from "react-i18next";
+import { useDocumentTitle } from "../../shared/useDocumentTitle";
 
 const NewsDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const { t } = useTranslation();
-
+  
   const currentNews = NewsData.find((item) => item.slug === slug);
+  useDocumentTitle(currentNews ? `${currentNews.translationKey}.title` : "news.notFound");
 
   if (!currentNews) {
     return <div className="container py-10 text-xl font-medium">{t("news.notFound")}</div>;

@@ -12,6 +12,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Autoplay } from 'swiper/modules';
 import { MoveRight } from "lucide-react";
+import { useDocumentTitle } from "../../shared/useDocumentTitle";
 
 const Pagination = (ReactPaginate as any).default || ReactPaginate;
 
@@ -20,6 +21,7 @@ const ITEMS_PER_PAGE = 8;
 const News = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { t } = useTranslation();
+  useDocumentTitle("docTitle.news")
 
   const pageParam = searchParams.get("page");
   const currentPage = pageParam ? parseInt(pageParam) - 1 : 0;

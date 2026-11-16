@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { useDocumentTitle } from "../../shared/useDocumentTitle";
 
 interface PartnersType {
   id: number;
@@ -62,6 +63,7 @@ const Partners1: PartnersType[] = [
 
 const OurPartners = () => {
   const { t } = useTranslation();
+  useDocumentTitle("our_page.title")
 
   return (
     <section className="container max-xl:px-[3%] ourPartners">

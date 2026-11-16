@@ -11,6 +11,7 @@ import ser8 from "../../assets/ser8.jpg"
 import ser9 from "../../assets/ser9.jpg"
 import { Expand } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useDocumentTitle } from "../../shared/useDocumentTitle";
 
 interface SerDataType {
   id: number;
@@ -32,6 +33,7 @@ const SerData: SerDataType[] = [
 const Sertificate = () => {
   const { t } = useTranslation();
   const fancyboxRef = useFancybox({});
+  useDocumentTitle("sertificates")
 
   return (
     <section ref={fancyboxRef} className="container max-xl:px-[3%]">

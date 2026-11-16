@@ -2077,7 +2077,15 @@
 
   "address": "Nijniy Novgorod sh., Torfyanaya ko'ch., 35",
   "regionsPhone": "Hududlar uchun: 8 (800)-511-05-25",
-  "cityPhone": "Nijniy Novgorod: 8 (831) 235-26-16"
+  "cityPhone": "Nijniy Novgorod: 8 (831) 235-26-16",
+
+  "docTitle": {
+    "about": "Biz haqimizda",
+    "news": "RusTrak yangiliklari",
+    "vacancies": "Bo'sh ish o'rinlari",
+    "cart": "Savat",
+    "favorites": "Sevimlilar"
+  }
   
 
 

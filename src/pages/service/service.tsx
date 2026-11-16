@@ -1,8 +1,10 @@
 import { useTranslation } from "react-i18next";
 import employes from "../../assets/employes1.png"
+import { useDocumentTitle } from "../../shared/useDocumentTitle";
 
 const Service = () => {
   const { t } = useTranslation();
+  useDocumentTitle("service_page.title")
 
   return (
     <section>

@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { useDocumentTitle } from "../../shared/useDocumentTitle";
 
 interface CreditType {
   id: number;
@@ -26,6 +27,7 @@ const CreditData: CreditType[] = [
 
 const Credit = () => {
   const { t } = useTranslation();
+  useDocumentTitle(CreditData[0].titleKey)
 
   return (
     <section className="container max-xl:px-[3%] pt-6">

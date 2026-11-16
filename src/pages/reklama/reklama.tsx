@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { useDocumentTitle } from "../../shared/useDocumentTitle";
 
 interface ReklamaUrlType {
   urlKey: string;
@@ -58,6 +59,7 @@ const ReklamaData: ReklamaType[] = [
 
 const Reklama = () => {
   const { t } = useTranslation();
+  useDocumentTitle("reklama_page.title")
 
   return (
     <section className="container max-xl:px-[3%]">

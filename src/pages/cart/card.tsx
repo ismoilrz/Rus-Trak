@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { useCartStore } from '../../shared/useCartStore';
 import { CartItemCard } from '../../components/cartItem';
 import { useTranslation } from 'react-i18next';
+import { useDocumentTitle } from '../../shared/useDocumentTitle';
 
 const Cart: React.FC = () => {
   const navigate = useNavigate();
   const { cart } = useCartStore();
   const { t } = useTranslation();
+  useDocumentTitle("docTitle.cart")
 
   return (
     <div className='container max-xl:px-[3%]'>

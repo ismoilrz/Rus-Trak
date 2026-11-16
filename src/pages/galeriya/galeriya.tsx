@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { GaleriyaData } from "../../constants/data/galeriyaData";
 import useFancybox from "../../shared/useFancyBox";
+import { useDocumentTitle } from "../../shared/useDocumentTitle";
 
 type Categoryes = 'cars' | 'production' | 'about' | 'exhibitions';
 
@@ -20,6 +21,7 @@ const Filter_Buttons: FilterBtns[] = [
 
 const Galeriya = () => {
   const { t } = useTranslation();
+  useDocumentTitle("gallery_page.title")
   const fancyboxRef = useFancybox({});
   const [category, setCategory] = useState<Categoryes>('cars');
 

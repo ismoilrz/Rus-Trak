@@ -1,3 +1,4 @@
+// import { useDocumentTitle } from "../../shared/useDocumentTitle"
 import AboutCompany from "./aboutCompany"
 import HomeCategory from "./homeCategory"
 import HomeNews from "./homeNews"
@@ -10,6 +11,8 @@ interface HomeProps {
   openCallModal?: () => void;
 }
 const Home = ({openCallModal}:HomeProps) => {
+  // useDocumentTitle("salom")
+
   return (
     <>
         <HomeTopSlide openCallModal={openCallModal} />

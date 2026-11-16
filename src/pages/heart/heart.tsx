@@ -3,10 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ShoppingCart, ArrowDownToLine, Heart, X } from 'lucide-react';
 import { useCartStore } from '../../shared/useCartStore';
 import { useTranslation } from 'react-i18next';
+import { useDocumentTitle } from '../../shared/useDocumentTitle';
 
 const HeartPage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  useDocumentTitle("docTitle.favorites")
 
   const [catalogForm, setCatalogForm] = useState<boolean>(false)
 
